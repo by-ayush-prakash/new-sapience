@@ -1,0 +1,6 @@
+{
+  "name": "New Sapience",
+  "description": "Deterministic AI for mission-critical systems.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
