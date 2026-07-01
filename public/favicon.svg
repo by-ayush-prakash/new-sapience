@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Outer deep circle -->
+  <circle cx="16" cy="16" r="14" fill="url(#cosmicGrad)" />
+  
+  <!-- Stylized orbit/rings representing knowledge structures & world models -->
+  <circle cx="16" cy="16" r="9" stroke="white" stroke-width="1.5" stroke-opacity="0.85" stroke-dasharray="20 4" />
+  <circle cx="16" cy="16" r="5" stroke="white" stroke-width="1.2" stroke-opacity="0.6" />
+  
+  <!-- Elegant core star (pointing up) indicating human-like sapience reasoning -->
+  <polygon points="16,11 17.5,14.5 21,16 17.5,17.5 16,21 14.5,17.5 11,16 14.5,14.5" fill="white" />
+  
+  <defs>
+    <linearGradient id="cosmicGrad" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2e7fd6" />
+      <stop offset="100%" stop-color="#0D2149" />
+    </linearGradient>
+  </defs>
+</svg>
