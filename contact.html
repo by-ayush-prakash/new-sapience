@@ -26,7 +26,6 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
 <link rel="mask-icon" href="img/brand/mask.svg" color="#0D2149">
 <meta name="theme-color" content="#0D2149">
-<script>(function(){try{var t=localStorage.getItem('ns-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
 <style>
 /* ============================================================
    NEW SAPIENCE — shared stylesheet
@@ -77,30 +76,6 @@
   --shadow:0 26px 60px -34px rgba(12,20,31,.32);
   --shadow-s:0 10px 26px -16px rgba(12,20,31,.28);
   --card:var(--surface);
-}
-html[data-theme="dark"]{
-  --paper:#080D14;
-  --surface:#0F151E;
-  --surface-2:#141B26;
-  --ink:#E8EFF7;
-  --ink-2:#A7B3C2;
-  --ink-3:#77828F;
-  --rule:rgba(232,239,247,.15);
-  --rule-soft:rgba(232,239,247,.08);
-  --navy:#C3D5F2;
-  --navy-2:#9DB8E4;
-  --signal:#5B92F5;
-  --signal-wash:rgba(91,146,245,.12);
-  --mid-1:#131A24;
-  --mid-2:#1A2331;
-  --mid-3:#26374C;
-  --warm-grey:#171A20;
-  --caution:#D6A34A;
-  --caution-wash:rgba(214,163,74,.12);
-  --verify:#4FBF95;
-  --verify-wash:rgba(79,191,149,.12);
-  --shadow:0 26px 60px -34px rgba(0,0,0,.8);
-  --shadow-s:0 10px 26px -16px rgba(0,0,0,.7);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -157,9 +132,6 @@ strong{font-weight:600}
     repeating-linear-gradient(135deg,transparent 0 14px,rgba(12,20,31,.035) 14px 28px),
     linear-gradient(150deg,var(--mid-2),var(--mid-1));
   border:1px dashed var(--rule);border-radius:12px;color:var(--ink-3);text-align:center;padding:16px}
-html[data-theme="dark"] .ph{background:
-    repeating-linear-gradient(135deg,transparent 0 14px,rgba(232,239,247,.03) 14px 28px),
-    linear-gradient(150deg,var(--mid-2),var(--mid-1))}
 .ph svg{width:26px;height:26px;opacity:.5}
 .ph b{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
 .ph s{text-decoration:none;font-size:12px;max-width:34ch;line-height:1.45;opacity:.85}
@@ -202,38 +174,15 @@ html[data-theme="dark"] .ph{background:
   transition:top .5s var(--ez),background .55s var(--ez)}
 .nav.stuck .navpill{top:7px}
 .nitem{position:relative;display:flex;align-items:center}
-.nitem>a,.nitem>button{display:flex;align-items:center;gap:6px;font-family:var(--f-body);font-size:15px;
+.nitem>a{display:flex;align-items:center;gap:6px;font-family:var(--f-body);font-size:15px;
   font-weight:500;color:var(--ink-2);letter-spacing:-.01em;white-space:nowrap;background:none;border:0;
   padding:11px 12px;border-radius:999px;cursor:pointer;transition:color .3s,background .3s}
-.nitem>a:hover,.nitem>button:hover,.nitem.on>a,.nitem.on>button{color:var(--ink);background:var(--surface-2)}
-.nitem>button svg{opacity:.5;transition:transform .4s var(--ez)}
-.nitem:hover>button svg{transform:rotate(180deg)}
+.nitem>a:hover,.nitem.on>a{color:var(--ink);background:var(--surface-2)}
 .nitem[aria-current]>a{color:var(--ink)}
 .nitem[aria-current]>a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:var(--signal);border-radius:2px}
 
-/* mega menu */
-.mega{position:absolute;top:calc(100% + 12px);left:50%;transform:translate(-50%,10px);
-  background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:10px;
-  min-width:min(620px,92vw);display:grid;grid-template-columns:1fr 1fr;gap:3px;
-  opacity:0;visibility:hidden;pointer-events:none;box-shadow:var(--shadow);
-  transition:opacity .34s var(--ez),transform .44s var(--ez),visibility .34s}
-.nitem:hover .mega,.nitem:focus-within .mega{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
-.mega a{display:block;padding:13px 15px;border-radius:10px;transition:background .3s}
-.mega a:hover{background:var(--surface-2)}
-.mega b{display:block;font-family:var(--f-display);font-weight:600;font-size:14.5px;letter-spacing:-.015em}
-.mega s{display:block;text-decoration:none;font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.45}
-.mega__ft{grid-column:1/-1;margin-top:4px;padding:13px 15px;border-top:1px solid var(--rule-soft);
-  display:flex;align-items:center;justify-content:space-between;gap:12px}
 
 .toggle{display:flex;align-items:center;gap:10px;z-index:2}
-.toggle b{font-size:14px;font-weight:600;letter-spacing:-.01em;transition:color .4s;font-family:var(--f-display)}
-.toggle .lt{color:var(--ink)} .toggle .dk{color:var(--ink-3)}
-html[data-theme="dark"] .toggle .lt{color:var(--ink-3)}
-html[data-theme="dark"] .toggle .dk{color:var(--signal)}
-.sw{width:60px;height:31px;border-radius:999px;background:var(--surface);border:1px solid var(--rule-soft);
-  position:relative;cursor:pointer;padding:0;box-shadow:inset 0 1px 3px rgba(12,20,31,.07)}
-.sw i{position:absolute;top:4px;left:4px;width:23px;height:23px;border-radius:50%;background:var(--signal);transition:transform .5s var(--ez)}
-html[data-theme="dark"] .sw i{transform:translateX(29px)}
 .navcta{display:none}
 .burger{display:none;width:43px;height:43px;border-radius:999px;background:var(--surface);border:1px solid var(--rule-soft);cursor:pointer;position:relative;z-index:2}
 .burger i{position:absolute;left:12.5px;width:18px;height:1.8px;background:var(--ink);border-radius:2px;transition:transform .5s var(--ez)}
@@ -244,7 +193,7 @@ html[data-theme="dark"] .sw i{transform:translateX(29px)}
   transform:translateY(-101%);transition:transform .7s var(--ez);overflow-y:auto}
 .drawer.on{transform:none}
 .drawer a{display:block;font-family:var(--f-display);font-size:26px;font-weight:600;letter-spacing:-.028em;padding:16px 0;border-bottom:1px solid var(--rule)}
-.drawer .sub{font-size:17px;font-weight:500;color:var(--ink-2);padding-left:16px}
+.drawer__inv{color:var(--signal)}
 
 /* ================= BREADCRUMB ================= */
 .crumb{padding-top:104px;padding-bottom:0}
@@ -493,7 +442,6 @@ html[data-theme="dark"] .sw i{transform:translateX(29px)}
 /* ================= CTA STRIP ================= */
 .ctastrip{background:var(--navy);color:#fff;border-radius:22px;padding:clamp(32px,4.4vw,64px);
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,3vw,44px);align-items:center;position:relative;overflow:hidden}
-html[data-theme="dark"] .ctastrip{background:var(--mid-3)}
 .ctastrip h2{color:#fff;font-weight:500;max-width:20ch;font-size:clamp(24px,2.9vw,40px)}
 .ctastrip p{color:rgba(255,255,255,.8);margin-top:14px;max-width:56ch;font-size:16px}
 
@@ -534,7 +482,6 @@ html[data-theme="dark"] .ctastrip{background:var(--mid-3)}
   .statitem:last-child{border-bottom:0}
   .foot__g{grid-template-columns:1fr}
   .flow{gap:20px} .flow__a{display:none}
-  .toggle b{display:none}
   .faq .ans{padding-left:0}
 }
 @media(prefers-reduced-motion:reduce){
@@ -570,10 +517,6 @@ html[data-theme="dark"] .ctastrip{background:var(--mid-3)}
 .sicon svg{width:40px;height:40px;transition:transform .55s var(--ez)}
 .scard:hover .sicon{color:var(--signal)}
 .scard:hover .sicon svg{transform:scale(1.07)}
-[data-theme="dark"] .sicon{color:#cfd8e3;background:
-  linear-gradient(135deg,rgba(255,255,255,.035) 25%,transparent 25%,transparent 50%,
-    rgba(255,255,255,.035) 50%,rgba(255,255,255,.035) 75%,transparent 75%) 0 0/7px 7px,
-  var(--mid-1)}
 .scard__b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
 .scard__n{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;color:var(--signal)}
 .scard__t{font-family:var(--f-display);font-size:15.5px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
@@ -594,7 +537,6 @@ html[data-theme="dark"] .ctastrip{background:var(--mid-3)}
 .tcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .tcard--neg{background:var(--mid-1)}
 .tcard--pos{background:var(--navy);border-color:var(--navy)}
-html[data-theme="dark"] .tcard--pos{background:var(--mid-3);border-color:var(--mid-3)}
 .tcard__k{font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
   color:var(--ink-3);display:flex;align-items:center;gap:9px}
 .tcard__k::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--caution)}
@@ -615,7 +557,6 @@ html[data-theme="dark"] .tcard--pos{background:var(--mid-3);border-color:var(--m
 .qpanel{position:relative;border-radius:22px;overflow:hidden;isolation:isolate;
   background:#0D2149;
   padding:clamp(34px,4.6vw,72px) clamp(22px,4vw,64px)}
-[data-theme="dark"] .qpanel{background:#0A1836}
 .qpanel__in{position:relative;z-index:2;color:#fff;display:grid;
   grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,3.6vw,58px);align-items:center}
 .qpanel h2{color:#fff;font-weight:500;max-width:16ch;margin-bottom:20px}
@@ -796,70 +737,25 @@ h1, h2, h3, h4{
     <span>New<br>Sapience</span>
   </a>
   <nav class="navpill" aria-label="Primary">
-    <div class="nitem">
-      <button type="button" aria-haspopup="true">Platform <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.2 4.5 4.7 8 1.2" stroke="currentColor" stroke-width="1.3"/></svg></button>
-      <div class="mega">
-        <a href="platform.html#tri"><b>Not machine learning</b><s>A video of fire is not on fire</s></a>
-        <a href="platform.html#tri"><b>Not symbolic AI</b><s>A heap of rules is not a model</s></a>
-        <a href="platform.html#synthetic"><b>Synthetic intelligence</b><s>Real knowledge, not natural</s></a>
-        <a href="platform.html#characteristics"><b>Key characteristics</b><s>Language, logic, security</s></a>
-        <a href="platform.html#quantum"><b>Quantum secure comms</b><s>Unbreakable by construction</s></a>
-        <a href="platform.html#demo"><b>The comparison</b><s>Probabilistic vs deterministic</s></a>
-        <div class="mega__ft"><span class="mono">Platform</span><a class="tlink" href="platform.html">Overview &#8594;</a></div>
-      </div>
-    </div>
-    <div class="nitem">
-      <button type="button" aria-haspopup="true">Sectors <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.2 4.5 4.7 8 1.2" stroke="currentColor" stroke-width="1.3"/></svg></button>
-      <div class="mega">
-        <a href="sectors.html#cisa"><b>16 CISA sectors</b><s>Critical infrastructure</s></a>
-        <a href="sectors.html#space"><b>Space operations</b><s>Telemetry at zero margin</s></a>
-        <a href="sectors.html#cyber"><b>Cybersecurity</b><s>Exact deviation, not a score</s></a>
-        <a href="sectors.html#nuclear"><b>Nuclear power</b><s>Unambiguous signal</s></a>
-        <a href="sectors.html#grid"><b>Power grid</b><s>Cascade risk, caught early</s></a>
-        <div class="mega__ft"><span class="mono">Sectors</span><a class="tlink" href="sectors.html">Overview &#8594;</a></div>
-      </div>
-    </div>
-    <div class="nitem">
-      <button type="button" aria-haspopup="true">Deployment <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.2 4.5 4.7 8 1.2" stroke="currentColor" stroke-width="1.3"/></svg></button>
-      <div class="mega">
-        <a href="deployment.html#mobile"><b>Mobile &amp; personal</b><s>One interface, native language</s></a>
-        <a href="deployment.html#embedded"><b>Embedded</b><s>State machines at the node</s></a>
-        <a href="deployment.html#enterprise"><b>Enterprise agentic</b><s>LLM governance, solved</s></a>
-        <a href="deployment.html#c2"><b>Command &amp; control</b><s>Glass cockpit displays</s></a>
-        <a href="deployment.html#networks"><b>Secure networks</b><s>Self-monitoring nodes</s></a>
-        <a href="deployment.html#robotics"><b>Robotics</b><s>Higher brain functions</s></a>
-        <div class="mega__ft"><span class="mono">Deployment</span><a class="tlink" href="deployment.html">Overview &#8594;</a></div>
-      </div>
-    </div>
-    <div class="nitem">
-      <button type="button" aria-haspopup="true">About <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.2 4.5 4.7 8 1.2" stroke="currentColor" stroke-width="1.3"/></svg></button>
-      <div class="mega">
-        <a href="about.html#leadership"><b>Leadership</b><s>Team, board, and advisors</s></a>
-        <a href="about.html#faq"><b>FAQ</b><s>Plain definitions</s></a>
-        <div class="mega__ft"><span class="mono">About</span><a class="tlink" href="about.html">Overview &#8594;</a></div>
-      </div>
-    </div>
+    <div class="nitem"><a href="platform.html">Platform</a></div>
+    <div class="nitem"><a href="sectors.html">Sectors</a></div>
+    <div class="nitem"><a href="deployment.html">Deployment</a></div>
+    <div class="nitem"><a href="about.html">About</a></div>
     <div class="nitem" aria-current="page"><a href="contact.html">Contact</a></div>
   </nav>
   <div class="toggle">
     <a class="btn btn--inv" href="https://signup.floww.io/to/LCThz0lq" target="_blank" rel="noopener noreferrer">Invest</a>
-    <b class="lt">Light</b>
-    <button class="sw" id="sw" aria-label="Toggle light or dark theme"><i></i></button>
-    <b class="dk">Dark</b>
     <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
   </div>
 </header>
 <div class="drawer" id="drawer">
   <a href="index.html">Home</a>
   <a href="platform.html">Platform</a>
-  <a class="sub" href="platform.html#tri">Not ML, not symbolic AI</a>
-  <a class="sub" href="platform.html#quantum">Quantum secure comms</a>
-  <a class="sub" href="platform.html#demo">The comparison</a>
   <a href="sectors.html">Sectors</a>
   <a href="deployment.html">Deployment</a>
   <a href="about.html">About</a>
-  <a class="sub" href="about.html#leadership">Leadership</a>
   <a href="contact.html">Contact</a>
+  <a class="drawer__inv" href="https://signup.floww.io/to/LCThz0lq" target="_blank" rel="noopener noreferrer">Invest</a>
 </div>
 <nav class="crumb wrap" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-hidden="true">/</li><li aria-current="page">Contact</li></ol></nav>
 <main id="main">
@@ -946,18 +842,6 @@ h1, h2, h3, h4{
    ============================================================ */
 (function () {
   'use strict';
-
-  /* ---------- THEME (persisted) ---------- */
-  var root = document.documentElement;
-  try {
-    var saved = localStorage.getItem('ns-theme');
-    if (saved) root.dataset.theme = saved;
-  } catch (e) {}
-  var sw = document.getElementById('sw');
-  if (sw) sw.addEventListener('click', function () {
-    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    try { localStorage.setItem('ns-theme', root.dataset.theme); } catch (e) {}
-  });
 
   /* ---------- NAV ---------- */
   var nav = document.getElementById('nav');
@@ -1154,14 +1038,16 @@ h1, h2, h3, h4{
     }
     function update() {
       var max = vp.scrollWidth - vp.clientWidth;
-      var pct = max > 0 ? vp.scrollLeft / max : 0;
-      if (prog) prog.style.width = Math.max(12, (vp.clientWidth / vp.scrollWidth) * 100) + '%';
-      if (prog) prog.style.transform = 'translateX(' + (pct * (100 / Math.max(0.12, vp.clientWidth / vp.scrollWidth) - 100)) + '%)';
+      // Fraction of the track seen so far, counting what is on screen now.
+      var seen = vp.scrollWidth > 0
+        ? Math.min(1, (vp.scrollLeft + vp.clientWidth) / vp.scrollWidth) : 1;
+      if (prog) prog.style.width = (seen * 100).toFixed(2) + '%';
       if (prev) prev.disabled = vp.scrollLeft < 4;
       if (next) next.disabled = vp.scrollLeft > max - 4;
       if (ctr && cards.length) {
-        var i = Math.round(vp.scrollLeft / step()) + 1;
-        ctr.textContent = String(Math.min(i, cards.length)).padStart(2, '0') + ' / ' + String(cards.length).padStart(2, '0');
+        // Label the last card in view, so it agrees with the bar.
+        var i = Math.max(1, Math.min(cards.length, Math.round(seen * cards.length)));
+        ctr.textContent = String(i).padStart(2, '0') + ' / ' + String(cards.length).padStart(2, '0');
       }
     }
     if (prev) prev.addEventListener('click', function () { vp.scrollBy({ left: -step() * 2, behavior: 'smooth' }); });
