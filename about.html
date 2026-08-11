@@ -205,6 +205,9 @@ strong{font-weight:600}
 .crumb li[aria-current]{color:var(--ink-2)}
 
 /* ================= PAGE HERO (inner pages) ================= */
+/* The nav is fixed, so the first block on any interior page must clear it.
+   The breadcrumb used to provide this gap. */
+main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 .phero{padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(40px,5.4vw,80px);position:relative}
 .phero__g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4.4vw,68px);align-items:end}
 .phero h1{max-width:17ch;margin-top:14px}
@@ -223,7 +226,7 @@ strong{font-weight:600}
 
 /* ================= STAT BAND ================= */
 .statband{border-block:1px solid var(--rule);background:var(--surface)}
-.statband__g{display:grid;grid-template-columns:repeat(4,1fr)}
+.statband__g{display:grid;grid-template-columns:repeat(3,1fr)}
 .statitem{padding:clamp(24px,3vw,40px) clamp(16px,2vw,30px);border-right:1px solid var(--rule);transition:background .45s}
 .statitem:last-child{border-right:0}
 .statitem:hover{background:var(--surface-2)}
@@ -758,7 +761,7 @@ h1, h2, h3, h4{
   <a href="contact.html">Contact</a>
   <a class="drawer__inv" href="https://signup.floww.io/to/LCThz0lq" target="_blank" rel="noopener noreferrer">Invest</a>
 </div>
-<nav class="crumb wrap" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-hidden="true">/</li><li aria-current="page">About</li></ol></nav>
+
 <main id="main">
 <section class="phero">
 <div class="wrap phero__g">
@@ -768,6 +771,29 @@ h1, h2, h3, h4{
 </div>
 <div data-rv="">
 <p class="lede">They have advised global institutions, federal agencies, and elected officials. Their space experience includes the Hubble Space Telescope, International Space Station, Space Shuttle, NASA astronaut missions, commercial launch vehicle operations, and national, military and commercial satellite operations. The team has launched and exited high-stakes technology companies. Collectively, they hold <span class="dot">100+ patents.</span></p>
+</div>
+</div>
+</section>
+<section class="sec sec--t">
+<div class="wrap">
+<div class="split" data-rv="">
+<div class="split__t">
+<h2>Four decades, three generations of <span class="nb">one architecture</span></h2>
+<p class="lede" style="margin-top:18px">When founder Bryant Cruse walked into the Hubble Space Telescope mission control center in the mid-1980s, operators determined spacecraft status by reading screens of raw telemetry: 4,000 values, changing constantly. The first AI system for spacecraft telemetry analysis cut interpretation time from 45 minutes to under 2.</p>
+<p class="lede" style="margin-top:14px">Four decades later, mission-critical control environments still largely operate the same way — human operators monitoring raw data streams, making real-time decisions under stress, with cognitive performance degrading precisely when the stakes are highest.</p>
+<p class="lede" style="margin-top:14px">Sapiens is the third generation of an architecture evolved across those four decades and two acquired companies. Traditional expert systems and LLMs share the same failure: complexity grows exponentially while capability plateaus. This architecture inverts that. Capability scales while complexity stays bounded.</p>
+</div>
+<div class="phwrap" style="--ar:4/3">
+<img alt="Annapolis office, the team, or mission operations imagery." decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/feature/company.jpg"/>
+<div class="ph">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
+<rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
+</svg>
+<b>Company photography</b>
+<s>Annapolis office, the team, or mission operations imagery.</s>
+<s style="opacity:.6;margin-top:2px">img/feature/company.jpg</s>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -876,29 +902,6 @@ h1, h2, h3, h4{
 <div class="ans">It is a hardware component located at the boundary of a network—close to data sources or users—that collects, processes, and analyzes data locally rather than sending it to a centralized cloud or data center.</div></details>
 <details><summary><span class="qn">Q11</span>How can sapiens be audited?<span class="pl">+</span></summary>
 <div class="ans">Auditing means being able to trace back how any given output or behavior was determined by the system. Both the knowledge that sapiens contain and the program that reasons about it are written and readable by humans. Knowledge that supports specific applications is certified and owned by the customer.</div></details>
-</div>
-</div>
-</section>
-<section class="sec sec--t">
-<div class="wrap">
-<div class="split" data-rv="">
-<div class="split__t">
-<h2>Four decades, three generations of <span class="nb">one architecture</span></h2>
-<p class="lede" style="margin-top:18px">When founder Bryant Cruse walked into the Hubble Space Telescope mission control center in the mid-1980s, operators determined spacecraft status by reading screens of raw telemetry: 4,000 values, changing constantly. The first AI system for spacecraft telemetry analysis cut interpretation time from 45 minutes to under 2.</p>
-<p class="lede" style="margin-top:14px">Four decades later, mission-critical control environments still largely operate the same way — human operators monitoring raw data streams, making real-time decisions under stress, with cognitive performance degrading precisely when the stakes are highest.</p>
-<p class="lede" style="margin-top:14px">Sapiens is the third generation of an architecture evolved across those four decades and two acquired companies. Traditional expert systems and LLMs share the same failure: complexity grows exponentially while capability plateaus. This architecture inverts that. Capability scales while complexity stays bounded.</p>
-</div>
-<div class="phwrap" style="--ar:4/3">
-<img alt="Annapolis office, the team, or mission operations imagery." decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/feature/company.jpg"/>
-<div class="ph">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
-<rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
-</svg>
-<b>Company photography</b>
-<s>Annapolis office, the team, or mission operations imagery.</s>
-<s style="opacity:.6;margin-top:2px">img/feature/company.jpg</s>
-</div>
-</div>
 </div>
 </div>
 </section>
