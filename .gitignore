@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+._*
+
+# working folders — not part of the deployed site
+_incoming/
+_to_delete/
+**/_originals/
+**/_WHAT-GOES-HERE.txt
