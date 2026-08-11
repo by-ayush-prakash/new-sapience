@@ -159,7 +159,8 @@ strong{font-weight:600}
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;
   font-size:18px;letter-spacing:-.03em;line-height:1.05;z-index:2;color:var(--ink)}
 .logo svg{flex:none;color:var(--navy)}
-.logo__m{flex:none;width:32px;height:32px}
+.logo__l{flex:none;width:auto;height:clamp(34px,3.1vw,44px);display:block}
+.foot .logo__l{height:40px}
 /* Invest — signal blue, so it reads as the one commercial ask in the chrome */
 .btn--inv{background:var(--signal);border-color:var(--signal);color:#fff;
   padding:10px 20px;font-size:14px}
@@ -267,7 +268,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 .shead p+p{margin-top:14px}
 
 /* ================= CARDS ================= */
-.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px)}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);align-items:stretch}
 .fcard{position:relative;border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--card);
   padding:clamp(22px,2.3vw,30px);display:flex;flex-direction:column;min-height:clamp(236px,24vw,296px);
   transition:transform .6s var(--ez),box-shadow .6s var(--ez)}
@@ -278,6 +279,20 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 .fcard h3{margin-bottom:6px}
 .fcard .kpi{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--signal)}
 .fcard p{margin-top:14px;color:var(--ink-2);font-size:14.5px;line-height:1.6}
+/* Heading / label / body share the parent grid's row tracks, so body copy
+   starts on the same line in every column however the heading wraps.
+   Padding lives on an inner element: a subgrid item's own padding would
+   offset its content from the shared tracks. */
+.fcard .kpi{display:block;line-height:1.45}
+@supports (grid-template-rows: subgrid){
+  @media(min-width:1001px){
+    .fgrid{grid-template-rows:auto auto 1fr}
+    .fcard{grid-row:span 3;display:grid;grid-template-rows:subgrid;padding:0}
+    .fcard>h3{padding:clamp(22px,2.3vw,30px) clamp(22px,2.3vw,30px) 0}
+    .fcard>.kpi{padding:6px clamp(22px,2.3vw,30px) 0}
+    .fcard>.fcard__b{padding:0 clamp(22px,2.3vw,30px) clamp(22px,2.3vw,30px)}
+  }
+}
 
 .dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.8vw,24px)}
 .dcard{position:relative;border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--card);
@@ -290,7 +305,6 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
   background:radial-gradient(115% 100% at 88% 0%,var(--t1),transparent 60%)}
 .dcard__b>*{position:relative;z-index:1}
 .dcard__t{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
-.dcard__ic{width:36px;height:36px;color:var(--signal);flex:none}
 .dcard h3{font-size:clamp(20px,1.8vw,25px)}
 .dcard p{margin-top:12px;color:var(--ink-2);font-size:14.5px;line-height:1.65}
 .dnote{margin-top:20px;border-left:2px solid var(--signal);background:var(--signal-wash);
@@ -370,7 +384,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 .mem .li{margin-top:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);transition:color .3s}
 .mem .li:hover{color:var(--signal)}
 .subhead{font-family:var(--f-display);font-size:clamp(19px,1.7vw,23px);font-weight:600;letter-spacing:-.022em;margin:clamp(32px,3.8vw,52px) 0 20px}
-.subhead span{color:var(--ink-3);font-weight:400;font-size:.8em}
+.subhead > span{color:var(--ink-3);font-weight:400;font-size:.8em}
 
 /* ================= PRINCIPLES ================= */
 .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden}
@@ -563,7 +577,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
   padding:clamp(34px,4.6vw,72px) clamp(22px,4vw,64px)}
 .qpanel__in{position:relative;z-index:2;color:#fff;display:grid;
   grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,3.6vw,58px);align-items:center}
-.qpanel h2{color:#fff;font-weight:500;max-width:16ch;margin-bottom:20px}
+.qpanel h2{color:#fff;font-weight:500;max-width:20ch;margin-bottom:20px}
 .qpanel p{color:rgba(255,255,255,.9);font-size:clamp(15px,1.24vw,17.5px);line-height:1.68}
 .qpanel p+p{margin-top:14px}
 .qpanel .mono{color:rgba(255,255,255,.7)}
@@ -675,7 +689,8 @@ p, li, .lede, .ans, blockquote, figcaption, .tcard__fig, .bigline{
 }
 h1, h2, h3, h4{
   text-wrap:balance;
-  overflow-wrap:break-word;
+  overflow-wrap:normal;
+  word-break:normal;
 }
 /* Balance is wrong for long multi-line prose; keep it to real headings only */
 .bigline{text-wrap:pretty}
@@ -736,9 +751,8 @@ h1, h2, h3, h4{
 </head>
 <body>
 <header class="nav" id="nav">
-  <a class="logo" href="index.html">
-    <img class="logo__m" src="img/brand/mark.png" width="32" height="32" alt="" aria-hidden="true">
-    <span>New<br>Sapience</span>
+  <a class="logo" href="index.html" aria-label="New Sapience — home">
+    <img class="logo__l" src="img/brand/lockup.png" width="224" height="44" alt="New Sapience">
   </a>
   <nav class="navpill" aria-label="Primary">
     <div class="nitem"><a href="platform.html">Platform</a></div>
@@ -763,11 +777,21 @@ h1, h2, h3, h4{
 </div>
 
 <main id="main">
+<section class="sec">
+<div class="gridbg"></div>
+<div class="wrap rel">
+<div class="shead" data-rv="">
+<h1 class="as-h2">Regulation is moving toward <span class="nb">explainable systems</span></h1>
+<p class="lede">Mandates in force and phasing in now impose transparency, auditability, human oversight, and demonstrated accuracy. These are requirements probabilistic systems struggle to meet by design.</p>
+</div>
+<div class="reg" data-rv=""><div class="regitem"><b>EU AI Act</b><p>Escalating obligations on high-risk systems: transparency, auditability, human oversight, and demonstrated accuracy, with the heaviest requirements phasing in through 2027.</p></div><div class="regitem"><b>EU Data Act</b><p>In force since September 2025. Requires providers to block unlawful third-country access to European data.</p></div><div class="regitem"><b>FAA AI Safety Assurance Roadmap</b><p>Flags the assurance challenge that non-explainable AI poses in aviation.</p></div><div class="regitem"><b>OMB M-25-21</b><p>Directs federal agencies toward AI strategies emphasising data traceability and trust. DoD procurement is moving the same way.</p></div></div>
+</div>
+</section>
 <section class="sec sec--t" id="cisa">
 <div class="gridbg"></div>
 <div class="wrap rel">
 <div class="shead" data-rv="">
-<h1 class="as-h2">The 16 critical <span class="nb">infrastructure sectors</span></h1>
+<h2>The 16 critical <span class="nb">infrastructure sectors</span></h2>
 <p class="lede">The US Cybersecurity &amp; Infrastructure Security Agency has identified 16 critical infrastructure sectors whose assets, systems, and networks, whether physical or virtual, are considered so vital to the United States that their incapacitation or destruction would have a debilitating effect on the physical security, economic security, national public health or safety, or any combination thereof.</p>
 </div>
 <div class="carousel" data-carousel="" data-rv="">
@@ -904,8 +928,8 @@ h1, h2, h3, h4{
 <section class="sec sec--alt">
 <div class="wrap">
 <div class="shead" data-rv="">
-<h2>Where we earned <span class="nb">our wings</span></h2>
-<p class="lede">These are the domains our technology was created to serve, where our team “earned our wings” — mission critical operations, where a wrong answer could cost an irreplaceable asset, a life, or the entire mission.</p>
+<h2>Four domains where a wrong answer <span class="nb">is unaffordable</span></h2>
+<p class="lede">Each of these environments runs on continuous interpretation of instrument data, under time pressure, with no margin for a guess. That is the problem the architecture was built to solve.</p>
 </div>
 <div class="dgrid stg">
 <article class="dcard" id="space" style="--t1:rgba(11,79,214,.15)">
@@ -923,7 +947,6 @@ h1, h2, h3, h4{
 <div class="dcard__b">
 <div class="dcard__t">
 <div><h3>Space operations</h3></div>
-<svg aria-hidden="true" class="dcard__ic" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 40 40"><path d="M20 3c6 5.5 8.5 12 8.5 18l4.5 6-7 1.2L20 37l-6-8.8-7-1.2 4.5-6C11.5 15 14 8.5 20 3Z"></path><circle cx="20" cy="16" r="3.6"></circle></svg>
 </div>
 <p>A sapiens monitors thousands of telemetry values simultaneously, identifies anomalies in real-time, and sequences commands with zero margin for error. New Sapience founder Bryant Cruse pioneered AI applications for spacecraft operations. He developed the first-ever expert system to analyze spacecraft telemetry for the Hubble Space Telescope. That same capability: continuous, reliable oversight of complex spacecraft state, is what New Sapience delivers today. No one overwhelmed by data. No tired or inattentive operator. No missed signal. No ambiguous reading.</p>
 <div class="dnote"><s>Lineage</s><p>Founder Bryant Cruse built the first expert system to analyze spacecraft telemetry, for the Hubble Space Telescope.</p></div>
@@ -944,7 +967,6 @@ h1, h2, h3, h4{
 <div class="dcard__b">
 <div class="dcard__t">
 <div><h3>Cybersecurity</h3></div>
-<svg aria-hidden="true" class="dcard__ic" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 40 40"><path d="M20 4 7 10v9c0 8 5.6 14 13 16 7.4-2 13-8 13-16v-9L20 4Z"></path><path d="m14.6 20 3.6 3.6L26 16"></path></svg>
 </div>
 <p>A sapiens monitors system state continuously against a world model of what normal looks like. Every deviation is identified exactly. Not scored, not estimated, not left for a human to misinterpret. Either the system is behaving correctly, or it is not. That precision is what makes a sapiens effective where a best-guess threat detection may be a recipe for failure. No guessing. No false confidence. A clear answer, every time.</p>
 <div class="dnote"><s>Contrast</s><p>Best-guess threat scoring produces false confidence. A clear answer, every time, is the difference.</p></div>
@@ -965,7 +987,6 @@ h1, h2, h3, h4{
 <div class="dcard__b">
 <div class="dcard__t">
 <div><h3>Nuclear power</h3></div>
-<svg aria-hidden="true" class="dcard__ic" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 40 40"><circle cx="20" cy="20" r="3.4"></circle><ellipse cx="20" cy="20" rx="15" ry="6"></ellipse><ellipse cx="20" cy="20" rx="15" ry="6" transform="rotate(60 20 20)"></ellipse><ellipse cx="20" cy="20" rx="15" ry="6" transform="rotate(120 20 20)"></ellipse></svg>
 </div>
 <p>A sapiens reads every instrument continuously, separates real anomalies from sensor noise, and tells operators exactly what is wrong and why. An unambiguous signal is delivered at the moment it matters most, not a flood of data for an operator to interpret under pressure. The Three-Mile Island accident was caused by human error over a misread instrument. A sapiens eliminates such a catastrophic scenario.</p>
 <div class="dnote"><s>Precedent · 1979</s><p>In 1979, misdiagnosed instrument readings overwhelmed operators at exactly the moment clear thinking mattered most. Cleanup ran over $1 billion. That class of ambiguity is what a sapiens removes.</p></div>
@@ -986,7 +1007,6 @@ h1, h2, h3, h4{
 <div class="dcard__b">
 <div class="dcard__t">
 <div><h3>Power grid management</h3></div>
-<svg aria-hidden="true" class="dcard__ic" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 40 40"><path d="M22 4 11 22h8l-2 14 12-19h-8l1-13Z"></path></svg>
 </div>
 <p>A sapiens watches the full grid simultaneously, every node, every load, every developing fault. It catches cascade risk before it propagates and coordinates response across distributed assets in real-time. The 2003 Northeast blackout began as a small local fault that went undetected until after 8 states and much of eastern Canada lost power. A sapiens would detect the fault before an entire region goes dark.</p>
 <div class="dnote"><s>Precedent · 2003</s><p>The 2003 Northeast blackout caused an estimated $6 billion in economic damage when monitoring failures let a local fault cascade into regional collapse.</p></div>
@@ -1017,20 +1037,10 @@ h1, h2, h3, h4{
 </div>
 </div>
 </section>
-<section class="sec">
-<div class="gridbg"></div>
-<div class="wrap rel">
-<div class="shead" data-rv="">
-<h2>Regulation is moving toward <span class="nb">explainable systems</span></h2>
-<p class="lede">Mandates in force and phasing in now impose transparency, auditability, human oversight, and demonstrated accuracy. These are requirements probabilistic systems struggle to meet by design.</p>
-</div>
-<div class="reg" data-rv=""><div class="regitem"><b>EU AI Act</b><p>Escalating obligations on high-risk systems: transparency, auditability, human oversight, and demonstrated accuracy, with the heaviest requirements phasing in through 2027.</p></div><div class="regitem"><b>EU Data Act</b><p>In force since September 2025. Requires providers to block unlawful third-country access to European data.</p></div><div class="regitem"><b>FAA AI Safety Assurance Roadmap</b><p>Flags the assurance challenge that non-explainable AI poses in aviation.</p></div><div class="regitem"><b>OMB M-25-21</b><p>Directs federal agencies toward AI strategies emphasising data traceability and trust. DoD procurement is moving the same way.</p></div></div>
-</div>
-</section>
 <section class="sec sec--t">
 <div class="wrap">
 <div class="ctastrip" data-rv="">
-<div><h2>Your sector may not be on <span class="nb">this list</span></h2><p>If a wrong answer in your environment costs a mission, an asset, or a life, we should talk.</p></div>
+<div><h2>Not seeing <span class="nb">your sector?</span></h2><p>The architecture is domain-agnostic. If a wrong answer in your environment costs a mission, an asset, or a life, we should talk.</p></div>
 <a class="btn btn--l" href="contact.html">Request a solution</a>
 </div>
 </div>
@@ -1041,9 +1051,8 @@ h1, h2, h3, h4{
 <div class="wrap">
 <div class="foot__g">
 <div>
-<a class="logo" href="index.html">
-<img alt="" aria-hidden="true" class="logo__m" height="32" src="img/brand/mark.png" width="32"/>
-<span>New<br/>Sapience</span>
+<a aria-label="New Sapience — home" class="logo" href="index.html">
+<img alt="New Sapience" class="logo__l" height="44" src="img/brand/lockup.png" width="224"/>
 </a>
 <p>Reliable, cost-effective automation for critical infrastructure.</p>
 </div>
@@ -1057,7 +1066,7 @@ h1, h2, h3, h4{
 <li><a href="sectors.html">Sectors</a></li>
 <li><a href="deployment.html">Deployment options</a></li>
 <li><a href="deployment.html#robotics">Robotics</a></li>
-<li><a href="sectors.html#cisa">CISA 16</a></li>
+<li><a href="deployment.html#c2">Command &amp; control</a></li>
 </ul></div>
 <div><h4>Company</h4><ul>
 <li><a href="about.html">About</a></li>
@@ -1256,6 +1265,23 @@ h1, h2, h3, h4{
       }, 420);
     });
   })();
+
+
+  /* ---------- DEEP LINKS INTO THE ACCORDION ----------
+     deployment.html#robotics points at a collapsed <details>. Without this
+     the browser jumps to a closed row and the link looks broken.          */
+  function openTarget() {
+    var id = location.hash.slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el || el.tagName !== 'DETAILS') return;
+    el.open = true;
+    requestAnimationFrame(function () {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+  openTarget();
+  addEventListener('hashchange', openTarget);
 
   /* ---------- CISA SECTOR CAROUSEL ---------- */
   document.querySelectorAll('[data-carousel]').forEach(function (root) {
