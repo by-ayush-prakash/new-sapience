@@ -18,8 +18,8 @@
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
 <link rel="icon" type="image/png" href="img/brand/icon-32.png?v=2" sizes="32x32">
 <link rel="icon" type="image/png" href="img/brand/icon-192.png?v=2" sizes="192x192">
 <link rel="icon" href="favicon.ico?v=2" sizes="any">
@@ -65,7 +65,7 @@
   --verify:#0F6B4F;
   --verify-wash:rgba(15,107,79,.10);
 
-  --f-display:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-display:"Familjen Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
   --f-body:"IBM Plex Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 
@@ -90,16 +90,166 @@ img,canvas,video{display:block;max-width:100%}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
 .wrap--wide{max-width:var(--wide)}
-.sec{padding-block:clamp(60px,8vw,124px);position:relative;scroll-margin-top:104px}
-.sec--t{padding-block:clamp(38px,5.2vw,80px)}
+/* One vertical rhythm sitewide. Anthropic runs 96 top / 48 bottom on every
+   section; we ran three different pairs, which read as accident not system. */
+.sec{padding-top:clamp(64px,7vw,96px);padding-bottom:clamp(32px,3.5vw,48px);
+  position:relative;scroll-margin-top:104px}
+.sec--t{padding-top:clamp(64px,7vw,96px);padding-bottom:clamp(32px,3.5vw,48px)}
 .sec--alt{background:var(--mid-1)}
 .sec--warm{background:var(--warm-grey)}
+/* Tinted band — Cohere alternates white and a pale lilac-blue field to
+   separate major sections without a rule or a dark inversion. */
+.sec--tint{background:#E4EAFB}
+
+/* ---- COHERE-PATTERN PAGE HEAD: centred, generous, one CTA ---- */
+.chero{text-align:center;padding-top:clamp(80px,10vw,168px);padding-bottom:clamp(56px,7vw,110px)}
+.chero .mono{display:block;margin-bottom:clamp(22px,2.6vw,34px)}
+/* Big and bold: 96px at 1200px, matching Cohere. No max-width box — the
+   headline is allowed to run the full container the way theirs does. */
+.chero h1{font-size:clamp(40px,7.2vw,96px);font-weight:600;letter-spacing:-.022em;
+  line-height:1.02;max-width:none;text-wrap:balance}
+.chero__sub{max-width:52ch;margin:clamp(26px,3vw,40px) auto 0;text-wrap:balance;
+  font-size:clamp(16px,1.32vw,19px)}
+.chero__cta{margin-top:clamp(32px,4vw,52px)}
+@media(max-width:640px){.chero h1{letter-spacing:-.016em;line-height:1.06}}
+/* A single long word ("Intelligence") can exceed a 360px viewport at hero
+   scale, so allow hyphenation there and only there. */
+@media(max-width:480px){.chero h1{hyphens:auto;overflow-wrap:break-word;font-size:clamp(34px,9vw,44px)}}
+
+/* Section head: heading left, no forced two-column split */
+.chead{max-width:62ch;margin-bottom:clamp(30px,3.6vw,52px)}
+.chead h2{text-wrap:balance}
+.chead .lede{margin-top:16px}
+
+/* Full-bleed editorial image between sections */
+.phwrap--bleed{--ar:21/9;border-radius:14px;overflow:hidden}
+
+/* ---- DOMAIN ROWS: hairline rule, title, copy. No card. ---- */
+.drow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,2.8vw,44px)}
+.drow__i{border-top:1px solid var(--ink);padding-top:18px}
+.drow__i h3{font-size:clamp(18px,1.6vw,21px);font-weight:500;letter-spacing:-.015em}
+.drow__i p{margin-top:14px;color:var(--ink-2);font-size:14.5px;line-height:1.62}
+.drow__n{margin-top:16px;font-size:13.5px;color:var(--ink-3)}
+.drow__n b{display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+@media(max-width:1000px){.drow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.drow{grid-template-columns:1fr}}
+
+/* Section head, left-aligned variant (Cohere's "Empower the teams..." block) */
+.chead--l{max-width:none}
+.chead--l h2{max-width:22ch}
+.chead--l .lede{max-width:62ch}
+
+/* Image sits directly above its grid as one unit, the way Cohere pairs the
+   office photo with the Legal / Risk / Finance / HR row underneath it. */
+.chead+.phwrap--bleed{margin-bottom:clamp(40px,4.6vw,68px)}
+
+/* ---- 16 SECTORS: icon grid, four across, hairline rule ---- */
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(40px,4.6vw,72px) clamp(24px,3vw,48px)}
+.sgrid__i{padding-top:0}
+.sgrid__i h3{margin-top:20px;font-size:clamp(17px,1.5vw,21px);font-weight:400;
+  letter-spacing:-.012em;line-height:1.25}
+.sgrid .sicon{height:auto;border:0;background:none;padding:0;color:var(--ink);
+  display:block;width:26px}
+.sgrid .sicon svg{width:26px;height:26px}
+@media(max-width:1000px){.sgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.sgrid{grid-template-columns:1fr}}
+
+/* ---- FULL-BLEED IMAGE CTA (Cohere's "Ready to put AI to work?") ---- */
+.imgcta{position:relative;min-height:clamp(340px,38vw,520px);display:grid;
+  place-items:center;overflow:hidden;isolation:isolate;text-align:center;
+  background:
+    conic-gradient(from 210deg at 22% 34%, #24406F, #4E6C9E, #1B3766, #0D2149, #24406F),
+    linear-gradient(#0D2149,#0D2149);
+  background-size:190% 190%;background-position:center}
+/* Blurred highlights over the conic sweep — this is what reads as a rendered
+   surface rather than a flat gradient. */
+.imgcta::before{content:"";position:absolute;inset:-25%;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(46% 60% at 24% 34%, rgba(60,105,180,.95), transparent 68%),
+    radial-gradient(52% 54% at 72% 66%, rgba(120,160,220,.5), transparent 62%),
+    radial-gradient(44% 44% at 12% 84%, rgba(11,79,214,.42), transparent 64%);
+  filter:blur(56px)}
+/* Film grain — stops a CSS gradient looking like a CSS gradient */
+.imgcta::after{content:"";position:absolute;inset:0;z-index:2;opacity:.5;
+  mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.imgcta__in{position:relative;z-index:3;padding:clamp(48px,6vw,88px) var(--gut);max-width:64ch}
+.imgcta h2{color:#fff;text-wrap:balance}
+.imgcta p{color:rgba(255,255,255,.86);margin-top:18px;font-size:clamp(15px,1.2vw,17.5px);
+  line-height:1.65;max-width:52ch;margin-inline:auto}
+.imgcta .btn{margin-top:clamp(26px,3vw,38px)}
+
+/* One full-bleed inverted band per inner page. Anthropic and Cohere both use a
+   dark section to break a long light page; we only had navy in CTA strips. */
+.sec--dark{background:var(--navy);color:#fff}
+.sec--dark h1,.sec--dark h2,.sec--dark h3,.sec--dark h4{color:#fff}
+.sec--dark .lede,.sec--dark p{color:rgba(255,255,255,.82)}
+.sec--dark .mono{color:rgba(255,255,255,.62)}
+.sec--dark .gridbg{opacity:.16}
+.sec--dark .tlink{color:#9DB8E4}
+.sec--dark .btn--g{color:#fff;border-color:rgba(255,255,255,.42)}
+.sec--dark .btn--g:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+/* Components that live inside an inverted band need their own light-on-dark
+   treatment: rules, card surfaces and mono labels all assume a pale ground. */
+.sec--dark .faq details{border-bottom-color:rgba(255,255,255,.18)}
+.sec--dark .faq summary{color:#fff}
+.sec--dark .faq summary .qn{color:#9DB8E4}
+.sec--dark .faq summary .pl{color:rgba(255,255,255,.55)}
+.sec--dark .faq .ans{color:rgba(255,255,255,.78)}
+.sec--dark .scard{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.sec--dark .scard__t{color:#fff}
+.sec--dark .scard__n{color:#9DB8E4}
+.sec--dark .sicon{color:#cfd8e3;border-bottom-color:rgba(255,255,255,.16);
+  background:linear-gradient(135deg,rgba(255,255,255,.05) 25%,transparent 25%,transparent 50%,
+    rgba(255,255,255,.05) 50%,rgba(255,255,255,.05) 75%,transparent 75%) 0 0/7px 7px,
+    rgba(255,255,255,.04)}
+.sec--dark .scard:hover{border-color:rgba(255,255,255,.34)}
+.sec--dark .scard:hover .sicon{color:#fff}
+.sec--dark .cbtn{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);color:#fff}
+.sec--dark .cbtn:hover:not(:disabled){background:#fff;color:var(--navy);border-color:#fff}
+.sec--dark .crail-prog{background:rgba(255,255,255,.16)}
+.sec--dark .crail-prog i{background:#fff}
+.sec--dark .carousel__ct{color:rgba(255,255,255,.62)}
+.sec--dark .depl details{border-bottom-color:rgba(255,255,255,.18)}
+.sec--dark .depl summary{color:#fff}
+.sec--dark .depl__n{color:#9DB8E4}
+.sec--dark .depl__t{color:#fff}
+.sec--dark .depl__p{color:rgba(255,255,255,.55)}
+.sec--dark .depl__b p{color:rgba(255,255,255,.78)}
+.sec--dark .demo__c{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
+.sec--dark .demo{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
+.sec--dark .demo__bar,.sec--dark .demo__q{border-color:rgba(255,255,255,.16)}
+.sec--dark .demo__out{color:rgba(255,255,255,.86)}
+.sec--dark .demo__fp{color:rgba(255,255,255,.5);border-top-color:rgba(255,255,255,.14)}
+.sec--dark .ph{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6)}
+.sec--dark .phwrap{background:rgba(255,255,255,.06)}
+.sec--dark .demo__bar{background:rgba(255,255,255,.06)}
+.sec--dark .demo__bar .mono{color:rgba(255,255,255,.72)}
+.sec--dark .demo__c .sub{color:rgba(255,255,255,.6)}
+.sec--dark .demo__c h4,.sec--dark .demo__c b{color:#fff}
+.sec--dark .flag--w{background:rgba(214,163,74,.18);color:#E9C583}
+.sec--dark .flag--v{background:rgba(79,191,149,.18);color:#7FD8B4}
+.sec--dark .demo__q .mono{color:rgba(255,255,255,.6)}
+.sec--dark .demo__trace{color:rgba(255,255,255,.72)}
+.sec--dark .demo__trace summary{color:#9DB8E4}
+.sec--dark .demo__trace{background:rgba(255,255,255,.05);border-top-color:rgba(255,255,255,.14)}
+.sec--dark .demo__trace summary::before{color:#9DB8E4}
+.sec--dark .demo__trace li{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.14)}
+.sec--dark .demo__trace li b{color:#9DB8E4}
+
 
 h1,h2,h3,h4{margin:0;font-family:var(--f-display);font-weight:600;letter-spacing:-.028em;line-height:1.08}
-h1{font-size:clamp(34px,4.6vw,64px);font-weight:500;letter-spacing:-.032em;line-height:1.1}
-h2{font-size:clamp(27px,3.5vw,48px)}
-h1.as-h2{font-size:clamp(27px,3.5vw,48px);font-weight:600;letter-spacing:-.028em;line-height:1.08}
-h3{font-size:clamp(19px,1.7vw,24px);letter-spacing:-.02em}
+/* Scale: 52 / 34 / 22 -> 1.53x then 1.55x. Was 1.33x then 2.09x, i.e.
+   compressed at the top and blown out at the bottom. Tracking relaxed from
+   -.032em to -.01em: tight tracking on large type reads startup, not institution. */
+h1{font-size:clamp(32px,3.9vw,52px);font-weight:600;letter-spacing:-.01em;line-height:1.12}
+h2{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.015em;line-height:1.15}
+h1.as-h2{font-size:clamp(26px,2.6vw,34px);font-weight:600;letter-spacing:-.015em;line-height:1.15}
+h3{font-size:clamp(19px,1.7vw,22px);letter-spacing:-.015em}
 p{margin:0}
 strong{font-weight:600}
 .dot{text-decoration:underline;text-decoration-style:dotted;text-decoration-thickness:1.5px;text-underline-offset:5px}
@@ -221,7 +371,7 @@ strong{font-weight:600}
 /* The nav is fixed, so the first block on any interior page must clear it.
    The breadcrumb used to provide this gap. */
 main > section:first-child{padding-top:clamp(112px,11vw,168px)}
-.phero{padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(40px,5.4vw,80px);position:relative}
+.phero{padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(32px,3.5vw,48px);position:relative}
 .phero__g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4.4vw,68px);align-items:end}
 .phero h1{max-width:17ch;margin-top:14px}
 .phero .lede{max-width:48ch}
@@ -745,11 +895,13 @@ h1, h2, h3, h4{
 .phwrap img.missing{display:none}
 
 /* ================= LEGAL PAGES ================= */
-.legal{max-width:78ch}
-.legal h2{font-size:clamp(21px,1.9vw,27px);margin:clamp(34px,3.6vw,52px) 0 14px}
+/* 65ch measure: 78ch let Privacy/Disclaimer run to 29.8% text coverage,
+   worse than any content page. */
+.legal{max-width:65ch}
+.legal h2{font-size:clamp(20px,1.7vw,24px);margin:48px 0 16px}
 .legal h2:first-of-type{margin-top:0}
 .legal p{color:var(--ink-2);font-size:16px;line-height:1.75}
-.legal p+p{margin-top:14px}
+.legal p+p{margin-top:16px}
 .legal ul{margin:14px 0 0;padding-left:22px;color:var(--ink-2);font-size:16px;line-height:1.75}
 .legal li+li{margin-top:8px}
 .legal a{color:var(--signal);font-weight:500}
@@ -775,7 +927,7 @@ h1, h2, h3, h4{
   <div class="toggle">
     <span class="splitbtn">
       <a class="splitbtn__m" href="https://signup.floww.io/to/LCThz0lq" target="_blank" rel="noopener noreferrer">Invest</a>
-      <a class="splitbtn__c" href="contact.html" aria-label="Contact Sales" title="Contact Sales"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="splitbtn__c" href="contact.html" aria-label="Request a demo" title="Request a demo"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </span>
     <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
   </div>
@@ -791,253 +943,21 @@ h1, h2, h3, h4{
 </div>
 
 <main id="main">
-<section class="sec">
-<div class="gridbg"></div>
-<div class="wrap rel">
-<div class="shead" data-rv="">
-<h1 class="as-h2">Regulation is moving toward <span class="nb">explainable systems</span></h1>
-<p class="lede">Mandates in force and phasing in now impose transparency, auditability, human oversight, and demonstrated accuracy. These are requirements probabilistic systems struggle to meet by design.</p>
-</div>
-<div class="reg" data-rv=""><div class="regitem"><b>EU AI Act</b><p>Escalating obligations on high-risk systems: transparency, auditability, human oversight, and demonstrated accuracy, with the heaviest requirements phasing in through 2027.</p></div><div class="regitem"><b>EU Data Act</b><p>In force since September 2025. Requires providers to block unlawful third-country access to European data.</p></div><div class="regitem"><b>FAA AI Safety Assurance Roadmap</b><p>Flags the assurance challenge that non-explainable AI poses in aviation.</p></div><div class="regitem"><b>OMB M-25-21</b><p>Directs federal agencies toward AI strategies emphasising data traceability and trust. DoD procurement is moving the same way.</p></div></div>
-</div>
-</section>
-<section class="sec sec--t" id="cisa">
-<div class="gridbg"></div>
-<div class="wrap rel">
-<div class="shead" data-rv="">
-<h2>The 16 critical <span class="nb">infrastructure sectors</span></h2>
-<p class="lede">The US Cybersecurity &amp; Infrastructure Security Agency has identified 16 critical infrastructure sectors whose assets, systems, and networks, whether physical or virtual, are considered so vital to the United States that their incapacitation or destruction would have a debilitating effect on the physical security, economic security, national public health or safety, or any combination thereof.</p>
-</div>
-<div class="carousel" data-carousel="" data-rv="">
-<div class="carousel__vp">
-<div class="carousel__tr">
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M9.5 3v6.2L4.6 17.4A2 2 0 0 0 6.3 20.5h11.4a2 2 0 0 0 1.7-3.1L14.5 9.2V3"></path><path d="M8 3h8"></path><path d="M6.8 14h10.4"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/01-chemical.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">01</span>
-<span class="scard__t">Chemical</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 9h18l-1.6-4.4A2 2 0 0 0 17.5 3h-11a2 2 0 0 0-1.9 1.6Z"></path><path d="M4.5 9v11h15V9"></path><path d="M9.5 20v-6h5v6"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/02-commercial-facilities.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">02</span>
-<span class="scard__t">Commercial Facilities</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V11"></path><circle cx="12" cy="8.5" r="2"></circle><path d="M8.1 12.6a5.5 5.5 0 0 1 0-8.2"></path><path d="M15.9 4.4a5.5 5.5 0 0 1 0 8.2"></path><path d="M5.4 15.5a9.5 9.5 0 0 1 0-14"></path><path d="M18.6 1.5a9.5 9.5 0 0 1 0 14"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/03-communications.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">03</span>
-<span class="scard__t">Communications</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 20V9.5l5.5 3.5V9.5L14 13V4h4.5l1.5 16Z"></path><path d="M3 20h18"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/04-critical-manufacturing.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">04</span>
-<span class="scard__t">Critical Manufacturing</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 4.5v15"></path><path d="M20.5 4.5v15"></path><path d="M3.5 10c4.6 3.4 12.9 3.4 17 0"></path><path d="M3.5 13.6c4.6 3.4 12.9 3.4 17 0"></path><path d="M6.8 6.6c1.4-1.1 2.8-1.1 4.2 0s2.8 1.1 4.2 0"></path><path d="M9 17.6v2.6"></path><path d="M12 17.2v3"></path><path d="M15 17.6v2.6"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/05-dams.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">05</span>
-<span class="scard__t">Dams</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.5 7.5 8.8 4.4-1.3 7.5-4.5 7.5-8.8V6Z"></path><path d="M8.6 12.2 12 9.4l3.4 2.8"></path><path d="M8.6 15.8 12 13l3.4 2.8"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/06-defense-industrial-base.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">06</span>
-<span class="scard__t">Defense Industrial Base</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M6.6 15.2a5.4 5.4 0 0 1 10.8 0Z"></path><path d="M4.4 15.2h15.2"></path><path d="M5.6 18.6h12.8"></path><path d="M12 3.4v2.7"></path><path d="M6.6 5.6 8.2 7.7"></path><path d="M17.4 5.6 15.8 7.7"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/07-emergency-services.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">07</span>
-<span class="scard__t">Emergency Services</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M13.5 3 6 13.2h5L10.5 21 18 10.8h-5Z"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/08-energy.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">08</span>
-<span class="scard__t">Energy</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 20h17"></path><path d="M5.5 20v-5.5"></path><path d="M10.5 20v-9"></path><path d="M15.5 20v-6.5"></path><path d="M20 20V8"></path><path d="M4 10.5 9.5 6l4 3L20 3.2"></path><path d="M15.6 3.2H20v4.3"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/09-financial-services.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">09</span>
-<span class="scard__t">Financial Services</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V9"></path><path d="M12 12c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 12c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path><path d="M12 17.5c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 17.5c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/10-food-and-agriculture.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">10</span>
-<span class="scard__t">Food and Agriculture</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 2.6V4"></path><path d="M7 9.5a5 5 0 0 1 10 0"></path><path d="M3.5 12.5h17"></path><path d="M4 9.5h16"></path><path d="M6 12.5V18"></path><path d="M10 12.5V18"></path><path d="M14 12.5V18"></path><path d="M18 12.5V18"></path><path d="M3 21h18"></path><path d="M3.5 18h17"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/11-government-facilities.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">11</span>
-<span class="scard__t">Government Facilities</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 12.5h4l2-4.5 3 9 2.5-6 1.5 3.5h5"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/12-healthcare-and-public-health.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">12</span>
-<span class="scard__t">Healthcare and Public Health</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><rect height="9" rx="1" width="9" x="7.5" y="7.5"></rect><path d="M10 4v3.5M14 4v3.5M10 16.5V20M14 16.5V20"></path><path d="M4 10h3.5M4 14h3.5M16.5 10H20M16.5 14H20"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/13-information-technology.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">13</span>
-<span class="scard__t">Information Technology</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="1.9"></circle><ellipse cx="12" cy="12" rx="9.2" ry="3.7"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(-60 12 12)"></ellipse></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/14-nuclear-reactors-materials-and-waste.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">14</span>
-<span class="scard__t">Nuclear Reactors, Materials, and Waste</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M2 16h11V7H2Z"></path><path d="M13 10.5h4.2l3.3 3.4V16H13Z"></path><circle cx="6.5" cy="18.5" r="1.8"></circle><circle cx="17" cy="18.5" r="1.8"></circle><path d="M8.3 18.5h6.9"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/15-transportation-systems.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">15</span>
-<span class="scard__t">Transportation Systems</span>
-</div>
-</article>
-<article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3.2c3.4 4 5.6 6.9 5.6 9.7A5.6 5.6 0 0 1 12 20.5a5.6 5.6 0 0 1-5.6-7.6c0-2.8 2.2-5.7 5.6-9.7Z"></path><path d="M8.4 14.4c1.2-.9 2.2-.9 3.4 0s2.2.9 3.4 0"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/16-water-and-wastewater-systems.jpg"/></div>
-<div class="scard__b">
-<span class="scard__n">16</span>
-<span class="scard__t">Water and Wastewater Systems</span>
-</div>
-</article>
-</div>
-</div>
-<div class="carousel__ui">
-<button aria-label="Previous sectors" class="cbtn" data-prev="" type="button">
-<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6"></path></svg>
-</button>
-<button aria-label="Next sectors" class="cbtn" data-next="" type="button">
-<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6"></path></svg>
-</button>
-<span class="crail-prog"><i></i></span>
-<span class="carousel__ct">01 / 16</span>
-</div>
-</div>
-<p class="mono" style="margin-top:22px">Source: CISA.</p>
-</div>
-</section>
-<section class="sec sec--alt">
+<section class="sec chero">
 <div class="wrap">
-<div class="shead" data-rv="">
+<span class="mono" data-rv="">Sectors</span>
+<h1 data-rv="">Automation for every critical system <span class="nb">and process</span></h1>
+<p class="chero__sub lede" data-rv="">Because mission-critical operations demand intelligence that is deterministic, explainable, and auditable.</p>
+<div class="chero__cta" data-rv=""><a class="btn" href="contact.html">Request a demo</a></div>
+</div>
+</section>
+<section class="sec sec--t">
+<div class="wrap">
+<div class="chead chead--l" data-rv="">
 <h2>Four domains where a wrong answer <span class="nb">is unaffordable</span></h2>
 <p class="lede">Each of these environments runs on continuous interpretation of instrument data, under time pressure, with no margin for a guess. That is the problem the architecture was built to solve.</p>
 </div>
-<div class="dgrid stg">
-<article class="dcard" id="space" style="--t1:rgba(11,79,214,.15)">
-<div class="phwrap" style="--ar:16/9">
-<img alt="Wide shot of a mission ops floor, banks of telemetry screens, operators at consoles." decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/domains/space.jpg"/>
-<div class="ph">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
-<rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
-</svg>
-<b>Mission operations floor</b>
-<s>Wide shot of a mission ops floor, banks of telemetry screens, operators at consoles.</s>
-<s style="opacity:.6;margin-top:2px">img/domains/space.jpg</s>
-</div>
-</div>
-<div class="dcard__b">
-<div class="dcard__t">
-<div><h3>Space operations</h3></div>
-</div>
-<p>A sapiens monitors thousands of telemetry values simultaneously, identifies anomalies in real-time, and sequences commands with zero margin for error. New Sapience founder Bryant Cruse pioneered AI applications for spacecraft operations. He developed the first-ever expert system to analyze spacecraft telemetry for the Hubble Space Telescope. That same capability: continuous, reliable oversight of complex spacecraft state, is what New Sapience delivers today. No one overwhelmed by data. No tired or inattentive operator. No missed signal. No ambiguous reading.</p>
-<div class="dnote"><s>Lineage</s><p>Founder Bryant Cruse built the first expert system to analyze spacecraft telemetry, for the Hubble Space Telescope.</p></div>
-</div>
-</article>
-<article class="dcard" id="cyber" style="--t1:rgba(15,107,79,.15)">
-<div class="phwrap" style="--ar:16/9">
-<img alt="Dark NOC with wall displays, network topology, an analyst at a multi-monitor station." decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/domains/cyber.jpg"/>
-<div class="ph">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
-<rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
-</svg>
-<b>Network operations centre</b>
-<s>Dark NOC with wall displays, network topology, an analyst at a multi-monitor station.</s>
-<s style="opacity:.6;margin-top:2px">img/domains/cyber.jpg</s>
-</div>
-</div>
-<div class="dcard__b">
-<div class="dcard__t">
-<div><h3>Cybersecurity</h3></div>
-</div>
-<p>A sapiens monitors system state continuously against a world model of what normal looks like. Every deviation is identified exactly. Not scored, not estimated, not left for a human to misinterpret. Either the system is behaving correctly, or it is not. That precision is what makes a sapiens effective where a best-guess threat detection may be a recipe for failure. No guessing. No false confidence. A clear answer, every time.</p>
-<div class="dnote"><s>Contrast</s><p>Best-guess threat scoring produces false confidence. A clear answer, every time, is the difference.</p></div>
-</div>
-</article>
-<article class="dcard" id="nuclear" style="--t1:rgba(154,98,6,.14)">
-<div class="phwrap" style="--ar:16/9">
-<img alt="Nuclear plant control room, instrument panels, operators in plant uniform." decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/domains/nuclear.jpg"/>
-<div class="ph">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
-<rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
-</svg>
-<b>Reactor control room</b>
-<s>Nuclear plant control room, instrument panels, operators in plant uniform.</s>
-<s style="opacity:.6;margin-top:2px">img/domains/nuclear.jpg</s>
-</div>
-</div>
-<div class="dcard__b">
-<div class="dcard__t">
-<div><h3>Nuclear power</h3></div>
-</div>
-<p>A sapiens reads every instrument continuously, separates real anomalies from sensor noise, and tells operators exactly what is wrong and why. An unambiguous signal is delivered at the moment it matters most, not a flood of data for an operator to interpret under pressure. The Three-Mile Island accident was caused by human error over a misread instrument. A sapiens eliminates such a catastrophic scenario.</p>
-<div class="dnote"><s>Precedent · 1979</s><p>In 1979, misdiagnosed instrument readings overwhelmed operators at exactly the moment clear thinking mattered most. Cleanup ran over $1 billion. That class of ambiguity is what a sapiens removes.</p></div>
-</div>
-</article>
-<article class="dcard" id="grid" style="--t1:rgba(13,33,73,.15)">
-<div class="phwrap" style="--ar:16/9">
-<img alt="Utility dispatch centre, large-format grid map, transmission infrastructure." decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/domains/grid.jpg"/>
-<div class="ph">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
-<rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
-</svg>
-<b>Grid dispatch centre</b>
-<s>Utility dispatch centre, large-format grid map, transmission infrastructure.</s>
-<s style="opacity:.6;margin-top:2px">img/domains/grid.jpg</s>
-</div>
-</div>
-<div class="dcard__b">
-<div class="dcard__t">
-<div><h3>Power grid management</h3></div>
-</div>
-<p>A sapiens watches the full grid simultaneously, every node, every load, every developing fault. It catches cascade risk before it propagates and coordinates response across distributed assets in real-time. The 2003 Northeast blackout began as a small local fault that went undetected until after 8 states and much of eastern Canada lost power. A sapiens would detect the fault before an entire region goes dark.</p>
-<div class="dnote"><s>Precedent · 2003</s><p>The 2003 Northeast blackout caused an estimated $6 billion in economic damage when monitoring failures let a local fault cascade into regional collapse.</p></div>
-</div>
-</article>
-</div>
-</div>
-</section>
-<section class="sec sec--alt">
-<div class="wrap">
-<div class="split split--r" data-rv="">
-<div class="split__t">
-<h2>Vital to the functioning of a <span class="nb">civilized society</span></h2>
-<p class="lede" style="margin-top:18px">Mission-critical systems are vital to the functioning of a civilized society and for the public good, such as national security, finance, and energy production &amp; distribution. Disruptions in any of these could lead to catastrophic financial, public safety or human losses.</p>
-<a class="tlink" href="about.html#faq">Read the definitions →</a>
-</div>
-<div class="phwrap" style="--ar:4/3">
+<div class="phwrap phwrap--bleed" style="--ar:21/9">
 <img alt="Transmission lines, refinery, or plant exterior at scale." decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/feature/infrastructure.jpg"/>
 <div class="ph">
 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
@@ -1048,15 +968,119 @@ h1, h2, h3, h4{
 <s style="opacity:.6;margin-top:2px">img/feature/infrastructure.jpg</s>
 </div>
 </div>
+<div class="drow stg">
+<article class="drow__i" id="space">
+<h3>Space operations</h3>
+<p>A sapiens monitors thousands of telemetry values simultaneously, identifies anomalies in real-time, and sequences commands with zero margin for error. New Sapience founder Bryant Cruse pioneered AI applications for spacecraft operations. He developed the first-ever expert system to analyze spacecraft telemetry for the Hubble Space Telescope. That same capability: continuous, reliable oversight of complex spacecraft state, is what New Sapience delivers today. No one overwhelmed by data. No tired or inattentive operator. No missed signal. No ambiguous reading.</p>
+<p class="drow__n"><b>Lineage</b>Founder Bryant Cruse built the first expert system to analyze spacecraft telemetry, for the Hubble Space Telescope.</p>
+</article>
+<article class="drow__i" id="cyber">
+<h3>Cybersecurity</h3>
+<p>A sapiens monitors system state continuously against a world model of what normal looks like. Every deviation is identified exactly. Not scored, not estimated, not left for a human to misinterpret. Either the system is behaving correctly, or it is not. That precision is what makes a sapiens effective where a best-guess threat detection may be a recipe for failure. No guessing. No false confidence. A clear answer, every time.</p>
+<p class="drow__n"><b>Contrast</b>Best-guess threat scoring produces false confidence. A clear answer, every time, is the difference.</p>
+</article>
+<article class="drow__i" id="nuclear">
+<h3>Nuclear power</h3>
+<p>A sapiens reads every instrument continuously, separates real anomalies from sensor noise, and tells operators exactly what is wrong and why. An unambiguous signal is delivered at the moment it matters most, not a flood of data for an operator to interpret under pressure. The Three-Mile Island accident was caused by human error over a misread instrument. A sapiens eliminates such a catastrophic scenario.</p>
+<p class="drow__n"><b>Precedent · 1979</b>In 1979, misdiagnosed instrument readings overwhelmed operators at exactly the moment clear thinking mattered most. Cleanup ran over $1 billion. That class of ambiguity is what a sapiens removes.</p>
+</article>
+<article class="drow__i" id="grid">
+<h3>Power grid management</h3>
+<p>A sapiens watches the full grid simultaneously, every node, every load, every developing fault. It catches cascade risk before it propagates and coordinates response across distributed assets in real-time. The 2003 Northeast blackout began as a small local fault that went undetected until after 8 states and much of eastern Canada lost power. A sapiens would detect the fault before an entire region goes dark.</p>
+<p class="drow__n"><b>Precedent · 2003</b>The 2003 Northeast blackout caused an estimated $6 billion in economic damage when monitoring failures let a local fault cascade into regional collapse.</p>
+</article>
 </div>
+</div>
+</section>
+<section class="sec sec--tint" id="cisa">
+<div class="wrap">
+<div class="chead chead--l" data-rv="">
+<h2>The 16 critical <span class="nb">infrastructure sectors</span></h2>
+<p class="lede">The US Cybersecurity &amp; Infrastructure Security Agency has identified 16 critical infrastructure sectors whose assets, systems, and networks, whether physical or virtual, are considered so vital to the United States that their incapacitation or destruction would have a debilitating effect on the physical security, economic security, national public health or safety, or any combination thereof.</p>
+</div>
+<div class="sgrid stg">
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M9.5 3v6.2L4.6 17.4A2 2 0 0 0 6.3 20.5h11.4a2 2 0 0 0 1.7-3.1L14.5 9.2V3"></path><path d="M8 3h8"></path><path d="M6.8 14h10.4"></path></svg></span>
+<h3>Chemical</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 9h18l-1.6-4.4A2 2 0 0 0 17.5 3h-11a2 2 0 0 0-1.9 1.6Z"></path><path d="M4.5 9v11h15V9"></path><path d="M9.5 20v-6h5v6"></path></svg></span>
+<h3>Commercial Facilities</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V11"></path><circle cx="12" cy="8.5" r="2"></circle><path d="M8.1 12.6a5.5 5.5 0 0 1 0-8.2"></path><path d="M15.9 4.4a5.5 5.5 0 0 1 0 8.2"></path><path d="M5.4 15.5a9.5 9.5 0 0 1 0-14"></path><path d="M18.6 1.5a9.5 9.5 0 0 1 0 14"></path></svg></span>
+<h3>Communications</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 20V9.5l5.5 3.5V9.5L14 13V4h4.5l1.5 16Z"></path><path d="M3 20h18"></path></svg></span>
+<h3>Critical Manufacturing</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 4.5v15"></path><path d="M20.5 4.5v15"></path><path d="M3.5 10c4.6 3.4 12.9 3.4 17 0"></path><path d="M3.5 13.6c4.6 3.4 12.9 3.4 17 0"></path><path d="M6.8 6.6c1.4-1.1 2.8-1.1 4.2 0s2.8 1.1 4.2 0"></path><path d="M9 17.6v2.6"></path><path d="M12 17.2v3"></path><path d="M15 17.6v2.6"></path></svg></span>
+<h3>Dams</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.5 7.5 8.8 4.4-1.3 7.5-4.5 7.5-8.8V6Z"></path><path d="M8.6 12.2 12 9.4l3.4 2.8"></path><path d="M8.6 15.8 12 13l3.4 2.8"></path></svg></span>
+<h3>Defense Industrial Base</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M6.6 15.2a5.4 5.4 0 0 1 10.8 0Z"></path><path d="M4.4 15.2h15.2"></path><path d="M5.6 18.6h12.8"></path><path d="M12 3.4v2.7"></path><path d="M6.6 5.6 8.2 7.7"></path><path d="M17.4 5.6 15.8 7.7"></path></svg></span>
+<h3>Emergency Services</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M13.5 3 6 13.2h5L10.5 21 18 10.8h-5Z"></path></svg></span>
+<h3>Energy</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 20h17"></path><path d="M5.5 20v-5.5"></path><path d="M10.5 20v-9"></path><path d="M15.5 20v-6.5"></path><path d="M20 20V8"></path><path d="M4 10.5 9.5 6l4 3L20 3.2"></path><path d="M15.6 3.2H20v4.3"></path></svg></span>
+<h3>Financial Services</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V9"></path><path d="M12 12c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 12c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path><path d="M12 17.5c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 17.5c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path></svg></span>
+<h3>Food and Agriculture</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 2.6V4"></path><path d="M7 9.5a5 5 0 0 1 10 0"></path><path d="M3.5 12.5h17"></path><path d="M4 9.5h16"></path><path d="M6 12.5V18"></path><path d="M10 12.5V18"></path><path d="M14 12.5V18"></path><path d="M18 12.5V18"></path><path d="M3 21h18"></path><path d="M3.5 18h17"></path></svg></span>
+<h3>Government Facilities</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 12.5h4l2-4.5 3 9 2.5-6 1.5 3.5h5"></path></svg></span>
+<h3>Healthcare and <span class="nb">Public Health</span></h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><rect height="9" rx="1" width="9" x="7.5" y="7.5"></rect><path d="M10 4v3.5M14 4v3.5M10 16.5V20M14 16.5V20"></path><path d="M4 10h3.5M4 14h3.5M16.5 10H20M16.5 14H20"></path></svg></span>
+<h3>Information Technology</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="1.9"></circle><ellipse cx="12" cy="12" rx="9.2" ry="3.7"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(-60 12 12)"></ellipse></svg></span>
+<h3>Nuclear Reactors, Materials, <span class="nb">and Waste</span></h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M2 16h11V7H2Z"></path><path d="M13 10.5h4.2l3.3 3.4V16H13Z"></path><circle cx="6.5" cy="18.5" r="1.8"></circle><circle cx="17" cy="18.5" r="1.8"></circle><path d="M8.3 18.5h6.9"></path></svg></span>
+<h3>Transportation Systems</h3>
+</article>
+<article class="sgrid__i">
+<span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3.2c3.4 4 5.6 6.9 5.6 9.7A5.6 5.6 0 0 1 12 20.5a5.6 5.6 0 0 1-5.6-7.6c0-2.8 2.2-5.7 5.6-9.7Z"></path><path d="M8.4 14.4c1.2-.9 2.2-.9 3.4 0s2.2.9 3.4 0"></path></svg></span>
+<h3>Water and <span class="nb">Wastewater Systems</span></h3>
+</article>
+</div>
+<p class="mono" style="margin-top:30px">Source: CISA.</p>
 </div>
 </section>
 <section class="sec sec--t">
 <div class="wrap">
-<div class="ctastrip" data-rv="">
-<div><h2>Not seeing <span class="nb">your sector?</span></h2><p>The architecture is domain-agnostic. If a wrong answer in your environment costs a mission, an asset, or a life, we should talk.</p></div>
-<a class="btn btn--l" href="contact.html">Contact Sales</a>
+<div class="chead" data-rv="">
+<h2>Vital to the functioning of a <span class="nb">civilized society</span></h2>
+<p class="lede">Mission-critical systems are vital to the functioning of a civilized society and for the public good, such as national security, finance, and energy production &amp; distribution. Disruptions in any of these could lead to catastrophic financial, public safety or human losses.</p>
+<p style="margin-top:20px"><a class="tlink" href="about.html#faq">Read the definitions →</a></p>
 </div>
+<div class="reg" data-rv=""><div class="regitem"><b>EU AI Act</b><p>Escalating obligations on high-risk systems: transparency, auditability, human oversight, and demonstrated accuracy, with the heaviest requirements phasing in through 2027.</p></div><div class="regitem"><b>EU Data Act</b><p>In force since September 2025. Requires providers to block unlawful third-country access to European data.</p></div><div class="regitem"><b>FAA AI Safety Assurance Roadmap</b><p>Flags the assurance challenge that non-explainable AI poses in aviation.</p></div><div class="regitem"><b>OMB M-25-21</b><p>Directs federal agencies toward AI strategies emphasising data traceability and trust. DoD procurement is moving the same way.</p></div></div>
+</div>
+</section>
+<section class="imgcta" data-rv="">
+<div class="imgcta__in">
+<h2>Not seeing <span class="nb">your sector?</span></h2>
+<a class="btn btn--l" href="contact.html">Request a demo</a>
 </div>
 </section>
 
@@ -1085,7 +1109,7 @@ h1, h2, h3, h4{
 <div><h4>Company</h4><ul>
 <li><a href="about.html">About</a></li>
 <li><a href="about.html#leadership">Leadership</a></li>
-<li><a href="contact.html">Contact Sales</a></li>
+<li><a href="contact.html">Request a demo</a></li>
 <li><a href="mailto:comm@newsapience.com">comm@newsapience.com</a></li>
 <li><a href="https://signup.floww.io/to/LCThz0lq" rel="noopener noreferrer" target="_blank">Invest</a></li>
 </ul></div>
