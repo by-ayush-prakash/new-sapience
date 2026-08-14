@@ -392,7 +392,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:132px;padding-bottom:92px;overflow:hidden}
 #grid3d{position:absolute;left:0;right:0;top:7%;height:78%;width:100%}
 .hero__in{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);gap:clamp(24px,4.6vw,74px);align-items:center}
-.hero h1{max-width:16ch;margin-top:16px}
+.hero h1{max-width:none;margin-top:16px;font-size:clamp(34px,5.9vw,84px);line-height:1.04;letter-spacing:-.022em;text-wrap:wrap}
 .hero__r{max-width:46ch}
 .hero__r p+p{margin-top:16px}
 .hero__acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
@@ -968,7 +968,7 @@ h1, h2, h3, h4{
 <canvas aria-hidden="true" id="grid3d"></canvas>
 <div class="wrap hero__in">
 <div>
-<h1 data-rv="">Reliable, cost-effective automation for <span class="nb">critical infrastructure</span></h1>
+<h1 data-rv="">Reliable, cost-effective automation for critical infrastructure</h1>
 </div>
 <div class="hero__r" data-rv="">
 <p class="lede">A new innovation in machine intelligence is bringing reliable, cost-effective automation to the critical infrastructure sectors.</p>
@@ -1276,53 +1276,6 @@ h1, h2, h3, h4{
 </div>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section class="sec">
-<div class="gridbg"></div>
-<div class="wrap rel">
-<div class="shead" data-rv="">
-<h2>Compare probabilistic and deterministic. <span class="nb">Then decide.</span></h2>
-<p class="lede">A deterministic system will give the same response to the identical question every single time. Run the test more than once and observe which system changes its answer.</p>
-</div>
-<div class="demo" data-rv="">
-<div class="demo__bar">
-<span class="mono">Side-by-side comparison</span>
-<div class="demo__run">
-<span class="mono" id="runlabel">Run 001</span>
-<button class="btn" id="runbtn" style="padding:11px 22px;font-size:14.5px" type="button">Ask again</button>
-</div>
-</div>
-<div class="demo__q">
-<s>The question</s>
-<p>Loop B coolant pressure fell 4.2 psi over 90 seconds. Is this a leak?</p>
-</div>
-<div class="demo__cols">
-<div class="demo__c">
-<h4>Conventional model</h4>
-<div class="sub">Answer sampled from a distribution</div>
-<div class="demo__out" id="llmout">This could indicate a leak, though thermal contraction is also plausible. I’d recommend monitoring loop B and checking for corroborating indications. Confidence: moderate.</div>
-<div class="demo__fp"><span id="llmhash">Fingerprint 8f21…c47d</span><span class="flag flag--w">Changes each time</span></div>
-</div>
-<div class="demo__c">
-<h4>Sapiens</h4>
-<div class="sub">Answer derived from a world model</div>
-<div class="demo__out" id="sapout">Not a leak. Pressure decay is consistent with thermal contraction: coolant temperature fell 6.1 °C over the same interval. Predicted pressure at measured temperature 412.8 psi; observed 412.6 psi, inside instrument tolerance. Loop B mass inventory unchanged.</div>
-<div class="demo__fp"><span>Fingerprint 4c9e…81ab</span><span class="flag flag--v">Never changes</span></div>
-</div>
-</div>
-<details class="demo__trace">
-<summary>See how the sapiens reached that answer</summary>
-<ol>
-<li><b>01</b><span>Read instrument: loop B pressure Δ −4.2 psi / 90 s</span></li>
-<li><b>02</b><span>Query world model: pressure–temperature relation, closed coolant loop</span></li>
-<li><b>03</b><span>Retrieve co-timed instrument: coolant temperature Δ −6.1 °C / 90 s</span></li>
-<li><b>04</b><span>Derive expected decay from thermal contraction: −4.0 psi ± 0.3</span></li>
-<li><b>05</b><span>Compare observed to derived: within tolerance → mass inventory conserved</span></li>
-<li><b>06</b><span>Conclude: not a leak — derived, not estimated. No confidence score, because none is required.</span></li>
-</ol>
-</details>
 </div>
 </div>
 </section>
