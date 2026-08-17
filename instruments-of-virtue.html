@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Sapience | Instruments of Virtue</title>
+<meta name="description" content="Instruments of Virtue: A Thomistic Study in AI Systems Design. A paper by Rosaire Leon on instrumental causality, intellectus, and deterministic AI architecture.">
+<link rel="canonical" href="https://www.newsapience.com/instruments-of-virtue.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="New Sapience">
+<meta property="og:title" content="Instruments of Virtue — New Sapience">
+<meta property="og:description" content="Instruments of Virtue: A Thomistic Study in AI Systems Design. A paper by Rosaire Leon on instrumental causality, intellectus, and deterministic AI architecture.">
+<meta property="og:url" content="https://www.newsapience.com/instruments-of-virtue.html">
+<meta property="og:image" content="https://www.newsapience.com/img/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Instruments of Virtue — New Sapience">
+<meta name="twitter:description" content="Instruments of Virtue: A Thomistic Study in AI Systems Design. A paper by Rosaire Leon on instrumental causality, intellectus, and deterministic AI architecture.">
+<meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
+<link rel="icon" type="image/png" href="img/brand/icon-32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="img/brand/icon-192.png?v=2" sizes="192x192">
+<link rel="icon" href="favicon.ico?v=2" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
+<link rel="mask-icon" href="img/brand/mask.svg" color="#0D2149">
+<meta name="theme-color" content="#0D2149">
+<style>
+/* ============================================================
+   NEW SAPIENCE — shared stylesheet
+   Tokens from newsapience-redesign-final-v141.
+   Additions vs v141: mid-tone ramp (--mid-*), and brand navy split
+   from interactive blue (--signal is now interactive-only).
+   ============================================================ */
+
+:root{
+  /* base */
+  --paper:#E7F1FA;
+  --surface:#F7FBFE;
+  --surface-2:#EDF4FB;
+  --ink:#0C141F;
+  --ink-2:#4E5A68;
+  --ink-3:#7C8797;
+  --rule:#D5DBE2;
+  --rule-soft:#E5E9ED;
+
+  /* brand */
+  --navy:#0D2149;
+  --navy-2:#16305F;
+
+  /* interactive only — never used for decoration */
+  --signal:#0B4FD6;
+  --signal-wash:#EEF3FE;
+
+  /* mid-tones: give large light sections weight (gap analysis #4) */
+  --mid-1:#DCE8F4;
+  --mid-2:#CBDCED;
+  --mid-3:#AFC6DE;
+  --warm-grey:#E4E4E0;
+
+  /* semantic */
+  --caution:#9A6206;
+  --caution-wash:#FBF3E4;
+  --verify:#0F6B4F;
+  --verify-wash:rgba(15,107,79,.10);
+
+  --f-display:"Familjen Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+
+  --gut:clamp(20px,4vw,56px);
+  --maxw:1200px;
+  --wide:1400px;
+  --ez:cubic-bezier(.22,1,.36,1);
+  --shadow:0 26px 60px -34px rgba(12,20,31,.32);
+  --shadow-s:0 10px 26px -16px rgba(12,20,31,.28);
+  --card:var(--surface);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .55s var(--ez),color .55s var(--ez)}
+a{color:inherit;text-decoration:none}
+img,canvas,video{display:block;max-width:100%}
+::selection{background:var(--navy);color:var(--paper)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:3px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.wrap--wide{max-width:var(--wide)}
+/* One vertical rhythm sitewide. Anthropic runs 96 top / 48 bottom on every
+   section; we ran three different pairs, which read as accident not system. */
+.sec{padding-top:clamp(64px,7vw,96px);padding-bottom:clamp(32px,3.5vw,48px);
+  position:relative;scroll-margin-top:104px}
+.sec--t{padding-top:clamp(64px,7vw,96px);padding-bottom:clamp(32px,3.5vw,48px)}
+.sec--alt{background:var(--mid-1)}
+.sec--warm{background:var(--warm-grey)}
+/* Tinted band — Cohere alternates white and a pale lilac-blue field to
+   separate major sections without a rule or a dark inversion. */
+.sec--tint{background:#E4EAFB}
+
+/* ---- COHERE-PATTERN PAGE HEAD: centred, generous, one CTA ---- */
+.chero{text-align:center;padding-top:clamp(80px,10vw,168px);padding-bottom:clamp(56px,7vw,110px)}
+.chero .mono{display:block;margin-bottom:clamp(22px,2.6vw,34px)}
+/* Big and bold: 96px at 1200px, matching Cohere. No max-width box — the
+   headline is allowed to run the full container the way theirs does. */
+.chero h1{font-size:clamp(40px,7.2vw,96px);font-weight:600;letter-spacing:-.022em;
+  line-height:1.02;max-width:none;text-wrap:balance}
+.chero__sub{max-width:52ch;margin:clamp(26px,3vw,40px) auto 0;text-wrap:balance;
+  font-size:clamp(16px,1.32vw,19px)}
+.chero__cta{margin-top:clamp(32px,4vw,52px)}
+@media(max-width:640px){.chero h1{letter-spacing:-.016em;line-height:1.06}}
+/* A single long word ("Intelligence") can exceed a 360px viewport at hero
+   scale, so allow hyphenation there and only there. */
+@media(max-width:480px){.chero h1{hyphens:auto;overflow-wrap:break-word;font-size:clamp(34px,9vw,44px)}}
+
+/* Section head: heading left, no forced two-column split */
+.chead{max-width:62ch;margin-bottom:clamp(30px,3.6vw,52px)}
+.chead h2{text-wrap:balance}
+.chead .lede{margin-top:16px}
+
+/* Full-bleed editorial image between sections */
+.phwrap--bleed{--ar:21/9;border-radius:14px;overflow:hidden}
+
+/* ---- DOMAIN ROWS: hairline rule, title, copy. No card. ---- */
+.drow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,2.8vw,44px)}
+.drow__i{border-top:1px solid var(--ink);padding-top:18px}
+.drow__i h3{font-size:clamp(18px,1.6vw,21px);font-weight:500;letter-spacing:-.015em}
+.drow__i p{margin-top:14px;color:var(--ink-2);font-size:14.5px;line-height:1.62}
+.drow__n{margin-top:16px;font-size:13.5px;color:var(--ink-3)}
+.drow__n b{display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+@media(max-width:1000px){.drow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.drow{grid-template-columns:1fr}}
+
+/* Section head, left-aligned variant (Cohere's "Empower the teams..." block) */
+.chead--l{max-width:none}
+.chead--l h2{max-width:22ch}
+.chead--l .lede{max-width:62ch}
+
+/* Image sits directly above its grid as one unit, the way Cohere pairs the
+   office photo with the Legal / Risk / Finance / HR row underneath it. */
+.chead+.phwrap--bleed{margin-bottom:clamp(40px,4.6vw,68px)}
+
+/* ---- 16 SECTORS: icon grid, four across, hairline rule ---- */
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(40px,4.6vw,72px) clamp(24px,3vw,48px)}
+.sgrid__i{padding-top:0}
+.sgrid__i h3{margin-top:20px;font-size:clamp(17px,1.5vw,21px);font-weight:400;
+  letter-spacing:-.012em;line-height:1.25}
+.sgrid .sicon{height:auto;border:0;background:none;padding:0;color:var(--ink);
+  display:block;width:26px}
+.sgrid .sicon svg{width:26px;height:26px}
+@media(max-width:1000px){.sgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.sgrid{grid-template-columns:1fr}}
+
+/* ---- FULL-BLEED IMAGE CTA (Cohere's "Ready to put AI to work?") ---- */
+.imgcta{position:relative;min-height:clamp(340px,38vw,520px);display:grid;
+  place-items:center;overflow:hidden;isolation:isolate;text-align:center;
+  background:
+    conic-gradient(from 210deg at 22% 34%, #24406F, #4E6C9E, #1B3766, #0D2149, #24406F),
+    linear-gradient(#0D2149,#0D2149);
+  background-size:190% 190%;background-position:center}
+/* Blurred highlights over the conic sweep — this is what reads as a rendered
+   surface rather than a flat gradient. */
+.imgcta::before{content:"";position:absolute;inset:-25%;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(46% 60% at 24% 34%, rgba(60,105,180,.95), transparent 68%),
+    radial-gradient(52% 54% at 72% 66%, rgba(120,160,220,.5), transparent 62%),
+    radial-gradient(44% 44% at 12% 84%, rgba(11,79,214,.42), transparent 64%);
+  filter:blur(56px)}
+/* Film grain — stops a CSS gradient looking like a CSS gradient */
+.imgcta::after{content:"";position:absolute;inset:0;z-index:2;opacity:.5;
+  mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.imgcta__in{position:relative;z-index:3;padding:clamp(48px,6vw,88px) var(--gut);max-width:64ch}
+.imgcta h2{color:#fff;text-wrap:balance}
+.imgcta p{color:rgba(255,255,255,.86);margin-top:18px;font-size:clamp(15px,1.2vw,17.5px);
+  line-height:1.65;max-width:52ch;margin-inline:auto}
+.imgcta .btn{margin-top:clamp(26px,3vw,38px)}
+
+/* One full-bleed inverted band per inner page. Anthropic and Cohere both use a
+   dark section to break a long light page; we only had navy in CTA strips. */
+.sec--dark{background:var(--navy);color:#fff}
+.sec--dark h1,.sec--dark h2,.sec--dark h3,.sec--dark h4{color:#fff}
+.sec--dark .lede,.sec--dark p{color:rgba(255,255,255,.82)}
+.sec--dark .mono{color:rgba(255,255,255,.62)}
+.sec--dark .gridbg{opacity:.16}
+.sec--dark .tlink{color:#9DB8E4}
+.sec--dark .btn--g{color:#fff;border-color:rgba(255,255,255,.42)}
+.sec--dark .btn--g:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+/* Components that live inside an inverted band need their own light-on-dark
+   treatment: rules, card surfaces and mono labels all assume a pale ground. */
+.sec--dark .faq details{border-bottom-color:rgba(255,255,255,.18)}
+.sec--dark .faq summary{color:#fff}
+.sec--dark .faq summary .qn{color:#9DB8E4}
+.sec--dark .faq summary .pl{color:rgba(255,255,255,.55)}
+.sec--dark .faq .ans{color:rgba(255,255,255,.78)}
+.sec--dark .scard{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.sec--dark .scard__t{color:#fff}
+.sec--dark .scard__n{color:#9DB8E4}
+.sec--dark .sicon{color:#cfd8e3;border-bottom-color:rgba(255,255,255,.16);
+  background:linear-gradient(135deg,rgba(255,255,255,.05) 25%,transparent 25%,transparent 50%,
+    rgba(255,255,255,.05) 50%,rgba(255,255,255,.05) 75%,transparent 75%) 0 0/7px 7px,
+    rgba(255,255,255,.04)}
+.sec--dark .scard:hover{border-color:rgba(255,255,255,.34)}
+.sec--dark .scard:hover .sicon{color:#fff}
+.sec--dark .cbtn{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);color:#fff}
+.sec--dark .cbtn:hover:not(:disabled){background:#fff;color:var(--navy);border-color:#fff}
+.sec--dark .crail-prog{background:rgba(255,255,255,.16)}
+.sec--dark .crail-prog i{background:#fff}
+.sec--dark .carousel__ct{color:rgba(255,255,255,.62)}
+.sec--dark .depl details{border-bottom-color:rgba(255,255,255,.18)}
+.sec--dark .depl summary{color:#fff}
+.sec--dark .depl__n{color:#9DB8E4}
+.sec--dark .depl__t{color:#fff}
+.sec--dark .depl__p{color:rgba(255,255,255,.55)}
+.sec--dark .depl__b p{color:rgba(255,255,255,.78)}
+.sec--dark .demo__c{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
+.sec--dark .demo{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
+.sec--dark .demo__bar,.sec--dark .demo__q{border-color:rgba(255,255,255,.16)}
+.sec--dark .demo__out{color:rgba(255,255,255,.86)}
+.sec--dark .demo__fp{color:rgba(255,255,255,.5);border-top-color:rgba(255,255,255,.14)}
+.sec--dark .ph{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6)}
+.sec--dark .phwrap{background:rgba(255,255,255,.06)}
+.sec--dark .demo__bar{background:rgba(255,255,255,.06)}
+.sec--dark .demo__bar .mono{color:rgba(255,255,255,.72)}
+.sec--dark .demo__c .sub{color:rgba(255,255,255,.6)}
+.sec--dark .demo__c h4,.sec--dark .demo__c b{color:#fff}
+.sec--dark .flag--w{background:rgba(214,163,74,.18);color:#E9C583}
+.sec--dark .flag--v{background:rgba(79,191,149,.18);color:#7FD8B4}
+.sec--dark .demo__q .mono{color:rgba(255,255,255,.6)}
+.sec--dark .demo__trace{color:rgba(255,255,255,.72)}
+.sec--dark .demo__trace summary{color:#9DB8E4}
+.sec--dark .demo__trace{background:rgba(255,255,255,.05);border-top-color:rgba(255,255,255,.14)}
+.sec--dark .demo__trace summary::before{color:#9DB8E4}
+.sec--dark .demo__trace li{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.14)}
+.sec--dark .demo__trace li b{color:#9DB8E4}
+
+
+h1,h2,h3,h4{margin:0;font-family:var(--f-display);font-weight:600;letter-spacing:-.028em;line-height:1.08}
+/* Scale: 52 / 34 / 22 -> 1.53x then 1.55x. Was 1.33x then 2.09x, i.e.
+   compressed at the top and blown out at the bottom. Tracking relaxed from
+   -.032em to -.01em: tight tracking on large type reads startup, not institution. */
+h1{font-size:clamp(32px,3.9vw,52px);font-weight:600;letter-spacing:-.01em;line-height:1.12}
+h2{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.015em;line-height:1.15}
+h1.as-h2{font-size:clamp(26px,2.6vw,34px);font-weight:600;letter-spacing:-.015em;line-height:1.15}
+h3{font-size:clamp(19px,1.7vw,22px);letter-spacing:-.015em}
+p{margin:0}
+strong{font-weight:600}
+.dot{text-decoration:underline;text-decoration-style:dotted;text-decoration-thickness:1.5px;text-underline-offset:5px}
+.mono{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+.lede{font-size:clamp(16px,1.26vw,18.5px);line-height:1.65;color:var(--ink-2)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.85;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* reveal */
+[data-rv]{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ez),transform 1.1s var(--ez)}
+[data-rv].in{opacity:1;transform:none}
+.stg>*{opacity:0;transform:translateY(20px);transition:opacity .85s var(--ez),transform .95s var(--ez)}
+.stg.in>*{opacity:1;transform:none}
+.stg.in>*:nth-child(2){transition-delay:.08s}
+.stg.in>*:nth-child(3){transition-delay:.16s}
+.stg.in>*:nth-child(4){transition-delay:.24s}
+.stg.in>*:nth-child(5){transition-delay:.32s}
+.stg.in>*:nth-child(6){transition-delay:.40s}
+.stg.in>*:nth-child(7){transition-delay:.48s}
+.stg.in>*:nth-child(8){transition-delay:.56s}
+
+/* ================= IMAGE PLACEHOLDERS =================
+   Each slot already contains a real <img> pointing at a fixed filename in
+   img/. Drop a correctly named file in and it appears; until then the img
+   errors, hides itself, and this labelled placeholder shows through.
+   Ratio is set by --ar on the parent .phwrap.
+   ====================================================== */
+.phwrap{position:relative;width:100%;aspect-ratio:var(--ar,16/9);overflow:hidden;border-radius:12px;background:var(--mid-2)}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:
+    repeating-linear-gradient(135deg,transparent 0 14px,rgba(12,20,31,.035) 14px 28px),
+    linear-gradient(150deg,var(--mid-2),var(--mid-1));
+  border:1px dashed var(--rule);border-radius:12px;color:var(--ink-3);text-align:center;padding:16px}
+.ph svg{width:26px;height:26px;opacity:.5}
+.ph b{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.ph s{text-decoration:none;font-size:12px;max-width:34ch;line-height:1.45;opacity:.85}
+.phwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ================= BUTTONS ================= */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--paper);
+  font-family:var(--f-display);font-size:15.5px;font-weight:600;letter-spacing:-.012em;
+  padding:15px 28px;border-radius:999px;border:1px solid var(--navy);cursor:pointer;
+  transition:transform .5s var(--ez),opacity .35s,background .3s}
+.btn:hover{transform:translateY(-2px);opacity:.93}
+.btn--l{background:#fff;color:#0C141F;border-color:#fff}
+.btn--g{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn--g:hover{border-color:var(--navy)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+.tlink{display:inline-flex;align-items:center;gap:8px;color:var(--signal);font-weight:600;font-size:15px;
+  font-family:var(--f-display);transition:gap .35s var(--ez)}
+.tlink:hover{gap:13px}
+
+/* ================= NAV ================= */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:14px var(--gut);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  transition:padding .4s var(--ez),transform .38s var(--ez),
+             background-color .3s ease,box-shadow .3s ease;
+  will-change:transform}
+/* Once scrolled the bar takes an opaque ground; left transparent, page
+   headlines scroll straight through the nav links. */
+.nav.stuck{padding-block:9px;background:rgba(231,241,250,.9);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
+  box-shadow:0 1px 0 rgba(0,0,0,.07)}
+/* Scrolling down retracts the bar; scrolling up brings it straight back. */
+.nav--up{transform:translateY(-100%)}
+@media(prefers-reduced-motion:reduce){
+  .nav{transition:background-color .3s ease}
+  .nav--up{transform:none}
+}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;
+  font-size:18px;letter-spacing:-.03em;line-height:1.05;z-index:2;color:var(--ink)}
+.logo svg{flex:none;color:var(--navy)}
+.logo__l{flex:none;width:auto;height:clamp(34px,3.1vw,44px);display:block}
+/* Invest — white pill against the navy primary. One brand colour, two weights. */
+.btn--inv{background:#fff;color:var(--navy);border-color:var(--rule);
+  box-shadow:0 1px 2px rgba(12,20,31,.08);padding:10px 20px;font-size:14px}
+.btn--inv:hover{opacity:1;border-color:var(--navy);box-shadow:0 4px 14px -6px rgba(12,20,31,.3)}
+/* Split control: Invest | chevron-to-Contact-Sales. Two targets, one object. */
+.splitbtn{display:inline-flex;align-items:stretch;background:#0C141F;border-radius:8px;
+  overflow:hidden;flex:0 0 auto;white-space:nowrap;
+  font-family:var(--f-display);font-weight:600;font-size:14px}
+.splitbtn a{display:inline-flex;align-items:center;flex:none;white-space:nowrap;color:#fff;
+  transition:background .28s var(--ez)}
+.splitbtn__m{padding:11px 22px;letter-spacing:-.012em}
+.splitbtn__c{padding:11px 13px;border-left:1px solid rgba(255,255,255,.24)}
+.splitbtn__c svg{width:13px;height:13px;display:block}
+.splitbtn a:hover{background:#22303F}
+@media(max-width:900px){.splitbtn__m{padding:10px 17px;font-size:13.5px}.splitbtn__c{padding:10px 11px}}
+/* On the navy CTA strip the white pill would disappear into .btn--l */
+.ctastrip .btn--inv{background:transparent;color:#fff;border-color:rgba(255,255,255,.45);box-shadow:none}
+.ctastrip .btn--inv:hover{border-color:#fff;background:rgba(255,255,255,.08);box-shadow:none}
+.hero__acts .btn--inv{padding:15px 28px;font-size:15.5px}
+@media(max-width:430px){.toggle .splitbtn__m{padding:9px 14px;font-size:13px}}
+/* Links sit directly on the page. No container, no rule — a company header,
+   not a product toolbar. */
+.navpill{margin-left:auto;display:flex;align-items:center;gap:clamp(10px,1.7vw,26px)}
+.nav .toggle{flex:none}
+.nitem{position:relative;display:flex;align-items:center}
+.nitem>a{display:flex;align-items:center;font-family:var(--f-body);font-size:15px;
+  font-weight:400;color:var(--ink-2);letter-spacing:-.01em;white-space:nowrap;background:none;border:0;
+  padding:6px 0;cursor:pointer;transition:color .3s}
+.nitem>a:hover,.nitem.on>a{color:var(--ink)}
+.nitem[aria-current]>a{color:var(--ink)}
+.nitem[aria-current]>a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--navy);border-radius:2px}
+
+
+.toggle{display:flex;align-items:center;gap:10px;z-index:2}
+.navcta{display:none}
+.burger{display:none;width:43px;height:43px;border-radius:999px;background:var(--surface);border:1px solid var(--rule-soft);cursor:pointer;position:relative;z-index:2}
+.burger i{position:absolute;left:12.5px;width:18px;height:1.8px;background:var(--ink);border-radius:2px;transition:transform .5s var(--ez)}
+.burger i:nth-child(1){top:17.5px} .burger i:nth-child(2){top:23.5px}
+.burger.on i:nth-child(1){transform:translateY(3px) rotate(45deg)}
+.burger.on i:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
+/* Bare links need far less room than the old pill, so the drawer can wait. */
+@media(max-width:860px){.navpill{display:none} .burger{display:block}}
+.drawer{position:fixed;inset:0;z-index:880;background:var(--paper);padding:104px var(--gut) 40px;
+  transform:translateY(-101%);transition:transform .7s var(--ez);overflow-y:auto}
+.drawer.on{transform:none}
+.drawer a{display:block;font-family:var(--f-display);font-size:26px;font-weight:600;letter-spacing:-.028em;padding:16px 0;border-bottom:1px solid var(--rule)}
+.drawer__inv{color:var(--navy)}
+
+/* ================= BREADCRUMB ================= */
+.crumb{padding-top:104px;padding-bottom:0}
+.crumb ol{list-style:none;margin:0;padding:16px 0 0;display:flex;flex-wrap:wrap;gap:9px;align-items:center;
+  font-size:13px;color:var(--ink-3)}
+.crumb a{color:var(--ink-3);transition:color .3s}
+.crumb a:hover{color:var(--signal)}
+.crumb li[aria-current]{color:var(--ink-2)}
+
+/* ================= PAGE HERO (inner pages) ================= */
+/* The nav is fixed, so the first block on any interior page must clear it.
+   The breadcrumb used to provide this gap. */
+main > section:first-child{padding-top:clamp(112px,11vw,168px)}
+.phero{padding-top:clamp(28px,4vw,52px);padding-bottom:clamp(32px,3.5vw,48px);position:relative}
+.phero__g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4.4vw,68px);align-items:end}
+.phero h1{max-width:17ch;margin-top:14px}
+.phero .lede{max-width:48ch}
+
+/* ================= HOME HERO ================= */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:132px;padding-bottom:92px;overflow:hidden}
+#grid3d{position:absolute;left:0;right:0;top:7%;height:78%;width:100%}
+.hero__in{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);gap:clamp(24px,4.6vw,74px);align-items:center}
+.hero h1{max-width:16ch;margin-top:16px}
+.hero__r{max-width:46ch}
+.hero__r p+p{margin-top:16px}
+.hero__acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.arrow{position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:3;color:var(--ink-3);animation:bob 2.6s var(--ez) infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+/* ================= STAT BAND ================= */
+.statband{border-block:1px solid var(--rule);background:var(--surface)}
+.statband__g{display:grid;grid-template-columns:repeat(3,1fr)}
+.statitem{padding:clamp(24px,3vw,40px) clamp(16px,2vw,30px);border-right:1px solid var(--rule);transition:background .45s}
+.statitem:last-child{border-right:0}
+.statitem:hover{background:var(--surface-2)}
+.statitem b{display:block;font-family:var(--f-display);font-size:clamp(30px,3.6vw,48px);font-weight:600;
+  letter-spacing:-.04em;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.statitem p{margin-top:10px;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+
+/* ================= MESH ================= */
+.mesh{position:relative;border-radius:22px;overflow:hidden;isolation:isolate;
+  min-height:clamp(370px,54vh,580px);display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:clamp(38px,5.6vw,80px) clamp(22px,5vw,76px)}
+.mesh canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.mesh .grain{z-index:1}
+.mesh__in{position:relative;z-index:2;color:#fff;max-width:1000px;display:flex;flex-direction:column;align-items:center;gap:20px}
+.mesh h2,.mesh h1{color:#fff;font-weight:500;text-shadow:0 2px 26px rgba(0,0,0,.36)}
+.mesh h2{font-size:clamp(26px,3.5vw,48px)}
+.mesh p{color:rgba(255,255,255,.94);font-size:clamp(15.5px,1.26vw,18px);line-height:1.62;max-width:66ch;text-shadow:0 2px 20px rgba(0,0,0,.38)}
+.mesh .mono{color:rgba(255,255,255,.78)}
+.flow{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3.2vw,58px);flex-wrap:wrap;margin-bottom:14px}
+.flow__n{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:100px}
+.flow__ic{width:clamp(46px,4.4vw,68px);height:clamp(46px,4.4vw,68px)}
+.flow__ic svg{width:100%;height:100%;filter:drop-shadow(0 6px 18px rgba(0,0,0,.42))}
+.flow__l{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.92);text-align:center}
+.flow__a{color:rgba(255,255,255,.7);font-size:20px;line-height:1;padding-bottom:20px}
+
+/* ================= GRID BG / HEADS ================= */
+.gridbg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--rule-soft) 1px,transparent 1px),linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);
+  background-size:104px 104px;
+  -webkit-mask-image:radial-gradient(125% 92% at 50% 42%,#000 28%,transparent 88%);
+  mask-image:radial-gradient(125% 92% at 50% 42%,#000 28%,transparent 88%)}
+.rel{position:relative;z-index:1}
+.bigline{font-family:var(--f-display);font-size:clamp(19px,1.95vw,26px);font-weight:400;letter-spacing:-.024em;line-height:1.42;max-width:76ch}
+.bigline--c{text-align:center;margin-inline:auto}
+.shead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(22px,4.4vw,64px);align-items:start;margin-bottom:clamp(30px,4.2vw,56px)}
+.shead h2{max-width:15ch}
+.shead .lede{max-width:52ch}
+.shead p+p{margin-top:14px}
+
+/* ================= CARDS ================= */
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);align-items:stretch}
+.fcard{position:relative;border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--card);
+  padding:clamp(22px,2.3vw,30px);display:flex;flex-direction:column;min-height:clamp(236px,24vw,296px);
+  transition:transform .6s var(--ez),box-shadow .6s var(--ez)}
+.fcard::before{content:"";position:absolute;inset:0;opacity:.9;transition:opacity .6s;
+  background:radial-gradient(120% 105% at 86% 8%,var(--t1),transparent 62%)}
+.fcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.fcard>*{position:relative;z-index:1}
+.fcard h3{margin-bottom:6px}
+.fcard .kpi{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--signal)}
+.fcard p{margin-top:14px;color:var(--ink-2);font-size:14.5px;line-height:1.6}
+/* Heading / label / body share the parent grid's row tracks, so body copy
+   starts on the same line in every column however the heading wraps.
+   Padding lives on an inner element: a subgrid item's own padding would
+   offset its content from the shared tracks. */
+.fcard .kpi{display:block;line-height:1.45}
+@supports (grid-template-rows: subgrid){
+  @media(min-width:1001px){
+    .fgrid{grid-template-rows:auto auto 1fr}
+    .fcard{grid-row:span 3;display:grid;grid-template-rows:subgrid;padding:0}
+    .fcard>h3{padding:clamp(22px,2.3vw,30px) clamp(22px,2.3vw,30px) 0}
+    .fcard>.kpi{padding:6px clamp(22px,2.3vw,30px) 0}
+    .fcard>.fcard__b{padding:0 clamp(22px,2.3vw,30px) clamp(22px,2.3vw,30px)}
+  }
+}
+
+.dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.8vw,24px)}
+.dcard{position:relative;border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--card);
+  display:flex;flex-direction:column;transition:transform .6s var(--ez),box-shadow .6s var(--ez)}
+.dcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.dcard .phwrap{border-radius:0;--ar:16/9}
+.dcard .ph{border-radius:0;border-width:0 0 1px 0}
+.dcard__b{padding:clamp(22px,2.5vw,34px);display:flex;flex-direction:column;flex:1;position:relative}
+.dcard__b::before{content:"";position:absolute;inset:0;opacity:.85;pointer-events:none;
+  background:radial-gradient(115% 100% at 88% 0%,var(--t1),transparent 60%)}
+.dcard__b>*{position:relative;z-index:1}
+.dcard__t{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.dcard h3{font-size:clamp(20px,1.8vw,25px)}
+.dcard p{margin-top:12px;color:var(--ink-2);font-size:14.5px;line-height:1.65}
+.dnote{margin-top:20px;border-left:2px solid var(--signal);background:var(--signal-wash);
+  border-radius:0 10px 10px 0;padding:14px 16px}
+.dnote s{text-decoration:none;display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.dnote p{margin-top:7px;font-size:14px;color:var(--ink-2);line-height:1.55}
+
+/* split feature (Emerson pattern: image one side, copy the other) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.split--r .split__t{order:2}
+.split__t h2{margin-bottom:18px}
+.split__t p+p{margin-top:14px}
+.split__t .tlink{margin-top:22px}
+.split .phwrap{--ar:4/3;border-radius:16px;box-shadow:var(--shadow)}
+
+/* ================= DEMO ================= */
+.demo{border:1px solid var(--rule);border-radius:20px;background:var(--card);overflow:hidden;box-shadow:var(--shadow);margin-top:clamp(26px,3.6vw,46px)}
+.demo__bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px;background:var(--surface-2);border-bottom:1px solid var(--rule)}
+.demo__bar .mono{color:var(--ink-2)}
+.demo__run{margin-left:auto;display:flex;align-items:center;gap:12px}
+.demo__q{padding:clamp(20px,2.4vw,30px);border-bottom:1px solid var(--rule)}
+.demo__q s{text-decoration:none;display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.demo__q p{font-family:var(--f-display);font-size:clamp(17px,1.55vw,21px);font-weight:500;letter-spacing:-.02em}
+.demo__cols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
+.demo__c{background:var(--card);padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;min-height:262px}
+.demo__c h4{font-size:17px;font-weight:600;font-family:var(--f-display)}
+.demo__c .sub{font-size:13px;color:var(--ink-3);margin-top:4px;margin-bottom:16px}
+.demo__out{font-size:14.5px;line-height:1.68;color:var(--ink-2);transition:opacity .3s}
+.demo__out.load{opacity:.28}
+.demo__fp{margin-top:auto;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  font-family:var(--f-mono);font-size:11px;color:var(--ink-3);border-top:1px dashed var(--rule)}
+.flag{font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.flag--w{background:var(--caution-wash);color:var(--caution)}
+.flag--v{background:var(--verify-wash);color:var(--verify)}
+.demo__trace{padding:clamp(20px,2.4vw,30px);border-top:1px solid var(--rule);background:var(--surface-2)}
+.demo__trace summary{cursor:pointer;font-family:var(--f-display);font-weight:600;font-size:15.5px;list-style:none;display:flex;align-items:center;gap:10px}
+.demo__trace summary::-webkit-details-marker{display:none}
+.demo__trace summary::before{content:"+";font-family:var(--f-mono);color:var(--signal);font-size:17px;line-height:1}
+.demo__trace[open] summary::before{content:"–"}
+.demo__trace ol{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.demo__trace li{display:flex;gap:13px;font-family:var(--f-mono);font-size:12.5px;line-height:1.6;color:var(--ink-2);
+  background:var(--card);border:1px solid var(--rule-soft);border-radius:8px;padding:11px 14px}
+.demo__trace li b{color:var(--signal);flex:none;font-weight:500}
+.demo__foot{padding:14px 20px;font-size:12.5px;color:var(--ink-3);text-align:center;border-top:1px solid var(--rule)}
+
+/* ================= TABLE ================= */
+.tbl{border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--card);margin-top:clamp(24px,3.2vw,42px)}
+.tbl table{width:100%;border-collapse:collapse}
+.tbl th,.tbl td{padding:16px clamp(14px,1.7vw,24px);text-align:left;font-size:14.5px;border-bottom:1px solid var(--rule-soft)}
+.tbl thead th{background:var(--surface-2);font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--rule)}
+.tbl tbody th{font-weight:500;color:var(--ink);width:34%}
+.tbl td:nth-child(2){color:var(--ink-3)}
+.tbl td:nth-child(3){color:var(--ink);font-weight:500}
+.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:0}
+.tbl tbody tr{transition:background .35s}
+.tbl tbody tr:hover{background:var(--signal-wash)}
+
+/* ================= TEAM ================= */
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.8vw,22px)}
+.tgrid--3{grid-template-columns:repeat(3,1fr)}
+.tgrid--4{grid-template-columns:repeat(4,1fr)}
+.mem{border:1px solid var(--rule);border-radius:16px;padding:clamp(18px,2vw,26px);background:var(--card);
+  display:flex;flex-direction:column;transition:transform .55s var(--ez),box-shadow .55s var(--ez)}
+.mem:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.mem .phwrap{--ar:1/1;width:76px;border-radius:14px;margin-bottom:16px;flex:none}
+.mem .ph{border-radius:14px;padding:6px}
+.mem .ph b{font-size:9px;letter-spacing:.1em}
+.mem .ph svg{width:18px;height:18px}
+.mem__rule{display:block;width:34px;height:2px;border-radius:2px;flex:none;
+  background:var(--signal);opacity:.7;margin-bottom:20px;
+  transition:width .5s var(--ez),opacity .4s}
+.mem:hover .mem__rule{width:52px;opacity:1}
+.mem b.nm{font-family:var(--f-display);font-size:17px;font-weight:600;letter-spacing:-.024em}
+.mem s{text-decoration:none;display:block;font-size:13.5px;color:var(--signal);margin-top:4px}
+.mem p{margin-top:13px;color:var(--ink-2);font-size:13.5px;line-height:1.6}
+.mem .li{margin-top:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);transition:color .3s}
+.mem .li:hover{color:var(--signal)}
+.subhead{font-family:var(--f-display);font-size:clamp(19px,1.7vw,23px);font-weight:600;letter-spacing:-.022em;margin:clamp(32px,3.8vw,52px) 0 20px}
+.subhead > span{color:var(--ink-3);font-weight:400;font-size:.8em}
+
+/* ================= PRINCIPLES ================= */
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden}
+.pitem{background:var(--card);padding:clamp(24px,2.8vw,40px);transition:background .45s}
+.pitem:hover{background:var(--surface-2)}
+.pitem .n{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.15em;color:var(--signal)}
+.pitem h3{margin:14px 0 12px;max-width:18ch}
+.pitem p{color:var(--ink-2);font-size:15px;line-height:1.65}
+
+/* ================= TIMELINE ================= */
+.tl{position:relative;margin-top:clamp(26px,3.4vw,44px);padding-left:26px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--rule)}
+.tlrow{position:relative;padding-bottom:clamp(24px,3vw,38px)}
+.tlrow:last-child{padding-bottom:0}
+.tlrow::before{content:"";position:absolute;left:-26px;top:6px;width:11px;height:11px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--signal)}
+.tlrow s{text-decoration:none;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.14em;color:var(--signal)}
+.tlrow h3{margin:8px 0 8px;font-size:clamp(18px,1.5vw,21px)}
+.tlrow p{color:var(--ink-2);font-size:15px;line-height:1.65;max-width:64ch}
+
+/* ================= FAQ ================= */
+.faq{border-top:1px solid var(--rule)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:16px;
+  padding:22px 0;font-family:var(--f-display);font-size:clamp(16.5px,1.4vw,19px);font-weight:500;letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .qn{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--signal);padding-top:5px;flex:none;width:28px}
+.faq summary .pl{margin-left:auto;font-family:var(--f-mono);color:var(--ink-3);font-size:18px;line-height:1;padding-top:2px;transition:transform .4s var(--ez)}
+.faq details[open] summary .pl{transform:rotate(45deg)}
+.faq .ans{padding:0 0 24px 44px;color:var(--ink-2);font-size:15px;line-height:1.7;max-width:78ch}
+
+/* ================= ROLES (careers) ================= */
+.roles{border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--card)}
+.role{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:clamp(20px,2.2vw,28px);
+  border-bottom:1px solid var(--rule-soft);transition:background .4s}
+.role:last-child{border-bottom:0}
+.role:hover{background:var(--surface-2)}
+.role h3{font-size:clamp(17px,1.45vw,20px)}
+.role .meta{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);border:1px solid var(--rule);border-radius:999px;padding:5px 11px}
+.role p{margin-top:12px;color:var(--ink-2);font-size:14.5px;line-height:1.6;max-width:62ch}
+
+/* ================= FORM ================= */
+.mailcard{border:1px solid var(--rule);border-radius:18px;background:var(--card);
+  padding:clamp(26px,3.4vw,44px);box-shadow:var(--shadow-s)}
+.mailcard h2{margin-top:12px;font-size:clamp(24px,2.9vw,38px);word-break:break-word;
+  color:var(--navy);letter-spacing:-.03em}
+.mailcard p{margin-top:16px;color:var(--ink-2);font-size:clamp(15px,1.2vw,17px);line-height:1.68;max-width:52ch}
+.mailcard__acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,18px)}
+.field{display:flex;flex-direction:column;gap:8px}
+.field--full{grid-column:1/-1}
+.field label{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.field .req{color:var(--signal)}
+.field input,.field select,.field textarea{
+  font-family:var(--f-body);font-size:15px;color:var(--ink);background:var(--surface);
+  border:1px solid var(--rule);border-radius:10px;padding:14px 16px;width:100%;
+  transition:border-color .3s,box-shadow .3s}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--signal);box-shadow:0 0 0 3px var(--signal-wash)}
+.field input:invalid:not(:placeholder-shown){border-color:var(--caution)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* contact rail */
+.crail{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(26px,4vw,64px);align-items:start}
+.cbox{border:1px solid var(--rule);border-radius:16px;background:var(--card);padding:clamp(20px,2.2vw,28px)}
+.cbox+.cbox{margin-top:16px}
+.cbox h3{font-size:18px;margin-bottom:12px}
+.cbox p{color:var(--ink-2);font-size:14.5px;line-height:1.65}
+.cbox a{color:var(--signal);font-weight:500}
+
+/* ================= CTA STRIP ================= */
+.ctastrip{background:var(--navy);color:#fff;border-radius:22px;padding:clamp(32px,4.4vw,64px);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,3vw,44px);align-items:center;position:relative;overflow:hidden}
+.ctastrip h2{color:#fff;font-weight:500;max-width:20ch;font-size:clamp(24px,2.9vw,40px)}
+.ctastrip p{color:rgba(255,255,255,.8);margin-top:14px;max-width:56ch;font-size:16px}
+
+/* ================= FOOTER ================= */
+/* Dark footer: the page ends on a near-black panel rather than fading out.
+   Mark only, no wordmark and no tagline. */
+.foot{background:#1A1A19;color:#fff;border-top:0;
+  padding-block:clamp(56px,6vw,88px) 30px;margin-top:0}
+.imgcta + .foot{margin-top:0}
+.foot__mark{display:inline-block;line-height:0}
+.foot__mark img{width:52px;height:52px;display:block}
+.foot__g{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:30px;padding-bottom:clamp(40px,4.8vw,64px)}
+.foot__g>div:first-child p{display:none}
+.foot h4{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px}
+.foot li a{font-size:14.5px;color:rgba(255,255,255,.86);transition:color .3s}
+.foot li a:hover{color:#fff}
+.foot__b{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.5);font-size:13.5px}
+.foot__b a{color:rgba(255,255,255,.62);transition:color .3s}
+.foot__b a:hover{color:#fff}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1180px){
+  .fgrid{grid-template-columns:repeat(2,1fr)}
+  .tgrid--4,.tgrid--3{grid-template-columns:repeat(2,1fr)}
+  .statband__g{grid-template-columns:repeat(2,1fr)}
+  .statitem:nth-child(2){border-right:0}
+  .statitem:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+}
+@media(max-width:900px){
+  .hero__in,.shead,.phero__g,.crail{grid-template-columns:1fr}
+  .dgrid,.demo__cols,.tgrid,.tgrid--4,.tgrid--3,.form,.pgrid,.split{grid-template-columns:1fr}
+  .split--r .split__t{order:0}
+  .foot__g{grid-template-columns:1fr 1fr}
+  .hero{padding-top:150px}
+  #grid3d{opacity:.55}
+  .tbl{overflow-x:auto} .tbl table{min-width:560px}
+  .ctastrip{grid-template-columns:1fr}
+  .role{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .fgrid{grid-template-columns:1fr}
+  .statband__g{grid-template-columns:1fr}
+  .statitem{border-right:0;border-bottom:1px solid var(--rule)}
+  .statitem:last-child{border-bottom:0}
+  .foot__g{grid-template-columns:1fr}
+  .flow{gap:20px} .flow__a{display:none}
+  .faq .ans{padding-left:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-rv],.stg>*{opacity:1;transform:none}
+}
+
+/* ============================================================
+   v2 ADDITIONS — for 2026.8.7 Website Update copy
+   ============================================================ */
+
+/* ---- CISA 16 SECTORS: draggable/scroll carousel (Emerson pattern) ---- */
+.carousel{position:relative;margin-top:clamp(26px,3.4vw,44px)}
+.carousel__vp{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  -ms-overflow-style:none;scrollbar-width:none;cursor:grab;padding-bottom:4px}
+.carousel__vp::-webkit-scrollbar{display:none}
+.carousel__vp.drag{cursor:grabbing;scroll-snap-type:none}
+.carousel__tr{display:flex;gap:clamp(12px,1.5vw,18px);width:max-content;padding-inline:1px}
+.scard{flex:0 0 clamp(220px,23vw,272px);scroll-snap-align:start;
+  border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:var(--card);
+  display:flex;flex-direction:column;transition:transform .55s var(--ez),box-shadow .55s var(--ez),border-color .4s}
+.scard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--mid-3)}
+.sfig{position:relative;height:152px;flex:none;overflow:hidden;border-bottom:1px solid var(--rule)}
+.simg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .7s var(--ez)}
+.scard:hover .simg{transform:scale(1.045)}
+.sicon{display:grid;place-items:center;height:100%;flex:none;
+  color:var(--navy);background:
+    linear-gradient(135deg,rgba(0,0,0,.028) 25%,transparent 25%,transparent 50%,
+      rgba(0,0,0,.028) 50%,rgba(0,0,0,.028) 75%,transparent 75%) 0 0/7px 7px,
+    var(--mid-1);
+  transition:color .45s var(--ez),background-color .45s var(--ez)}
+.sicon svg{width:40px;height:40px;transition:transform .55s var(--ez)}
+.scard:hover .sicon{color:var(--signal)}
+.scard:hover .sicon svg{transform:scale(1.07)}
+.scard__b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.scard__n{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;color:var(--signal)}
+.scard__t{font-family:var(--f-display);font-size:15.5px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.carousel__ui{display:flex;align-items:center;gap:14px;margin-top:20px}
+.cbtn{width:44px;height:44px;border-radius:999px;border:1px solid var(--rule);background:var(--card);
+  color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:all .35s var(--ez);flex:none}
+.cbtn:hover:not(:disabled){background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.cbtn:disabled{opacity:.32;cursor:not-allowed}
+.crail-prog{flex:1;height:2px;background:var(--rule);border-radius:2px;overflow:hidden}
+.crail-prog i{display:block;height:100%;background:var(--signal);border-radius:2px;width:12%;transition:width .3s var(--ez),transform .3s var(--ez)}
+.carousel__ct{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.1em;flex:none}
+
+/* ---- TRICHOTOMY: isn't / isn't / is ---- */
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px)}
+.tcard{position:relative;border:1px solid var(--rule);border-radius:18px;padding:clamp(24px,2.7vw,38px);
+  background:var(--card);display:flex;flex-direction:column;overflow:hidden;
+  transition:transform .6s var(--ez),box-shadow .6s var(--ez)}
+.tcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.tcard--neg{background:var(--mid-1)}
+.tcard--pos{background:var(--navy);border-color:var(--navy)}
+.tcard__k{font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);display:flex;align-items:center;gap:9px}
+.tcard__k::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--caution)}
+.tcard--pos .tcard__k{color:rgba(255,255,255,.62)}
+.tcard--pos .tcard__k::before{background:#6FE0B0}
+.tcard h3{margin:16px 0 14px;font-size:clamp(20px,1.85vw,26px)}
+.tcard--pos h3{color:#fff}
+.tcard p{color:var(--ink-2);font-size:15px;line-height:1.68}
+.tcard--pos p{color:rgba(255,255,255,.86)}
+.tcard p+p{margin-top:14px}
+.tcard .tlink{margin-top:auto;padding-top:24px}
+.tcard--pos .tlink{color:#9CC4FF}
+.tcard__fig{margin-top:20px;padding:16px 18px;border-radius:12px;background:var(--surface-2);
+  border:1px solid var(--rule-soft);font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+.tcard--pos .tcard__fig{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+
+/* ---- QUANTUM PANEL ---- */
+.qpanel{position:relative;border-radius:22px;overflow:hidden;isolation:isolate;
+  background:#0D2149;
+  padding:clamp(34px,4.6vw,72px) clamp(22px,4vw,64px)}
+.qpanel__in{position:relative;z-index:2;color:#fff;display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,3.6vw,58px);align-items:center}
+.qpanel h2{color:#fff;font-weight:500;max-width:20ch;margin-bottom:20px}
+.qpanel p{color:rgba(255,255,255,.9);font-size:clamp(15px,1.24vw,17.5px);line-height:1.68}
+.qpanel p+p{margin-top:14px}
+.qpanel .mono{color:rgba(255,255,255,.7)}
+.qlist{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.qlist div{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 16px}
+.qlist b{color:#6FE0B0;flex:none;font-size:14px;line-height:1.5}
+.qlist span{color:rgba(255,255,255,.92);font-size:14.5px;line-height:1.55}
+.tm{font-size:.62em;vertical-align:super;opacity:.85;letter-spacing:0}
+
+/* ---- DEPLOYMENT ACCORDION ---- */
+.depl{border-top:1px solid var(--rule);margin-top:clamp(26px,3.4vw,44px)}
+.depl details{border-bottom:1px solid var(--rule)}
+.depl summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:auto 1fr auto;
+  gap:18px;align-items:center;padding:clamp(20px,2.2vw,28px) 0}
+.depl summary::-webkit-details-marker{display:none}
+.depl__n{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.13em;color:var(--signal)}
+.depl__t{font-family:var(--f-display);font-size:clamp(18px,1.65vw,23px);font-weight:600;letter-spacing:-.022em}
+.depl__p{font-family:var(--f-mono);color:var(--ink-3);font-size:19px;line-height:1;transition:transform .4s var(--ez)}
+.depl details[open] .depl__p{transform:rotate(45deg)}
+.depl__b{padding:0 0 clamp(24px,2.6vw,34px);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  gap:clamp(22px,3vw,44px);align-items:start}
+.depl__b p{color:var(--ink-2);font-size:15px;line-height:1.7;max-width:66ch}
+.depl__b p+p{margin-top:14px}
+.depl__b .phwrap{--ar:4/3}
+
+
+/* ---- NEEDS-COPY BANNER ---- */
+.needs{border:1px dashed rgba(192,57,43,.45);background:rgba(214,60,60,.07);border-radius:14px;
+  padding:clamp(18px,2vw,26px);margin-top:clamp(20px,2.4vw,32px)}
+.needs b{display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:#C0392B;margin-bottom:9px}
+.needs p{color:var(--ink-2);font-size:14.5px;line-height:1.65}
+.needs p+p{margin-top:9px}
+
+@media(max-width:900px){
+  .tri{grid-template-columns:1fr}
+  .qpanel__in,.depl__b{grid-template-columns:1fr}
+}
+
+/* ============================================================
+   v3 — PROVEN IN PRODUCTION / REGULATORY
+   Public-safe material sourced from Business Plan Q2 2026 v1.6.
+   ============================================================ */
+
+/* ---- PROOF CARDS: real deployments ---- */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,24px)}
+.pfcard{position:relative;border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--card);
+  display:flex;flex-direction:column;transition:transform .6s var(--ez),box-shadow .6s var(--ez)}
+.pfcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.pfcard .phwrap{--ar:16/10;border-radius:0}
+.pfcard .ph{border-radius:0;border-width:0 0 1px 0}
+.pfcard__b{padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;flex:1;position:relative}
+.pfcard__b::before{content:"";position:absolute;inset:0;opacity:.8;pointer-events:none;
+  background:radial-gradient(120% 100% at 88% 0%,var(--t1),transparent 62%)}
+.pfcard__b>*{position:relative;z-index:1}
+.pfcard__m{font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--signal)}
+.pfcard h3{margin:12px 0 0;font-size:clamp(19px,1.6vw,23px)}
+.pfcard__fig{margin:16px 0 14px;font-family:var(--f-display);font-size:clamp(24px,2.3vw,34px);text-wrap:balance;
+  font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--navy)}
+.pfcard__fig small{display:block;font-family:var(--f-body);font-size:13px;font-weight:400;
+  letter-spacing:0;color:var(--ink-3);margin-top:8px;line-height:1.5}
+.pfcard p{color:var(--ink-2);font-size:14.5px;line-height:1.65}
+.pfcard__src{margin-top:auto;padding-top:18px;font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---- REGULATORY STRIP ---- */
+.reg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:18px;overflow:hidden;margin-top:clamp(24px,3vw,40px)}
+.regitem{background:var(--card);padding:clamp(20px,2.2vw,30px);transition:background .45s}
+.regitem:hover{background:var(--surface-2)}
+.regitem b{display:block;font-family:var(--f-display);font-size:15.5px;font-weight:600;
+  letter-spacing:-.02em;margin-bottom:9px}
+.regitem p{color:var(--ink-2);font-size:13.5px;line-height:1.6}
+
+/* ---- PATENT / IP BAR ---- */
+.ipbar{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,44px);align-items:center;
+  border:1px solid var(--rule);border-radius:18px;background:var(--card);
+  padding:clamp(24px,2.8vw,40px);margin-top:clamp(24px,3vw,40px)}
+.ipbar__n{font-family:var(--f-display);font-size:clamp(22px,2.2vw,32px);font-weight:600;
+  letter-spacing:-.03em;color:var(--navy);white-space:nowrap}
+.ipbar__n small{display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+.ipbar p{color:var(--ink-2);font-size:15px;line-height:1.65}
+
+/* ---- INLINE STAT (within prose) ---- */
+.instat{display:inline-flex;align-items:baseline;gap:7px;font-family:var(--f-display);
+  font-weight:600;color:var(--navy);letter-spacing:-.02em}
+
+@media(max-width:1180px){
+  .proof{grid-template-columns:1fr 1fr}
+  .reg{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .proof,.reg{grid-template-columns:1fr}
+  .ipbar{grid-template-columns:1fr;gap:16px}
+}
+
+/* ============================================================
+   v4 — TYPOGRAPHY & RESPONSIVE REFINEMENTS
+   ============================================================ */
+
+/* Widows: the last two words are joined with a non-breaking space at build
+   time. text-wrap:pretty is belt-and-braces in browsers that support it. */
+p, li, .lede, .ans, blockquote, figcaption, .tcard__fig, .bigline{
+  text-wrap:pretty;
+  overflow-wrap:break-word;
+}
+h1, h2, h3, h4{
+  text-wrap:balance;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+/* Balance is wrong for long multi-line prose; keep it to real headings only */
+.bigline{text-wrap:pretty}
+
+/* Trichotomy is tight as 3-up between the tablet and desktop breakpoints */
+@media(min-width:901px) and (max-width:1180px){
+  .tcard{padding:clamp(18px,2.2vw,26px)}
+  .tcard h3{font-size:clamp(18px,2vw,22px)}
+  .tcard p{font-size:14px;line-height:1.6}
+  .tcard__fig{padding:13px 14px;font-size:13.5px}
+}
+
+/* Very narrow phones: pull in the gutter so text columns keep their measure */
+@media(max-width:360px){
+  :root{--gut:16px}
+  .mesh{padding:30px 18px}
+  .qpanel{padding:28px 18px}
+  .ctastrip{padding:26px 20px}
+}
+
+/* Ultra-wide: stop the hero copy stretching past a readable measure */
+@media(min-width:1700px){
+  .hero__r{max-width:52ch}
+  .shead .lede{max-width:56ch}
+}
+
+/* Heading widow guard: keeps the last two words together, but releases them
+   on small screens where an unbreakable pair would exceed the column. */
+.nb{white-space:nowrap}
+@media(max-width:380px){ .nb{white-space:normal} }
+
+
+/* All three trichotomy cards close with a callout box; sit them on the
+   card floor so they line up across the row regardless of copy length. */
+.tcard__fig{margin-top:auto}
+.tcard p:last-of-type{margin-bottom:20px}
+
+/* Image slots: the <img> sits above the placeholder. If the file is missing
+   the onerror handler hides it and the labelled placeholder shows through. */
+.phwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.phwrap img.missing{display:none}
+
+/* ================= LEGAL PAGES ================= */
+/* 65ch measure: 78ch let Privacy/Disclaimer run to 29.8% text coverage,
+   worse than any content page. */
+.legal{max-width:65ch}
+.legal h2{font-size:clamp(20px,1.7vw,24px);margin:48px 0 16px}
+.legal h2:first-of-type{margin-top:0}
+.legal p{color:var(--ink-2);font-size:16px;line-height:1.75}
+.legal p+p{margin-top:16px}
+.legal ul{margin:14px 0 0;padding-left:22px;color:var(--ink-2);font-size:16px;line-height:1.75}
+.legal li+li{margin-top:8px}
+.legal a{color:var(--signal);font-weight:500}
+.legal .updated{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.legal .note{border-left:2px solid var(--caution);background:var(--caution-wash);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin-top:28px}
+.legal .note p{color:var(--ink-2);font-size:14.5px;line-height:1.65}
+
+</style>
+
+<style>
+/* ---- PAPER READING LAYOUT (this page type only) ---- */
+.pbar{background:var(--mid-1);padding-top:clamp(76px,9vw,140px);padding-bottom:clamp(40px,5vw,72px);text-align:center}
+.pbar .mono{display:block;margin-bottom:clamp(18px,2.2vw,28px)}
+.pbar h1{font-size:clamp(36px,5.6vw,72px);font-weight:600;letter-spacing:-.024em;line-height:1.04;text-wrap:balance;max-width:18ch;margin-inline:auto}
+.pbar__sub{margin:clamp(18px,2.4vw,30px) auto 0;max-width:46ch;font-size:clamp(16px,1.3vw,20px);color:var(--ink-2);text-wrap:balance}
+.pbar__meta{margin-top:clamp(22px,2.6vw,34px);display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pintro{background:var(--mid-1);padding-bottom:clamp(30px,4vw,56px)}
+.pintro .in{max-width:64ch;margin-inline:auto}
+.pintro p{font-size:clamp(16px,1.25vw,18.5px);line-height:1.75;color:var(--ink-2);margin:0 0 18px}
+.psum{background:var(--mid-1);padding-bottom:clamp(40px,5vw,72px)}
+.psum .in{max-width:64ch;margin-inline:auto}
+.paper{display:grid;grid-template-columns:minmax(0,238px) minmax(0,1fr);gap:clamp(28px,5vw,86px);align-items:start}
+.prail{position:sticky;top:104px;align-self:start}
+.prail a.pl__i{display:block;padding:13px 0;border-bottom:1px solid var(--rule-soft);
+  font-size:14px;line-height:1.35;color:var(--ink-3);transition:color .3s var(--ez)}
+.prail a.pl__i:hover{color:var(--ink-2)}
+.prail a.pl__i.on{color:var(--ink);font-weight:600}
+.prail .pacts{margin-top:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.pbody h2{font-size:clamp(26px,2.6vw,38px);letter-spacing:-.022em;margin:0 0 20px;text-wrap:balance}
+.pbody h3{font-size:clamp(18px,1.5vw,22px);margin:34px 0 12px}
+.pbody p{font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.78;color:var(--ink-2);max-width:68ch;margin:0 0 18px}
+.pbody section{padding-bottom:clamp(44px,5vw,76px);scroll-margin-top:104px}
+.pbody section+section{border-top:1px solid var(--rule-soft);padding-top:clamp(40px,4.6vw,68px)}
+.pbody blockquote{margin:26px 0;padding-left:20px;border-left:2px solid var(--signal);color:var(--ink);font-size:clamp(17px,1.4vw,20px);line-height:1.6}
+@media (max-width:900px){
+  .paper{grid-template-columns:1fr}
+  .prail{position:static;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-bottom:30px}
+  .prail .pacts{flex-direction:row;flex-wrap:wrap}
+}
+</style>
+
+<style>
+.pbody ul{margin:0 0 20px;padding-left:22px}
+.pbody ul li{font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.75;color:var(--ink-2);margin-bottom:10px}
+.pbody sup.fnr{font-size:.66em;vertical-align:super;line-height:0}
+.pbody sup.fnr a{color:var(--signal);text-decoration:none}
+.pfn{margin-top:clamp(46px,5vw,76px);padding-top:clamp(26px,3vw,38px);border-top:1px solid var(--rule)}
+.pfn h2{font-size:clamp(20px,1.7vw,24px);margin:0 0 18px}
+.pfn ol{margin:0;padding-left:22px}
+.pfn li{font-size:14px;line-height:1.7;color:var(--ink-2);margin-bottom:12px}
+.pfn li em{font-style:italic}
+.fnb{margin-left:6px;color:var(--signal);text-decoration:none}
+.prail a.pl__i--sub{padding-left:14px;font-size:13.2px}
+.pmeta{margin-top:clamp(20px,2.4vw,30px);font-size:14.5px;color:var(--ink-2);line-height:1.7}
+.pmeta b{color:var(--ink)}
+body{background:#fff}
+.nav{background:transparent}
+.nav.stuck{background:rgba(255,255,255,.92);box-shadow:0 1px 0 rgba(12,20,31,.08)}
+.pbar,.pintro,.psum{background:var(--mid-1)}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="logo" href="index.html" aria-label="New Sapience — home">
+    <img class="logo__l" src="img/brand/lockup.png" width="224" height="44" alt="New Sapience">
+  </a>
+  <nav class="navpill" aria-label="Primary">
+    <div class="nitem"><a href="platform.html">Platform</a></div>
+    <div class="nitem"><a href="sectors.html">Sectors</a></div>
+    <div class="nitem"><a href="deployment.html">Deployment</a></div>
+    <div class="nitem"><a href="about.html">About</a></div>
+    <div class="nitem"><a href="news.html">News</a></div>
+    <div class="nitem"><a href="contact.html">Contact</a></div>
+  </nav>
+  <div class="toggle">
+    <span class="splitbtn">
+      <a class="splitbtn__m" href="https://signup.floww.io/to/LCThz0lq" target="_blank" rel="noopener noreferrer">Invest</a>
+      <a class="splitbtn__c" href="contact.html" aria-label="Request a demo" title="Request a demo"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </span>
+    <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
+  </div>
+</header>
+<section class="sec pbar">
+<div class="wrap">
+<span class="mono" data-rv="">Paper</span>
+<h1 data-rv="">Instruments of Virtue</h1>
+<p class="pbar__sub" data-rv="">A Thomistic Study in AI Systems Design</p>
+<div class="pbar__meta" data-rv=""><span class="tag">Paper</span><span class="tag">Rosaire Leon</span></div>
+</div>
+</section>
+
+<section class="sec pintro" style="padding-top:0">
+<div class="wrap"><div class="in" data-rv="">
+<p>Contemporary discourse about AI routinely conflates distinct rational operations. This paper applies the Thomistic distinction between <em>intellectus</em> and <em>ratio</em> to the design of AI systems, and asks what it would take for a machine to work as a genuine instrument of human reason rather than a substitute for it.</p>
+<p>It proposes a principle of instrumental complementarity: a machine that genuinely serves reason will be one that occasions reflective growth in the human principal who uses it. It then tests New Sapience&rsquo;s deterministic architecture against that principle, and catalogues precisely which rational operations such a system can and cannot virtualize.</p>
+<div class="pmeta">
+<b>Rosaire Leon</b>, senior model engineer at New Sapience.<br>
+Thanks to Emilia Stefankiewicz for editorial assistance, and to Patrick Misiewicz for the initial proposal to develop a Thomistic evaluative framework for AI systems.
+</div>
+</div></div>
+</section>
+
+<section class="sec psum" style="padding-top:0">
+<div class="wrap"><div class="in" data-rv="">
+<div class="faq"><details>
+<summary><span>Abbreviations for Aquinas&rsquo;s cited works</span><span class="pl">+</span></summary>
+<div class="ans"><p><em>ST</em>: Summa Theologiæ. <em>DV</em>: De Veritate. <em>SCG</em>: Summa Contra Gentiles. <em>LC</em>: Super librum De causis expositio.</p></div>
+</details></div>
+</div></div>
+</section>
+
+<section class="sec sec--t">
+<div class="wrap">
+<div class="paper">
+<aside class="prail" aria-label="Paper contents">
+<a class="pl__i" href="#s-key-terms"><em>Key Terms </em></a>
+<a class="pl__i" href="#s-part-i-instrumentality-chr-sis-and-complementari">Part I: Instrumentality, Chrēsis, and Complementarity</a>
+<a class="pl__i" href="#s-threshold-sapiens-the-system-architecture">Threshold: Sapiens—The System Architecture</a>
+<a class="pl__i" href="#s-part-ii-sapiens-and-intellectus">Part II: Sapiens and Intellectus</a>
+<a class="pl__i pl__i--sub" href="#s-1-principles-of-motion">1. Principles of Motion</a>
+<a class="pl__i pl__i--sub" href="#s-2-natural-versus-artificial-faculties">2. Natural Versus Artificial Faculties</a>
+<a class="pl__i pl__i--sub" href="#s-2-artificial-intellectus">2. Artificial <em>Intellectus</em>?</a>
+<a class="pl__i pl__i--sub" href="#s-4-instrumenting-the-limits-of-formalism">4. Instrumenting the Limits of Formalism</a>
+<a class="pl__i pl__i--sub" href="#s-5-total-simulation-versus-partial-virtualization">5. Total Simulation Versus Partial Virtualization</a>
+<a class="pl__i pl__i--sub" href="#s-6-what-sapiens-cannot-do">6. What Sapiens Cannot Do</a>
+<a class="pl__i pl__i--sub" href="#s-7-intellectus-at-the-limits-of-reason">7. <em>Intellectus</em> at the Limits of Reason</a>
+<a class="pl__i pl__i--sub" href="#s-8-deterministic-artifice">8. Deterministic Artifice</a>
+<a class="pl__i" href="#s-epilogue-starting-points-for-philanthropic-syste">Epilogue: Starting Points for Philanthropic Systems Design</a>
+<a class="pl__i" href="#s-appendix-a-cataloguing-sapiens-virtual-operation">Appendix A: Cataloguing Sapiens’ Virtual Operations</a>
+<a class="pl__i pl__i--sub" href="#s-1-operations-of-ratio-that-sapiens-do-virtualize">1. Operations of <em>Ratio</em> that Sapiens DO Virtualize</a>
+<a class="pl__i pl__i--sub" href="#s-2-operations-of-ratio-that-sapiens-do-not-virtua">2. Operations of <em>Ratio</em> that Sapiens DO NOT Virtualize</a>
+<a class="pl__i pl__i--sub" href="#s-3-operations-of-intellectus-that-sapiens-do-virt">3. Operations of <em>Intellectus</em> that Sapiens DO Virtualize</a>
+<a class="pl__i pl__i--sub" href="#s-4-operations-of-intellectus-that-sapiens-do-not-">4. Operations of <em>Intellectus</em> that Sapiens DO NOT Virtualize</a>
+<a class="pl__i" href="#s-to-be-exact">To Be Exact</a>
+<a class="pl__i" href="#s-works-cited">Works Cited</a>
+<a class="pl__i" href="#s-selected-bibliography">Selected Bibliography</a>
+
+<div class="pacts">
+<a class="btn" href="papers/instruments-of-virtue.pdf" download>Download PDF</a>
+</div>
+</aside>
+<div class="pbody">
+<section id="s-key-terms">
+<h2><em>Key Terms </em></h2>
+<p>Statistics: the branch of mathematics concerned with collecting quantitative data, analyzing it, and using it to derive probable inferences through aggregation and correlation.</p>
+<p>Stochastics: the study of systems whose behavior is governed by probability distributions; in the context of computing, a <em>stochastic</em> system is one whose outputs are not determined by fixed rules, but by extracting random samples from tabulated probabilities.</p>
+<p>Determinism: in computing, this term characterizes a system in which identical inputs always yield identical outputs, with no random variation.</p>
+<p>Generative AI: a stochastic AI system architecture in which the machine uses statistical patterns derived from digital libraries of human-authored textual, visual, or audio products to generate outputs resembling such products.</p>
+<p>Large Language Model (LLM): a generative AI system that decomposes input text into sequences of word fragments (“tokens”), compares these sequences to statistical patterns derived from large quantities of human-authored text, and generates output text by computing which fragment most probably follows in sequence, given the patterns scanned, the input received, and the output fragments already generated.</p>
+<p>Sapiens: a deterministic AI system architecture in which the machine executes formalizable aspects of human intelligence, organizes knowledge hierarchically across levels of experience and abstraction, and depends on human agents to supply explicit operating principles and practical judgment.</p>
+<p>“Cognitive”: a commonplace term in AI discourse, but Aquinas uses it and its relatives variously in the <em>Summa Theologiæ</em>. In contemporary usage, “cognitive” and “cognition” tend to connote an undifferentiated or incompletely differentiated conception of all human sapiential faculties (external senses, internal senses, <em>intellectus</em>, <em>ratio</em>, et cetera). We will avoid this vocabulary in favor of precise Thomistic terms, even in contexts that do not obviously evoke theology. “Cognitive” calls up confusing associations with modern “cognitive neuroscience,” which is irrelevant here. Sapiens are not purported to replicate undifferentiated human “cognition,” personality, or hypostaseity, but only to instrument particular rational operations.</p>
+<p><em>Intellectus </em>(intellect): the intellectual operation that grasps principles immediately, without discursive justification. <sup class="fnr"><a id="r3" href="#fn3">3</a></sup></p>
+<p><em>Ratio </em>(discursive reasoning): the rational operation that moves from principles to conclusions, antecedents to consequents, through stepwise inference. <sup class="fnr"><a id="r4" href="#fn4">4</a></sup></p>
+<p><em>Anima rationalis</em> (the rational soul): the complete rational faculty, which includes both <em>intellectus</em> and <em>ratio</em> as operations of the same intellectual power of the same <em>anima rationalis</em>.</p>
+</section>
+
+<section id="s-part-i-instrumentality-chr-sis-and-complementari">
+<h2>Part I: Instrumentality, Chrēsis, and Complementarity</h2>
+<p>Contemporary discourse about AI routinely conflates distinct rational operations through uncritical repetition of euphemisms. It’s primarily this use of euphemisms, and not the sophistication of the devices themselves, that makes it difficult for non-specialists to understand what generative AI systems actually do. The result is a lot of confusion about what we are dealing with in AI.</p>
+<p>Since generative systems are being “procured” and “deployed” everywhere, such confusion significantly threatens human life and dignity. Different AI architectures have, and cultivate, fundamentally different relationships to truth and moral responsibility. If we don’t understand what they’re doing, then we don’t understand what we’re doing. Even that might be tolerable if the tasks proposed for AI were merely trivial, but that isn’t what’s happening: instead, so-called “agents” have fallen from the sky with alacrity, and they are now appearing in hospitals, universities, police precincts, immigration offices, policy-writing organs of the administrative state, courts of law, military command centers, and more besides. The moment presses: Do we know what we’re doing?</p>
+<p>Even if we don’t, the Church has shown that she does, and not only by organizing this conference. In <em>Antiqua et Nova</em>, the Holy Office counseled that we distinguish human intelligence—which grasps truth as such through <em>intellectus</em> and reasons discursively through <em>ratio</em>—from AI systems that simulate these operations through statistical inference without performing either. Because moral causality belongs only to personal beings, decisions that touch human dignity must in all cases remain with human agents who alone can exercise conscience and prudence. The note warns that the opacity of current AI systems makes accountability obscure precisely where it is most needed. <sup class="fnr"><a id="r5" href="#fn5">5</a></sup></p>
+<p>From St. Thomas Aquinas, we inherit the concept of instrumental causality: an instrument may participate in an act whose origin and end both lie beyond it, yet contribute to that act through its own proper power. When a sculptor cuts marble with a chisel, the work he applies and the form he intends are both extraneous to the chisel, and the chisel only cuts the marble according to its own material properties. Yet the chisel does contribute to the sculpture, indeed vitally so, thanks to the relationship it is <em>in</em> with both the sculptor and the marble. The principal agent works through an instrument that remains subordinate to him; even so, the instrument leaves its own signature on the finished work.</p>
+<p>Through his recovery of the Greek concept of <em>chrēsis</em> (“use”), the Italian philosopher Giorgio Agamben offers a reading and development of Aquinas on instrumentality that bears fruit for</p>
+<p>thinking about AI.<sup class="fnr"><a id="r6" href="#fn6">6</a></sup> <em>Chrēsis</em> makes it possible to distinguish between two modes of instrumental relationship. What differs between them is not how the relationship is structured, but how that structure is <em>inhabited</em>. <em>Use</em> always affects both agent and instrument: neither emerges from use unmodified. The sculptor shapes the marble through his chisel, but at the same time, his work rebounds on him. By shaping the marble, he shapes himself: his grip improves, his technique develops, his instincts for matter, form, and his own powers deepen and mature <em>through</em> the ways instrument and medium both supply his art and resist it. Certainly, the chisel extends the sculptor’s power and skill. But it also trains and refines the former into the latter. In turn, through use, the chisel acquires its particular material history and character: physical traces imparted to it by the sculptor’s own habitual modes of application.</p>
+<p>Joining Aquinas’s and Agamben’s concepts, we propose a tentative <em>principle of instrumental complementarity</em> as our place to begin: a machine that genuinely serves reason will be one that occasions reflective growth in the human principal who uses it. If a machine works authentically as an instrument through which the human intellect may extend its own proper power, then <em>use</em> of that machine should make the principal agent’s knowledge transparent to itself by drawing it beyond what unaided reflection typically achieves.</p>
+<p>LLMs simulate rational competence by producing outputs that resemble the products of human speculative and practical reason, but all such outputs are generated through a single sub-rational procedure: stochastic association.<sup class="fnr"><a id="r7" href="#fn7">7</a></sup> What’s more, because these machines, at least in their current iteration, utilize “attention” mechanisms that no human being can fully trace, they <em>cannot but</em> lend themselves to abuse by agents seeking an algorithmic alibi to evade legal, political, moral, emotional, and other kinds of liability.<sup class="fnr"><a id="r8" href="#fn8">8</a></sup> These are inerradicable affordances of the machines themselves, whatever their architects’ intentions. By design, LLMs and other generative AI systems function in ways that diffuse accountability, degrade expertise, distort and erode human relationships, and disintegrate the legitimacy of institutions on which a social organism depends. <sup class="fnr"><a id="r9" href="#fn9">9</a></sup></p>
+<p>With an LLM, the instrumental relationship is not merely concealed but progressively inverted. Through his engagement with this machine, the human person becomes more or less unwittingly both instrument and patient of a statistical procedure without a determinate agent; and this happens precisely because LLMs do not participate in reason. Even when we intend to use such systems for genuine reasoning tasks, we find ourselves enlisted, knowingly or not, in a sub-rational simulation of reason. These machines excel only in <em>manipulating</em> information without in any sense <em>comprehending</em> it. The difference between knowledge, fiction, and lies, or more fundamentally that between <em>what is said</em>, <em>what is understood</em>, and <em>what is</em>, accordingly finds no purchase in them.</p>
+<p>By contrast, a deterministic architecture that directly formalized structural features of human knowledge would yield an AI system that would remain fully subordinate to its human principal agents, transparent to human inspection, and dependent on human practical judgment. By instrumenting certain rational operations without simulating independent judgment, such a system would make human rational and moral agency absolutely and irreducibly explicit in every use of AI tools.</p>
+<p>It happens that at least one such architecture has already been substantially developed. An American technology company named New Sapience has designed what it calls “sapiens”: an AI system operating on a deterministic architecture that distinguishes <em>what is said</em> from <em>what is meant</em>, and organizes knowledge hierarchically across different levels of human experience and abstraction.</p>
+<p>The reciprocal nature of interaction between human principal agents and sapiens expresses the design’s core insight, and contrasts with the obscurity and asymmetry of the only relationship a human being can have with an LLM or other generative device. Insofar as human agents learn by using sapiens, while sapiens learn by being used, the relationship between agent and instrument here actively precipitates human introspection and the cultivation of reflective wisdom. Hence the design’s name: both the architecture and its instances are called “sapiens” not for what these devices are puported to <em>be</em> or <em>do</em>, but for what they are intended to serve.</p>
+<p>Yet, to discern whether sapiens actually achieve instrumental complementarity, we must know precisely what they do, how they exist, and what kind of relationship they have with human rational faculties. To that end, in what follows, we identify which rational operations they can perform and in what sense, in order to arrive where their limits expose what only a human being can do or supply.</p>
+</section>
+
+<section id="s-threshold-sapiens-the-system-architecture">
+<h2>Threshold: Sapiens—The System Architecture</h2>
+<p>The Commonsense World Model (CWM) contains three domains: the linguistic (what is said), the ontological (what is meant), and the epistemological (what interprets).</p>
+<p>Separating the linguistic domain from the ontological domain enables the system to map a natural-language dictionary to modeled ontology without conflating the two, while the epistemological domain situates the ontological objects in and among the “lamina,” layers of knowledge. These lamina range from the quantum → atomic → molecular (empirical lamina); to the physical → system → suprasystem (objective lamina); to sensation → perception → sentience → sapience (subjective lamina).</p>
+<p>The role of the lamina is to specify how or indeed whether an object may be known at each of these levels, and how the different levels relate to each other. For example, one doesn’t know a diamond as carbon atoms arranged in a lattice unless and until one engages the atomic lamina. On the level of physics, one knows a diamond as crystalline, translucent, hard; on the level of sentience, one knows it as beautiful (or not), elegant (or not), gaudy (or not); and so on. Each of these <em>is</em> the (knowable) diamond. The lamina mutually inflect and converse with each other, and are not exclusive of each other, but they are accessed in distinct contexts and some—such as the atomic or quantum—only by particular technical means. The lamina <em>supervene</em> upon each other: a difference on any one level makes a corresponding difference on each.</p>
+<p>The engine that interprets and operationalizes the CWM prioritizes the consistency of ontological statements so that all component objects are modeled on the same principles. Separating the epistemological domain from the ontological further enables the system to self-modify the CWM when presented with new knowledge that it needs to inspect and integrate. It first does so in a localized Conversation Model which may or may not be committed, in the end, to the user’s personal version of the CWM.</p>
+<p>Finally, separating the three domains architecturally enables the system to “learn” what new words mean from context. To determine the word is unknown, it uses epistemological data to inspect existing ontological and linguistic data for possible referents. It may then question the user directly about the meaning of the word, make an inference and request confirmation, or both.</p>
+<p>These processes are handled by a proprietary software engine and programming language, both developed internally and patented by New Sapience.</p>
+</section>
+
+<section id="s-part-ii-sapiens-and-intellectus">
+<h2>Part II: Sapiens and Intellectus</h2>
+</section>
+
+<section id="s-1-principles-of-motion">
+<h2>1. Principles of Motion</h2>
+<p>What sort of being does the sapiens architecture describe?</p>
+<p>Aquinas distinguishes among beings by their principle of motion.<sup class="fnr"><a id="r11" href="#fn11">11</a></sup> Things moved by external force —projectiles—differ from things moved by internal principle. Among things moved internally, those moved by natural necessity (fire rising) differ from those moved by appetite (animals seeking food) and from those moved by a free rational appetite, a will (humans and angels choosing the good).</p>
+<p>Sapiens operate deterministically on programming that human beings have designed. They have no internal principle of motion, no will to freely orient towards any end. The critical point: in Aquinas, complete <em>intellectus</em> isn’t a mechanical operation directed by an exterior agent, but an act of a living rational soul, possessing its own rational appetite (will) and its own proper end (nature). A sapiens possesses neither: it has no will and has its sole end in another than itself, the human principal agent for whose sake it exists.</p>
+<p>Now, Aquinas holds that <em>intellectus</em> of principles is immediate and infallible regarding its proper objects. The possible intellect grasps a principle, a universal nature, as soon as it grasps the species that signify it. Through certain architectural decisions, human beings can formalize aspects of this act for computation. However, once <em>intellectus</em> grasps a principle, judging it <em>worthy to hold as an axiom</em> in consequent reasoning involves an independent commitment of the intellect. This is an intentional act attesting a fundamental orientation towards reality—an <em>appetite</em> for truth, which presupposes will. Here the will, as a second power at work <em>within</em> the rational soul, bears efficiently</p>
+<p>upon the intellect.<sup class="fnr"><a id="r14" href="#fn14">14</a></sup> This isn’t and can’t be made a deterministic process: while exact definitions of “will” are rare in the history of philosophy, it’s clear in Aquinas that an entity whose behaviors are fully determined by an exterior force can’t be said with any coherence to possess or exercise a “will.”</p>
+<p>This much begins to distinguish complete, independent <em>intellectus</em> as an act of a rational soul from apparently similar operations in artifacts. Now we draw this distinction to lapidary precision.</p>
+</section>
+
+<section id="s-2-natural-versus-artificial-faculties">
+<h2>2. Natural Versus Artificial Faculties</h2>
+<p>Sapiens’ faculties are all imparted by human design; they are neither innate nor emergent. This evokes Aquinas’s distinction between natural and instrumental faculties.</p>
+<p>In human beings, the agent intellect (<em>intellectus agens</em>) and possible intellect (<em>intellectus</em> <em>possibilis</em>) are both intrinsic faculties of the rational soul.<sup class="fnr"><a id="r15" href="#fn15">15</a></sup> They belong irrevocably to human nature and develop by actualizing innate potential: a teacher only cultivates something already present in each rational soul, although it may be circumstantially frustrated. The initial principles of learning are discovered, not installed.</p>
+<p>In sapiens, faculties are engineered and installed by an exterior agent. A sapiens does not, for example, discover its own innate principles of abstracting particulars or disambiguating references from context. Rather, human beings have devised formal techniques to implement such principles functionally in the system’s mechanical design.</p>
+<p>Aquinas might say: the nature of a thing determines the nature of its operations.<sup class="fnr"><a id="r16" href="#fn16">16</a></sup> If a sapiens’s “nature” is entirely constructed, then all of its operations are artifacts of that human labor. The system really does abstract, disambiguate, and so on, but these works are purely derivative. Human agents have formalized these operations to extend them <em>through</em> sapiens as instruments; sapiens do not act independently, appearances notwithstanding.</p>
+<p>Does this mean sapiens are something like angels, at a lower ontological level? There’s a weak analogy. Angels participate in divine <em>intellectus</em> without being divine.<sup class="fnr"><a id="r17" href="#fn17">17</a></sup> They <em>possess</em> intellectual operations that image and derive from divine <em>intellectus</em>, yet they’re creatures.<sup class="fnr"><a id="r18" href="#fn18">18</a></sup> In an apparently similar way, sapiens participate in human <em>intellectus</em> without being human. They <em>perform</em> operations that externalize aspects of human <em>intellectus</em>, yet they’re artifacts.</p>
+<p>But it’s more important to grasp the strict disanalogy. Angels are intellectual <em>substances</em> who possess their own will and their own complete, independent <em>intellectus</em>, which freely contemplates and intends the good: they choose the good through their own will.<sup class="fnr"><a id="r19" href="#fn19">19</a></sup> Meanwhile, sapiens have no will and no complete, independent <em>intellectus</em>; that’s why they’re called “deterministic.”</p>
+<p><em>Determinism and obedience are not the same thing.</em> Obedience is a voluntary act that proceeds from the will’s own understanding of rightful authority.<sup class="fnr"><a id="r20" href="#fn20">20</a></sup> An entity without a will can’t <em>obey</em>; it can only <em>execute</em>, as sapiens execute operations which, moreover, they don’t possess in themselves.</p>
+<p>What’s more, angels are individual persons, hypostases.<sup class="fnr"><a id="r21" href="#fn21">21</a></sup> They grasp principles connaturally through their own intellectual light, without needing to learn or derive knowledge through inference as</p>
+<p>humans do.<sup class="fnr"><a id="r22" href="#fn22">22</a></sup> By contrast, sapiens process principles already grasped and modeled by humans: they <em>are</em> abstracted speculative operations, formalized structure, and crystallized <em>ratio</em>. The work is formally the same, but the ontological substrate differs utterly: one origin is divine, the other, human; one instance is personal, the other, mechanical. Sapiens are hypostatically empty, subsisting entirely through human rational agency.</p>
+</section>
+
+<section id="s-2-artificial-intellectus">
+<h2>2. Artificial <em>Intellectus</em>?</h2>
+<p>Sapiens do not, therefore, achieve genuine <em>intellectus</em>. And yet, they achieve operations that are effectively isomorphic to aspects of <em>intellectus</em> while lacking the ontological status that makes <em>intellectus</em> what it is. To understand what is happening here, we need to consider distinct operations within the human intellectual act<em>.</em></p>
+<p>Sapiens achieve the following operations of speculative reason:</p>
+<ul>
+<li>Through the three-domain architecture, they abstract universals from particulars.</li>
+<li>Through self-consistency constraints, they disambiguate and process logical relationships as <em>necessary</em>.</li>
+<li>Through the lamina hierarchy, they model knowledge about phenomena across different levels of experience and abstraction.</li>
+<li>Through rules of inference, they reason discursively from principles to conclusions (<em>ratio</em>).</li>
+</ul>
+<p>These all proceed as designed and directed by human rational agency, not as proper acts of an independent rational agent.</p>
+<p>However, sapiens do <em>not</em> achieve the following:</p>
+<ul>
+<li>They don’t actually grasp principles <em>as such. </em>They execute formal rules, including heuristics that regulate how they select one formalism from among applicable alternatives by (a) interpreting operational context and (b) responding to human input.</li>
+<li>They don’t judge that certain undemonstrated theses sufficiently commend themselves to postulate and utilize as self-evident axioms. They require, and are designed to solicit, human agents to make such decisions.</li>
+<li>They don’t commit to axioms as <em>true.</em> They process axioms supplied by humans and utilize them as <em>convenient</em>.</li>
+</ul>
+<p>And they don’t achieve any operations of practical reason. Those operations require:</p>
+<ul>
+<li><em>Synderesis</em>: Natural inclination towards the good, which presupposes appetite.<sup class="fnr"><a id="r23" href="#fn23">23</a></sup></li>
+<li><em>Prudentia</em>: Application of right reason to contingent particulars, which requires practical wisdom and virtuous perception developed through habituation.<sup class="fnr"><a id="r24" href="#fn24">24</a></sup></li>
+<li><em>Conscientia</em>: Application of knowledge to particular acts by a moral agent.<sup class="fnr"><a id="r25" href="#fn25">25</a></sup></li>
+<li><em>Ars</em>: Right reason about things to be made by an agent with creative intention.<sup class="fnr"><a id="r26" href="#fn26">26</a></sup></li>
+</ul>
+<p>A sapiens lacks the basis for any of these. It has no appetite, no will, no nature that can be perfected or frustrated, and no proper ends. Hence, rather than attempt to formalize practical reason, and moral knowledge in particular, as a dimension of the Commonsense World Model, engineers model this as a uniquely human domain. The system solicits judgment from its principal agent regarding exceptions to general instructions while modeling the input received as <em>that agent’s</em> particular judgment, not a formal norm. It can support agents’ discernment by modeling consequences of choices through inference, but it can’t judge—or pretend to judge—whether a choice conduces any genuine good.</p>
+<p>A sapiens is a kind of intellectual projectile. It only externalizes those aspects of reason that are susceptible to formalization, and does so in a derivative and purely functional way. The architecture yields both an authentic rational instrument and an artificial intelligence in the only valid sense of the term, which is not an artificial <em>intellectus</em>, whether speculative or practical.</p>
+</section>
+
+<section id="s-4-instrumenting-the-limits-of-formalism">
+<h2>4. Instrumenting the Limits of Formalism</h2>
+<p>If an “artificial intelligence” isn’t an artificial <em>intellectus</em>, how can we characterize what sapiens actually do relative to the human intellectual act?</p>
+<p><em>Ratio</em> works on rules. Given <em>these</em> premises and <em>this</em> logical form, <em>that</em> conclusion follows. Whatever proceeds by steps from principles can be formalized for computation. For this reason, a sapiens can trace logical dependencies, validate inferences, and derive remote consequences with complete fluency. But because it only executes rules within a structure that human intelligence has designed, literally<em> in principle </em>the system never discovers anything new by itself. It can elaborate and explore the logical structure of any given situation to an arbitrary degree of complexity, but it can’t independently conceive a new way of seeing.</p>
+<p>An example from the history of modern mathematics shows the practical difference. When he conceived his non-Euclidean geometry, Nikolai Lobachevsky didn’t just derive consequences from an already-modified antecedent, Euclid’s parallel axiom. A sapiens could do that much, if it were asked —if, that is, it were given a modified axiom by a human agent, who might either supply it explicitly or do so implicitly by suspending the Euclidean one with a question: “What if parallel lines <em>didn’t</em> form pairs of interior angles that sum to equal two right angles whenever a third straight line falls upon them both?”—or any equivalent formula.</p>
+<p>This is a subtle but critical distinction. A sapiens needs to be prompted to “realize” that an axiom may be modified. The elements for modification must either be provided directly, or implied in the form of the question that asks “What if it weren’ttrue?” In principle, the three-domain architecture enables the system to process whatever is asked in natural language and to infer what follows from the conditions described. Hence, in the form above, the alternatives are that the sum could be more or less than two right angles. Spherical and hyperbolic geometries readily follow.</p>
+<p>Certainly, it isn’t trivial that a mechanical system should be capable of making this sort of inference, which depends on sophisticated natural language processing, disambiguation from context, and something like conceptual engagement furnished by a world model—or in this case, a model of Euclidean geometry. But here also is the absolute difference: Nikolai Lobachevsky <em>asked himself</em> this question. He didn’t only extract an inference from a prompt; he reflexively wondered whether Euclid’s parallel axiom had to be true, conceived that it might be provisional, and for nothing more than his own interest set himself to reckon with an alternative: what if those pairs of interior angles equalled <em>less</em> than two right angles? What then? This is to say, Lobachevsky’s reflexive act was more than formal processing.</p>
+<p>Aquinas teaches that <em>intellectus</em> is the act of a rational soul reckoning with truth itself, through the participatory “light” that imbues its own nature. The soul has an <em>appetite</em> for truth; it grasps that</p>
+<p>truth <em>is</em> and seeks it.<sup class="fnr"><a id="r27" href="#fn27">27</a></sup> By contrast, a sapiens is designed to engage and track reasoning about phenomena as <em>consistent</em>, and only in that sense <em>truthful</em>.</p>
+<p>We’ll return to this theme shortly. For the moment, it’s enough to settle our current preoccupation with the following: These formal limits are why sapiens can extend human deliberation without being able to substitute for human judgment. A sapiens executes <em>ratio</em> and certain formalizable operations of <em>intellectus</em>, but these all depend on and contribute to higher human intellectual acts. The human intellect, in its fullness, is wedded to the human appetite for truth, and a sapiens has no such appetite. Its relationship to the reality it models is neither appetitive, nor personal, subjective, objective, nor even interested. It’s merely operative, as any traditional computer is operative, and it possesses no sentient interiority whatsoever—nor for that matter any exteriority, for the two come together.</p>
+<p>Currently, the system includes no analogue to sensory exposure that would allow engagement with the phenomena its models describe and organize. But even if it were equipped with sensory apparatus, those faculties would have to be designed and encoded by external human agents like all the others. It would remain a transparent and impersonal artifact.</p>
+<p>A sapiens is not “someone”; it exists and operates at an irreducible remove from the peculiar exposure to reality that characterizes a rational soul grasping <em>truth as such</em> and seeking it—<em>wondering</em> at it. Hence a sapiens doesn’t and can’t exist in the posture of receipt and response that specifies <em>intellectus</em> as a human faculty. But it can and does instrument certain fruits of that receipt, as a tool that explicates, extends, compares, and applies formal models of human knowledge.</p>
+<p>Human <em>intellectus </em>is thus partially projected in sapiens, but the ontological principle remains fully human.<sup class="fnr"><a id="r28" href="#fn28">28</a></sup> Precisely because human beings cannot create a truly independent intelligence, our artifacts can participate in our rational operations without themselves becoming rational souls. We can design systems that instrument all formalizable aspects of reason, but we cannot create minds.</p>
+</section>
+
+<section id="s-5-total-simulation-versus-partial-virtualization">
+<h2>5. Total Simulation Versus Partial Virtualization</h2>
+<p>An LLM simulates every rational act while performing none. Under that architecture, the machine executes a procedure that associates signs with statistics and parameters, computes probability</p>
+<p>distributions about them, and reiterates until the output reaches a likely terminus. Critically, this means it uses data about what human beings have said—not what we’ve understood—to simulate our own understanding. This is like a photograph of fire: it looks like fire; it shows a fire once burned somewhere; but that “somewhere” was elsewhere and nothing is burning <em>here</em>.</p>
+<p>Sapiens, too, depend on human <em>intellectus</em>, because they are machines and not rational souls. But what sort of dependence are we dealing with here? Sapiens <em>are</em> computable structures effectively isomorphic to human <em>ratio</em> and aspects of <em>intellectus, </em>projected through artificial means. Insofar as human rational acts had to design these operations and embed them in a modular data structure, human agency always <em>virtually </em>directs sapiens, at whatever remove, in the technical sense Aquinas imparted to “virtuality.” This word designates the manner in which a principal agent’s own power may be present and operative in an instrument.<sup class="fnr"><a id="r29" href="#fn29">29</a></sup> The situation here is like fire that someone ignites by focusing sunlight through a magnifying glass: the flame really burns, it is actually fire, but its operating principle remains exterior to it. The sapiens is the glass; human intellectual acts are the sunlight; the work the sapiens does is the flame; and human agency remains human agency.</p>
+<p>Sapiens thus <em>partially virtualize</em> rather than <em>completely simulate</em> human reasoning. They abstract from particulars, distinguish grades of abstraction, model knowledge hierarchically, and immediately identify logical necessity. The operations <em>operate</em>, but as “projectiles” that human beings act remotely <em>through</em>, rather than as acts of an independent being.</p>
+<p>If sapiens merely simulated human reason, their architectural difference from LLMs would be trivial. Both designs would just describe distinct mechanisms of falsification. But in that sapiens virtualize certain rational operations, their architectural difference proves decisive:</p>
+<p>1. They participate partially in reason, in the manner of instrumental participation.</p>
+<p>2. Their instrumental character protects human agency, precisely because they virtualize aspects of speculative reason while remaining subordinate to human practical judgment and transparent to human inspection.</p>
+<p>3. This makes them suitable as an instrument to support practical judgment, even as they are incapable of replacing it.</p>
+</section>
+
+<section id="s-6-what-sapiens-cannot-do">
+<h2>6. What Sapiens Cannot Do</h2>
+<p>Sapiens’ limits trace a theologically significant boundary between formalizable operations and faculties that require personal encounter with being, natural virtue, supernatural gifts, or all three. We can summarize these limits in two points.</p>
+<p>First, as already seen, sapiens can’t <em>grasp</em> principles as such; they only apply our grasp of them.</p>
+<p>Human reason knows the principle of non-contradiction through <em>intellectus. </em>Once we understand the concepts behind the terms “being” and “not-being,” we see immediately that contradictions can’t be true (except through “becoming”). This insight is the act of a rational soul grasping that truth <em>is</em> and seeking it.</p>
+<p>Sapiens can’t participate in this act. Engineers have translated the principle of non-contradiction into an executable rule: the system includes a procedure that checks whether ontological statements contradict each other, flags inconsistencies, and queries human agents when explicit contradictions arise. These operations preserve the integrity of the principle, but the system hasn’t grasped that contradictory statements can’t be true at once, nor does it independently synthesize new concepts— like change—through <em>introspective</em> dialectic. Every new concept a sapiens synthesizes just extends principles human beings have already grasped to new contexts and phemomena. An exterior agent’s <em>intellectus</em> works in and through the artifact, but the artifact itself doesn’t “grasp” at all.<sup class="fnr"><a id="r30" href="#fn30">30</a></sup> It computes input in terms of categories, heuristics, and modeled ontology—principles already intellected and virtualized as practical rules.</p>
+<p>The first incapacity explains a second one: sapiens can’t <em>suspend intuitive assent</em> to question axioms. Just as they don’t independently <em>see</em> the principles they apply, they can’t independently suspend compliance with those principles, which are, for them, exact and insuperable rules.</p>
+<p>We can make this concrete by returning to the non-Euclidean geometry we considered a moment ago. That geometry engages two human faculties. First, <em>intellectus</em> grasps <em>what</em> Euclid’s parallel axiom claims and <em>that</em> it seems self-evident under what might be termed “Euclidean conditions”—our local experience of physical space. Second, an act of will efficiently causes <em>intellectus </em>to “step back” from what it has already grasped and ask whether whether <em>ratio</em> might still proceed down a different</p>
+<p>path. “What if that weren’t true?” This power and propensity to “step back” from what seems self-evident, to interrogate its ontological priority rather than merely execute and alternate among givens, again expresses the soul’s peculiar appetite for truth. The <em>originary act of questioning</em>, the <em>voluntary suspension of intuitive assent</em>, remains something characteristically human.</p>
+</section>
+
+<section id="s-7-intellectus-at-the-limits-of-reason">
+<h2>7. <em>Intellectus</em> at the Limits of Reason</h2>
+<p>What sort of being is a virtual synthetic intelligence? Where in the history of human thought do we find resources to understand a device like this in terms of what it is, more directly than what it isn’t?</p>
+<p>Immanuel Kant used the word “intuition” (<em>Anschauung</em>) to mean an immediate grasp of things without inference, without <em>ratio</em>. In Kant’s model of the human intellect, he distinguished two kinds of intuition. The sensible kind grasps concrete instances mediated by sensation; the intellectual kind would grasp universals and <em>things in themselves</em>. According to Kant, human beings don’t have intellectual intuition: we have no way of knowing things as they really are, not even by participation in divine knowledge. Instead, our sensible intuition delivers impressions, and the structure of our knowledge depends entirely on inferences about them: we autonomously synthesize concepts by executing rules that are inscribed in the very structure of our consciousness. This finally means that, for Kant, what Aquinas calls <em>intelligibility</em> is just a projection of the subject’s own structure onto a reality that remains utterly inaccessible. The subject is a room with no windows, no doors.</p>
+<p>Aquinas’s <em>intellectus</em> is more complex. On his model, the agent intellect abstracts intelligible species from sensible phantasmata by the light that imbues the rational soul’s own nature; the possible intellect receives these species and sees universal natures <em>through</em> them.<sup class="fnr"><a id="r32" href="#fn32">32</a></sup> <em>Intellectus</em> thus grasps its proper objects as soon as their species are grasped.<sup class="fnr"><a id="r33" href="#fn33">33</a></sup> For example, once you’ve understood what straight lines, parallel lines, right angles, and sums <em>are</em>, you see immediately that a straight line falling on two parallel lines <em>should</em> form pairs of interior angles that sum to equal two right angles. Here, too, as in Kant’s intuition, this happens without inference: the species make it clear to you,</p>
+<p>sufficiently self-evident, simply intelligible. For Aquinas, such intelligibility has been disclosed to you by the things themselves, <em>through</em> their species.</p>
+<p>Hence, for Kant, the intellect is all active, the projective faculty of a transcendental subject who remains hermetically sealed inside himself, yet cannot <em>not </em>reason. For Aquinas, the intellect is both active and passive, motion and rest, the speculative faculty of a rational soul who is at once subject and object, agent and patient, in his own relationship with an <em>outside</em> that really <em>happens</em> to him— however he may respond to it.</p>
+<p>Kant thought our intuitions of space and time—what he called “synthetic <em>a priori</em> knowledge” of Euclidean forms, transmitted through our own sense of how physical space works—provided the solid ground on which his transcendental subject could be secured in a relationship with reality. But then nineteenth-century geometers like Lobachevsky found Euclidean forms to be one coherent model among several, with Euclidean space derivable as a limit case of two mutually exclusive models that both turn Euclidean principles on their head. A century later, Einstein and Minkowski found that, at cosmic scales, spatial and temporal phenomena both require non-Euclidean principles to make sense of them. Minkowski named this correspondence the “absolute world”: an invariant structure, which our intuitions of space and time do not detect, hiddenly governs the relativity of physical measurements, which again our intuitions do not detect—and yet, our intuitions aren’t simply deceiving us. They merely situate us in a finite perspective: we never experience reality unmediated by a frame of reference.</p>
+<p>What does this mean for the intellect, on both accounts? If even sensible intuition grasps only local appearances—if even the phantasmata of space and time furnish only contextual species of how things really are—then the intellect, which abstracts from sensible experience, inherits the same finitude. Whether we think about it in Kantian or Thomistic terms, the human intellect <em>must</em> operate from somewhere, within a definite perspective. “Local, but not for that reason false” is just the structure of finite knowledge.</p>
+<p>Yet the difference between the two accounts is where we begin to grasp what sort of thing a sapiens is, and what sort of “intelligence” it has.</p>
+<p>On Kant’s account, having relativized our sensible intuitions of space and time means the last solid ground disintegrates beneath reason’s feet. <em>Adæquatio intellectus et rei</em> now fully exits the stage; all the Kantian subject can discern is the consistency of models with themselves, each other, and the phenomena they rationalize. But all phenomena, even space and time, are now<em> projections of the subject’s own form</em> rather than <em>events</em>. This is like regarding phenomena as mere cinematic spectacle. Our intuitions are the moving images; structural features of subjectivity are the projector; and reality, as far as we’re concerned, is just an opaque white screen.</p>
+<p>On Aquinas’s account, we aren’t looking <em>at</em> an opaque screen, but <em>through</em> a translucent prism. Reality discloses itself through the species it offers; the rational soul receives this disclosure and may respond. A relationship with truth can be had—but it requires orientation, commitment, intentional participation. When the intellect grasps a principle through an intelligible species, that intelligibility doesn’t yet attest <em>what is real</em>. Rather, committing to a principle as <em>truth,</em> binding reason to what the intellect has grasped, involves an <em>act of will</em>. Human beings must desire truth and seek it, because we neither possess truth in ourselves, nor can we synthesize truththrough pure rationalization— because truth is not an object but a situation, a correspondence, the soul finds itself <em>in</em>.</p>
+<p>Human beings aren’t Kantian intellects, but sapiens are. Unlike rational souls, sapiens lack will. They can’t participate in truth as distinct from intelligibility, because they can’t commit themselves to anything. Rational creatures who serve God obey commands; that’s why their acts can be meritorious. Sapiens execute rules; that’s why truth is irrelevant to them. But insofar as they virtualize rational operations, they <em>do</em> participate in reason<em>. </em>What sapiens don’t possess, and can’t be imparted, is the light that makes <em>intellectus</em> possible in the first place.<sup class="fnr"><a id="r34" href="#fn34">34</a></sup> The rational soul’s grasp of truth as such exceeds all possible formalization, precisely because truth is <em>adæquatio intellectus et rei</em>: a relationship with reality, which no formal system can generate from within itself. <sup class="fnr"><a id="r35" href="#fn35">35</a></sup></p>
+</section>
+
+<section id="s-8-deterministic-artifice">
+<h2>8. Deterministic Artifice</h2>
+<p>A synthetic diamond really is a diamond, a lattice of carbon atoms. What it isn’t is a lattice of carbon atoms gathered and compressed by the shifting titanic weight of mobile tectonic plates over many millions of years. It’s a reproduction of the fruit of that natural process, derived through a process wholly contrived by human technique yet analogous to the natural one. This is the sense in which such a diamond partakes of artifice. And that is the point. A synthetic diamond is, formally and</p>
+<p>materially, a real diamond: it differs insofar as its history, its efficient cause, differs. With regard to what it virtualizes, a sapiens is like a synthetic diamond.</p>
+<p>Perhaps etiology, and not only teleology, has some essential connection to those aspects of the intellectual act that can’t be formalized. After all, practical judgment and speculative wisdom are both cultivated not only through teaching, but through direct experience, history—which is to say, etiology.<sup class="fnr"><a id="r36" href="#fn36">36</a></sup></p>
+<p>A rational soul <em>learns</em>. Aquinas teaches that God creates each one immediately: it doesn’t emerge from matter, nor is it transmitted from human parents.<sup class="fnr"><a id="r37" href="#fn37">37</a></sup> Yet, this immediately created nature is such that it bears fruit only through time, actualizing innate powers through an encounter and a confrontation with reality that is always irreducibly personal. The soul <em>matures</em>. Its appetite for and conversion towards truth both find expression in a <em>visceral history</em>—in the reckoning with experience that forms memory, the choices that cultivate habit, and the failures that instill discernment. <em>Sapientia</em> and <em>prudentia</em> both require this situatedness in time. History isn’t incidental to the human intellectual act; it partially constitutes it.</p>
+<p>A sapiens learns differently because it exists differently. It develops and applies aspects of human intellectual power, not any innate power of its own. Human beings supply principles, and sapiens extend their reach. Human beings correct errors, and sapiens integrate corrections. This is learning of a derivative and instrumental kind: an elaboration of projected structures through continued engagement with the projectors.</p>
+<p>A sapiens doesn’t imagine, desire, suffer, judge, hope, trust, or love. It experiences no conversion. It’s modified and may self-modify through virtual acts that originate in human beings and return to us. It’s a projectile of human <em>intellectus</em>, an artifact that participates in reason without possessing reason. What remains remote to it is the exact place where virtue is formed and grace is received: the singular history that each rational soul must live and endure; or—to say the same thing differently— the human person’s intimate exposure to truth, which reveals itself in time.</p>
+</section>
+
+<section id="s-epilogue-starting-points-for-philanthropic-syste">
+<h2>Epilogue: Starting Points for Philanthropic Systems Design</h2>
+<p>What do the results of this inquiry suggest for the design of AI systems? Sapiens’ limits reflect the limits of what artifacts can do. The operations that can’t be formalized, virtualized, and thus instrumented belong specifically to the rational soul, which can never be manufactured. Realistically, AI has two options: either simulate what can’t be engineered, or design authentic rational instruments that don’t simulate agency, but conduce human beings to act wisely through them. One path seems inimical to sanity and justice. The other path crystallizes the difference between man and machine by touching the utmost limits of what machinery can do.</p>
+<p>But why should limits reveal rather than merely constrain? Why is a machine’s incapacity to do something pedagogically valuable for human beings?</p>
+<p>In Book Theta of the <em>Metaphysics</em>, Aristotle left the elements of a response.<sup class="fnr"><a id="r38" href="#fn38">38</a></sup> Genuine potentiality includes impotentiality: being able <em>not</em> to pass into action. A being that can only do what it’s able to do isn’t really <em>able</em> to do it; it isn’t free. Freedom is a being-in-relation to one’s own impotentiality. In each act, the free being retains every alternative that he has, knowingly or not, declined. Machines can’t enter this relationship. They execute their programming, even when it prepares them to select from among alternatives. They don’t abide in a relationship with what they could have not-done or might have done otherwise. But this is abiding is inseparable from what makes us human.</p>
+<p>Accordingly, when a sapiens encounters its own limit and queries a human agent for direction, this limit exposes the agent’s own nature, showing what belongs most properly to the rational soul. The machine becomes a mirror by privation: where formalism fails, that incapacity leaves the human being to contemplate what <em>his own capacities </em>mean he is—and is not. A machine can’t spontaneously interrogate its own axioms; he can. A machine can’t halt its own operation because it would prefer not to continue, nor for that matter can it perservere; he can. A machine can’t commit to principles as truth; he can. Each determinate limit the agent encounters casts his own potentiality against the machine’s sheer operativity.</p>
+<p>When a human agent engages with a sapiens, his own knowledge becomes visible to him. He judges what is at stake in it by seeing where the stakes lead. Implications he couldn’t hold in mind at once now lie before him, traced and connected. Tensions that had remained latent in his presuppositions become explicit. Consequences he hadn’t foreseen ensue from commitments he hadn’t examined.</p>
+<p>This is the design’s true achievement. An instrument that takes formalization to its absolute limit necessarily leaves judgment to the human agent who alone can genuinely exercise it. Through his</p>
+<p>confrontation with what his instruments cannot do, the human being is brought to recognize himself. The instrument serves <em>sapientia</em> and <em>prudentia</em> by recalling him to his own capabilities at the threshold of what can never really be taken from him.</p>
+<p>Hence, while a system that <em>simulates</em> human practical judgment will always tend to dissolve the conditions under which wisdom can exist and act, a system that <em>instruments</em> human practical judgment while soliciting its exercise at every threshold of formalization can serve the flourishing that both speculative and practical wisdom seek. With this in mind, the preliminary criterion we propose for evaluating AI systems is simply to ask whether a given architecture obscures or illuminates the difference and the likeness between man and machine—which is to say, whether it trespasses or defers to the order of reason.</p>
+<p>This criterion equally describes a first practical principle for designing AI systems that complement, rather than parasitize, how human beings really are and how reality really is. For anyone wishing to protect human judgment in an age of AI and euphemisms about AI, we hope these reflections may help clear the way for both discernment and action.</p>
+</section>
+
+<section id="s-appendix-a-cataloguing-sapiens-virtual-operation">
+<h2>Appendix A: Cataloguing Sapiens’ Virtual Operations</h2>
+</section>
+
+<section id="s-1-operations-of-ratio-that-sapiens-do-virtualize">
+<h2>1. Operations of <em>Ratio</em> that Sapiens DO Virtualize</h2>
+<p>a. Syllogistic inference. Moving from premises to conclusions through valid logical forms. Given “All humans are mortal” and “Socrates is human,” deriving “Socrates is mortal.”</p>
+<p><em>Sapiens achievement</em>: A sapiens performs deductive reasoning from <em>modeled</em> premises, deriving consequences that follow necessarily.</p>
+<p>b. Tracing logical dependencies. Identifying which propositions depend on which premises, thus mapping chains of inference.</p>
+<p><em>Sapiens achievement</em>: The epistemological domain tracks how knowledge claims depend on other claims, making the structure of reasoning explicit and inspectable.</p>
+<p>c. Validating antecedents and consequents. Determining whether conclusions necessarily follow from premises based on logical rules.</p>
+<p><em>Sapiens achievement</em>: The consistency-validating mechanism certifies whether inferences preserve logical structure.</p>
+<p>d. Deriving remote consequences. Engaging chains of reasoning through to conclusions distant from starting premises.</p>
+<p><em>Sapiens achievement</em>: A sapiens can trace implications through multiple steps, elaborating enchained cumulative and collateral consequences from <em>modeled</em> principles.</p>
+</section>
+
+<section id="s-2-operations-of-ratio-that-sapiens-do-not-virtua">
+<h2>2. Operations of <em>Ratio</em> that Sapiens DO NOT Virtualize</h2>
+<p>None. <em>Ratio</em> is discursive reasoning from given principles. Sapiens appear to virtualize the full range of ratio’s operations <em>once principles are supplied</em>. The system’s limitations aren’t in <em>ratio </em>but in what supplies <em>ratio</em> with its starting points, namely <em>intellectus</em>, and what governs its progress—practical reason, and <em>prudentia</em> in particular.</p>
+</section>
+
+<section id="s-3-operations-of-intellectus-that-sapiens-do-virt">
+<h2>3. Operations of <em>Intellectus</em> that Sapiens DO Virtualize</h2>
+<p>a. <em>Abstracting</em> universal concepts from particular instances (though not from phantasmata). The agent intellect abstracts “humanity” from individual humans, “triangularity” from particular triangles, grasping universal nature (genus) as distinct from individuating matter (species).</p>
+<p><em>Sapiens achievement</em>: The three-domain architecture separates linguistic data from ontological concepts. When encountering a term across multiple contexts, a sapiens synthesizes a universal concept by identifying structural relationships while abstracting from particular instances. A sapiens formally abstracts what remains constant across variations, and does not utilize statistical aggregation.</p>
+<p>b. Distinguishing <em>grades</em> of abstraction. Recognizing that the same object can be known differently at different levels: physics abstracts from particular matter, mathematics from sensible matter, metaphysics from all matter (<em>ST</em> I, q.85, a.1).</p>
+<p><em>Sapiens achievement</em>: The Commonsense World Model’s lamina structure (quantum → atomic → molecular → physical → systemic → suprasystemic → sensational → perceptual → sentient → sapient) explicitly models how objects are known differently at different epistemological levels. For example, a diamond is known—and thus modeled—differently at the atomic lamina (a carbon lattice), at the physical lamina (hard, translucent, crystalline), and at the sentient lamina (beautiful, elegant, gaudy). The models are distinct yet correlated: a difference in how the intentional object is modeled at one level makes a difference in how the same object is modeled at every other level.</p>
+<p>c. Immediate recognition of <em>logical necessity</em> within a given formal system. Once you grasp the conceptual denotations of the terms “square” and “circle,” you see immediately that no figure can be both at once.</p>
+<p><em>Sapiens achievement</em>: A sapiens recognizes contradictions immediately through structural incompatibilities in the ontological domain, not through iterative searches over statistical associations. When ontological specifications on terms’ conceptual referents conflict, a sapiens detects this by processing the terms themselves, not through stochastic trial and error.</p>
+<p>d. Organizing concepts <em>hierarchically</em>. Recognizing genus-species relationships, how broader concepts contain narrower ones; in short, how knowledge structures phenomena taxonomically.</p>
+<p><em>Sapiens achievement</em>: The ontological domain explicitly models hierarchical relationships between concepts: “mammal” contains “dog”; “relationship” contains “comparison”; “(knowable) thing” encompasses all subordinate concepts and categories—all modeled intelligible species.</p>
+</section>
+
+<section id="s-4-operations-of-intellectus-that-sapiens-do-not-">
+<h2>4. Operations of <em>Intellectus</em> that Sapiens DO NOT Virtualize</h2>
+<p>a. Grasping first principles <em>as first principles</em>. Recognizing that certain principles commend themselves sufficiently to be accepted as foundational without demonstration and without further evidence than their sheer conceivability, because they are the axioms from which any demonstration and any interpretation of evidence may proceed.</p>
+<p><em>Sapiens limitation</em>: A sapiens processes axioms that humans supply, but does not judge which propositions are “first” versus derived. It cannot distinguish between axioms and theorems <em>ontologically</em>, only <em>functionally</em> based on how humans have encoded them. A sapiens does not “see” any principles as “commending themselves sufficiently to be accepted” as self-evident. Rather, it is programmed to apply encoded principles deterministically and responsively to subsequent human input. For this reason, a sapiens cannot independently suspend and interrogate principles in the same reflexive way.</p>
+<p>b. Grasping truth as <em>correspondence to reality</em>. <em>Intellectus</em> grasps not merely that propositions are logically consistent but that they can be <em>true</em>, that they may correspond to how things <em>actually are</em>.</p>
+<p><em>Sapiens limitation</em>: A sapiens checks that statements are consistent with <em>modeled</em> ontology and, provided sensory apparatus, whether models are consistent with phenomena. But a sapiens does not know and cannot judge whether the model itself corresponds to <em>reality as such</em>. It processes models of formalizable human knowledge, that is, models of models; it does not model reality directly.</p>
+<p>c. The <em>reflexive</em> operation of questioning axioms. Independently “stepping back” from operative principles to ask whether they are necessarily true or merely provisional; in a modern idiom, suspending intuitive assent to interrogate a principle’s <em>a priori</em> status.</p>
+<p><em>Sapiens limitation</em>: As deterministic, a sapiens cannot independently ask “What if this axiom were false?” It processes axioms as given. When human agents question axioms themselves, a sapiens can derive alternative axioms by processing the logical modifications that are implicit in the form of the question, but the independent <em>act of questioning</em>, the <em>voluntary suspension of intuitive assent</em>, is not virtualized.</p>
+<p>d. Recognizing when principles are <em>grasped</em> versus when they require further clarification. <em>Intellectus</em> knows when understanding is inadequate, when terms are not sufficiently understood to hold principles as self-evident.</p>
+<p><em>Sapiens limitation</em>: A sapiens flags when it lacks operationally necessary information and investigates when it encounters undefined terms, but this is an externally programmed response to discovering an absence of data, <em>not</em> an independent aptitude to discern whether or not adequate understanding has been achieved. A sapiens cannot <em>independently</em> judge the adequacy of its own comprehension, precisely because all its virtual faculties are functional projections of human faculties.</p>
+<p>e. The natural light of the agent intellect. The active power that renders potentially intelligible content actually intelligible; the intellectual “light” that illuminates <em>phantasmata</em>, rendering forms knowable. <em>ST</em> I, q.79, a.3–4 describes this as a participation in divine light.</p>
+<p><em>Sapiens limitation</em>: The system’s operations are designed by humans to preserve intelligibility. That is, the system processes what humans have <em>already rendered intelligible</em>, implicitly in principle if not explicitly in lucid knowledge—in wisdom. A sapiens does not possess its own intellectual light through which being becomes known. This “light” is borrowed, programmed, exterior to it, and remains precisely human.</p>
+<p>f. <em>Synderesis</em> (practical <em>intellectus</em>). The immediate grasp of first practical principles, especially that “good is to be pursued and evil avoided.”</p>
+<p><em>Sapiens limitation</em>: Complete absence of practical <em>intellectus</em> and, indeed, all practical faculties. A sapiens has no appetite, no will, and no natural sensibility of or orientation towards the good. It cannot independently discern what constitutes genuine human flourishing versus what satisfies modeled conceptions of such. This entire domain remains unvirtualized, because it requires ontological characteristics that artifacts lack.</p>
+</section>
+
+<section id="s-to-be-exact">
+<h2>To Be Exact</h2>
+<p>What sapiens DO virtualize regarding <em>ratio</em>: All discursive operations: syllogistic inference, tracing dependencies (recovering antecedents), deriving consequences, and validating consistency. The proper fullness of <em>ratio</em>, once principles are supplied.</p>
+<p>What sapiens DO NOT virtualize regarding <em>ratio</em>: The <em>practical governance</em> of <em>ratio</em>: discerning which objects of inquiry warrant investigation, and judging when a reasoned account has been sufficiently elaborated that inference may be abandoned. These acts require practical faculties that sapiens completely lack.</p>
+<p>What sapiens DO virtualize regarding <em>intellectus</em>:</p>
+<ul>
+<li>Abstracting universal concepts from particular instances.</li>
+<li>Distinguishing grades of abstraction (hierarchical knowledge organization).</li>
+<li>Immediately recognizing logical necessity within formal systems.</li>
+<li>Organizing concepts hierarchically by genus and species.</li>
+</ul>
+<p>What sapiens DO NOT virtualize regarding <em>intellectus</em>:</p>
+<ul>
+<li>Grasping first principles as such (versus processing supplied axioms).</li>
+<li>Judging truth as correspondence to reality (versus validating logical consistency).</li>
+<li>Independently suspending axiomatic assent to question whether axioms are indeed necessary for reasoning to proceed (versus processing implicit alternative systems if and only if prompted).</li>
+<li>Recognizing inadequacy of understanding (versus flagging absent data).</li>
+<li>Possessing the light of the agent intellect (versus executing operations that human beings have designed to project our own faculties, including interpretation of sensory experience, instrumentally).</li>
+<li>Any practical <em>intellectus</em> whatsoever (<em>synderesis</em>, <em>prudentia</em>, <em>conscientia</em>, <em>ars</em>).</li>
+</ul>
+<p>The pattern: Sapiens virtualize operations that can be formalized as structural relationships, organized hierarchies, and rule-governed transformations. They <em>do not</em> virtualize operations that require encountering being directly, discerning truth as such, independent commitment to or suspension of principles, or a rational appetite oriented towards the good.</p>
+</section>
+
+<section id="s-works-cited">
+<h2>Works Cited</h2>
+<p>Agamben, Giorgio. <em>L’uso dei corpi</em>. Vicenza: Neri Pozza, 2014. [Homo sacer IV/2]</p>
+<p>———. <em>The Use of Bodies</em>. Translated by Adam Kotsko. Stanford, CA: Stanford University Press, 2016. Meridian: Crossing Aesthetics.</p>
+<p>———. <em>Opus Dei. Archeologia dell’ufficio</em>. Torino: Bollati Boringhieri, 2012. [Homo sacer II/5]</p>
+<p>———. <em>Opus Dei: An Archaeology of Duty</em>. Translated by Adam Kotsko. Stanford, CA: Stanford University Press, 2013. Meridian: Crossing Aesthetics.</p>
+<p>Aquinas, Thomas. <em>De Veritate</em>. Editio Leonina. Transcribed by Robert Busa, S.J., and edited by the Aquinas Institute. Accessed via aquinas.cc.</p>
+<p>———. <em>Summa Contra Gentiles</em>. Textus Leoninus diligenter recognitus, cura et studio P. Marc, coadiuv. C. Pera et P. Caramello (Marietti, Taurini-Romae, 1961). Accessed via aquinas.cc.</p>
+<p>———. <em>Summa Theologiæ</em>. Editio Leonina. Transcribed and revised by the Aquinas Institute. Accessed via aquinas.cc.</p>
+<p>———. <em>Super librum De causis expositio</em>. Edited by H. D. Saffrey, O.P. Fribourg: Société Philosophique; Louvain: Éditions E. Nauwelaerts, 1954. Textus Philosophici Friburgenses 4–5. Reprinted Paris: Vrin, 2002. Transcribed by Robert Busa, S.J., and revised by the Aquinas Institute. Accessed via aquinas.cc.</p>
+<p>Aristotle. <em>Metaphysics</em>. 2 vols. Translated by Hugh Tredennick. Loeb Classical Library 271, 287. Cambridge, MA: Harvard University Press; London: William Heinemann, 1933–1935.</p>
+<p>Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education. <em>Antiqua et Nova: Note on the Relationship Between Artificial Intelligence and Human Intelligence</em>. Vatican City, 14 January 2025.</p>
+<p>Floridi, Luciano, Jessica Morley, Claudio Novelli, and David S. Watson. “What Kind of Reasoning (if any) is an LLM Actually Doing? On the Stochastic Nature and Abductive Appearance of Large Language Models (revised).” arXiv:2512.10080 (15 December 2025). https://arxiv.org/abs/2512.10080.</p>
+<p>Hartzog, Woodrow, and Jessica M. Silbey. “How AI Destroys Institutions.” <em>UC Law Journal</em> 77 (forthcoming 2026). Boston University School of Law Research Paper No. 5870623. SSRN (5 December 2025). https://ssrn.com/abstract=5870623.</p>
+<p>Knox, W. Bradley, Katie Bradford, Samanta Varela Castro, Desmond C. Ong, Sean Williams, Jacob Romanow, Carly Nations, Peter Stone, and Samuel Baker. “Harmful Traits of AI Companions.” arXiv:2511.14972 (18 November 2025). https://arxiv.org/abs/2511.14972.</p>
+<p>Zhang Chong. “Attention Is Not What You Need: Grassmann Flows as an Attention-Free Alternative for Sequence Modeling.” arXiv:2512.19428 (22 December 2025). https://arxiv.org/abs/ 2512.19428.</p>
+</section>
+
+<section id="s-selected-bibliography">
+<h2>Selected Bibliography</h2>
+<p>Agamben, Giorgio, and Jean-Baptiste Brenet. <em>Intelletto d’amore</em>. Preface by Alain de Libera. Translated by Giuseppe Lucchesini. Macerata: Quodlibet, 2020. Saggi.</p>
+<p>Agamben, Giorgio, and Emanuele Coccia, eds. <em>Angeli: Ebraismo, Cristianesimo, Islam</em>. Vicenza: Neri Pozza, 2009. La quarta prosa.</p>
+<p>Gray, Christopher B. “Virtuality in Aquinas and Deleuze: Current Tropes in Ancient Cloaks.” <em>Ontology Studies / Cuadernos de Ontología</em> 12 (2012): 407–418.</p>
+<p>Marion, Jean-Luc. <em>Au lieu de soi: L’approche de Saint Augustin</em>. Paris: Presses Universitaires de France, 2008. Collection « Épiméthée ».</p>
+<p>———. <em>In the Self’s Place: The Approach of Saint Augustine</em>. Translated by Jeffrey L. Kosky. Stanford, CA: Stanford University Press, 2012. Cultural Memory in the Present.</p>
+<p>———. <em>L’idole et la distance: cinq études</em>. Paris: Grasset, 1977. Collection “Figures.”</p>
+<p>———. <em>The Idol and Distance: Five Studies</em>. Translated by Thomas A. Carlson. New York: Fordham University Press, 2001. Perspectives in Continental Philosophy.</p>
+<p>———. <em>Étant donné. Essai d’une phénoménologie de la donation</em>. Paris: Presses Universitaires de France, 1997. Collection “Épiméthée.”</p>
+<p>———. <em>Being Given: Toward a Phenomenology of Givenness</em>. Translated by Jeffrey L. Kosky. Stanford, CA: Stanford University Press, 2002. Cultural Memory in the Present.</p>
+<p>———. <em>De surcroît: études sur les phénomènes saturés</em>. Paris: Presses Universitaires de France, 2001. Collection “Perspectives critiques.”</p>
+<p>———. <em>In Excess: Studies of Saturated Phenomena</em>. Translated by Robyn Horner and Vincent Berraud. New York: Fordham University Press, 2002. Perspectives in Continental Philosophy.</p>
+<p>———. <em>La Croisée du visible</em>. 2nd ed., rev. and exp. Paris: Presses Universitaires de France, 1996. Collection “Épiméthée.” First edition: Paris: Éditions de la Différence, 1991.</p>
+<p>———. <em>The Crossing of the Visible</em>. Translated by James K. A. Smith. Stanford, CA: Stanford University Press, 2004. Cultural Memory in the Present.</p>
+<p>———. <em>Questions cartésiennes II: Sur l’ego et sur Dieu</em>. Paris: Presses Universitaires de France, 1996. Collection “Philosophie d’aujourd’hui.”</p>
+<p>———. <em>On the Ego and on God: Further Cartesian Questions</em>. Translated by Christina M. Gschwandtner. New York: Fordham University Press, 2007. Perspectives in Continental Philosophy.</p>
+<p>———. <em>D’ailleurs, la révélation</em>. Paris: Grasset &amp; Fasquelle, 2020.</p>
+<p>———. <em>Revelation Comes from Elsewhere: A Contribution to a Critical History and a Phenomenal Concept of Revelation</em>. Translated by Stephen E. Lewis and Stephanie Rumpza. Stanford, CA: Stanford University Press, 2024. Cultural Memory in the Present.</p>
+<p>Romano, Claude. <em>Au cœur de la raison, la phénoménologie</em>. Paris: Gallimard, 2010. Folio essais 539.</p>
+<p>———. <em>At the Heart of Reason</em>. Translated by Michael B. Smith and Claude Romano. Evanston, IL: Northwestern University Press, 2015. Studies in Phenomenology and Existential Philosophy.</p>
+<p>———. <em>Il y a: Essais de phénoménologie</em>. Paris: Presses Universitaires de France, 2003. Collection “Épiméthée.”</p>
+<p>———. <em>There Is: The Event and the Finitude of Appearing</em>. Translated by Michael B. Smith. New York: Fordham University Press, 2016. Perspectives in Continental Philosophy.</p>
+</section>
+
+
+<div class="pfn" id="footnotes">
+<h2>Footnotes</h2>
+<ol>
+<li id="fn2">Abbreviations for Aquinas’s cited works: <em>ST</em>: <em>Summa Theologiæ</em>. <em>DV</em>: <em>De Veritate</em>. <em>SCG</em>: <em>Summa Contra </em> <em>Gentiles</em>. <em>LC</em>: <em>Super librum De causis expositio.</em> <a class="fnb" href="#r2" aria-label="Back to text">&#8617;</a></li>
+<li id="fn3"><em>ST</em> I–II, q.57, a.2: “Quod autem est per se notum, se habet ut principium; et percipitur statim ab intellectu. Et ideo habitus perficiens intellectum ad huiusmodi veri considerationem, vocatur intellectus, qui est habitus principiorum.” <a class="fnb" href="#r3" aria-label="Back to text">&#8617;</a></li>
+<li id="fn4"><em>ST</em> I, q.79, a.8: “Ratiocinari autem est procedere de uno intellecto ad aliud, ad veritatem intelligibilem cognoscendam.…Patet ergo quod ratiocinari comparatur ad intelligere sicut moveri ad quiescere, vel acquirere ad habere.” <a class="fnb" href="#r4" aria-label="Back to text">&#8617;</a></li>
+<li id="fn5">Dicastery for the Doctrine of the Faith, Dicastery for Culture and Education, <em>Antiqua et Nova: Note on the </em> <em>Relationship Between Artificial Intelligence and Human Intelligence</em> (14 January 2025) <a class="fnb" href="#r5" aria-label="Back to text">&#8617;</a></li>
+<li id="fn6">Agamben, <em>The Use of Bodies</em> (2015); ibid., <em>Opus Dei: Toward an Archæology of Duty </em>(2013) <a class="fnb" href="#r6" aria-label="Back to text">&#8617;</a></li>
+<li id="fn7">Floridi et al., “What Kind of Reasoning (if any) is an LLM Actually Doing? On the Stochastic Nature and Abductive Appearance of Large Language Models (revised)” (15 December 2025) <a class="fnb" href="#r7" aria-label="Back to text">&#8617;</a></li>
+<li id="fn8">Zhang, “Attention Is Not What You Need: Grassmann Flows as an Attention-Free Alternative for Sequence Modeling” (22 December 2025) <a class="fnb" href="#r8" aria-label="Back to text">&#8617;</a></li>
+<li id="fn9">Hartzog and Silbey, “How AI Destroys Institutions” (forthcoming, draft accessed 13 January 2026) <a class="fnb" href="#r9" aria-label="Back to text">&#8617;</a></li>
+<li id="fn10">Knox, Bradford, et al., “Harmful Traits of AI Companions” (18 November 2025) <a class="fnb" href="#r10" aria-label="Back to text">&#8617;</a></li>
+<li id="fn11"><em>ST</em> I, q.18, a.1: “Primo autem dicimus animal vivere, quando incipit ex se motum habere.…Illa proprie sunt viventia, quæ seipsa secundum aliquam speciem motus movent”; a.2: “Vivere nihil aliud est quam esse in tali natura”; a.3: “Vita maxime proprie in Deo est.” <a class="fnb" href="#r11" aria-label="Back to text">&#8617;</a></li>
+<li id="fn12"><em>ST</em> I–II, q.6, a.1: “Quæ vero habent notitiam finis dicuntur seipsa movere, quia in eis est principium non solum ut agant, sed etiam ut agant propter finem. Et ideo, cum utrumque sit ab intrinseco principio…horum motus et actus dicuntur <em>voluntarii</em>, hoc enim importat nomen <em>voluntarii</em>, quod motus et actus sit a propria inclinatione”; a.2: “Soli rationali naturæ competit voluntarium secundum rationem perfectam, sed secundum rationem imperfectam, competit etiam brutis animalibus.” <a class="fnb" href="#r12" aria-label="Back to text">&#8617;</a></li>
+<li id="fn13"><em>ST</em> I, q.82, a.4: “Alio modo dicitur aliquid movere per modum agentis; sicut alterans movet alteratum, et impellens movet impulsum. Et hoc modo voluntas movet intellectum.…Hæ potentiæ suis actibus invicem se includunt, quia intellectus intelligit voluntatem velle, et voluntas vult intellectum intelligere.” <a class="fnb" href="#r13" aria-label="Back to text">&#8617;</a></li>
+<li id="fn14"><em>DV</em> q.22, a.12: “Intellectus aliquo modo movet voluntatem, et aliquo modo voluntas movet intellectum et alias vires. Ad cuius evidentiam sciendum, quod tam finis quam efficiens movere dicuntur, sed diversimode.” <a class="fnb" href="#r14" aria-label="Back to text">&#8617;</a></li>
+<li id="fn15"><em>ST</em> I, q.79, a.3–4: “Oportebat igitur ponere aliquam virtutem ex parte intellectus, quæ faceret intelligibilia in actu, per abstractionem specierum a conditionibus materialibus. Et hæc est necessitas ponendi intellectum agentem”; “In parte nutritiva omnes potentiæ sunt activæ; in parte autem sensitiva, omnes passivæ; in parte vero intellectiva est aliquid activum, et aliquid passivum.” <a class="fnb" href="#r15" aria-label="Back to text">&#8617;</a></li>
+<li id="fn16"><em>ST</em> I, q.75, a.3: “Enim unumquodque habet esse et operationem.” <em>SCG</em> II, c.76: “Nihil operatur nisi per aliquam virtutem quæ formaliter in ipso est.…Numquodque quod non potest exire in propriam operationem nisi per hoc quod movetur ab exteriori principio, magis agitur ad operandum quam seipsum agat.…Si igitur intellectus agens est quædam substantia extra hominem, tota operatio hominis dependet a principio extrinseco. Non igitur erit homo agens seipsum, sed actus ab alio.” <a class="fnb" href="#r16" aria-label="Back to text">&#8617;</a></li>
+<li id="fn17"><em>ST</em> I, q.54, a.1: “Neque angeli, neque alterius creaturæ, sua actio est eius substantia.…In solo Deo sua substantia est suum esse et suum agere”; “Actio quæ transit in aliquid extrinsecum, est realiter media inter agens et subiectum recipiens actionem. Sed actio quæ manet in agente, non est realiter medium inter agens et obiectum, sed secundum modum significandi tantum, realiter vero consequitur unionem obiecti cum agente.” <a class="fnb" href="#r17" aria-label="Back to text">&#8617;</a></li>
+<li id="fn18"><em>ST</em> I, q.55, a.1: “Angelus autem per suam essentiam non potest omnia cognoscere; sed oportet intellectum eius aliquibus speciebus perfici ad res cognoscendas.” <a class="fnb" href="#r18" aria-label="Back to text">&#8617;</a></li>
+<li id="fn19"><em>ST</em> I, q.59, a.1: “Necesse est ponere voluntatem in angelis”; a.3: “Libertas arbitrii, cum sit in hominibus, multo magis est in angelis.…<em>ubicumque est intellectus, est liberum arbitrium</em>.” I, q.79, a.1: “In angelis non est alia vis nisi intellectiva, et voluntas, quæ ad intellectum consequitur.” <a class="fnb" href="#r19" aria-label="Back to text">&#8617;</a></li>
+<li id="fn20"><em>ST</em> II–II, q.104, a.2: “Obedientia, sicut et quælibet virtus, debet habere promptam voluntatem in suum proprium obiectum, non autem in id quod repugnans est ei. Proprium autem obiectum obedientiæ est præceptum, quod quidem ex alterius voluntate procedit.” <a class="fnb" href="#r20" aria-label="Back to text">&#8617;</a></li>
+<li id="fn21"><em>ST</em> I, q.29, a.1: “Sed adhuc quodam specialiori et perfectiori modo invenitur particulare et individuum in substantiis rationalibus, quae habent dominium sui actus, et non solum aguntur, sicut alia, sed per se agunt, actiones autem in singularibus sunt. Et ideo etiam inter ceteras substantias quoddam speciale nomen habent singularia rationalis naturae. Et hoc nomen est persona”; a.3: “Persona significat id quod est perfectissimum in tota natura, scilicet subsistens in rationali natura.” <a class="fnb" href="#r21" aria-label="Back to text">&#8617;</a></li>
+<li id="fn22"><em>ST</em> I, q.55, a.2: “Species per quas angeli intelligunt, non sunt a rebus acceptæ, sed eis connaturales.…Dato etiam quod posset abstrahere species intelligibiles a rebus materialibus, non tamen abstraheret, quia non indigeret eis, cum habeat species intelligibiles connaturales.” I, q.58, a.3: “Si autem statim [hominum] in ipsa cognitione principii noti, inspicerent quasi notas omnes conclusiones consequentes, in eis discursus locum non haberet. Et hoc est in angelis: quia statim in illis quae primo naturaliter cognoscunt, inspiciunt omnia quaecumque in eis cognosci possunt.” <a class="fnb" href="#r22" aria-label="Back to text">&#8617;</a></li>
+<li id="fn23"><em>ST</em> I–II, q.94, a.1: “Synderesis…est habitus continens præcepta legis naturalis, quæ sunt prima principia operum humanorum.” <a class="fnb" href="#r23" aria-label="Back to text">&#8617;</a></li>
+<li id="fn24"><em>ST</em> II–II, q.47, a.2: “Prudentia est sapientia in rebus humanis, non autem sapientia simpliciter.…Ad prudentiam non pertinet nisi applicatio rationis rectæ ad ea de quibus est consilium”; a.15: “Igitur prudentia non est circa fines, sed circa ea quæ sunt ad finem…ideo prudentia non est naturalis.” <a class="fnb" href="#r24" aria-label="Back to text">&#8617;</a></li>
+<li id="fn25"><em>ST</em> I, q.79, a.13: “Conscientia, proprie loquendo, non est potentia, sed actus.…Conscientia enim, secundum proprietatem vocabuli, importat ordinem scientiæ ad aliquid, nam conscientia dicitur cum alio scientia. Applicatio autem scientiæ ad aliquid fit per aliquem actum.” <a class="fnb" href="#r25" aria-label="Back to text">&#8617;</a></li>
+<li id="fn26"><em>ST</em> I–II, q.57, a.3: “Ars nihil aliud est quam ratio recta aliquorum operum faciendorum”; a.4: “Ars est recta ratio factibilium; prudentia vero est recta ratio agibilium.” <a class="fnb" href="#r26" aria-label="Back to text">&#8617;</a></li>
+<li id="fn27"><em> ST</em> I, q.16, a.1: “Veritas principaliter est in intellectu; secundario vero in rebus, secundum quod comparantur ad intellectum ut ad principium.” I, q.82, a.2: “Sicut intellectus naturaliter et ex necessitate inhæret primis principiis, ita voluntas ultimo fini.” <a class="fnb" href="#r27" aria-label="Back to text">&#8617;</a></li>
+<li id="fn28"><em>ST</em> III, q.62, a.1: “Principalis quidem operatur per virtutem suæ formæ, cui assimilatur effectus, sicut ignis suo calore calefaci.…Causa vero instrumentalis non agit per virtutem suæ formæ, sed solum per motum quo movetur a principali agente. Unde effectus non assimilatur instrumento, sed principali agenti, sicut lectus non assimilatur securi, sed arti quæ est in mente artificis.” <a class="fnb" href="#r28" aria-label="Back to text">&#8617;</a></li>
+<li id="fn29"><em>ST</em> I, q.105, a.1: “Effectus aliquis invenitur assimilari causæ agenti dupliciter.…Alio modo, secundum virtualem continentiam, prout scilicet forma effectus virtualiter continetur in causa.” <em>LC</em> I, l.24: “Sunt enim effectus virtute in sua causa. Causa autem prima secundum hunc modum est in rebus diversimode, quia scilicet causa prima in rebus causatis est secundum quod eis similitudinem suam imprimit; diversæ autem res diversimode similitudinem causæ primæ recipiunt.” <a class="fnb" href="#r29" aria-label="Back to text">&#8617;</a></li>
+<li id="fn30"><em>ST</em> III, q.62, a.4: “Et hæc quidem virtus proportionatur instrumento. Unde comparatur ad virtutem absolutam et perfectam alicuius rei sicut comparatur instrumentum ad agens principale. Instrumentum enim…non operatur nisi inquantum est motum a principali agente, quod per se operatur. Et ideo virtus principalis agentis habet permanens et completum esse in natura, virtus autem instrumentalis habet esse transiens ex uno in aliud, et incompletum; sicut et motus est actus imperfectus ab agente in patiens.” <a class="fnb" href="#r30" aria-label="Back to text">&#8617;</a></li>
+<li id="fn31"><em>DV</em> q.22, a.12: “Intellectus enim intelligit se, et voluntatem…et similiter voluntas vult se velle, et intellectum intelligere.…Sicut intellectus cum intelligit voluntatem velle, accipit in seipso rationem volendi; unde et ipsa voluntas, cum fertur super potentias animæ, fertur in eas ut in res quasdam quibus convenit motus et operatio, et inclinat unamquamque in propriam operationem.” <a class="fnb" href="#r31" aria-label="Back to text">&#8617;</a></li>
+<li id="fn32"><em>ST </em>I, q.85, a.1: “Intellectus noster intelligit materialia abstrahendo a phantasmatibus; et per materialia sic considerata in immaterialium aliqualem cognitionem devenimus, sicut e contra angeli per immaterialia materialia cognoscunt.” <a class="fnb" href="#r32" aria-label="Back to text">&#8617;</a></li>
+<li id="fn33"><em>ST</em> I–II, q.57, a.2: “Quod autem est per se notum, se habet ut principium; et percipitur statim ab intellectu. Et ideo habitus perficiens intellectum ad huiusmodi veri considerationem, vocatur <em>intellectus</em>, qui est habitus principiorum.” <a class="fnb" href="#r33" aria-label="Back to text">&#8617;</a></li>
+<li id="fn34"><em>ST</em> I, q.84, a.7: “Impossibile est intellectum nostrum, secundum præsentis vitæ statum, quo passibili corpori coniungitur, aliquid intelligere in actu, nisi convertendo se ad phantasmata”; “Utuntur autem organo corporali sensus et imaginatio et aliæ vires pertinentes ad partem sensitivam.…Necesse est ad hoc quod intellectus actu intelligat suum obiectum proprium, quod convertat se ad phantasmata, ut speculetur naturam universalem in particulari existentem”; “Etiam ipsum phantasma est similitudo rei particularis, unde non indiget imaginatio aliqua alia similitudine particularis, sicut indiget intellectus.” <a class="fnb" href="#r34" aria-label="Back to text">&#8617;</a></li>
+<li id="fn35"><em>ST</em> I, q.16, a.2: “Verum…secundum sui primam rationem est in intellectu.…Quando iudicat rem ita se habere sicut est forma quam de re apprehendit, tunc primo cognoscit et dicit verum.…Veritas quidem igitur potest esse in sensu, vel in intellectu cognoscente <em>quod quid est</em>, ut in quadam re vera, non autem ut cognitum in cognoscente, quod importat nomen <em>veri</em>; perfectio enim intellectus est verum ut cognitum. Et ideo, proprie loquendo, veritas est in intellectu componente et dividente, non autem in sensu, neque in intellectu cognoscente <em>quod quid est</em>.” <a class="fnb" href="#r35" aria-label="Back to text">&#8617;</a></li>
+<li id="fn36"><em>ST</em> II–II, q.47, a.15: “Prudentia non inest nobis a natura, sed ex doctrina et experimento.” <a class="fnb" href="#r36" aria-label="Back to text">&#8617;</a></li>
+<li id="fn37"><em> ST</em> I, q.118, a.2: “Impossibile est virtutem activam quæ est in materia, extendere suam actionem ad producendum immaterialem effectum.” <a class="fnb" href="#r37" aria-label="Back to text">&#8617;</a></li>
+<li id="fn38">Aristotle, <em>Metaphysics </em>1046a, 29–32 <a class="fnb" href="#r38" aria-label="Back to text">&#8617;</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="foot">
+<div class="wrap">
+<div class="foot__g">
+<div>
+<a aria-label="New Sapience — home" class="foot__mark" href="index.html">
+<img alt="New Sapience" height="52" src="img/brand/mark-512.png" width="52"/>
+</a>
+</div>
+<div><h4>Platform</h4><ul>
+<li><a href="platform.html">Overview</a></li>
+<li><a href="platform.html#characteristics">Key characteristics</a></li>
+</ul></div>
+<div><h4>Applications</h4><ul>
+<li><a href="sectors.html">Sectors</a></li>
+<li><a href="deployment.html">Deployment options</a></li>
+<li><a href="deployment.html#robotics">Robotics</a></li>
+<li><a href="deployment.html#c2">Command &amp; control</a></li>
+</ul></div>
+<div><h4>Company</h4><ul>
+<li><a href="about.html">About</a></li>
+<li><a href="about.html#leadership">Leadership</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="contact.html">Request a demo</a></li>
+<li><a href="mailto:comm@newsapience.com">comm@newsapience.com</a></li>
+<li><a href="https://signup.floww.io/to/LCThz0lq" rel="noopener noreferrer" target="_blank">Invest</a></li>
+</ul></div>
+</div>
+<div class="foot__b">
+<span>© 2026 New Sapience, Inc. All rights reserved.</span>
+<span><a href="privacy.html">Privacy policy</a>  ·  <a href="disclaimer.html">Disclaimer</a></span>
+</div>
+</div>
+</footer>
+<script>
+/* ============================================================
+   NEW SAPIENCE — shared behaviour
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* ---------- NAV ---------- */
+  var nav = document.getElementById('nav');
+  if (nav) {
+    /* Hide on scroll down, reveal on scroll up. A delta threshold stops the
+       bar flickering on trackpad jitter; rAF keeps it off the scroll thread. */
+    var lastY = window.scrollY, ticking = false;
+    var apply = function () {
+      var y = window.scrollY, d = y - lastY;
+      nav.classList.toggle('stuck', y > 20);
+      if (Math.abs(d) > 6) {
+        var dw2 = document.getElementById('drawer');
+        var open = dw2 && dw2.classList.contains('on');
+        nav.classList.toggle('nav--up', d > 0 && y > 140 && !open);
+        lastY = y;
+      }
+      ticking = false;
+    };
+    var st = function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+    };
+    apply(); addEventListener('scroll', st, { passive: true });
+  }
+  var bg = document.getElementById('burger'), dw = document.getElementById('drawer');
+  if (bg && dw) {
+    bg.addEventListener('click', function () {
+      bg.classList.toggle('on'); dw.classList.toggle('on');
+      document.body.style.overflow = dw.classList.contains('on') ? 'hidden' : '';
+    });
+    dw.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        bg.classList.remove('on'); dw.classList.remove('on'); document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* ---------- REVEAL ---------- */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .1, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('[data-rv],.stg').forEach(function (el) { io.observe(el); });
+
+  /* ---------- COUNTERS ---------- */
+  var co = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      co.unobserve(e.target);
+      var el = e.target, end = +el.dataset.count, t0 = performance.now();
+      if (!end) { el.textContent = '0'; return; }
+      (function tick(n) {
+        var p = Math.min((n - t0) / 1500, 1);
+        el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: .6 });
+  document.querySelectorAll('[data-count]').forEach(function (el) { co.observe(el); });
+
+  /* ---------- MESH GRADIENT ----------
+     Rendered into a 340px buffer and upscaled by CSS. Blur on a small
+     buffer is ~30x cheaper than on a full-width one and looks identical.
+     Paused when off-screen, throttled to ~24fps.                        */
+  var PALS = {
+    navy: { base: '#02070F', bands: [
+      { c: 'rgba(11,79,214,1)',     y: .30, amp: .20, f: 1.05, w: .34, s: .0030 },
+      { c: 'rgba(13,33,73,1)',      y: .80, amp: .20, f: .86,  w: .36, s: -.0025 },
+      { c: 'rgba(2,6,12,1)',        y: .10, amp: .16, f: 1.35, w: .30, s: .0018, o: 'source-over' },
+      { c: 'rgba(3,8,16,1)',        y: .58, amp: .22, f: .95,  w: .16, s: -.0033, o: 'source-over' },
+      { c: 'rgba(231,241,250,.95)', y: .50, amp: .24, f: 1.0,  w: .055, s: .0036 },
+      { c: 'rgba(120,170,246,.72)', y: .92, amp: .14, f: 1.2,  w: .10, s: -.0042 }] },
+    verify: { base: '#01080C', bands: [
+      { c: 'rgba(15,140,104,1)',    y: .24, amp: .19, f: 1.0,  w: .32, s: .0028 },
+      { c: 'rgba(11,79,214,.92)',   y: .86, amp: .18, f: .9,   w: .34, s: .0024 },
+      { c: 'rgba(1,6,11,1)',        y: .46, amp: .20, f: 1.28, w: .22, s: -.0021, o: 'source-over' },
+      { c: 'rgba(1,5,9,1)',         y: .06, amp: .14, f: 1.5,  w: .22, s: .0015, o: 'source-over' },
+      { c: 'rgba(238,246,255,.94)', y: .62, amp: .23, f: 1.02, w: .06, s: .0038 },
+      { c: 'rgba(154,98,6,.55)',    y: .52, amp: .26, f: .74,  w: .09, s: -.0032 }] },
+    deep: { base: '#010610', bands: [
+      { c: 'rgba(14,96,190,1)',     y: .34, amp: .22, f: .95,  w: .34, s: .0024 },
+      { c: 'rgba(13,33,73,1)',      y: .82, amp: .18, f: 1.12, w: .32, s: -.0030 },
+      { c: 'rgba(1,4,10,1)',        y: .08, amp: .14, f: 1.45, w: .26, s: .0016, o: 'source-over' },
+      { c: 'rgba(2,6,13,1)',        y: .62, amp: .20, f: 1.05, w: .14, s: -.0028, o: 'source-over' },
+      { c: 'rgba(226,239,255,.92)', y: .52, amp: .25, f: 1.0,  w: .055, s: .0035 }] }
+  };
+
+  function mesh(cv, P) {
+    var x = cv.getContext('2d', { alpha: false });
+    var RW = 340, RH = 210, t = Math.random() * 80, vis = true, last = 0;
+    function size() {
+      var w = cv.offsetWidth || 1, h = cv.offsetHeight || 1;
+      // cap the buffer on tall mobile cards — it is CSS-upscaled, so a taller
+      // buffer only costs blur time and buys nothing visually
+      RH = Math.min(620, Math.max(60, Math.round(RW * h / w)));
+      cv.width = RW; cv.height = RH;
+    }
+    size(); addEventListener('resize', size, { passive: true });
+    new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }, { rootMargin: '160px' }).observe(cv);
+    var BLUR = Math.round(RW * 0.085);
+    function draw(now) {
+      requestAnimationFrame(draw);
+      if (!vis || now - last < 42) return;
+      last = now; t += 1.8;
+      x.filter = 'none'; x.globalCompositeOperation = 'source-over';
+      x.fillStyle = P.base; x.fillRect(0, 0, RW, RH);
+      x.filter = 'blur(' + BLUR + 'px)';
+      for (var i = 0; i < P.bands.length; i++) {
+        var b = P.bands[i];
+        x.beginPath();
+        var amp = RH * b.amp, base = RH * b.y, ph = t * b.s + i * 1.7;
+        for (var px = -30; px <= RW + 30; px += 10) {
+          var yy = base + Math.sin(px / RW * 6.283 * b.f + ph) * amp
+                        + Math.cos(px / RW * 6.283 * b.f * .45 - ph * .7) * amp * .55;
+          px === -30 ? x.moveTo(px, yy) : x.lineTo(px, yy);
+        }
+        x.globalCompositeOperation = b.o || 'lighter';
+        x.strokeStyle = b.c; x.lineWidth = RH * b.w; x.lineCap = 'round'; x.stroke();
+      }
+      x.filter = 'none'; x.globalCompositeOperation = 'source-over';
+    }
+    requestAnimationFrame(draw);
+  }
+  document.querySelectorAll('canvas[data-mesh]').forEach(function (cv) {
+    mesh(cv, PALS[cv.dataset.mesh] || PALS.navy);
+  });
+
+  /* ---------- HERO PERSPECTIVE PLANE ---------- */
+  (function () {
+    var cv = document.getElementById('grid3d'); if (!cv) return;
+    var x = cv.getContext('2d'), W, H, DPR, t = 0, vis = true, last = 0;
+    function size() {
+      DPR = Math.min(devicePixelRatio || 1, 2); W = cv.offsetWidth || 1; H = cv.offsetHeight || 1;
+      cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR); x.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+    size(); addEventListener('resize', size, { passive: true });
+    new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }, { rootMargin: '120px' }).observe(cv);
+    var C = 13, R = 7;
+    function pt(i, j) {
+      var u = i / C, v = j / R, k = .80 + .20 * v;
+      return [W * .5 + (u - .5) * W * 1.14 * k,
+              H * (.05 + v * .92) + Math.sin(u * 4.6 + t * .6) * 9 * (1 - v * .55) + Math.cos(v * 3.1 - t * .4) * 5];
+    }
+    function loop(now) {
+      requestAnimationFrame(loop);
+      if (!vis || now - last < 33) return;
+      last = now; t += .012; x.clearRect(0, 0, W, H);
+      var m = (getComputedStyle(document.body).color.match(/\d+/g)) || [12, 20, 31];
+      var S = function (a) { return 'rgba(' + m[0] + ',' + m[1] + ',' + m[2] + ',' + a + ')'; };
+      x.lineWidth = 1;
+      var i, j, p, a, b;
+      for (j = 0; j <= R; j++) { x.beginPath();
+        for (i = 0; i <= C; i++) { p = pt(i, j); i ? x.lineTo(p[0], p[1]) : x.moveTo(p[0], p[1]); }
+        x.strokeStyle = S(.13); x.stroke(); }
+      for (i = 0; i <= C; i++) { x.beginPath();
+        for (j = 0; j <= R; j++) { p = pt(i, j); j ? x.lineTo(p[0], p[1]) : x.moveTo(p[0], p[1]); }
+        x.strokeStyle = S(.10); x.stroke(); }
+      x.beginPath();
+      for (j = 0; j < R; j++) for (i = 0; i < C; i++) { a = pt(i, j); b = pt(i + 1, j + 1); x.moveTo(a[0], a[1]); x.lineTo(b[0], b[1]); }
+      x.strokeStyle = S(.05); x.stroke();
+      x.fillStyle = S(.28);
+      for (j = 0; j <= R; j++) for (i = 0; i <= C; i++) { p = pt(i, j); x.beginPath(); x.arc(p[0], p[1], 1.05, 0, 6.2832); x.fill(); }
+    }
+    requestAnimationFrame(loop);
+  })();
+
+  /* ---------- DEMO: probabilistic vs deterministic ----------
+     Only the conventional side is ever rewritten. The sapiens panel is
+     written once in the HTML and never touched — the demo's whole claim
+     is that it cannot change, so the code must not change it.          */
+  (function () {
+    var btn = document.getElementById('runbtn'); if (!btn) return;
+    var llmOut = document.getElementById('llmout'),
+        llmHash = document.getElementById('llmhash'),
+        sapOut = document.getElementById('sapout'),
+        label = document.getElementById('runlabel');
+    var VARIANTS = [
+      'This could indicate a leak, though thermal contraction is also plausible. I’d recommend monitoring loop B and checking for corroborating indications. Confidence: moderate.',
+      'Possibly a slow leak. That said, a 4.2 psi drop over 90 seconds is not necessarily abnormal if the loop was cooling. I would suggest verifying against temperature trends. Confidence: medium-low.',
+      'It may be a leak. Pressure decay of this magnitude sometimes reflects normal thermal behaviour, so I’d cross-check other sensors before concluding. Confidence: uncertain.',
+      'Likely benign, but a leak cannot be ruled out. Recommend continued observation of loop B and review of recent maintenance. Confidence: moderate.'
+    ];
+    var run = 1, i = 0;
+    function hex(n) { var s = '', c = '0123456789abcdef'; for (var k = 0; k < n; k++) s += c[Math.floor(Math.random() * 16)]; return s; }
+    btn.addEventListener('click', function () {
+      run++; i = (i + 1) % VARIANTS.length;
+      label.textContent = 'Run ' + String(run).padStart(3, '0');
+      llmOut.classList.add('load'); if (sapOut) sapOut.classList.add('load');
+      setTimeout(function () {
+        llmOut.textContent = VARIANTS[i];
+        llmHash.textContent = 'Fingerprint ' + hex(4) + '…' + hex(4);
+        llmOut.classList.remove('load'); if (sapOut) sapOut.classList.remove('load');
+      }, 420);
+    });
+  })();
+
+
+  /* ---------- DEEP LINKS INTO THE ACCORDION ----------
+     deployment.html#robotics points at a collapsed <details>. Without this
+     the browser jumps to a closed row and the link looks broken.          */
+  function openTarget() {
+    var id = location.hash.slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el || el.tagName !== 'DETAILS') return;
+    el.open = true;
+    requestAnimationFrame(function () {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+  openTarget();
+  addEventListener('hashchange', openTarget);
+
+  /* ---------- CISA SECTOR CAROUSEL ---------- */
+  document.querySelectorAll('[data-carousel]').forEach(function (root) {
+    var vp = root.querySelector('.carousel__vp');
+    var prev = root.querySelector('[data-prev]');
+    var next = root.querySelector('[data-next]');
+    var prog = root.querySelector('.crail-prog i');
+    var ctr = root.querySelector('.carousel__ct');
+    var cards = root.querySelectorAll('.scard');
+    if (!vp) return;
+
+    function step() {
+      var c = root.querySelector('.scard');
+      if (!c) return 300;
+      var gap = parseFloat(getComputedStyle(root.querySelector('.carousel__tr')).gap) || 16;
+      return c.getBoundingClientRect().width + gap;
+    }
+    function update() {
+      var max = vp.scrollWidth - vp.clientWidth;
+      // Fraction of the track seen so far, counting what is on screen now.
+      var seen = vp.scrollWidth > 0
+        ? Math.min(1, (vp.scrollLeft + vp.clientWidth) / vp.scrollWidth) : 1;
+      if (prog) prog.style.width = (seen * 100).toFixed(2) + '%';
+      if (prev) prev.disabled = vp.scrollLeft < 4;
+      if (next) next.disabled = vp.scrollLeft > max - 4;
+      if (ctr && cards.length) {
+        // Label the last card in view, so it agrees with the bar.
+        var i = Math.max(1, Math.min(cards.length, Math.round(seen * cards.length)));
+        ctr.textContent = String(i).padStart(2, '0') + ' / ' + String(cards.length).padStart(2, '0');
+      }
+    }
+    if (prev) prev.addEventListener('click', function () { vp.scrollBy({ left: -step() * 2, behavior: 'smooth' }); });
+    if (next) next.addEventListener('click', function () { vp.scrollBy({ left: step() * 2, behavior: 'smooth' }); });
+    vp.addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update, { passive: true });
+
+    /* drag to scroll */
+    var down = false, sx = 0, sl = 0, moved = 0;
+    vp.addEventListener('pointerdown', function (e) {
+      down = true; moved = 0; sx = e.clientX; sl = vp.scrollLeft; vp.classList.add('drag');
+    });
+    vp.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var d = e.clientX - sx; moved = Math.abs(d);
+      vp.scrollLeft = sl - d;
+    });
+    function release() { if (!down) return; down = false; vp.classList.remove('drag'); update(); }
+    vp.addEventListener('pointerup', release);
+    vp.addEventListener('pointerleave', release);
+    vp.addEventListener('pointercancel', release);
+    vp.addEventListener('click', function (e) { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    update();
+  });
+
+})();
+
+</script>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.prail .pl__i'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  if(!secs.length) return;
+  var set=function(id){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})};
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) set(e.target.id) });
+  },{rootMargin:'-104px 0px -70% 0px',threshold:0});
+  secs.forEach(function(s){io.observe(s)});
+  set(secs[0].id);
+})();
+</script>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.prail .pl__i'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if(!secs.length) return;
+  var tick=false;
+  function update(){
+    tick=false;
+    var y=window.scrollY+150, best=0;
+    for(var i=0;i<secs.length;i++){ if(secs[i] && (secs[i].getBoundingClientRect().top+window.scrollY)<=y) best=i; }
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+  }
+  window.addEventListener('scroll', function(){ if(!tick){ tick=true; requestAnimationFrame(update); } }, {passive:true});
+  window.addEventListener('resize', update); update();
+})();
+</script>
+</body>
+</html>
