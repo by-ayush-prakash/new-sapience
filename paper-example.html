@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New Sapience | Platform</title>
-<meta name="description" content="Not machine learning. Not symbolic AI. Synthetic intelligence: deterministic, explainable, and air-gap capable.">
-<link rel="canonical" href="https://www.newsapience.com/platform.html">
+<title>New Sapience | The Determinism Requirement</title>
+<meta name="description" content="A New Sapience paper on why probabilistic AI cannot be certified for mission-critical operations.">
+<link rel="canonical" href="https://www.newsapience.com/paper-example.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="New Sapience">
-<meta property="og:title" content="Platform — New Sapience">
-<meta property="og:description" content="Not machine learning. Not symbolic AI. Synthetic intelligence: deterministic, explainable, and air-gap capable.">
-<meta property="og:url" content="https://www.newsapience.com/platform.html">
+<meta property="og:title" content="The Determinism Requirement — New Sapience">
+<meta property="og:description" content="A New Sapience paper on why probabilistic AI cannot be certified for mission-critical operations.">
+<meta property="og:url" content="https://www.newsapience.com/paper-example.html">
 <meta property="og:image" content="https://www.newsapience.com/img/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Platform — New Sapience">
-<meta name="twitter:description" content="Not machine learning. Not symbolic AI. Synthetic intelligence: deterministic, explainable, and air-gap capable.">
+<meta name="twitter:title" content="The Determinism Requirement — New Sapience">
+<meta name="twitter:description" content="A New Sapience paper on why probabilistic AI cannot be certified for mission-critical operations.">
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -241,6 +241,7 @@ img,canvas,video{display:block;max-width:100%}
   border-color:rgba(255,255,255,.14)}
 .sec--dark .demo__trace li b{color:#9DB8E4}
 
+
 h1,h2,h3,h4{margin:0;font-family:var(--f-display);font-weight:600;letter-spacing:-.028em;line-height:1.08}
 /* Scale: 52 / 34 / 22 -> 1.53x then 1.55x. Was 1.33x then 2.09x, i.e.
    compressed at the top and blown out at the bottom. Tracking relaxed from
@@ -353,6 +354,7 @@ strong{font-weight:600}
 .nitem>a:hover,.nitem.on>a{color:var(--ink)}
 .nitem[aria-current]>a{color:var(--ink)}
 .nitem[aria-current]>a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--navy);border-radius:2px}
+
 
 .toggle{display:flex;align-items:center;gap:10px;z-index:2}
 .navcta{display:none}
@@ -784,6 +786,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 .depl__b p+p{margin-top:14px}
 .depl__b .phwrap{--ar:4/3}
 
+
 /* ---- NEEDS-COPY BANNER ---- */
 .needs{border:1px dashed rgba(192,57,43,.45);background:rgba(214,60,60,.07);border-radius:14px;
   padding:clamp(18px,2vw,26px);margin-top:clamp(20px,2.4vw,32px)}
@@ -901,6 +904,7 @@ h1, h2, h3, h4{
 .nb{white-space:nowrap}
 @media(max-width:380px){ .nb{white-space:normal} }
 
+
 /* All three trichotomy cards close with a callout box; sit them on the
    card floor so they line up across the row regardless of copy length. */
 .tcard__fig{margin-top:auto}
@@ -928,6 +932,38 @@ h1, h2, h3, h4{
 .legal .note p{color:var(--ink-2);font-size:14.5px;line-height:1.65}
 
 </style>
+
+<style>
+/* ---- PAPER READING LAYOUT (this page type only) ---- */
+.pbar{background:var(--mid-1);padding-top:clamp(76px,9vw,140px);padding-bottom:clamp(40px,5vw,72px);text-align:center}
+.pbar .mono{display:block;margin-bottom:clamp(18px,2.2vw,28px)}
+.pbar h1{font-size:clamp(36px,5.6vw,72px);font-weight:600;letter-spacing:-.024em;line-height:1.04;text-wrap:balance;max-width:18ch;margin-inline:auto}
+.pbar__sub{margin:clamp(18px,2.4vw,30px) auto 0;max-width:46ch;font-size:clamp(16px,1.3vw,20px);color:var(--ink-2);text-wrap:balance}
+.pbar__meta{margin-top:clamp(22px,2.6vw,34px);display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pintro{background:var(--mid-1);padding-bottom:clamp(30px,4vw,56px)}
+.pintro .in{max-width:64ch;margin-inline:auto}
+.pintro p{font-size:clamp(16px,1.25vw,18.5px);line-height:1.75;color:var(--ink-2);margin:0 0 18px}
+.psum{background:var(--mid-1);padding-bottom:clamp(40px,5vw,72px)}
+.psum .in{max-width:64ch;margin-inline:auto}
+.paper{display:grid;grid-template-columns:minmax(0,238px) minmax(0,1fr);gap:clamp(28px,5vw,86px);align-items:start}
+.prail{position:sticky;top:104px;align-self:start}
+.prail a.pl__i{display:block;padding:13px 0;border-bottom:1px solid var(--rule-soft);
+  font-size:14px;line-height:1.35;color:var(--ink-3);transition:color .3s var(--ez)}
+.prail a.pl__i:hover{color:var(--ink-2)}
+.prail a.pl__i.on{color:var(--ink);font-weight:600}
+.prail .pacts{margin-top:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.pbody h2{font-size:clamp(26px,2.6vw,38px);letter-spacing:-.022em;margin:0 0 20px;text-wrap:balance}
+.pbody h3{font-size:clamp(18px,1.5vw,22px);margin:34px 0 12px}
+.pbody p{font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.78;color:var(--ink-2);max-width:68ch;margin:0 0 18px}
+.pbody section{padding-bottom:clamp(44px,5vw,76px);scroll-margin-top:104px}
+.pbody section+section{border-top:1px solid var(--rule-soft);padding-top:clamp(40px,4.6vw,68px)}
+.pbody blockquote{margin:26px 0;padding-left:20px;border-left:2px solid var(--signal);color:var(--ink);font-size:clamp(17px,1.4vw,20px);line-height:1.6}
+@media (max-width:900px){
+  .paper{grid-template-columns:1fr}
+  .prail{position:static;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-bottom:30px}
+  .prail .pacts{flex-direction:row;flex-wrap:wrap}
+}
+</style>
 </head>
 <body>
 <header class="nav" id="nav">
@@ -935,7 +971,7 @@ h1, h2, h3, h4{
     <img class="logo__l" src="img/brand/lockup.png" width="224" height="44" alt="New Sapience">
   </a>
   <nav class="navpill" aria-label="Primary">
-    <div class="nitem" aria-current="page"><a href="platform.html">Platform</a></div>
+    <div class="nitem"><a href="platform.html">Platform</a></div>
     <div class="nitem"><a href="sectors.html">Sectors</a></div>
     <div class="nitem"><a href="deployment.html">Deployment</a></div>
     <div class="nitem"><a href="about.html">About</a></div>
@@ -950,138 +986,78 @@ h1, h2, h3, h4{
     <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
   </div>
 </header>
-<div class="drawer" id="drawer">
-  <a href="index.html">Home</a>
-  <a href="platform.html">Platform</a>
-  <a href="sectors.html">Sectors</a>
-  <a href="deployment.html">Deployment</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a class="drawer__inv" href="https://signup.floww.io/to/LCThz0lq" target="_blank" rel="noopener noreferrer">Invest</a>
-</div>
-
-<main id="main">
-<section class="sec chero">
+<section class="sec pbar">
 <div class="wrap">
-<span class="mono" data-rv="">Platform</span>
-<h1 data-rv="">It is <span class="nb">Synthetic Intelligence</span></h1>
-<p class="chero__sub lede" data-rv="">Sapiens operationalize human understanding of how the world works without a natural brain, just as an airplane’s wings replicate the abstract structure of aerodynamics without any bird.</p>
-<div class="chero__cta" data-rv=""><a class="btn" href="contact.html">Request a demo</a></div>
-</div>
-</section>
-<section class="sec sec--tint" id="characteristics">
-<div class="wrap">
-<div class="shead" data-rv="">
-<h2>Key characteristics</h2>
-<p class="lede">What follows from the architecture, rather than from guardrails bolted on afterwards.</p>
-</div>
-<div class="fgrid stg">
-<article class="fcard" style="--t1:rgba(11,79,214,.16)">
-<h3>Sapiens and Language</h3>
-<span class="kpi">Comprehension, not text</span>
-<div class="fcard__b">
-<p>Where the mission requires continuous or occasional humans-in-the-loop, sapiens can communicate in natural language. Sapiens do not process text, they comprehend language. They do not generate text, they articulate concepts.</p>
-<p style="margin-top:12px">The sapiens capacity to comprehend language is made possible by a commonsense world model that is available in even the smallest applications.</p>
-</div>
-</article>
-<article class="fcard" style="--t1:rgba(15,107,79,.16)">
-<h3>Deterministic, Explainable Logic</h3>
-<span class="kpi">Same input, same output</span>
-<div class="fcard__b">
-<p>Every time, without exception. Sapiens reason from a cognitive world model of how things actually work. There is no randomness, no variance, no second-guessing of work, no surprises.</p>
-<p style="margin-top:12px">Every step of a sapiens’ reasoning is visible and open to inspection. Not a summary. The full chain of thought, reviewable at any point by anyone who needs to verify it.</p>
-</div>
-</article>
-<article class="fcard" style="--t1:rgba(154,98,6,.14)">
-<h3>Security</h3>
-<span class="kpi">Air-gap capable</span>
-<div class="fcard__b">
-<p>A sapiens can be deployed as a stand-alone device. No internet connection, no cloud, no data center required. This includes environments that can be “air-gapped” from the outside world, reducing vulnerabilities.</p>
-<p style="margin-top:12px">Customers own their proprietary model, not just system output. Nothing has to phone home.</p>
-</div>
-</article>
-<article class="fcard" style="--t1:rgba(13,33,73,.16)">
-<h3>Knows Its <span class="nb">Own Boundary</span></h3>
-<span class="kpi">Responds flexibly</span>
-<div class="fcard__b">
-<p>A sapiens makes decisions based on what it knows. But it also recognizes when it encounters the boundary of its knowledge and can respond flexibly to find the missing information or obtain assistance.</p>
-</div>
-</article>
-</div>
-</div>
-</section>
-<section class="sec sec--t" id="tri">
-<div class="gridbg"></div>
-<div class="wrap rel">
-<div class="tri stg">
-<article class="tcard tcard--neg">
-<span class="tcard__k">This isn’t</span>
-<h3>Machine Learning</h3>
-<p>Machine Learning uses statistical patterns to simulate intelligence the way a video of fire simulates fire: it’s a realistic likeness, but the video is not on fire. What’s missing is precisely what’s essential.</p>
-<p>If you want rationally competent machines, you don’t need a bigger, better camera; you need a different kind of instrument.</p>
-<div class="tcard__fig">Sapiens operationalize human understanding of how the world works without a natural brain, just as an airplane’s wings replicate the abstract structure of aerodynamics without any bird.</div>
-</article>
-<article class="tcard tcard--neg">
-<span class="tcard__k">This isn’t</span>
-<h3>Symbolic AI</h3>
-<p>Symbolic AI applications like expert systems or semantic network ontologies are based on collections of rules with no principled account of how knowledge is structured. This is why they are brittle and difficult to scale beyond small applications: a heap of rules is not a model of a domain.</p>
-<div class="tcard__fig">A sapiens holds a world model grounded in a robust epistemology; it’s a dynamic map of how the domain is and behaves rather than a list of heuristics that only work inside it, under static conditions.</div>
-</article>
-<article class="tcard tcard--pos" id="synthetic">
-<span class="tcard__k">It is</span>
-<h3>Synthetic Intelligence</h3>
-<p>New Sapience has developed a platform for scalable, deterministic, world-model-based applications in which knowledge is achieved as non-symbolic, directed graph structures.</p>
-<p>Our IDE enables commonsense and expert knowledge derived from the customer’s domain and requirements to be reconstructed in computer memory as synthetic knowledge.</p>
-<div class="tcard__fig">Synthetic Intelligence is real knowledge but not contained in a natural mind — in the same way a synthetic diamond is a real diamond but not created by natural processes.</div>
-</article>
-</div>
+<span class="mono" data-rv="">Paper</span>
+<h1 data-rv="">The Determinism Requirement</h1>
+<p class="pbar__sub" data-rv="">Why probabilistic systems cannot be certified for mission-critical operations</p>
+<div class="pbar__meta" data-rv=""><span class="tag">Paper</span><span class="tag">PLACEHOLDER · 00 Month 2026</span></div>
 </div>
 </section>
 
-<section class="sec">
-<div class="gridbg"></div>
-<div class="wrap rel">
-<div class="shead" data-rv="">
-<h2>Protected, and built <span class="nb">entirely in-house</span></h2>
-<p class="lede">The architecture (Sapiens), the language (MICA), and the development environment (MELD) were built in-house. No third-party dependencies, no supply chain exposure.</p>
-</div>
-<div class="ipbar" data-rv="">
-<div class="ipbar__n">U.S. 9,275,341<small>Issued March 2016</small></div>
-<p>“Method and System for Machine Comprehension.” The claims cover a system in which incoming data — sensor streams, computer output, or natural language — is mapped onto an engineered model of interconnected concepts representing real-world entities. Comprehension occurs as the system updates and extends that model, and its actions follow from the model’s state. The patent predates the current AI boom by a decade. Co-invented by founder Bryant Cruse and Chief Software Architect Karsten Huneycutt.</p>
-</div>
-</div>
-</section>
-<section class="sec sec--alt" id="envelope">
-<div class="wrap">
-<div class="shead" data-rv="">
-<h2>Differences that matter</h2>
-<p class="lede">Not all AI is the same. The question is which AI would you trust with your livelihood?</p>
-</div>
-<div class="tbl" data-rv="">
-<table>
-<thead><tr><th scope="col">Characteristic</th><th scope="col">Mainstream AI</th><th scope="col">Sapiens</th></tr></thead>
-<tbody>
-<tr><th scope="row">Deployment target</th><td>Data center cluster</td><td>Single edge device</td></tr>
-<tr><th scope="row">Network dependency</th><td>Continuous connectivity</td><td>None — air-gap capable</td></tr>
-<tr><th scope="row">Output variance, same input</th><td>Non-zero by design</td><td>Zero</td></tr>
-<tr><th scope="row">Behavior at knowledge boundary</th><td>Produces plausible text</td><td>Reports the boundary</td></tr>
-<tr><th scope="row">Reasoning record</th><td>Post-hoc summary</td><td>Complete, step-by-step</td></tr>
-<tr><th scope="row">Training corpus required</th><td>Web-scale</td><td>None — curated world model</td></tr>
-<tr><th scope="row">Where your data resides</th><td>Vendor infrastructure</td><td>Inside your system</td></tr>
-<tr><th scope="row">Cost profile</th><td>Metered, vendor-set</td><td>Fixed at deployment</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section class="imgcta" data-rv="">
-<div class="imgcta__in">
-<h2>See it run against your own <span class="nb">instrument data</span></h2>
-<a class="btn btn--l" href="contact.html">Request a demo</a>
-</div>
+<section class="sec pintro" style="padding-top:0">
+<div class="wrap"><div class="in" data-rv="">
+<p>PLACEHOLDER STANDFIRST. Two or three paragraphs introducing the paper in plain language, before the sectioned reading view begins. This is the part a non-specialist reads to decide whether to continue.</p>
+<p>PLACEHOLDER STANDFIRST. A second paragraph carrying the stakes.</p>
+</div></div>
 </section>
 
-</main>
+<section class="sec psum" style="padding-top:0">
+<div class="wrap"><div class="in" data-rv="">
+<div class="faq"><details>
+<summary><span>Read a summary of the paper</span><span class="pl">+</span></summary>
+<div class="ans"><p>PLACEHOLDER SUMMARY. A condensed version for readers who want the argument without the full text.</p></div>
+</details></div>
+</div></div>
+</section>
+
+<section class="sec sec--t">
+<div class="wrap">
+<div class="paper">
+<aside class="prail" aria-label="Paper contents">
+<a class="pl__i" href="#overview">Overview</a>
+<a class="pl__i" href="#failure-modes">How probabilistic systems fail</a>
+<a class="pl__i" href="#engineered">Knowledge that is engineered</a>
+<a class="pl__i" href="#certification">What certification actually requires</a>
+<a class="pl__i" href="#conclusion">Concluding thoughts</a>
+<div class="pacts">
+<a class="btn" href="#" download>Download PDF</a>
+</div>
+</aside>
+<div class="pbody">
+<section id="overview">
+<h2>Overview</h2>
+<h3>The problem this paper addresses</h3>
+<p>PLACEHOLDER BODY. This is where the paper's opening argument goes. The reading layout holds a comfortable measure of roughly 68 characters, which is the width serious readers stay with longest.</p>
+<p>PLACEHOLDER BODY. A second paragraph, to show rhythm and spacing between blocks at the reading size.</p>
+</section>
+
+<section id="failure-modes">
+<h2>How probabilistic systems fail</h2>
+<p>PLACEHOLDER BODY. Each section is a sibling with its own anchor, so the rail on the left tracks position as the reader scrolls and the URL can point at any section directly.</p>
+<blockquote>A pull quote sits here when a line deserves to stop the reader.</blockquote>
+<p>PLACEHOLDER BODY. Continuation after the quote.</p>
+</section>
+
+<section id="engineered">
+<h2>Knowledge that is engineered</h2>
+<p>PLACEHOLDER BODY.</p>
+</section>
+
+<section id="certification">
+<h2>What certification actually requires</h2>
+<p>PLACEHOLDER BODY.</p>
+</section>
+
+<section id="conclusion">
+<h2>Concluding thoughts</h2>
+<p>PLACEHOLDER BODY.</p>
+</section>
+
+</div>
+</div>
+</div>
+</section>
 <footer class="foot">
 <div class="wrap">
 <div class="foot__g">
@@ -1315,6 +1291,7 @@ h1, h2, h3, h4{
     });
   })();
 
+
   /* ---------- DEEP LINKS INTO THE ACCORDION ----------
      deployment.html#robotics points at a collapsed <details>. Without this
      the browser jumps to a closed row and the link looks broken.          */
@@ -1387,6 +1364,20 @@ h1, h2, h3, h4{
 
 })();
 
+</script>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.prail .pl__i'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  if(!secs.length) return;
+  var set=function(id){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})};
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) set(e.target.id) });
+  },{rootMargin:'-104px 0px -70% 0px',threshold:0});
+  secs.forEach(function(s){io.observe(s)});
+  set(secs[0].id);
+})();
 </script>
 </body>
 </html>
