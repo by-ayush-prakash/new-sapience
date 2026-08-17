@@ -959,7 +959,7 @@ body{background:#fff}
 .ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,36px);align-items:start}
 .ncard{display:flex;flex-direction:column;min-width:0}
 .ncard[hidden]{display:none}
-.ncard--feat{grid-column:span 2;grid-row:span 2}
+.ncard--feat{grid-column:span 2}
 .ncard .phwrap{--ar:16/9;border-radius:14px;overflow:hidden;margin:0}
 .ncard--feat .phwrap{--ar:16/10}
 .ntags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 12px}
@@ -1005,92 +1005,18 @@ body{background:#fff}
 </div>
 </section>
 
-<section class="sec nfil-wrap" style="padding-top:0;padding-bottom:0">
-<div class="wrap">
-<div class="nfil" data-rv="">
-<button class="chip on" data-f="all" type="button">All</button>
-<button class="chip" data-f="press-release" type="button">Press release</button>
-<button class="chip" data-f="paper" type="button">Paper</button>
-<button class="chip" data-f="media" type="button">In the media</button>
-<div class="nsrch">
-<input id="nq" type="search" placeholder="Search news" aria-label="Search news"/>
-<button id="nsb" type="button" aria-label="Search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
-</div>
-</div>
-</div>
-</section>
+
 
 <section class="sec" style="padding-top:0">
 <div class="wrap">
 <div class="ngrid" id="ngrid">
-<article class="ncard ncard--feat" data-cat="press-release" data-rv="">
-<div class="phwrap">
-<img alt="Announcement artwork or a photograph of the system" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/news/announcement-01.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Announcement artwork or a photograph of the system</b><s style="opacity:.6;margin-top:2px">img/news/announcement-01.jpg</s></div>
-</div>
-<div class="ntags"><span class="tag">Press release</span></div>
-<h3><a class="nlink" href="release-example.html">Headline of the lead announcement goes here</a></h3>
-<p>A short standfirst for the featured item, long enough to earn the space it takes.</p>
-<div class="ndate">PLACEHOLDER · 00 MONTH 2026</div>
-</article>
-
-<article class="ncard" data-cat="paper" data-rv="">
-<div class="phwrap">
-<img alt="Instruments of Virtue" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/news/instruments-of-virtue.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Cover image for the paper</b><s style="opacity:.6;margin-top:2px">img/news/instruments-of-virtue.jpg</s></div>
-</div>
+<article class="ncard ncard--feat" data-rv="">
 <div class="ntags"><span class="tag">Paper</span></div>
 <h3><a class="nlink" href="instruments-of-virtue.html">Instruments of Virtue: A Thomistic Study in AI Systems Design</a></h3>
-<p>Rosaire Leon applies the distinction between <em>intellectus</em> and <em>ratio</em> to AI systems design, and catalogues which rational operations a deterministic architecture can and cannot virtualize.</p>
-<div class="ndate">PAPER &middot; ROSAIRE LEON</div>
+<p>Rosaire Leon applies the Thomistic distinction between <em>intellectus</em> and <em>ratio</em> to the design of AI systems, proposes a principle of instrumental complementarity, and catalogues precisely which rational operations a deterministic architecture can and cannot virtualize.</p>
+<div class="ndate">Rosaire Leon &middot; New Sapience</div>
 </article>
-
-<article class="ncard" data-cat="press-release" data-rv="">
-<div class="phwrap">
-<img alt="Announcement artwork" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/news/announcement-02.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Announcement artwork</b><s style="opacity:.6;margin-top:2px">img/news/announcement-02.jpg</s></div>
 </div>
-<div class="ntags"><span class="tag">Press release</span></div>
-<h3><a class="nlink" href="release-example.html">A second announcement headline</a></h3>
-
-<div class="ndate">PLACEHOLDER · 00 MONTH 2026</div>
-</article>
-
-<article class="ncard" data-cat="media" data-rv="">
-<div class="phwrap">
-<img alt="Publication logo or article screenshot" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/news/media-01.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Publication logo or article screenshot</b><s style="opacity:.6;margin-top:2px">img/news/media-01.jpg</s></div>
-</div>
-<div class="ntags"><span class="tag">In the media</span></div>
-<h3><a class="nlink" href="#">Coverage in an outlet, linking off-site</a></h3>
-
-<div class="ndate">PLACEHOLDER · 00 MONTH 2026</div>
-</article>
-
-<article class="ncard" data-cat="paper" data-rv="">
-<div class="phwrap">
-<img alt="Diagram for the second paper" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/news/paper-02.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Diagram for the second paper</b><s style="opacity:.6;margin-top:2px">img/news/paper-02.jpg</s></div>
-</div>
-<div class="ntags"><span class="tag">Paper</span></div>
-<h3><a class="nlink" href="paper-example.html">Title of a second technical paper</a></h3>
-
-<div class="ndate">PLACEHOLDER · 00 MONTH 2026</div>
-</article>
-
-<article class="ncard" data-cat="press-release" data-rv="">
-<div class="phwrap">
-<img alt="Announcement artwork" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/news/announcement-03.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Announcement artwork</b><s style="opacity:.6;margin-top:2px">img/news/announcement-03.jpg</s></div>
-</div>
-<div class="ntags"><span class="tag">Press release</span></div>
-<h3><a class="nlink" href="release-example.html">A third announcement headline</a></h3>
-
-<div class="ndate">PLACEHOLDER · 00 MONTH 2026</div>
-</article>
-
-</div>
-<p class="nempty" id="nempty" hidden>Nothing matches that filter yet.</p>
 </div>
 </section>
 
@@ -1411,37 +1337,6 @@ body{background:#fff}
 
 </script>
 
-<script>
-(function(){
-  var grid=document.getElementById('ngrid'); if(!grid) return;
-  var cards=[].slice.call(grid.querySelectorAll('.ncard'));
-  var chips=[].slice.call(document.querySelectorAll('.chip'));
-  var empty=document.getElementById('nempty');
-  var wrap=document.querySelector('.nsrch'), btn=document.getElementById('nsb'), q=document.getElementById('nq');
-  var cat='all', term='';
-  function apply(){
-    var n=0;
-    cards.forEach(function(c){
-      var okc = cat==='all' || c.getAttribute('data-cat')===cat;
-      var okt = !term || c.textContent.toLowerCase().indexOf(term)>-1;
-      var show = okc && okt;
-      c.hidden = !show; if(show) n++;
-      /* a filtered view has no featured item */
-      c.classList.toggle('ncard--feat', show && n===1 && cat==='all' && !term && c.dataset.feat==='1');
-    });
-    empty.hidden = n>0;
-  }
-  cards[0] && (cards[0].dataset.feat='1');
-  chips.forEach(function(ch){ ch.addEventListener('click', function(){
-    chips.forEach(function(x){x.classList.remove('on')}); ch.classList.add('on');
-    cat=ch.getAttribute('data-f'); apply();
-  })});
-  btn.addEventListener('click', function(){
-    wrap.classList.toggle('open');
-    if(wrap.classList.contains('open')) q.focus(); else { q.value=''; term=''; apply(); }
-  });
-  q.addEventListener('input', function(){ term=q.value.trim().toLowerCase(); apply(); });
-})();
-</script>
+
 </body>
 </html>
