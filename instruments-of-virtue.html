@@ -931,6 +931,25 @@ h1, h2, h3, h4{
   border-radius:0 10px 10px 0;padding:16px 18px;margin-top:28px}
 .legal .note p{color:var(--ink-2);font-size:14.5px;line-height:1.65}
 
+
+/* ---- split button dropdown ---- */
+.splitbtn{position:relative}
+.splitbtn__c{cursor:pointer;background:none;border:0;font:inherit;color:#fff;
+  display:flex;align-items:center;align-self:stretch;
+  border-left:1px solid rgba(255,255,255,.24)}
+.splitbtn__c:hover{background:#22303F}
+.sbmenu a{color:var(--ink)}
+.splitbtn__c svg{transition:transform .3s var(--ez)}
+.splitbtn__c[aria-expanded="true"] svg{transform:rotate(180deg)}
+.sbmenu{position:absolute;top:calc(100% + 10px);right:0;min-width:216px;z-index:1200;
+  background:#fff;border:1px solid var(--rule);border-radius:14px;padding:6px;
+  box-shadow:0 24px 60px -28px rgba(12,20,31,.45);
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .22s var(--ez),transform .22s var(--ez),visibility .22s}
+.sbmenu.on{opacity:1;visibility:visible;transform:none}
+.sbmenu a{display:block;padding:11px 14px;border-radius:9px;font-size:14px;
+  color:var(--ink);white-space:nowrap;transition:background .2s}
+.sbmenu a:hover{background:var(--surface-2);color:var(--signal)}
 </style>
 
 <style>
@@ -947,11 +966,12 @@ h1, h2, h3, h4{
 .psum .in{max-width:64ch;margin-inline:auto}
 .paper{display:grid;grid-template-columns:minmax(0,238px) minmax(0,1fr);gap:clamp(28px,5vw,86px);align-items:start}
 .prail{position:sticky;top:104px;align-self:start}
-.prail a.pl__i{display:block;padding:13px 0;border-bottom:1px solid var(--rule-soft);
-  font-size:14px;line-height:1.35;color:var(--ink-3);transition:color .3s var(--ez)}
-.prail a.pl__i:hover{color:var(--ink-2)}
+.prail a.pl__i{display:block;padding:7px 0;border:0;
+  font-size:13.5px;line-height:1.35;color:var(--ink-2);transition:color .25s var(--ez)}
+.prail a.pl__i:hover{color:var(--signal)}
 .prail a.pl__i.on{color:var(--ink);font-weight:600}
-.prail .pacts{margin-top:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.pdl{margin-top:clamp(26px,3vw,38px);text-align:center}
+.prail .pacts{margin:0 0 24px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 .pbody h2{font-size:clamp(26px,2.6vw,38px);letter-spacing:-.022em;margin:0 0 20px;text-wrap:balance}
 .pbody h3{font-size:clamp(18px,1.5vw,22px);margin:34px 0 12px}
 .pbody p{font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.78;color:var(--ink-2);max-width:68ch;margin:0 0 18px}
@@ -977,7 +997,7 @@ h1, h2, h3, h4{
 .pfn li em{font-style:italic}
 .fnb{margin-left:6px;color:var(--signal);text-decoration:none}
 .prail a.pl__i--sub{padding-left:15px;font-size:13px}
-.prail a.pl__i{font-style:normal;padding:11px 0;line-height:1.3}
+.prail a.pl__i{font-style:normal;padding:7px 0;line-height:1.35}
 .prail a.pl__i em{font-style:italic}
 .pmeta{margin-top:clamp(20px,2.4vw,30px);font-size:14.5px;color:var(--ink-2);line-height:1.7}
 .pmeta b{color:var(--ink)}
@@ -1014,7 +1034,11 @@ body{background:#fff}
   <div class="toggle">
     <span class="splitbtn">
       <a class="splitbtn__m" href="https://signup.floww.io/to/LCThz0lq" target="_blank" rel="noopener noreferrer">Invest</a>
-      <a class="splitbtn__c" href="contact.html" aria-label="Request a demo" title="Request a demo"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="splitbtn__c" type="button" aria-haspopup="true" aria-expanded="false" aria-label="More ways to get in touch"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="sbmenu" role="menu">
+        <a role="menuitem" href="contact.html">Request a demo</a>
+        <a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
+      </div>
     </span>
     <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
   </div>
@@ -1024,6 +1048,7 @@ body{background:#fff}
 <span class="mono" data-rv="">Paper</span>
 <h1 data-rv="">Instruments of Virtue</h1>
 <p class="pbar__sub" data-rv="">A Thomistic Study in AI Systems Design</p>
+<div class="pdl" data-rv=""><a class="btn" href="papers/instruments-of-virtue.pdf" download>Download PDF</a></div>
 </div>
 <div class="wrap wrap--wide phero-img" data-rv="">
 <div class="phwrap">
@@ -1057,10 +1082,13 @@ Thanks to Emilia Stefankiewicz for editorial assistance, and to Patrick Misiewic
 <div class="wrap">
 <div class="paper">
 <aside class="prail" aria-label="Paper contents">
+<div class="pacts">
+<a class="btn" href="papers/instruments-of-virtue.pdf" download>Download PDF</a>
+</div>
 <a class="pl__i" href="#s-key-terms">Key Terms</a>
-<a class="pl__i" href="#s-part-i-instrumentality-chr-sis-and-complementari">Part I &middot; Instrumentality</a>
-<a class="pl__i" href="#s-threshold-sapiens-the-system-architecture">Threshold &middot; The Architecture</a>
-<a class="pl__i" href="#s-part-ii-sapiens-and-intellectus">Part II &middot; Sapiens and Intellectus</a>
+<a class="pl__i" href="#s-part-i-instrumentality-chr-sis-and-complementari">Part I: Instrumentality</a>
+<a class="pl__i" href="#s-threshold-sapiens-the-system-architecture">Threshold: The Architecture</a>
+<a class="pl__i" href="#s-part-ii-sapiens-and-intellectus">Part II: Sapiens and Intellectus</a>
 <a class="pl__i pl__i--sub" href="#s-1-principles-of-motion">1. Principles of Motion</a>
 <a class="pl__i pl__i--sub" href="#s-2-natural-versus-artificial-faculties">2. Natural vs Artificial Faculties</a>
 <a class="pl__i pl__i--sub" href="#s-2-artificial-intellectus">3. Artificial Intellectus?</a>
@@ -1070,18 +1098,15 @@ Thanks to Emilia Stefankiewicz for editorial assistance, and to Patrick Misiewic
 <a class="pl__i pl__i--sub" href="#s-7-intellectus-at-the-limits-of-reason">7. Limits of Reason</a>
 <a class="pl__i pl__i--sub" href="#s-8-deterministic-artifice">8. Deterministic Artifice</a>
 <a class="pl__i" href="#s-epilogue-starting-points-for-philanthropic-syste">Epilogue</a>
-<a class="pl__i" href="#s-appendix-a-cataloguing-sapiens-virtual-operation">Appendix A &middot; Virtual Operations</a>
-<a class="pl__i pl__i--sub" href="#s-1-operations-of-ratio-that-sapiens-do-virtualize">1. Ratio &mdash; virtualized</a>
-<a class="pl__i pl__i--sub" href="#s-2-operations-of-ratio-that-sapiens-do-not-virtua">2. Ratio &mdash; not virtualized</a>
-<a class="pl__i pl__i--sub" href="#s-3-operations-of-intellectus-that-sapiens-do-virt">3. Intellectus &mdash; virtualized</a>
-<a class="pl__i pl__i--sub" href="#s-4-operations-of-intellectus-that-sapiens-do-not-">4. Intellectus &mdash; not virtualized</a>
+<a class="pl__i" href="#s-appendix-a-cataloguing-sapiens-virtual-operation">Appendix A: Virtual Operations</a>
+<a class="pl__i pl__i--sub" href="#s-1-operations-of-ratio-that-sapiens-do-virtualize">1. Ratio, virtualized</a>
+<a class="pl__i pl__i--sub" href="#s-2-operations-of-ratio-that-sapiens-do-not-virtua">2. Ratio, not virtualized</a>
+<a class="pl__i pl__i--sub" href="#s-3-operations-of-intellectus-that-sapiens-do-virt">3. Intellectus, virtualized</a>
+<a class="pl__i pl__i--sub" href="#s-4-operations-of-intellectus-that-sapiens-do-not-">4. Intellectus, not virtualized</a>
 <a class="pl__i" href="#s-to-be-exact">To Be Exact</a>
 <a class="pl__i" href="#s-works-cited">Works Cited</a>
 <a class="pl__i" href="#s-selected-bibliography">Selected Bibliography</a>
 
-<div class="pacts">
-<a class="btn" href="papers/instruments-of-virtue.pdf" download>Download PDF</a>
-</div>
 </aside>
 <div class="pbody">
 <section id="s-key-terms">
@@ -1754,6 +1779,21 @@ Thanks to Emilia Stefankiewicz for editorial assistance, and to Patrick Misiewic
   }
   window.addEventListener('scroll', function(){ if(!tick){ tick=true; requestAnimationFrame(update); } }, {passive:true});
   window.addEventListener('resize', update); update();
+})();
+</script>
+
+<script>
+(function(){
+  var t=document.querySelector('.splitbtn__c'), m=document.querySelector('.sbmenu');
+  if(!t||!m) return;
+  function close(){ m.classList.remove('on'); t.setAttribute('aria-expanded','false'); }
+  t.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    var open = m.classList.toggle('on');
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function(e){ if(!m.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 })();
 </script>
 </body>
