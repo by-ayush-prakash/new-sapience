@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>News, Announcements and Technical Papers | New Sapience</title>
+<title>Latest updates | New Sapience</title>
 <meta name="description" content="Announcements, press releases, and technical papers from New Sapience.">
 <link rel="canonical" href="https://www.newsapience.com/news.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="New Sapience">
-<meta property="og:title" content="News, Announcements and Technical Papers — New Sapience">
+<meta property="og:title" content="Latest updates — New Sapience">
 <meta property="og:description" content="Announcements, press releases, and technical papers from New Sapience.">
 <meta property="og:url" content="https://www.newsapience.com/news.html">
 <meta property="og:image" content="https://www.newsapience.com/img/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="News, Announcements and Technical Papers — New Sapience">
+<meta name="twitter:title" content="Latest updates — New Sapience">
 <meta name="twitter:description" content="Announcements, press releases, and technical papers from New Sapience.">
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1085,12 +1085,43 @@ body{background:#fff}
 .btn--g{background:transparent;color:var(--ink);border-color:var(--rule)}
 .btn--g:hover{background:transparent;border-color:var(--cta);color:var(--cta)}
 .btn--ghost:hover{background:var(--surface-2);border-color:var(--ink-3)}
+
+/* ---- boxy header: full-bleed cells with hairline dividers ---- */
+:root{--navh:66px}
+.nav{padding:0;gap:0;align-items:stretch;justify-content:flex-start;
+  background:#fff;border-bottom:1px solid var(--rule);box-shadow:none}
+.nav.stuck{padding-block:0;background:rgba(255,255,255,.94);box-shadow:none;
+  border-bottom:1px solid var(--rule)}
+.logo{height:var(--navh);padding:0 clamp(16px,1.8vw,26px);
+  border-right:1px solid var(--rule);flex:none}
+.logo__l{height:34px;width:auto}
+.navpill{margin-left:0;gap:0;align-items:stretch}
+.nitem{border-right:1px solid var(--rule)}
+.nitem>a{height:var(--navh);padding:0 clamp(13px,1.4vw,22px);
+  transition:background .18s ease,color .18s ease}
+.nitem>a:hover{background:var(--surface)}
+.nitem[aria-current]>a::after{bottom:0;height:2px;background:var(--cta)}
+.toggle{margin-left:auto;height:var(--navh);align-items:stretch;flex:none}
+.splitbtn{border-radius:0;height:100%;align-items:stretch;overflow:visible}
+.splitbtn__m{padding:0 clamp(20px,2.1vw,32px);display:inline-flex;align-items:center}
+.splitbtn__c{padding:0 15px;display:inline-flex;align-items:center}
+.toggle:hover .splitbtn,.toggle:focus-within .splitbtn{border-radius:0}
+.sbmenu{border-radius:0;top:100%;border-top:0}
+.burger{border-radius:0;height:var(--navh);width:var(--navh);border:0;
+  border-left:1px solid var(--rule);background:#fff}
+@media(max-width:860px){
+  .logo{border-right:0}
+  .toggle{height:var(--navh)}
+}
+
+.logo__l{height:34px;width:34px}
+.logo{padding-inline:clamp(18px,1.9vw,26px)}
 </style>
 </head>
 <body>
 <header class="nav" id="nav">
   <a class="logo" href="index.html" aria-label="New Sapience — home">
-    <img class="logo__l" src="img/brand/lockup.png" width="224" height="44" alt="New Sapience">
+    <img class="logo__l" src="img/brand/mark-512.png" width="40" height="40" alt="New Sapience">
   </a>
   <nav class="navpill" aria-label="Primary">
     <div class="nitem"><a href="platform.html">Platform</a></div>
@@ -1113,7 +1144,7 @@ body{background:#fff}
 </header>
 <section class="sec nhead">
 <div class="wrap">
-<h1 data-rv="">News</h1>
+<h1 data-rv="">Latest updates</h1>
 <p data-rv="">Announcements, press releases, and technical papers from New Sapience.</p>
 </div>
 </section>
@@ -1132,16 +1163,6 @@ body{background:#fff}
 <img alt="New Sapience" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/paper/under-the-hood.jpg"/>
 </div>
 </a>
-</section>
-
-<section class="sec sec--t ncta">
-<div class="wrap">
-<div class="chead" data-rv="">
-<h2>Media enquiries</h2>
-<p class="lede">For interviews, briefings, or technical background, write to us directly.</p>
-</div>
-<a class="btn" href="mailto:comm@newsapience.com" data-rv="">comm@newsapience.com</a>
-</div>
 </section>
 <footer class="foot">
 <div class="wrap">
@@ -1327,7 +1348,7 @@ body{background:#fff}
       requestAnimationFrame(loop);
       if (!vis || now - last < 33) return;
       last = now; t += .012; x.clearRect(0, 0, W, H);
-      var m = (getComputedStyle(document.body).color.match(/\d+/g)) || [12, 20, 31];
+      var m = (getComputedStyle(cv).color.match(/\d+/g)) || [12, 20, 31];
       var S = function (a) { return 'rgba(' + m[0] + ',' + m[1] + ',' + m[2] + ',' + a + ')'; };
       x.lineWidth = 1;
       var i, j, p, a, b;
