@@ -1028,6 +1028,10 @@ body{background:#fff}
 .ncta{border-top:1px solid var(--rule);margin-top:clamp(40px,5vw,72px)}
 @media (max-width:980px){ .ngrid{grid-template-columns:repeat(2,1fr)} .ncard--feat{grid-column:span 2;grid-row:auto} }
 @media (max-width:640px){ .ngrid{grid-template-columns:1fr} .ncard--feat{grid-column:span 1} .nsrch{margin-left:0;width:100%} }
+
+/* news: give the grid room below the page-header rule */
+.nhead{padding-bottom:clamp(46px,5.4vw,80px)}
+.ngridsec{padding-top:clamp(52px,6vw,86px)}
 </style>
 </head>
 <body>
@@ -1064,7 +1068,7 @@ body{background:#fff}
 
 
 
-<section class="sec" style="padding-top:0">
+<section class="sec ngridsec">
 <div class="wrap">
 <div class="ngrid" id="ngrid">
 <article class="ncard ncard--feat" data-rv="">
