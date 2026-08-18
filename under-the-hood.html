@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>News, Announcements and Technical Papers | New Sapience</title>
-<meta name="description" content="Announcements, press releases, and technical papers from New Sapience.">
-<link rel="canonical" href="https://www.newsapience.com/news.html">
+<title>Under the Hood: Sapiens and Large Language Models Compared | New Sapience</title>
+<meta name="description" content="Under the Hood: Sapiens and Large Language Models Compared. A paper by Bryant Cruse and Rosaire Leon on how each architecture is built, what it does at runtime, and what can be inspected.">
+<link rel="canonical" href="https://www.newsapience.com/under-the-hood.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="New Sapience">
-<meta property="og:title" content="News, Announcements and Technical Papers — New Sapience">
-<meta property="og:description" content="Announcements, press releases, and technical papers from New Sapience.">
-<meta property="og:url" content="https://www.newsapience.com/news.html">
+<meta property="og:title" content="Under the Hood: Sapiens and Large Language Models Compared — New Sapience">
+<meta property="og:description" content="Under the Hood: Sapiens and Large Language Models Compared. A paper by Bryant Cruse and Rosaire Leon on how each architecture is built, what it does at runtime, and what can be inspected.">
+<meta property="og:url" content="https://www.newsapience.com/under-the-hood.html">
 <meta property="og:image" content="https://www.newsapience.com/img/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="News, Announcements and Technical Papers — New Sapience">
-<meta name="twitter:description" content="Announcements, press releases, and technical papers from New Sapience.">
+<meta name="twitter:title" content="Under the Hood: Sapiens and Large Language Models Compared — New Sapience">
+<meta name="twitter:description" content="Under the Hood: Sapiens and Large Language Models Compared. A paper by Bryant Cruse and Rosaire Leon on how each architecture is built, what it does at runtime, and what can be inspected.">
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -987,47 +987,82 @@ body{background:#fff}
 </style>
 
 <style>
-/* ---- NEWS INDEX (this page only) ---- */
+/* ---- PAPER READING LAYOUT (this page type only) ---- */
+.pbar{background:var(--mid-1);padding-top:clamp(76px,9vw,140px);padding-bottom:clamp(40px,5vw,72px);text-align:center}
+.pbar .mono{display:block;margin-bottom:clamp(18px,2.2vw,28px)}
+.pbar h1{font-size:clamp(36px,5.6vw,72px);font-weight:600;letter-spacing:-.024em;line-height:1.04;text-wrap:balance;max-width:18ch;margin-inline:auto}
+.pbar__sub{margin:clamp(18px,2.4vw,30px) auto 0;max-width:46ch;font-size:clamp(16px,1.3vw,20px);color:var(--ink-2);text-wrap:balance}
+.pbar__meta{margin-top:clamp(22px,2.6vw,34px);display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pintro{background:var(--mid-1);padding-bottom:clamp(30px,4vw,56px)}
+.pintro .in{max-width:64ch;margin-inline:auto}
+.pintro p{font-size:clamp(16px,1.25vw,18.5px);line-height:1.75;color:var(--ink-2);margin:0 0 18px}
+.psum{background:var(--mid-1);padding-bottom:clamp(40px,5vw,72px)}
+.psum .in{max-width:64ch;margin-inline:auto}
+.paper{display:grid;grid-template-columns:minmax(0,238px) minmax(0,1fr);gap:clamp(28px,5vw,86px);align-items:start}
+.prail{position:sticky;top:104px;align-self:start}
+.prail a.pl__i{display:block;padding:7px 0;border:0;
+  font-size:13.5px;line-height:1.35;color:var(--ink-2);transition:color .25s var(--ez)}
+.prail a.pl__i:hover{color:var(--signal)}
+.prail a.pl__i.on{color:var(--ink);font-weight:600}
+.pdl{margin-top:clamp(26px,3vw,38px);text-align:center}
+.prail .pacts{margin:0 0 24px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.pbody h2{font-size:clamp(26px,2.6vw,38px);letter-spacing:-.022em;margin:0 0 20px;text-wrap:balance}
+.pbody h3{font-size:clamp(18px,1.5vw,22px);margin:34px 0 12px}
+.pbody p{font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.78;color:var(--ink-2);max-width:68ch;margin:0 0 18px}
+.pbody section{padding-bottom:clamp(44px,5vw,76px);scroll-margin-top:84px;
+  border-top:1px solid var(--rule);padding-top:clamp(40px,4.6vw,68px)}
+.pbody section:first-child{border-top:0}
+.pbody blockquote{margin:26px 0;padding-left:20px;border-left:2px solid var(--signal);color:var(--ink);font-size:clamp(17px,1.4vw,20px);line-height:1.6}
+@media (max-width:900px){
+  .paper{grid-template-columns:1fr}
+  .prail{position:static;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-bottom:30px}
+  .prail .pacts{flex-direction:row;flex-wrap:wrap}
+}
+</style>
+
+<style>
+.pbody ul{margin:0 0 20px;padding-left:22px}
+.pbody ul li{font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.75;color:var(--ink-2);margin-bottom:10px}
+.pbody sup.fnr{font-size:.66em;vertical-align:super;line-height:0}
+.pbody sup.fnr a{color:var(--signal);text-decoration:none}
+.pfn{margin-top:clamp(46px,5vw,76px);padding-top:clamp(26px,3vw,38px);border-top:1px solid var(--rule)}
+.pfn h2{font-size:clamp(20px,1.7vw,24px);margin:0 0 18px}
+.pfn ol{margin:0;padding-left:22px}
+.pfn li{font-size:14px;line-height:1.7;color:var(--ink-2);margin-bottom:12px}
+.pfn li em{font-style:italic}
+.fnb{margin-left:6px;color:var(--signal);text-decoration:none}
+.prail a.pl__i--sub{padding-left:15px;font-size:13px}
+.prail a.pl__i{font-style:normal;padding:7px 0;line-height:1.35}
+.prail a.pl__i em{font-style:italic}
+.pmeta{margin-top:clamp(20px,2.4vw,30px);font-size:14.5px;color:var(--ink-2);line-height:1.7}
+.pmeta b{color:var(--ink)}
 body{background:#fff}
 .nav{background:transparent}
 .nav.stuck{background:rgba(255,255,255,.92);box-shadow:0 1px 0 rgba(12,20,31,.08)}
-.nhead{padding-top:clamp(72px,9vw,128px);padding-bottom:clamp(24px,3vw,38px)}
-.nhead h1{font-size:clamp(46px,7.4vw,92px);font-weight:600;letter-spacing:-.026em;line-height:1;margin:0}
-.nhead p{margin:clamp(16px,2vw,24px) 0 0;font-size:clamp(16px,1.3vw,19px);color:var(--ink-2);max-width:60ch}
-.nfil{display:flex;flex-wrap:wrap;gap:10px;align-items:center;
-  padding-bottom:clamp(28px,3.4vw,48px)}
-.chip{font-family:var(--f-body);font-size:15px;line-height:1;color:var(--ink);background:transparent;
-  border:1px solid var(--ink);border-radius:999px;padding:12px 20px;cursor:pointer;
-  transition:background .25s var(--ez),color .25s var(--ez)}
-.chip:hover{background:var(--surface-2)}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.nsrch{margin-left:auto;display:flex;align-items:center;gap:8px}
-.nsrch input{width:0;opacity:0;padding:0;border:1px solid var(--rule);border-radius:999px;
-  font-family:var(--f-body);font-size:15px;background:#fff;color:var(--ink);
-  transition:width .4s var(--ez),opacity .3s,padding .4s var(--ez)}
-.nsrch.open input{width:min(260px,46vw);opacity:1;padding:11px 16px}
-.nsrch button{width:44px;height:44px;flex:none;display:grid;place-items:center;cursor:pointer;
-  background:transparent;border:1px solid var(--ink);border-radius:10px;color:var(--ink)}
-.nsrch button:hover{background:var(--surface-2)}
-.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,36px);align-items:start}
-.ncard{display:flex;flex-direction:column;min-width:0}
-.ncard[hidden]{display:none}
-.ncard--feat{grid-column:span 2}
-.ncard .phwrap{--ar:16/9;border-radius:14px;overflow:hidden;margin:0}
-.ncard--feat .phwrap{--ar:16/10}
-.ntags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 12px}
-.ncard h3{margin:0;font-size:clamp(18px,1.6vw,23px);letter-spacing:-.02em;line-height:1.25;text-wrap:balance}
-.ncard--feat h3{font-size:clamp(24px,2.4vw,34px)}
-.ncard p{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--ink-2)}
-.ncard .ndate{margin-top:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--ink-3)}
-.ncard a.nlink::after{content:"";position:absolute;inset:0}
-.ncard{position:relative}
-.ncard:hover h3{color:var(--signal)}
-.nempty{padding:40px 0;color:var(--ink-3);font-size:15px}
-.ncta{border-top:1px solid var(--rule);margin-top:clamp(40px,5vw,72px)}
-@media (max-width:980px){ .ngrid{grid-template-columns:repeat(2,1fr)} .ncard--feat{grid-column:span 2;grid-row:auto} }
-@media (max-width:640px){ .ngrid{grid-template-columns:1fr} .ncard--feat{grid-column:span 1} .nsrch{margin-left:0;width:100%} }
+.pbar,.pintro,.psum{background:#fff}
+.pbar{padding-top:clamp(66px,8vw,120px);padding-bottom:clamp(18px,2.2vw,30px)}
+.pbar .mono{display:block;margin-bottom:clamp(24px,3vw,40px);color:var(--ink);font-size:12.5px;letter-spacing:.18em}
+.pbar h1{max-width:15ch;font-size:clamp(38px,5.4vw,70px);font-weight:400;line-height:1.1;letter-spacing:-.006em}
+.pbar__sub{max-width:46ch;font-size:clamp(17px,1.45vw,21px);font-weight:400;color:var(--ink-2);line-height:1.5;
+  margin-top:clamp(20px,2.4vw,30px)}
+.phero-img{margin-top:clamp(34px,4.4vw,64px)}
+.phero-img .phwrap{--ar:2/1;border-radius:18px;overflow:hidden;margin:0}
+.phero-cap{margin-top:12px;font-size:12.5px;color:var(--ink-3);text-align:center}
+.pintro{padding-top:clamp(30px,4vw,54px)}
+.pintro .in{max-width:66ch}
+.pmeta{border-top:1px solid var(--rule);padding-top:20px}
+.ack{margin-top:0}
+.ack summary{cursor:pointer;list-style:none;display:inline-flex;align-items:baseline;gap:10px;
+  font-size:14.5px;color:var(--ink-2);transition:color .25s var(--ez)}
+.ack summary b{color:var(--ink)}
+.ack summary::-webkit-details-marker{display:none}
+.ack summary:hover{color:var(--signal)}
+.ack__p{font-family:var(--f-mono);font-size:15px;line-height:1;color:var(--ink-3);
+  transition:transform .3s var(--ez);display:inline-block}
+.ack[open] summary .ack__p{transform:rotate(45deg)}
+.ack p{margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--ink-2);max-width:62ch}
+/* paper page: no hairlines between the stacked intro blocks */
+.pbar + .sec, .pintro + .sec, .psum + .sec{border-top:0}
 </style>
 </head>
 <body>
@@ -1040,7 +1075,7 @@ body{background:#fff}
     <div class="nitem"><a href="sectors.html">Sectors</a></div>
     <div class="nitem"><a href="deployment.html">Deployment</a></div>
     <div class="nitem"><a href="about.html">About</a></div>
-    <div class="nitem" aria-current="page"><a href="news.html">News</a></div>
+    <div class="nitem"><a href="news.html">News</a></div>
     <div class="nitem"><a href="contact.html">Contact</a></div>
   </nav>
   <div class="toggle">
@@ -1055,38 +1090,223 @@ body{background:#fff}
 <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
   </div>
 </header>
-<section class="sec nhead">
+
+<style>
+/* ---- Under the Hood: part dividers, numbered procedure lists ---- */
+.pbody section.ppart{padding-bottom:clamp(26px,3vw,40px)}
+.pbody section.ppart h2{font-size:clamp(30px,3.4vw,46px);letter-spacing:-.026em;margin:0}
+.peyebrow{display:block;margin:0 0 14px;font-size:11.5px;letter-spacing:.18em;color:var(--ink-3)}
+.pbody ol.pol{margin:0 0 22px;padding-left:26px}
+.pbody ol.pol li{font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.78;color:var(--ink-2);
+  margin-bottom:14px;max-width:66ch;padding-left:4px}
+.pbody ol.pol li::marker{color:var(--ink-3);font-family:var(--f-mono);font-size:.82em}
+.pauth{margin-top:clamp(20px,2.4vw,30px);border-top:1px solid var(--rule);padding-top:20px;
+  font-size:14.5px;color:var(--ink-2);line-height:1.7}
+.pauth b{color:var(--ink)}
+.pintro{padding-bottom:clamp(18px,2.4vw,34px)}
+.pintro + .sec--t{padding-top:clamp(26px,3.2vw,46px)}
+</style>
+<section class="sec pbar">
 <div class="wrap">
-<h1 data-rv="">News</h1>
-<p data-rv="">Announcements, press releases, and technical papers from New Sapience.</p>
+<span class="mono" data-rv="">Paper</span>
+<h1 data-rv="">Under the Hood</h1>
+<p class="pbar__sub" data-rv="">Sapiens and Large Language Models Compared</p>
 </div>
-</section>
-
-
-
-<section class="sec" style="padding-top:0">
-<div class="wrap">
-<div class="ngrid" id="ngrid">
-<article class="ncard ncard--feat" data-rv="">
+<div class="wrap wrap--wide phero-img" data-rv="">
 <div class="phwrap">
-<img alt="Close view of a circuit board" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/paper/under-the-hood.jpg"/>
-</div>
-<div class="ntags"><span class="tag">Paper</span></div>
-<h3><a class="nlink" href="under-the-hood.html">Under the Hood: Sapiens and Large Language Models Compared</a></h3>
-<p>Bryant Cruse and Rosaire Leon describe both architectures at the level of their parts: what each component is, what it does while the system runs, and what a person can open up and read afterward. The same worked example is traced through both.</p>
-<div class="ndate">Bryant Cruse &amp; Rosaire Leon &middot; New Sapience</div>
-</article>
+<img alt="Close view of a circuit board" decoding="async" onerror="this.classList.add('missing')" src="img/paper/under-the-hood.jpg"/>
+<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Close view of a circuit board</b><s style="opacity:.6;margin-top:2px">img/paper/under-the-hood.jpg</s></div>
 </div>
 </div>
 </section>
 
-<section class="sec sec--t ncta">
+<section class="sec pintro" style="padding-top:0">
+<div class="wrap"><div class="in" data-rv="">
+<p>Two AI architectures are described here at the level of their parts. What each component is, what it does while the system runs, and what a person can open up and read afterward.</p>
+<p>A sapiens holds a world model built by human modelers and processes it with deterministic routines. A large language model holds an arithmetic function whose coefficients were fitted to statistics about token order. The same worked example, ice cream left out on a counter, is traced through both.</p>
+<div class="pauth"><b>Bryant Cruse</b>, Founder, CEO &amp; Chairman, and <b>Rosaire Leon</b>, Chief Ethics Officer, at New Sapience.</div>
+</div></div>
+</section>
+
+<section class="sec sec--t">
 <div class="wrap">
-<div class="chead" data-rv="">
-<h2>Media enquiries</h2>
-<p class="lede">For interviews, briefings, or technical background, write to us directly.</p>
+<div class="paper">
+<aside class="prail" aria-label="Paper contents">
+<div class="pacts">
+<a class="btn" href="papers/under-the-hood.pdf" download>Download PDF</a>
 </div>
-<a class="btn" href="mailto:comm@newsapience.com" data-rv="">comm@newsapience.com</a>
+<a class="pl__i" href="#s-how-sapiens-work">Part I: How sapiens work</a>
+<a class="pl__i pl__i--sub" href="#s-components-of-a-sapiens">Components of a sapiens</a>
+<a class="pl__i pl__i--sub" href="#s-acquiring-the-model">Acquiring the model</a>
+<a class="pl__i pl__i--sub" href="#s-sapiens-in-use">What happens when you use it</a>
+<a class="pl__i pl__i--sub" href="#s-cause-and-effect">Cause and effect</a>
+<a class="pl__i pl__i--sub" href="#s-sapiens-inspect">What you can inspect</a>
+<a class="pl__i" href="#s-how-llms-work">Part II: How LLMs work</a>
+<a class="pl__i pl__i--sub" href="#s-components-of-an-llm">Components of an LLM</a>
+<a class="pl__i pl__i--sub" href="#s-pre-training">Pre-training</a>
+<a class="pl__i pl__i--sub" href="#s-post-training">Post-training</a>
+<a class="pl__i pl__i--sub" href="#s-llm-in-use">What happens when you use it</a>
+<a class="pl__i pl__i--sub" href="#s-false-answers">Why false answers appear</a>
+<a class="pl__i pl__i--sub" href="#s-reasoning-models">&ldquo;Reasoning&rdquo; and multi-agent</a>
+<a class="pl__i pl__i--sub" href="#s-llm-inspect">What you can inspect</a>
+</aside>
+<div class="pbody">
+<section id="s-how-sapiens-work" class="ppart">
+<span class="mono peyebrow">Part I</span>
+<h2>How sapiens work</h2>
+
+</section>
+
+<section id="s-components-of-a-sapiens">
+<h2>Components of a sapiens</h2>
+<p>The sapiens platform consists of an application development environment and a runtime architecture.</p>
+<p>The development environment, named MELD, is the toolkit a developer uses to construct a sapiens. It supports modeling work, logic development in the MICA programming language, automated testing, and debugging. MELD can generate multiple runtime sapiens instances, and each instance can operate a different version of a model. As a sapiens processes inputs at runtime, it creates graph structures. MELD displays those structures in detail, both as itemized lists and as visual representations, and it permits the developer to inspect and debug each step of the MICA program that created them.</p>
+<p>A running sapiens has four components: the engine; the world model; the reasoning routines that process the model; and whatever interfaces the application requires. The engine loads the model and the reasoning routines at runtime and stores them in system memory. A user or a connected system then submits structured information to the sapiens, whether natural language messages or any stream of ordered data. A sapiens can accept several such streams at once; they needn’t be of the same kind.</p>
+<p>Every sapiens application shares a baseline model. The first part of that baseline is the Cognitive Core, a meta-knowledge schema that classifies every model component, from the most elemental to the most complex, according to how components may combine to form more complex ideas. The Cognitive Core also constrains those combinations, so that whatever a sapiens assembles remains consistent with the model it already holds. The functionality of the Cognitive Core can be compared to scientific chemistry’s periodic table of the elements, which specifies how atoms can combine to form molecules and substances.</p>
+<p>The second part of the baseline is the commonsense world model, which holds the foundational concepts from which a modeler assembles application-specific or expert knowledge. The commonsense world model also supports natural language comprehension, for applications that require a natural language interface. It currently holds roughly three thousand concepts. The platform remains in development.</p>
+</section>
+
+<section id="s-acquiring-the-model">
+<h2>How a sapiens acquires its model</h2>
+<p>A sapiens’ world model originates in the mind of a modeler, a human expert in the domain of knowledge that the model will reconstitute in synthetic form. Starting from the domain’s most elementary concepts, MELD guides the modeler through a twelve-step process. That process applies to each concept the epistemological and ontological properties that the Cognitive Core defines, and it ensures that the concept remains compatible with the system’s processing logic.</p>
+<p>One such property is a pointer towards a more abstract concept, called a genus parent. The concept under construction inherits its generic properties from that more abstract concept, while the pointer itself fixes the new concept’s address in the overall model. Other properties distinguish the new concept from its genus parent and from the other children of that same parent. The modeler may then connect defined concepts to one another, so that the functional model of the entire domain accumulates.</p>
+<p>New Sapience calls this process <em>synthetic intelligence engineering</em>. It is not teaching, as when people exchange ideas through language; the modeler declares each essential property explicitly rather than leaving the sapiens to infer it. Nor is it programming: what the modeler produces is an information structure, not a processing routine.</p>
+</section>
+
+<section id="s-sapiens-in-use">
+<h2>What happens when you use it</h2>
+<p>A sapiens transcribes each incoming stream, whether statements in a natural human language, telemetry from instrumentation, or data from a database, into an intermediate structure called an input graph. The reasoning routines then transform each input graph, according to the logic and organizing principles of the Cognitive Core, into extensions of the model the sapiens already holds. This process is analogous to human cognitive learning, in contrast to the “Machine Learning” that calibrates an Artificial Neural Network’s coefficients.</p>
+<p>The Cognitive Core is the “DNA” of synthetic knowledge: it is a compact specification protocol that enables a well-bounded and stable body of code to transform minimally sufficient quantities of information into functional models of the world.</p>
+<p>Natural-language input passes through this process as follows.</p>
+<ol class="pol">
+<li>A user submits a message in natural language.</li>
+<li>The sapiens transcribes the message into a directed graph structure, the input graph, which the MICA reasoning routines can process. The input graph stores all the grammatical and syntactical information from the original message.</li>
+<li>Where a word in the message is defined in the sapiens language model and carries a world model reference, the sapiens forms a link from the input graph directly into the existing model structure. These links connect the symbols, which are words, to the non-linguistic model structures, which are concepts.</li>
+<li>The sapiens then builds a second graph, the concept graph, by analyzing the connection properties of those model references. It reads the grammar and syntax of the input graph as instructions for how to assemble the new idea from the model referents.</li>
+<li>The sapiens analyzes the connection properties of the referents to determine whether the assembly those instructions call for is valid. A concept graph derived from (for example) “My horse read a book” is rejected at this step.</li>
+<li>The sapiens transforms and refines the concept graph as required. If the input graph captures what someone said, the concept graph is an attempt to capture what they meant. What someone says may be plausibly understood in terms of the model and still not be exactly what they meant to convey. Read most literally, “I took my medicine” means the speaker picked it up; the sapiens possesses logic that automatically transforms the concept graph from the action take to the action ingest.</li>
+<li>The sapiens creates model referents for unknown words in the input graph, inferring them from the connection properties of the known references in the concept graph. From “Librarians read books,” the sapiens infers that librarians are people, because a connection property of reading is that it can only be predicated of people. It adds the word librarian to the system with the model reference “a set of people,” and it applies information from every subsequent reference to librarians to that new model element.</li>
+<li>The sapiens analyzes what the knowledge in the concept graph implies for the larger world model, and applies those implications. If changing location is a defined effect of the action traveling, and the concept graph specifies that someone traveled to Chicago, the sapiens updates that person’s location to Chicago. In many cases, the defined effect of an action is another action with its own effect, which the sapiens also asserts. The downstream effects of modeled actions thus form chains of causality, which the sapiens retains and can subsequently use to solve problems and answer questions.</li>
+</ol>
+</section>
+
+<section id="s-cause-and-effect">
+<h2>How a sapiens uses knowledge of cause and effect</h2>
+<p>Suppose the input is: <em>I leave ice cream out on the counter. What happens?</em></p>
+<ol class="pol">
+<li>The first statement is comprehended as described above. The household context is recognized, and the location of the substance ice cream is updated to the kitchen counter.</li>
+<li>The question is processed as described above.</li>
+<li>Happens maps to a query for an effect of the action leaving, with the object ice cream. The sapiens calls its reasoning routines for causal analysis and passes them these model elements.</li>
+<li>The initial effect of leaving is already known: the ice cream is on the kitchen counter. No other direct actions on the ice cream have been described as input, so the routine looks for cause-and-effect relationships that attend the change in location.</li>
+<li>Examining this instance of ice cream, the sapiens determines that it belongs to the set frozen desserts, solid substances kept in freezers to prevent thawing or melting, which suggests possible outcomes when such desserts are removed and left out on the counter.</li>
+<li>Ice cream is known to be composed largely of milk and cream, substances which are liquid at room temperature.</li>
+<li>Kitchens are known to be at room temperature.</li>
+<li>Melting, the process of changing state from solid to liquid, is recognized as the answer to the input question, which the sapiens articulates in English as “It melts.”</li>
+</ol>
+<p>The logic is general and reusable. It applies equally to anything that undergoes a state change due to a change in ambient conditions, with the particulars as specified in the model. The sapiens solved this problem at the level of common everyday knowledge because it recognized the query belonged to the household context. Had the context been more technical, and the knowledge available, the sapiens could have solved the problem just as well in terms of (for example) thermodynamics and molecular chemistry, which are themselves models that describe what happens to the ice crystals within the ice cream as they absorb heat.</p>
+</section>
+
+<section id="s-sapiens-inspect">
+<h2>What you can inspect</h2>
+<p>The functionality of a sapiens application derives from the logic contained in its MICA routines and from the structure of the model on which that logic operates.</p>
+<p>MICA is a fully deterministic procedural computer language. Given the same input or inputs, each execution step can have one and only one result. MELD permits developers to examine every execution step of a runtime operation, with full visibility into each input and each result.</p>
+<p>Human modelers create the baseline model structure explicitly, and it is fully readable and editable within MELD. Some of the model’s persistent storage formats are themselves human-readable and human-editable. MELD also gives developers full visibility into the model structure that the runtime program creates, in both itemized lists and visual representations.</p>
+</section>
+
+<section id="s-how-llms-work" class="ppart">
+<span class="mono peyebrow">Part II</span>
+<h2>How Large Language Models (LLMs) work</h2>
+<p>Large Language Models (“LLMs”), also called generative AI, are the technology that underlies the current generation of popular AI chatbots (ChatGPT, Claude, Gemini, Grok, etc.).</p>
+<p>An LLM is created by using algorithms to convert an enormous quantity of written language, authored by human beings, into a model composed of statistics about how fragments of that writing appeared in order relative to one another.</p>
+</section>
+
+<section id="s-components-of-an-llm">
+<h2>Components of a Large Language Model</h2>
+<p>At the most basic level, an LLM consists of two permanent components and several more components that vary depending on whether we are considering the LLM in training or deployment. The two permanent components are an Artificial Neural Network (“network”) and a separate program called a tokenizer.</p>
+<p>The tokenizer breaks digital text into smaller pieces. Digital text is already a sequence of numbers, one or more for each character. A token is a further number that stands for a short word, a fragment of a longer word, a punctuation mark, or a special symbol. The tokenizer has an index of around a hundred thousand tokens. It uses that index to convert input text into a sequence of tokens, and later to convert an output sequence back into output text. That is all the tokenizer does.</p>
+<p>A token has no connection to whatever the original word meant. Meaning—the symbolic connection that ties signs to their real references—is not found in the text itself; meaning <em>was</em> intended by the human beings who authored the text and <em>is</em> intended each time by those who read and interpret it. Simply put, text is not inherently meaningful; language and knowledge are two different things, and language alone does not constitute or even convey knowledge. To draw knowledge from language requires more than a faculty for measuring patterns within that language; it requires the ability to interpret signs <em>as signs</em>, as representations of things intended, and the awareness that such representations are distinct from the things themselves. (The word “apple” is not an apple.)</p>
+<p>Tokens derived from text are no more inherently meaningful than the text itself was: drawing knowledge from them also requires a faculty of interpretation. Human beings (and, in a deterministic way, sapiens) possess this faculty, but the network is an arithmetic function; it has no faculty for interpreting the tokens it handles. As input, it receives a sequence of tokens, signs isolated from any reference. As output, it returns a list of numbers, one for each token in the index. Each number measures the probability that its token is the one that follows the input sequence.</p>
+<p>The arithmetic function includes many billions of coefficients. Each coefficient multiplies one of the numbers that the function computes from the input sequence. The products accumulate to yield the function’s output list, the probability distribution that the LLM uses to process user input. When a developer reports a model’s size in billions of <em>parameters</em> or <em>weights</em>, that number represents how many coefficients the arithmetic function uses. The coefficients begin as random numbers and are adjusted through the training process; they remain constant thereafter for the end-user. The input sequence varies with every use.</p>
+<p>The network needs other programs to operate it. These are the components that vary between different stages of training and final deployment. During pre-training and supervised fine-tuning, a program performs a statistical operation called <em>curve-fitting</em>, which adjusts the network’s coefficients. During reinforcement learning, a second program performs a statistical operation called <em>sampling</em>, which generates candidate outputs; a second network called the <em>reward model</em> scores those outputs; and a reinforcement program adjusts the first network’s coefficients based on those scores. In deployment, the sampling program generates the output. We discuss each of these programs in what follows.</p>
+</section>
+
+<section id="s-pre-training">
+<h2>How a Large Language Model is pre-trained</h2>
+<p>First, the developer assembles a corpus—an archive of text, including web pages, books, and code. Second, the developer uses the tokenizer to convert that corpus into a sequence of trillions of tokens. Then the developer runs the curve-fitting program, which adjusts the arithmetic function’s coefficients by executing the same procedure, over and over, across the whole tokenized corpus. That procedure runs as follows.</p>
+<ol class="pol">
+<li>The curve-fitting program extracts a chunk of the tokenized corpus and submits that whole chunk-sequence to the network.</li>
+<li>The network executes its arithmetic function and returns its list of probabilities for every position in the chunk-sequence. At each position, the list specifies a probability that each token in the index may appear, computed from the tokens that have appeared up to that position.</li>
+<li>The loss function computes, at every position in the chunk-sequence, the negative logarithm of the probability the network had assigned to the token that actually followed in the chunk-sequence. Then it averages the resulting quantities across the whole chunk-sequence. The result measures how accurately the network’s output—its computed probability distribution—corresponds to the actual token sequence.</li>
+<li>The curve-fitting program calculates a second list of billions of numbers, one for each coefficient in the arithmetic function. This list is called the gradient. Each number in the list measures how much a small increase in the corresponding coefficient would increase the average loss. The curve-fitting program adjusts each coefficient by subtracting a small multiple of each gradient number from the coefficient to which that number corresponds.</li>
+<li>Then it extracts the next chunk of tokenized text and executes the whole procedure again.</li>
+</ol>
+<p>Each coefficient began at a random value. But after trillions of adjustments, the coefficients have values that make the network’s output probabilities approximate the frequencies with which tokens appear together throughout the corpus.</p>
+<p>The people who wrote the corpus texts were writing about the world; their words therefore represent their ideas about the world. By contrast, the network’s arithmetic function measures patterns among the token sequences that those texts became when the tokenizer converted them. But statistics about patterns among representations do not represent what the representations represented. They represent patterns among representations. When the curve-fitting program finishes, the network has obtained no data about the world and no data about what the authors knew. It has obtained data about how tokens were arranged.</p>
+</section>
+
+<section id="s-post-training">
+<h2>How a Large Language Model is post-trained</h2>
+<p>Pre-training yields a base model that can generate continuations from input text, but this is not yet a chatbot. Developers apply a second stage, called post-training, before deployment. Post-training involves two standard steps, with a third step for “reasoning” models.</p>
+<p>The first standard step is called <em>supervised fine-tuning</em>. Here the developer assembles a much smaller corpus of example exchanges that human beings wrote or selected, in which a prompt elicits the kind of output the developer wants. The curve-fitting program runs again over this smaller corpus, following the same procedure described above. The coefficients thus shift so that the network assigns higher probability to outputs of the kind that appear in the fine-tuning corpus.</p>
+<p>The second step is called <em>reinforcement learning from human feedback</em>. Here the procedure goes beyond curve-fitting.</p>
+<ol class="pol">
+<li>The developer has the sampling program generate two or more candidate outputs in response to the same prompt.</li>
+<li>Human beings rank those candidate outputs against one another. Some developers replace or supplement these human beings with a written constitution of principles and have a language model rank its own outputs against that constitution. The mechanism remains the same either way.</li>
+<li>The curve-fitting program now executes on the reward model. This second network’s arithmetic function receives both a prompt and an output, and returns a single number. The loss function measures how much the reward model falls short of representing the outcome of step 2, which the reward model should reflect by scoring the candidate output that ranked higher above the candidate output(s) that ranked lower. The loss quantity decreases as the gap between the scores widens in the direction their rankings indicate. When the curve-fitting program finishes, the reward model constitutes an approximate statistical representation of the preferences expressed in step 2.</li>
+<li>A reinforcement program then has the sampling program generate a new output, passes that output to the reward model for scoring, and adjusts the first network’s coefficients to raise the probability of the tokens in outputs that score well with the reward model and lower the probability of the tokens in outputs that score poorly. A penalty term restrains how far the network’s probability distribution may move from where supervised fine-tuning had left it.</li>
+<li>Some developers omit the separate reward model and fit the network directly to the ranked outputs supplied by step 2.</li>
+</ol>
+<p>Finally, “reasoning” models add a third step. Where a problem admits an automated check, such as solving a mathematical problem with a known answer or writing code that will either pass or fail certain tests, the developer replaces the reward model with the appropriate check and runs the same optimization against it.</p>
+<p>Post-training adjusts which outputs the network favors. It does not change <em>how</em> the network generates output. The tokenizer still supplies signs isolated from any reference, and the arithmetic function still returns a probability for each token in the index. Post-training optimization represents human preferences as an additional set of statistics and uses them to calibrate the network’s coefficients in ways that may better satisfy users, but still no step in this stage supplies the faculty of interpretation that constitutes <em>literacy</em>, that is, <em>reading comprehension </em>or indeed <em>comprehension</em> at all.</p>
+</section>
+
+<section id="s-llm-in-use">
+<h2>What happens when you use it</h2>
+<ol class="pol">
+<li>You submit a prompt.</li>
+<li>The tokenizer converts your prompt into tokens and passes them to the network as an input sequence.</li>
+<li>The network executes the arithmetic function and returns its list of probabilities.</li>
+<li>Just as the curve-fitting program modified the arithmetic function’s coefficients during training, now the sampling program samples from the trained arithmetic function to generate a new token. Sampling draws a random token from the index, weighted by the probability the network has computed for it. For example, the sampling program draws a token scored 0.6 six times as often as it draws a token scored 0.1. This randomization is why different instances of the same prompt yield different answers.</li>
+<li>The sampling program adds each randomly drawn token to the input sequence, then resubmits the sequence, now one token longer, to the arithmetic function.</li>
+<li>The arithmetic function executes again. It returns a new list of probabilities.</li>
+<li>The sampling program samples again.</li>
+<li>And so on. This procedure repeats for every single token.</li>
+<li>A special “stop” token represents the point where a text ends. The arithmetic function’s output thus includes a probability of stopping. When the sampling program draws that token, it stops sampling, and the tokenizer converts the accumulated tokens into legible output text.</li>
+</ol>
+<p>You submit: <em>I leave ice cream out on the counter. What happens?</em></p>
+<p>The arithmetic function executes. The sampling program draws <em>it</em>, then <em>melts</em>, then <em>(stop)</em>. The tokenizer converts these tokens into output text: <em>It melts.</em></p>
+<p>You know the ice cream would melt, so you consider the answer correct. The sampling program generated it by cycling three times, once for each token, through the procedure outlined above. Nothing in the model furnishes any concept of what ice cream is. The arithmetic function contains coefficients that the curve-fitting program adjusted, through gradient descent, to minimize the quantity that results from the loss function. The human beings who wrote the corpus texts knew what happens to ice cream, their knowledge governed which words they wrote and in which order, and the arithmetic function’s probability distribution has been fitted to statistical tendencies in the sequence of tokens into which their writing was converted. All the LLM ultimately does is calculate probabilities based on how tokens, which are signs severed from any reference, appeared in order in the training corpus.</p>
+</section>
+
+<section id="s-false-answers">
+<h2>Why the same model sometimes generates false answers</h2>
+<p>The arithmetic function computes the probability that tokens appear in a given sequence. It does not compute whether an output is true, whether an output is false, or whether an output contradicts itself or other outputs the model emitted a moment ago.</p>
+<p>The same procedure generates both the outputs you know are true and the ones you know are false. Common parlance calls the latter phenomenon a hallucination. That is a misnomer. The mechanism functions as designed; as designed, it cannot distinguish true from false, nor logical from illogical.</p>
+<p>A bigger, better corpus does not solve this problem. The curve-fitting program simply minimizes the quantity the loss function measures. That quantity decreases when the network’s computed probabilities move closer to matching the frequencies with which tokens follow each other in the corpus text. In that corpus, “I don’t know” appears infrequently in response to any given question. Thus a network that assigns high probability to generating some attempt at an answer better corresponds to the statistics that represent patterns in its training corpus than one that assigns high probability to generating “I don’t know.” Post-training could correct this problem, but developers grade models on benchmarks that give no credit for an answer of “I don’t know.”<sup class="fnr"><a id="r1" href="#fn1">1</a></sup> Here still, then, a model that generates a bad guess scores better than a model that generates no guess at all.</p>
+</section>
+
+<section id="s-reasoning-models">
+<h2>&ldquo;Reasoning&rdquo; models and multi-agent arrangements</h2>
+<p>The newest models generate a long, preliminary section of output before the final output and present the former section as their reasoning. Developers produce this behavior through the post-training techniques described above. They fine-tune the network’s coefficients on token sequences that place a “problem” text first, a long passage of “reasoning” text next, and a final answer last. Thus the network assigns high probability to generating such “draft” output. Then they run the reinforcement procedure against automated checks, which reward “reasoning” texts that precede passing answers.</p>
+<p>In reality, all three stages—the “problem,” the “reasoning,” and the final answer—comprise a single unbroken sequence of tokens, generated one by one through the procedure described above. No separate program intervenes at any point; the reasoning and the answer are one continuous generation. The model does not examine or alter the sequence. The extra tokens improve accuracy on many tasks because those tokens join the input sequence, and the network computes the final output’s probabilities from that longer input. But nothing constrains the final output to agree with the “reasoning,” because no part of the process compares them logically; no logic is applied anywhere in the process; nothing in the model knows what logical agreement is. So it is unsurprising that researchers have shown that a language model’s final output often contradicts the “reasoning” output it prints. However, the same researchers have found that showing users the “reasoning” raises their confidence in the final output regardless of whether the output is, in reality, right or wrong.<sup class="fnr"><a id="r2" href="#fn2">2</a></sup></p>
+<p>A multi-agent arrangement uses yet another program to call the network repeatedly, adding each successive output into the prompt for the next call. Each call to the network executes the same arithmetic function and sampling procedure. Repeating the same statistical computation many times does not amount to logically verifying any output.</p>
+</section>
+
+<section id="s-llm-inspect">
+<h2>What you can inspect</h2>
+<p>In principle, every coefficient is available to inspect; but reading them does not tell you why the network finally assigns high probability to “melts,” which tokenized texts contribute to that probability, or which of its outputs will turn out to be false. Researchers have identified certain interpretable features in these networks’ internal representations and even traced partial causal accounts for particular outputs, but they have not yet succeeded in producing an account complete enough to tell a user <em>in real time</em> why a given output was generated.</p>
+<p>Generating a single token requires multiplying the input through the entire list of coefficients; each one contributes to the token that results. Each token is thus the product of billions of compounding statistical multiplications. The size of these models, both during the training process that creates them and during their operation, is why they require vast computational resources. This is what drives the current race among LLM vendors to acquire more and more powerful processing chips, more and larger data centers, and the energy to power and cool them.</p>
+</section>
+
+<div class="pfn">
+<h2>Footnotes</h2>
+<ol>
+<li id="fn1">Kalai, A. T., Nachum, O., Vempala, S. S., &amp; Zhang, E. (2025). <em>Why language models hallucinate</em> (arXiv:2509.04664). arXiv. <a href="https://arxiv.org/abs/2509.04664" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2509.04664</a> <a class="fnb" href="#r1" aria-label="Back to text">&#8617;</a></li>
+<li id="fn2">Kambhampati, S., Valmeekam, K., Bhambri, S., Palod, V., Saldyt, L., Stechly, K., Samineni, S. R., Kalwar, D., &amp; Biswas, U. (2026). Position: Stop anthropomorphizing intermediate tokens as reasoning/thinking traces. In <em>Proceedings of the 43rd International Conference on Machine Learning</em> (Vol. 306). PMLR. <a class="fnb" href="#r2" aria-label="Back to text">&#8617;</a></li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </section>
 <footer class="foot">
@@ -1397,7 +1617,36 @@ body{background:#fff}
 
 </script>
 
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.prail .pl__i'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  if(!secs.length) return;
+  var set=function(id){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})};
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) set(e.target.id) });
+  },{rootMargin:'-104px 0px -70% 0px',threshold:0});
+  secs.forEach(function(s){io.observe(s)});
+  set(secs[0].id);
+})();
+</script>
 
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.prail .pl__i'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if(!secs.length) return;
+  var tick=false;
+  function update(){
+    tick=false;
+    var y=window.scrollY+150, best=0;
+    for(var i=0;i<secs.length;i++){ if(secs[i] && (secs[i].getBoundingClientRect().top+window.scrollY)<=y) best=i; }
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+  }
+  window.addEventListener('scroll', function(){ if(!tick){ tick=true; requestAnimationFrame(update); } }, {passive:true});
+  window.addEventListener('resize', update); update();
+})();
+</script>
 
 <script>
 (function(){
