@@ -1017,12 +1017,14 @@ body{background:#fff}
 .pintro{padding-top:clamp(30px,4vw,54px)}
 .pintro .in{max-width:66ch}
 .pmeta{border-top:1px solid var(--rule);padding-top:20px}
-.ack{margin-top:10px}
-.ack summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;
-  font-size:13px;color:var(--ink-3);transition:color .25s var(--ez)}
+.ack{margin-top:0}
+.ack summary{cursor:pointer;list-style:none;display:inline-flex;align-items:baseline;gap:10px;
+  font-size:14.5px;color:var(--ink-2);transition:color .25s var(--ez)}
+.ack summary b{color:var(--ink)}
 .ack summary::-webkit-details-marker{display:none}
 .ack summary:hover{color:var(--signal)}
-.ack__p{font-family:var(--f-mono);font-size:15px;line-height:1;transition:transform .3s var(--ez)}
+.ack__p{font-family:var(--f-mono);font-size:15px;line-height:1;color:var(--ink-3);
+  transition:transform .3s var(--ez);display:inline-block}
 .ack[open] summary .ack__p{transform:rotate(45deg)}
 .ack p{margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--ink-2);max-width:62ch}
 </style>
@@ -1071,9 +1073,8 @@ body{background:#fff}
 <p>Contemporary discourse about AI routinely conflates distinct rational operations. This paper applies the Thomistic distinction between <em>intellectus</em> and <em>ratio</em> to the design of AI systems, and asks what it would take for a machine to work as a genuine instrument of human reason rather than a substitute for it.</p>
 <p>It proposes a principle of instrumental complementarity: a machine that genuinely serves reason will be one that occasions reflective growth in the human principal who uses it. It then tests New Sapience&rsquo;s deterministic architecture against that principle, and catalogues precisely which rational operations such a system can and cannot virtualize.</p>
 <div class="pmeta">
-<b>Rosaire Leon</b>, Chief Ethics Officer at New Sapience.
 <details class="ack">
-<summary><span class="ack__l">Acknowledgements</span><span class="ack__p">+</span></summary>
+<summary><b>Rosaire Leon</b>, Chief Ethics Officer at New Sapience.<span class="ack__p">+</span></summary>
 <p>Thanks to Emilia Stefankiewicz for editorial assistance, and to Patrick Misiewicz for the initial proposal to develop a Thomistic evaluative framework for AI systems.</p>
 </details>
 </div>
