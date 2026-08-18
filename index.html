@@ -36,9 +36,9 @@
 
 :root{
   /* base */
-  --paper:#E7F1FA;
-  --surface:#F7FBFE;
-  --surface-2:#EDF4FB;
+  --paper:#FFFFFF;
+  --surface:#FAFAFB;
+  --surface-2:#F4F5F7;
   --ink:#0C141F;
   --ink-2:#4E5A68;
   --ink-3:#7C8797;
@@ -54,9 +54,9 @@
   --signal-wash:#EEF3FE;
 
   /* mid-tones: give large light sections weight (gap analysis #4) */
-  --mid-1:#DCE8F4;
-  --mid-2:#CBDCED;
-  --mid-3:#AFC6DE;
+  --mid-1:#F1F2F4;
+  --mid-2:#E4E6EA;
+  --mid-3:#CBCFD6;
   --warm-grey:#E4E4E0;
 
   /* semantic */
@@ -309,7 +309,7 @@ strong{font-weight:600}
   will-change:transform}
 /* Once scrolled the bar takes an opaque ground; left transparent, page
    headlines scroll straight through the nav links. */
-.nav.stuck{padding-block:9px;background:rgba(231,241,250,.9);
+.nav.stuck{padding-block:9px;background:rgba(255,255,255,.92);
   -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
   box-shadow:0 1px 0 rgba(0,0,0,.07)}
 /* Scrolling down retracts the bar; scrolling up brings it straight back. */
@@ -948,17 +948,21 @@ h1, h2, h3, h4{
 .sbmenu a:hover{background:var(--surface-2);color:var(--signal)}
 
 /* ---- latest news (homepage) ---- */
-.lnews{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,4vw,64px);align-items:center}
-.lnews .phwrap{--ar:16/10;border-radius:16px;overflow:hidden;margin:0}
+.lnews{border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+  padding:clamp(26px,3vw,40px) 0}
+.lnews__row{display:grid;grid-template-columns:170px 1fr auto;
+  gap:clamp(20px,3vw,48px);align-items:baseline}
 .lnews__k{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--signal)}
-.lnews h3{margin:16px 0 0;font-size:clamp(23px,2.2vw,32px);letter-spacing:-.022em;
-  line-height:1.18;text-wrap:balance}
+  text-transform:uppercase;color:var(--ink-3)}
+.lnews h3{margin:0;font-size:clamp(20px,1.9vw,27px);letter-spacing:-.02em;
+  line-height:1.25;text-wrap:balance}
 .lnews h3 a{color:inherit}
 .lnews h3 a:hover{color:var(--signal)}
-.lnews p{margin:14px 0 0;color:var(--ink-2);font-size:15.5px;line-height:1.65;max-width:52ch}
-.lnews .acts{margin-top:22px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
-@media(max-width:820px){.lnews{grid-template-columns:1fr}}
+.lnews p{margin:10px 0 0;color:var(--ink-2);font-size:15px;line-height:1.6;max-width:60ch}
+.lnews__all{margin-top:18px;display:inline-block}
+@media(max-width:820px){
+  .lnews__row{grid-template-columns:1fr;gap:14px}
+}
 </style>
 </head>
 <body>
@@ -1294,17 +1298,14 @@ h1, h2, h3, h4{
 <section class="sec sec--t" id="latest-news">
 <div class="wrap">
 <div class="lnews" data-rv="">
-<div class="phwrap">
-<img alt="Aerial view of Rome at sunrise" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/paper/instruments-of-virtue.jpg"/>
-</div>
+<div class="lnews__row">
+<div class="lnews__k">Latest news</div>
 <div>
-<span class="lnews__k">Latest &middot; Paper</span>
 <h3><a href="instruments-of-virtue.html">Instruments of Virtue: A Thomistic Study in AI Systems Design</a></h3>
 <p>Rosaire Leon applies the Thomistic distinction between <em>intellectus</em> and <em>ratio</em> to the design of AI systems, and catalogues which rational operations a deterministic architecture can and cannot virtualize.</p>
-<div class="acts">
-<a class="tlink" href="instruments-of-virtue.html">Read the paper &rarr;</a>
-<a class="tlink" href="news.html">All news &rarr;</a>
+<a class="tlink lnews__all" href="news.html">All news &rarr;</a>
 </div>
+<a class="tlink" href="instruments-of-virtue.html">Read &rarr;</a>
 </div>
 </div>
 </div>
