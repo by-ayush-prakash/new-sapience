@@ -937,14 +937,24 @@ h1, h2, h3, h4{
 .sbmenu a{color:var(--ink)}
 .splitbtn__c svg{transition:transform .3s var(--ez)}
 .splitbtn__c[aria-expanded="true"] svg{transform:rotate(180deg)}
-.sbmenu{position:absolute;top:calc(100% + 10px);right:0;min-width:216px;z-index:1200;
-  background:#fff;border:1px solid var(--rule);border-radius:0;padding:6px;
+.sbmenu{position:absolute;top:100%;right:0;left:0;z-index:1200;
+  background:#fff;border:1px solid var(--rule);border-top:0;
+  border-radius:0 0 6px 6px;padding:0;overflow:hidden;
   box-shadow:0 24px 60px -28px rgba(12,20,31,.45);
-  opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:opacity .22s var(--ez),transform .22s var(--ez),visibility .22s}
-.sbmenu.on{opacity:1;visibility:visible;transform:none}
-.sbmenu a{display:block;padding:11px 14px;border-radius:6px;font-size:14px;
+  opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .18s var(--ez),transform .18s var(--ez),visibility .18s}
+.sbmenu.on,
+.toggle:hover .sbmenu,
+.toggle:focus-within .sbmenu{opacity:1;visibility:visible;transform:none}
+.toggle:hover .splitbtn__c svg,
+.toggle:focus-within .splitbtn__c svg{transform:rotate(180deg)}
+
+.sbmenu a{display:block;padding:12px 16px;border-radius:0;font-size:14px;
   color:var(--ink);white-space:nowrap;transition:background .2s}
+.sbmenu a + a{border-top:1px solid var(--rule)}
+/* the open menu and the button read as one object */
+.toggle:hover .splitbtn,
+.toggle:focus-within .splitbtn{border-radius:6px 6px 0 0}
 .sbmenu a:hover{background:var(--surface-2);color:var(--signal)}
 
 /* ---- latest news (homepage) ---- */
@@ -1039,31 +1049,6 @@ body{background:#fff}
 #cisa .shead > :not(h2) p + p{margin-top:14px}
 @media (max-width:820px){ #cisa .shead > :not(h2){columns:1} }
 
-/* ---- latest news: typographic index row ---- */
-.lnews{padding:clamp(58px,6.4vw,96px) 0}
-.lnews__top{border-top:1px solid var(--ink);padding-top:18px;
-  display:flex;align-items:center;justify-content:space-between;gap:20px}
-.lnrow{display:grid;grid-template-columns:104px minmax(0,1fr) 30px;
-  gap:clamp(18px,2.2vw,34px);align-items:start;
-  padding:clamp(28px,3.4vw,48px) 0;
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-  margin-top:clamp(22px,2.6vw,34px);
-  text-decoration:none;color:inherit}
-.lnrow + .lnrow{border-top:0;margin-top:0}
-.lnrow__k{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3);padding-top:7px}
-.lnrow__b{display:block;min-width:0}
-.lnrow h3{margin:0;font-size:clamp(25px,2.9vw,40px);line-height:1.1;letter-spacing:-.026em;
-  max-width:30ch;text-wrap:balance;transition:color .18s ease}
-.lnrow p{margin:14px 0 0;color:var(--ink-2);font-size:16px;line-height:1.7;max-width:78ch}
-.lnrow__a{font-size:24px;line-height:1;color:var(--ink-3);padding-top:6px;transition:transform .22s var(--ez),color .18s ease}
-.lnrow:hover h3{color:var(--signal)}
-.lnrow:hover .lnrow__a{color:var(--signal);transform:translateX(4px)}
-@media (max-width:760px){
-  .lnrow{grid-template-columns:1fr auto;gap:14px}
-  .lnrow__k{grid-column:1/-1;padding-top:0}
-}
-
 /* ---- sectors: 4x4 image wall ---- */
 .swall{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:clamp(34px,4vw,60px)}
 .swall__t{position:relative;aspect-ratio:1/1;overflow:hidden;display:block;background:#0C141F;
@@ -1080,6 +1065,28 @@ body{background:#fff}
 .swall__t:hover img{transform:scale(1.04);filter:saturate(1) brightness(.86)}
 @media (max-width:900px){ .swall{grid-template-columns:repeat(3,1fr)} }
 @media (max-width:620px){ .swall{grid-template-columns:repeat(2,1fr)} }
+
+/* ---- latest news: statement left, index list right ---- */
+.lnews{padding:clamp(60px,6.6vw,100px) 0}
+.lngrid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.55fr);
+  gap:clamp(32px,5vw,92px);align-items:start}
+.lnews__h{font-size:clamp(24px,2.5vw,34px);line-height:1.18;letter-spacing:-.022em;
+  max-width:16ch;margin:0}
+.lnlist{display:block}
+.lnitem{display:flex;align-items:baseline;justify-content:space-between;gap:clamp(20px,3vw,48px);
+  padding:16px 0 18px;border-bottom:1px solid var(--rule);
+  text-decoration:none;color:inherit}
+.lnitem:first-child{padding-top:6px}
+.lnitem__t{font-family:var(--f-display);font-weight:600;
+  font-size:clamp(16px,1.45vw,19px);letter-spacing:-.016em;line-height:1.35;
+  transition:color .18s ease}
+.lnitem__c{flex:none;color:var(--ink-3);font-size:clamp(14.5px,1.25vw,17px);line-height:1.35;
+  transition:color .18s ease}
+.lnitem:hover .lnitem__t,.lnitem:hover .lnitem__c{color:var(--signal)}
+@media (max-width:820px){
+  .lngrid{grid-template-columns:1fr;gap:26px}
+  .lnitem{gap:18px}
+}
 </style>
 </head>
 <body>
@@ -1101,7 +1108,6 @@ body{background:#fff}
       <button class="splitbtn__c" type="button" aria-haspopup="true" aria-expanded="false" aria-label="More ways to get in touch"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </span>
     <div class="sbmenu" role="menu">
-<a role="menuitem" href="contact.html">Request a demo</a>
 <a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
 </div>
 <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
@@ -1300,18 +1306,13 @@ body{background:#fff}
 
 <section class="lnews" id="latest-news">
 <div class="wrap">
-<div class="lnews__top" data-rv="">
-<span class="mono">Latest news</span>
-<a class="btn btn--ghost" href="news.html">All news <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></a>
+<div class="lngrid" data-rv="">
+<h2 class="lnews__h">Latest news</h2>
+<div class="lnlist">
+<a class="lnitem" href="under-the-hood.html"><span class="lnitem__t">Under the Hood: Sapiens and Large Language Models Compared</span><span class="lnitem__c">Paper</span></a>
+<a class="lnitem" href="news.html"><span class="lnitem__t">All news</span><span class="lnitem__c">&rarr;</span></a>
 </div>
-<a class="lnrow" href="under-the-hood.html" data-rv="">
-<span class="lnrow__k">Paper</span>
-<span class="lnrow__b">
-<h3>Under the Hood: Sapiens and Large Language Models Compared</h3>
-<p>A basic look under the hood at what separates a large language model from a sapiens. The account stays at the level of the parts, naming each component and following what it does to an input while the system is running.</p>
-</span>
-<span class="lnrow__a" aria-hidden="true">&rarr;</span>
-</a>
+</div>
 </div>
 </section>
 
