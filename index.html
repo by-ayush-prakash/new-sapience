@@ -1014,13 +1014,54 @@ body{background:#fff}
 .sicon{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-3);z-index:0}
 .simg{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
 
-/* ---- section heads: frame the two-column head so it reads as a grid, not a void ---- */
-.shead{border-top:1px solid var(--ink);padding-top:clamp(20px,2.4vw,32px);
-  margin-bottom:clamp(26px,3.4vw,46px);align-items:stretch}
-.shead > h2{align-self:start}
-.shead > :not(h2){border-left:1px solid var(--rule);padding-left:clamp(20px,2.8vw,42px)}
-@media (max-width:900px){
-  .shead > :not(h2){border-left:0;padding-left:0}
+/* ---- ghost button + latest-news head row ---- */
+.btn--ghost{background:var(--surface);color:var(--ink);border:1px solid var(--rule);
+  border-radius:6px;padding:10px 16px;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-display);font-size:14.5px;font-weight:600;letter-spacing:-.012em;
+  text-decoration:none;white-space:nowrap;transition:background .18s ease,border-color .18s ease}
+.btn--ghost:hover{background:var(--surface-2);border-color:var(--ink-3)}
+.btn--ghost svg{width:13px;height:13px;display:block;flex:none}
+.lnhead__r{display:flex;align-items:center;justify-content:space-between;gap:20px}
+
+/* only split into two columns when there is genuinely more than one paragraph */
+.shead > :not(h2):has(p + p){columns:2;max-width:none}
+.shead > :not(h2) p{max-width:none;break-inside:avoid;margin-top:0}
+.shead > :not(h2) p + p{margin-top:14px}
+@media (max-width:820px){ .shead > :not(h2){columns:1} }
+
+/* ---- 16 sectors head only: headline over a full-width two-column body ---- */
+#cisa .shead{display:block;border-top:1px solid var(--ink);
+  padding-top:clamp(20px,2.4vw,32px);margin-bottom:clamp(34px,4vw,58px)}
+#cisa .shead h2{max-width:24ch;font-size:clamp(30px,3.6vw,50px);line-height:1.06}
+#cisa .shead > :not(h2){margin-top:clamp(22px,2.6vw,36px);
+  columns:2;column-gap:clamp(30px,4.2vw,68px)}
+#cisa .shead > :not(h2) p{max-width:none;break-inside:avoid;margin-top:0}
+#cisa .shead > :not(h2) p + p{margin-top:14px}
+@media (max-width:820px){ #cisa .shead > :not(h2){columns:1} }
+
+/* ---- latest news: typographic index row ---- */
+.lnews{padding:clamp(58px,6.4vw,96px) 0}
+.lnews__top{border-top:1px solid var(--ink);padding-top:18px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px}
+.lnrow{display:grid;grid-template-columns:150px minmax(0,1fr) auto;
+  gap:clamp(24px,3.4vw,56px);align-items:start;
+  padding:clamp(28px,3.4vw,48px) 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-top:clamp(22px,2.6vw,34px);
+  text-decoration:none;color:inherit}
+.lnrow + .lnrow{border-top:0;margin-top:0}
+.lnrow__k{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);padding-top:7px}
+.lnrow__b{display:block;min-width:0}
+.lnrow h3{margin:0;font-size:clamp(23px,2.5vw,34px);line-height:1.14;letter-spacing:-.024em;
+  max-width:24ch;text-wrap:balance;transition:color .18s ease}
+.lnrow p{margin:12px 0 0;color:var(--ink-2);font-size:15.5px;line-height:1.7;max-width:60ch}
+.lnrow__a{font-size:24px;line-height:1;color:var(--ink-3);padding-top:6px;transition:transform .22s var(--ez),color .18s ease}
+.lnrow:hover h3{color:var(--signal)}
+.lnrow:hover .lnrow__a{color:var(--signal);transform:translateX(4px)}
+@media (max-width:760px){
+  .lnrow{grid-template-columns:1fr auto;gap:14px}
+  .lnrow__k{grid-column:1/-1;padding-top:0}
 }
 </style>
 </head>
@@ -1351,19 +1392,20 @@ body{background:#fff}
 </div>
 </section>
 
-<section class="sec sec--t" id="latest-news">
+<section class="lnews" id="latest-news">
 <div class="wrap">
-<div class="lnews" data-rv="">
-<div class="lnews__row">
-<div class="lnews__k">Latest news</div>
-<div>
-<h3><a href="under-the-hood.html">Under the Hood: Sapiens and Large Language Models Compared</a></h3>
-<p>A basic look under the hood at what separates a large language model from a sapiens. The account stays at the level of the parts, naming each component and following what it does to an input while the system is running, so that the same everyday question about ice cream left out on a counter can be put to both machines and the two paths traced side by side.</p>
-<a class="tlink lnews__all" href="news.html">All news &rarr;</a>
+<div class="lnews__top" data-rv="">
+<span class="mono">Latest news</span>
+<a class="btn btn--ghost" href="news.html">All news <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></a>
 </div>
-<a class="tlink" href="under-the-hood.html">Read &rarr;</a>
-</div>
-</div>
+<a class="lnrow" href="under-the-hood.html" data-rv="">
+<span class="lnrow__k">Paper</span>
+<span class="lnrow__b">
+<h3>Under the Hood: Sapiens and Large Language Models Compared</h3>
+<p>A basic look under the hood at what separates a large language model from a sapiens. The account stays at the level of the parts, naming each component and following what it does to an input while the system is running.</p>
+</span>
+<span class="lnrow__a" aria-hidden="true">&rarr;</span>
+</a>
 </div>
 </section>
 
