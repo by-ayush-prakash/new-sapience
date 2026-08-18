@@ -18,8 +18,8 @@
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
 <link rel="icon" type="image/png" href="img/brand/icon-32.png?v=2" sizes="32x32">
 <link rel="icon" type="image/png" href="img/brand/icon-192.png?v=2" sizes="192x192">
 <link rel="icon" href="favicon.ico?v=2" sizes="any">
@@ -65,7 +65,7 @@
   --verify:#0F6B4F;
   --verify-wash:rgba(15,107,79,.10);
 
-  --f-display:"Familjen Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-display:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;
   --f-body:"IBM Plex Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 
@@ -1032,6 +1032,32 @@ body{background:#fff}
 /* news: give the grid room below the page-header rule */
 .nhead{padding-bottom:clamp(46px,5.4vw,80px)}
 .ngridsec{padding-top:clamp(52px,6vw,86px)}
+
+/* ---- news feed: full-bleed editorial rows ---- */
+.nhead{padding-top:clamp(72px,9vw,128px);padding-bottom:clamp(40px,5vw,72px)}
+.nfeed{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.nrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:stretch;
+  text-decoration:none;color:inherit;position:relative}
+.nrow + .nrow{border-top:1px solid var(--rule)}
+.nrow__t{background:var(--surface);border-right:1px solid var(--rule);
+  padding:clamp(34px,4.2vw,68px) clamp(26px,4vw,64px);
+  padding-left:max(var(--gut), calc((100vw - var(--maxw)) / 2 + var(--gut)));
+  display:flex;flex-direction:column;justify-content:center}
+.nrow__t .ntags{margin:0}
+.nrow__t h2{margin:16px 0 0;font-size:clamp(23px,2.5vw,36px);font-weight:600;
+  letter-spacing:-.024em;line-height:1.14;text-wrap:balance;transition:color .18s ease}
+.nrow__t p{margin:18px 0 0;font-size:clamp(14.5px,1.05vw,16.5px);line-height:1.68;
+  color:var(--ink-2);max-width:54ch}
+.nrow__t .ndate{margin-top:24px;font-family:var(--f-mono);font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
+.nrow__i{position:relative;overflow:hidden;background:var(--surface-2);min-height:clamp(280px,33vw,470px)}
+.nrow__i img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.nrow:hover h2{color:var(--signal)}
+@media (max-width:860px){
+  .nrow{grid-template-columns:1fr}
+  .nrow__t{border-right:0;order:2}
+  .nrow__i{order:1;min-height:230px;border-bottom:1px solid var(--rule)}
+}
 </style>
 </head>
 <body>
@@ -1068,20 +1094,18 @@ body{background:#fff}
 
 
 
-<section class="sec ngridsec">
-<div class="wrap">
-<div class="ngrid" id="ngrid">
-<article class="ncard ncard--feat" data-rv="">
-<div class="phwrap">
+<section class="nfeed">
+<a class="nrow" href="under-the-hood.html" data-rv="">
+<div class="nrow__t">
+<div class="ntags"><span class="tag">Paper</span></div>
+<h2>Under the Hood: Sapiens and Large Language Models Compared</h2>
+<p>A basic look under the hood at what separates a large language model from a sapiens. The account stays at the level of the parts, naming each component and following what it does to an input while the system is running, so that the same everyday question about ice cream left out on a counter can be put to both machines and the two paths traced side by side.</p>
+<div class="ndate">Bryant Cruse &amp; Rosaire Leon &middot; New Sapience</div>
+</div>
+<div class="nrow__i">
 <img alt="New Sapience" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/paper/under-the-hood.jpg"/>
 </div>
-<div class="ntags"><span class="tag">Paper</span></div>
-<h3><a class="nlink" href="under-the-hood.html">Under the Hood: Sapiens and Large Language Models Compared</a></h3>
-<p>Bryant Cruse and Rosaire Leon describe both architectures at the level of their parts: what each component is, what it does while the system runs, and what a person can open up and read afterward. The same worked example is traced through both.</p>
-<div class="ndate">Bryant Cruse &amp; Rosaire Leon &middot; New Sapience</div>
-</article>
-</div>
-</div>
+</a>
 </section>
 
 <section class="sec sec--t ncta">
