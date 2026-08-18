@@ -998,6 +998,21 @@ body{background:#fff}
 .sec--dark .faq details{border-bottom-color:var(--rule)}
 .sec--dark .faq summary{color:var(--ink)}
 .sec--dark .faq .ans{color:var(--ink-2)}
+
+/* ---- section rhythm and separation ---- */
+.hero{min-height:auto;padding-top:clamp(120px,13vw,168px);padding-bottom:clamp(80px,9vw,120px)}
+.sec{padding-top:clamp(72px,8vw,116px);padding-bottom:clamp(72px,8vw,116px)}
+.sec--t{padding-top:clamp(72px,8vw,116px);padding-bottom:clamp(72px,8vw,116px)}
+/* a hairline does the work colour used to do */
+.sec + .sec, .statband + .sec, .sec + .statband{border-top:1px solid var(--rule-soft)}
+.chead{margin-bottom:clamp(38px,4.4vw,64px)}
+.statband{padding-block:clamp(44px,5vw,72px)}
+/* sector cards read as objects again */
+.scard{border:1px solid var(--rule);box-shadow:0 1px 2px rgba(12,20,31,.04)}
+.scard:hover{box-shadow:0 18px 40px -22px rgba(12,20,31,.30)}
+.sfig{background:var(--surface-2)}
+.sicon{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-3);z-index:0}
+.simg{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
 </style>
 </head>
 <body>
@@ -1051,9 +1066,6 @@ body{background:#fff}
 </div>
 </div>
 </div>
-<svg aria-hidden="true" class="arrow" fill="none" height="34" viewbox="0 0 24 34" width="24">
-<path d="M12 2v29m0 0-8-8m8 8 8-8" stroke="currentColor" stroke-width="1.4"></path>
-</svg>
 </section>
 <section class="sec sec--t sec--dark" id="cisa">
 <div class="gridbg"></div>
@@ -1069,112 +1081,112 @@ body{background:#fff}
 <div class="carousel__vp">
 <div class="carousel__tr">
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M9.5 3v6.2L4.6 17.4A2 2 0 0 0 6.3 20.5h11.4a2 2 0 0 0 1.7-3.1L14.5 9.2V3"></path><path d="M8 3h8"></path><path d="M6.8 14h10.4"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/01-chemical.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M9.5 3v6.2L4.6 17.4A2 2 0 0 0 6.3 20.5h11.4a2 2 0 0 0 1.7-3.1L14.5 9.2V3"></path><path d="M8 3h8"></path><path d="M6.8 14h10.4"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/01-chemical.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">01</span>
 <span class="scard__t">Chemical</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 9h18l-1.6-4.4A2 2 0 0 0 17.5 3h-11a2 2 0 0 0-1.9 1.6Z"></path><path d="M4.5 9v11h15V9"></path><path d="M9.5 20v-6h5v6"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/02-commercial-facilities.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 9h18l-1.6-4.4A2 2 0 0 0 17.5 3h-11a2 2 0 0 0-1.9 1.6Z"></path><path d="M4.5 9v11h15V9"></path><path d="M9.5 20v-6h5v6"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/02-commercial-facilities.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">02</span>
 <span class="scard__t">Commercial Facilities</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V11"></path><circle cx="12" cy="8.5" r="2"></circle><path d="M8.1 12.6a5.5 5.5 0 0 1 0-8.2"></path><path d="M15.9 4.4a5.5 5.5 0 0 1 0 8.2"></path><path d="M5.4 15.5a9.5 9.5 0 0 1 0-14"></path><path d="M18.6 1.5a9.5 9.5 0 0 1 0 14"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/03-communications.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V11"></path><circle cx="12" cy="8.5" r="2"></circle><path d="M8.1 12.6a5.5 5.5 0 0 1 0-8.2"></path><path d="M15.9 4.4a5.5 5.5 0 0 1 0 8.2"></path><path d="M5.4 15.5a9.5 9.5 0 0 1 0-14"></path><path d="M18.6 1.5a9.5 9.5 0 0 1 0 14"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/03-communications.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">03</span>
 <span class="scard__t">Communications</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 20V9.5l5.5 3.5V9.5L14 13V4h4.5l1.5 16Z"></path><path d="M3 20h18"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/04-critical-manufacturing.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 20V9.5l5.5 3.5V9.5L14 13V4h4.5l1.5 16Z"></path><path d="M3 20h18"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/04-critical-manufacturing.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">04</span>
 <span class="scard__t">Critical Manufacturing</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 4.5v15"></path><path d="M20.5 4.5v15"></path><path d="M3.5 10c4.6 3.4 12.9 3.4 17 0"></path><path d="M3.5 13.6c4.6 3.4 12.9 3.4 17 0"></path><path d="M6.8 6.6c1.4-1.1 2.8-1.1 4.2 0s2.8 1.1 4.2 0"></path><path d="M9 17.6v2.6"></path><path d="M12 17.2v3"></path><path d="M15 17.6v2.6"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/05-dams.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 4.5v15"></path><path d="M20.5 4.5v15"></path><path d="M3.5 10c4.6 3.4 12.9 3.4 17 0"></path><path d="M3.5 13.6c4.6 3.4 12.9 3.4 17 0"></path><path d="M6.8 6.6c1.4-1.1 2.8-1.1 4.2 0s2.8 1.1 4.2 0"></path><path d="M9 17.6v2.6"></path><path d="M12 17.2v3"></path><path d="M15 17.6v2.6"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/05-dams.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">05</span>
 <span class="scard__t">Dams</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.5 7.5 8.8 4.4-1.3 7.5-4.5 7.5-8.8V6Z"></path><path d="M8.6 12.2 12 9.4l3.4 2.8"></path><path d="M8.6 15.8 12 13l3.4 2.8"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/06-defense-industrial-base.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.5 7.5 8.8 4.4-1.3 7.5-4.5 7.5-8.8V6Z"></path><path d="M8.6 12.2 12 9.4l3.4 2.8"></path><path d="M8.6 15.8 12 13l3.4 2.8"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/06-defense-industrial-base.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">06</span>
 <span class="scard__t">Defense Industrial Base</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M6.6 15.2a5.4 5.4 0 0 1 10.8 0Z"></path><path d="M4.4 15.2h15.2"></path><path d="M5.6 18.6h12.8"></path><path d="M12 3.4v2.7"></path><path d="M6.6 5.6 8.2 7.7"></path><path d="M17.4 5.6 15.8 7.7"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/07-emergency-services.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M6.6 15.2a5.4 5.4 0 0 1 10.8 0Z"></path><path d="M4.4 15.2h15.2"></path><path d="M5.6 18.6h12.8"></path><path d="M12 3.4v2.7"></path><path d="M6.6 5.6 8.2 7.7"></path><path d="M17.4 5.6 15.8 7.7"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/07-emergency-services.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">07</span>
 <span class="scard__t">Emergency Services</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M13.5 3 6 13.2h5L10.5 21 18 10.8h-5Z"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/08-energy.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M13.5 3 6 13.2h5L10.5 21 18 10.8h-5Z"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/08-energy.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">08</span>
 <span class="scard__t">Energy</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 20h17"></path><path d="M5.5 20v-5.5"></path><path d="M10.5 20v-9"></path><path d="M15.5 20v-6.5"></path><path d="M20 20V8"></path><path d="M4 10.5 9.5 6l4 3L20 3.2"></path><path d="M15.6 3.2H20v4.3"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/09-financial-services.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.5 20h17"></path><path d="M5.5 20v-5.5"></path><path d="M10.5 20v-9"></path><path d="M15.5 20v-6.5"></path><path d="M20 20V8"></path><path d="M4 10.5 9.5 6l4 3L20 3.2"></path><path d="M15.6 3.2H20v4.3"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/09-financial-services.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">09</span>
 <span class="scard__t">Financial Services</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V9"></path><path d="M12 12c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 12c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path><path d="M12 17.5c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 17.5c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/10-food-and-agriculture.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 21V9"></path><path d="M12 12c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 12c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path><path d="M12 17.5c-3.4 0-5-1.9-5-4.6 3.4 0 5 1.9 5 4.6Z"></path><path d="M12 17.5c3.4 0 5-1.9 5-4.6-3.4 0-5 1.9-5 4.6Z"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/10-food-and-agriculture.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">10</span>
 <span class="scard__t">Food and Agriculture</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 2.6V4"></path><path d="M7 9.5a5 5 0 0 1 10 0"></path><path d="M3.5 12.5h17"></path><path d="M4 9.5h16"></path><path d="M6 12.5V18"></path><path d="M10 12.5V18"></path><path d="M14 12.5V18"></path><path d="M18 12.5V18"></path><path d="M3 21h18"></path><path d="M3.5 18h17"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/11-government-facilities.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 2.6V4"></path><path d="M7 9.5a5 5 0 0 1 10 0"></path><path d="M3.5 12.5h17"></path><path d="M4 9.5h16"></path><path d="M6 12.5V18"></path><path d="M10 12.5V18"></path><path d="M14 12.5V18"></path><path d="M18 12.5V18"></path><path d="M3 21h18"></path><path d="M3.5 18h17"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/11-government-facilities.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">11</span>
 <span class="scard__t">Government Facilities</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 12.5h4l2-4.5 3 9 2.5-6 1.5 3.5h5"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/12-healthcare-and-public-health.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 12.5h4l2-4.5 3 9 2.5-6 1.5 3.5h5"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/12-healthcare-and-public-health.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">12</span>
 <span class="scard__t">Healthcare and Public Health</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><rect height="9" rx="1" width="9" x="7.5" y="7.5"></rect><path d="M10 4v3.5M14 4v3.5M10 16.5V20M14 16.5V20"></path><path d="M4 10h3.5M4 14h3.5M16.5 10H20M16.5 14H20"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/13-information-technology.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><rect height="9" rx="1" width="9" x="7.5" y="7.5"></rect><path d="M10 4v3.5M14 4v3.5M10 16.5V20M14 16.5V20"></path><path d="M4 10h3.5M4 14h3.5M16.5 10H20M16.5 14H20"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/13-information-technology.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">13</span>
 <span class="scard__t">Information Technology</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="1.9"></circle><ellipse cx="12" cy="12" rx="9.2" ry="3.7"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(-60 12 12)"></ellipse></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/14-nuclear-reactors-materials-and-waste.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="1.9"></circle><ellipse cx="12" cy="12" rx="9.2" ry="3.7"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.2" ry="3.7" transform="rotate(-60 12 12)"></ellipse></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/14-nuclear-reactors-materials-and-waste.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">14</span>
 <span class="scard__t">Nuclear Reactors, Materials, and Waste</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M2 16h11V7H2Z"></path><path d="M13 10.5h4.2l3.3 3.4V16H13Z"></path><circle cx="6.5" cy="18.5" r="1.8"></circle><circle cx="17" cy="18.5" r="1.8"></circle><path d="M8.3 18.5h6.9"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/15-transportation-systems.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M2 16h11V7H2Z"></path><path d="M13 10.5h4.2l3.3 3.4V16H13Z"></path><circle cx="6.5" cy="18.5" r="1.8"></circle><circle cx="17" cy="18.5" r="1.8"></circle><path d="M8.3 18.5h6.9"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/15-transportation-systems.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">15</span>
 <span class="scard__t">Transportation Systems</span>
 </div>
 </article>
 <article class="scard">
-<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3.2c3.4 4 5.6 6.9 5.6 9.7A5.6 5.6 0 0 1 12 20.5a5.6 5.6 0 0 1-5.6-7.6c0-2.8 2.2-5.7 5.6-9.7Z"></path><path d="M8.4 14.4c1.2-.9 2.2-.9 3.4 0s2.2.9 3.4 0"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.remove()" src="img/sectors/16-water-and-wastewater-systems.jpg"/></div>
+<div class="sfig"><span aria-hidden="true" class="sicon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3.2c3.4 4 5.6 6.9 5.6 9.7A5.6 5.6 0 0 1 12 20.5a5.6 5.6 0 0 1-5.6-7.6c0-2.8 2.2-5.7 5.6-9.7Z"></path><path d="M8.4 14.4c1.2-.9 2.2-.9 3.4 0s2.2.9 3.4 0"></path></svg></span><img alt="" class="simg" decoding="async" loading="lazy" onerror="this.style.opacity=0" src="img/sectors/16-water-and-wastewater-systems.jpg"/></div>
 <div class="scard__b">
 <span class="scard__n">16</span>
 <span class="scard__t">Water and Wastewater Systems</span>
