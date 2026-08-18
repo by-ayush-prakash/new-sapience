@@ -1064,6 +1064,15 @@ body{background:#fff}
 .ack p{margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--ink-2);max-width:62ch}
 /* paper page: no hairlines between the stacked intro blocks */
 .pbar + .sec, .pintro + .sec, .psum + .sec{border-top:0}
+
+/* ---- section heads: frame the two-column head so it reads as a grid, not a void ---- */
+.shead{border-top:1px solid var(--ink);padding-top:clamp(20px,2.4vw,32px);
+  margin-bottom:clamp(26px,3.4vw,46px);align-items:stretch}
+.shead > h2{align-self:start}
+.shead > :not(h2){border-left:1px solid var(--rule);padding-left:clamp(20px,2.8vw,42px)}
+@media (max-width:900px){
+  .shead > :not(h2){border-left:0;padding-left:0}
+}
 </style>
 </head>
 <body>

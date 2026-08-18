@@ -1105,6 +1105,15 @@ body{background:#fff}
 .pauth b{color:var(--ink)}
 .pintro{padding-bottom:clamp(18px,2.4vw,34px)}
 .pintro + .sec--t{padding-top:clamp(26px,3.2vw,46px)}
+
+/* ---- section heads: frame the two-column head so it reads as a grid, not a void ---- */
+.shead{border-top:1px solid var(--ink);padding-top:clamp(20px,2.4vw,32px);
+  margin-bottom:clamp(26px,3.4vw,46px);align-items:stretch}
+.shead > h2{align-self:start}
+.shead > :not(h2){border-left:1px solid var(--rule);padding-left:clamp(20px,2.8vw,42px)}
+@media (max-width:900px){
+  .shead > :not(h2){border-left:0;padding-left:0}
+}
 </style>
 <section class="sec pbar">
 <div class="wrap">
