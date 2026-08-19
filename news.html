@@ -948,17 +948,19 @@ h1, h2, h3, h4{
   opacity:0;visibility:hidden;transform:translateY(-4px);
   transition:opacity .18s var(--ez),transform .18s var(--ez),visibility .18s}
 .sbmenu.on,
-.toggle:hover .sbmenu,
-.toggle:focus-within .sbmenu{opacity:1;visibility:visible;transform:none}
-.toggle:hover .splitbtn__c svg,
-.toggle:focus-within .splitbtn__c svg{transform:rotate(180deg)}
+.splitbtn:has(.splitbtn__c:hover) + .sbmenu,
+.splitbtn:has(.splitbtn__c:focus-visible) + .sbmenu,
+.sbmenu:hover{opacity:1;visibility:visible;transform:none}
+.splitbtn:has(.splitbtn__c:hover) .splitbtn__c svg,
+.splitbtn:has(.splitbtn__c:focus-visible) .splitbtn__c svg,
+.splitbtn__c[aria-expanded="true"] svg{transform:rotate(180deg)}
 
 .sbmenu a{display:block;padding:12px 16px;border-radius:0;font-size:14px;
   color:var(--ink);white-space:nowrap;transition:background .2s}
 .sbmenu a + a{border-top:1px solid var(--rule)}
 /* the open menu and the button read as one object */
-.toggle:hover .splitbtn,
-.toggle:focus-within .splitbtn{border-radius:6px 6px 0 0}
+.splitbtn:has(.splitbtn__c:hover),
+.splitbtn:has(.splitbtn__c:focus-visible){border-radius:6px 6px 0 0}
 .sbmenu a:hover{background:var(--surface-2);color:var(--signal)}
 
 /* ---- one ground: white. Dark reserved for the closing CTA only. ---- */
@@ -1105,7 +1107,7 @@ body{background:#fff}
 .splitbtn{border-radius:0;height:100%;align-items:stretch;overflow:visible}
 .splitbtn__m{padding:0 clamp(20px,2.1vw,32px);display:inline-flex;align-items:center}
 .splitbtn__c{padding:0 15px;display:inline-flex;align-items:center}
-.toggle:hover .splitbtn,.toggle:focus-within .splitbtn{border-radius:0}
+.splitbtn:has(.splitbtn__c:hover),.splitbtn:has(.splitbtn__c:focus-visible){border-radius:0}
 .sbmenu{border-radius:0;top:100%;border-top:0}
 .burger{border-radius:0;height:var(--navh);width:var(--navh);border:0;
   border-left:1px solid var(--rule);background:#fff}
