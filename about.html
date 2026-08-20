@@ -1065,6 +1065,67 @@ body{background:#fff}
 .slbtn:hover:not(:disabled){border-color:var(--ink);color:var(--ink)}
 .slbtn:disabled{opacity:.34;cursor:default}
 .slbtn svg{width:14px;height:14px;display:block}
+
+
+
+/* ---- split: image left, text right ---- */
+.split--flip{align-items:center}
+.split--flip .split__t{order:2}
+.split--flip .phwrap{order:1}
+@media (max-width:820px){ .split--flip .split__t{order:0} }
+
+
+
+
+
+  align-items:start}
+
+
+</style>
+
+<style>
+/* ==== company hero (canonical) ==== */
+.ahero{overflow-x:clip}
+.ahero__g{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}
+.ahero__lt{background:#fff;display:flex;align-items:center;
+  padding:clamp(64px,7.5vw,120px) clamp(28px,3.6vw,60px) clamp(56px,6.5vw,100px) var(--gut)}
+@media (min-width:1300px){ .ahero__lt{padding-left:max(var(--gut), calc((100vw - var(--maxw)) / 2 + var(--gut)))} }
+.ahero h1{margin:0;font-size:clamp(42px,5.6vw,84px);font-weight:600;line-height:1.02;
+  letter-spacing:-.032em;max-width:16ch}
+.ahero__r{background:var(--surface);border-left:1px solid var(--rule);
+  display:flex;align-items:flex-end;
+  padding:clamp(48px,5vw,80px) var(--gut) clamp(48px,5.4vw,84px) clamp(28px,3.6vw,60px)}
+.ahero__r p{margin:0;font-size:clamp(16px,1.32vw,20px);line-height:1.5;font-weight:500;
+  color:var(--ink);max-width:26ch}
+.ahero__fig{overflow:hidden;background:var(--surface-2);height:clamp(340px,52vh,560px)}
+.ahero__fig img{width:100%;height:100%;object-fit:cover;display:block}
+.ahero__r2{position:relative;background:var(--surface);
+  border-left:1px solid var(--rule);border-top:1px solid var(--rule)}
+.ahero__mark{position:absolute;right:clamp(28px,4vw,64px);bottom:clamp(28px,3.4vw,52px);
+  width:clamp(46px,4.4vw,64px);height:clamp(46px,4.4vw,64px);display:block}
+.ahero__mark img{position:relative;z-index:2;width:100%;height:100%;display:block;border-radius:50%}
+.ahero__ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(29,78,216,.5);
+  animation:markpulse 3.2s cubic-bezier(.25,.6,.35,1) infinite;pointer-events:none}
+.ahero__ring--2{animation-delay:1.6s}
+@keyframes markpulse{0%{transform:scale(1);opacity:.9}70%{transform:scale(2.05);opacity:0}100%{transform:scale(2.05);opacity:0}}
+@media (prefers-reduced-motion:reduce){ .ahero__ring{animation:none;opacity:0} }
+@media (max-width:900px){
+  .ahero__g{grid-template-columns:1fr}
+  .ahero__r{border-left:0;border-top:1px solid var(--rule);padding:26px var(--gut) 32px;align-items:flex-start}
+  .ahero__fig{height:auto;aspect-ratio:16/9}
+  .ahero__r2{display:none}
+}
+
+/* ==== the people who ran the missions ==== */
+.amiss{padding:clamp(64px,7.4vw,110px) 0}
+.amiss__g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:clamp(32px,5vw,88px);align-items:center}
+.amiss__fig{--ar:1/1;margin:0;border-radius:0;overflow:hidden}
+.amiss__t h2{margin:0;font-size:clamp(28px,3.2vw,46px);line-height:1.08;letter-spacing:-.026em;max-width:16ch}
+.amiss__t .lede{margin:clamp(18px,2.2vw,28px) 0 0;font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.7;
+  color:var(--ink-2);max-width:52ch}
+.amiss__t .btn{margin-top:clamp(22px,2.6vw,32px)}
+@media (max-width:860px){ .amiss__g{grid-template-columns:1fr;gap:26px} }
 </style>
 </head>
 <body>
@@ -1076,7 +1137,7 @@ body{background:#fff}
     <div class="nitem"><a href="platform.html">Technology</a></div>
     <div class="nitem"><a href="sectors.html">Sectors</a></div>
     <div class="nitem"><a href="deployment.html">Deployment</a></div>
-    <div class="nitem" aria-current="page"><a href="about.html">About</a></div>
+    <div class="nitem" aria-current="page"><a href="about.html">Company</a></div>
     <div class="nitem"><a href="news.html">News</a></div>
     <div class="nitem"><a href="contact.html">Contact</a></div>
   </nav>
@@ -1102,17 +1163,44 @@ body{background:#fff}
 </div>
 
 <main id="main">
-<section class="sec chero">
+<section class="ahero">
+<div class="ahero__g">
+<div class="ahero__lt" data-rv="">
+<h1>Decades in the domains where being wrong is not <span class="nb">an option</span></h1>
+</div>
+<div class="ahero__r" data-rv="">
+<p>Our mission is to bring reliable, cost-effective automation to the critical infrastructure the world depends on.</p>
+</div>
+<div class="ahero__fig" data-rv="">
+<img alt="St. John&rsquo;s College, Annapolis" decoding="async" onerror="this.classList.add('missing')" src="img/feature/stjohns.jpg"/>
+</div>
+<div class="ahero__r2" aria-hidden="true">
+<span class="ahero__mark">
+<i class="ahero__ring"></i><i class="ahero__ring ahero__ring--2"></i>
+<img alt="" src="img/brand/mark-512.png"/>
+</span>
+</div>
+</div>
+</section>
+
+<section class="sec amiss">
 <div class="wrap">
-<span class="mono" data-rv="">About</span>
-<h1 data-rv="">Decades in the domains where being wrong is not <span class="nb">an option</span></h1>
-<p class="chero__sub lede" data-rv="">They have advised global institutions, federal agencies, and elected officials. Their space experience includes the Hubble Space Telescope, International Space Station, Space Shuttle, NASA astronaut missions, commercial launch vehicle operations, and national, military and commercial satellite operations. The team has launched and exited high-stakes technology companies. Collectively, they hold <span class="dot">100+ patents.</span></p>
-<div class="chero__cta" data-rv=""><a class="btn" href="contact.html">Request a demo</a></div>
+<div class="amiss__g" data-rv="">
+<div class="phwrap amiss__fig">
+<img alt="Mission control" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/feature/mission-control.jpg"/>
+<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Mission control</b><s style="opacity:.6;margin-top:2px">img/feature/mission-control.jpg</s></div>
+</div>
+<div class="amiss__t">
+<h2>40 years. Failure was never <span class="nb">an option</span></h2>
+<p class="lede">They have advised global institutions, federal agencies, and elected officials. Their space experience includes the Hubble Space Telescope, International Space Station, Space Shuttle, NASA astronaut missions, commercial launch vehicle operations, and national, military and commercial satellite operations. The team has launched and exited high-stakes technology companies. Collectively, they hold <span class="dot">100+ patents.</span></p>
+<a class="btn" href="contact.html">Request a demo</a>
+</div>
+</div>
 </div>
 </section>
 <section class="sec sec--t">
 <div class="wrap">
-<div class="split" data-rv="">
+<div class="split split--flip" data-rv="">
 <div class="split__t">
 <h2>Four decades, three iterations, a <span class="nb">final architecture</span></h2>
 <div class="slider" data-slider="">
@@ -1282,7 +1370,7 @@ body{background:#fff}
 <li><a href="deployment.html#c2">Command &amp; control</a></li>
 </ul></div>
 <div><h4>Company</h4><ul>
-<li><a href="about.html">About</a></li>
+<li><a href="about.html">Company</a></li>
 <li><a href="about.html#leadership">Leadership</a></li>
 <li><a href="news.html">News</a></li>
 <li><a href="contact.html">Request a demo</a></li>
