@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" width="1200" height="1000" role="img" aria-label="Identical inputs producing identical outputs, against a probabilistic system producing scatter.">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16305F"/><stop offset="1" stop-color="#0D2149"/>
+    </linearGradient>
+    <filter id="g2"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="1000" fill="url(#bg2)"/>
+
+  <!-- axis -->
+  <g stroke="#2A4A85" stroke-width="1" opacity=".5">
+    <path d="M120 180h980M120 380h980M120 580h980M120 780h980"/>
+  </g>
+
+  <!-- probabilistic: scattered dots across a band -->
+  <text x="120" y="140" font-family="IBM Plex Mono, monospace" font-size="20" letter-spacing="3" fill="#7BA3DE" opacity=".8">PROBABILISTIC</text>
+  <g fill="#FF6152" opacity=".9">
+    <circle cx="196" cy="238" r="9"/><circle cx="264" cy="292" r="9"/><circle cx="332" cy="214" r="9"/>
+    <circle cx="400" cy="318" r="9"/><circle cx="468" cy="252" r="9"/><circle cx="536" cy="336" r="9"/>
+    <circle cx="604" cy="222" r="9"/><circle cx="672" cy="306" r="9"/><circle cx="740" cy="262" r="9"/>
+    <circle cx="808" cy="330" r="9"/><circle cx="876" cy="230" r="9"/><circle cx="944" cy="298" r="9"/>
+    <circle cx="1012" cy="246" r="9"/>
+  </g>
+  <!-- spread band -->
+  <rect x="180" y="206" width="848" height="144" fill="#FF6152" opacity=".08"/>
+  <g stroke="#FF6152" stroke-width="2" stroke-dasharray="7 7" opacity=".55">
+    <path d="M180 206h848M180 350h848"/>
+  </g>
+
+  <!-- deterministic: identical marks on one line -->
+  <text x="120" y="540" font-family="IBM Plex Mono, monospace" font-size="20" letter-spacing="3" fill="#7BA3DE" opacity=".8">DETERMINISTIC</text>
+  <path d="M180 660h848" stroke="#3FBF8F" stroke-width="3" opacity=".55"/>
+  <g fill="#3FBF8F">
+    <circle cx="196" cy="660" r="11"/><circle cx="264" cy="660" r="11"/><circle cx="332" cy="660" r="11"/>
+    <circle cx="400" cy="660" r="11"/><circle cx="468" cy="660" r="11"/><circle cx="536" cy="660" r="11"/>
+    <circle cx="604" cy="660" r="11"/><circle cx="672" cy="660" r="11"/><circle cx="740" cy="660" r="11"/>
+    <circle cx="808" cy="660" r="11"/><circle cx="876" cy="660" r="11"/><circle cx="944" cy="660" r="11"/>
+    <circle cx="1012" cy="660" r="11"/>
+  </g>
+
+  <!-- callouts -->
+  <text x="1028" y="284" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="17" letter-spacing="2" fill="#FF6152" opacity=".9">RERUN</text>
+  <text x="1028" y="666" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="17" letter-spacing="2" fill="#3FBF8F">ONCE</text>
+
+  <text x="120" y="900" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2" fill="#9DC0F0" opacity=".65">SAME INPUT, SAME OUTPUT &mdash; EVERY TIME</text>
+
+  <rect width="1200" height="1000" filter="url(#g2)" opacity=".14" style="mix-blend-mode:overlay"/>
+</svg>

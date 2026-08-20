@@ -18,8 +18,8 @@
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
 <link rel="icon" type="image/png" href="img/brand/icon-32.png?v=2" sizes="32x32">
 <link rel="icon" type="image/png" href="img/brand/icon-192.png?v=2" sizes="192x192">
 <link rel="icon" href="favicon.ico?v=2" sizes="any">
@@ -1095,21 +1095,25 @@ main > .ahero:first-child{padding-top:var(--navh)}
 .ahero h1{margin:0;font-size:clamp(42px,5.6vw,84px);font-weight:600;line-height:1.02;
   letter-spacing:-.032em;max-width:16ch}
 .ahero__r{background:var(--surface);border-left:1px solid var(--rule);
-  display:flex;align-items:flex-end;
-  padding:clamp(48px,5vw,80px) var(--gut) clamp(48px,5.4vw,84px) clamp(28px,3.6vw,60px)}
-.ahero__r p{margin:0;font-size:clamp(16px,1.32vw,20px);line-height:1.5;font-weight:500;
-  color:var(--ink);max-width:26ch}
+  display:flex;align-items:center;
+  padding:clamp(40px,4.4vw,64px) var(--gut) clamp(40px,4.4vw,64px) clamp(28px,3.6vw,60px)}
+.ahero__r p{margin:0;font-size:clamp(17px,1.5vw,22px);line-height:1.45;font-weight:500;
+  letter-spacing:-.014em;color:var(--ink);max-width:30ch}
 .ahero__fig{overflow:hidden;background:var(--surface-2);height:clamp(340px,52vh,560px)}
 .ahero__fig img{width:100%;height:100%;object-fit:cover;display:block}
-.ahero__r2{position:relative;background:var(--surface);
-  border-left:1px solid var(--rule);border-top:1px solid var(--rule)}
-.ahero__mark{position:absolute;right:clamp(28px,4vw,64px);bottom:clamp(28px,3.4vw,52px);
-  width:clamp(46px,4.4vw,64px);height:clamp(46px,4.4vw,64px);display:block}
+.ahero__r2{position:relative;background:var(--surface);overflow:hidden;
+  border-left:1px solid var(--rule);border-top:1px solid var(--rule);
+  display:grid;place-items:center}
+.ahero__mark{position:relative;width:clamp(96px,10vw,150px);height:clamp(96px,10vw,150px);display:block}
 .ahero__mark img{position:relative;z-index:2;width:100%;height:100%;display:block;border-radius:50%}
-.ahero__ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(29,78,216,.5);
-  animation:markpulse 3.2s cubic-bezier(.25,.6,.35,1) infinite;pointer-events:none}
-.ahero__ring--2{animation-delay:1.6s}
-@keyframes markpulse{0%{transform:scale(1);opacity:.9}70%{transform:scale(2.05);opacity:0}100%{transform:scale(2.05);opacity:0}}
+.ahero__ring{position:absolute;left:50%;top:50%;width:100%;height:100%;
+  transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(29,78,216,.45);
+  animation:markpulse 6s linear infinite;pointer-events:none}
+.ahero__ring--2{animation-delay:3s}
+@keyframes markpulse{
+  0%{width:100%;height:100%;opacity:.85}
+  100%{width:1300px;height:1300px;opacity:0}
+}
 @media (prefers-reduced-motion:reduce){ .ahero__ring{animation:none;opacity:0} }
 @media (max-width:900px){
   .ahero__g{grid-template-columns:1fr}
@@ -1122,12 +1126,17 @@ main > .ahero:first-child{padding-top:var(--navh)}
 .amiss{padding:clamp(64px,7.4vw,110px) 0}
 .amiss__g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
   gap:clamp(32px,5vw,88px);align-items:center}
-.amiss__fig{--ar:1/1;margin:0;border-radius:0;overflow:hidden}
+.amiss__fig{--ar:1/1;margin:0;border-radius:0;overflow:hidden;order:2}
+.amiss__t{order:1}
 .amiss__t h2{margin:0;font-size:clamp(28px,3.2vw,46px);line-height:1.08;letter-spacing:-.026em;max-width:16ch}
 .amiss__t .lede{margin:clamp(18px,2.2vw,28px) 0 0;font-size:clamp(15.5px,1.2vw,17.5px);line-height:1.7;
   color:var(--ink-2);max-width:52ch}
 .amiss__t .btn{margin-top:clamp(22px,2.6vw,32px)}
 @media (max-width:860px){ .amiss__g{grid-template-columns:1fr;gap:26px} }
+
+/* headings at 550: between medium and semibold */
+h1,h2,h3,h4{font-weight:550}
+.ahero h1{font-weight:550}
 </style>
 </head>
 <body>
@@ -1195,7 +1204,7 @@ main > .ahero:first-child{padding-top:var(--navh)}
 <div class="amiss__t">
 <h2>40 years. Failure was never <span class="nb">an option</span></h2>
 <p class="lede">They have advised global institutions, federal agencies, and elected officials. Their space experience includes the Hubble Space Telescope, International Space Station, Space Shuttle, NASA astronaut missions, commercial launch vehicle operations, and national, military and commercial satellite operations. The team has launched and exited high-stakes technology companies. Collectively, they hold <span class="dot">100+ patents.</span></p>
-<a class="btn" href="contact.html">Request a demo</a>
+<a class="btn" href="careers.html">Join our team</a>
 </div>
 </div>
 </div>

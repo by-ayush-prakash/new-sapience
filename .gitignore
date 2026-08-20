@@ -7,3 +7,7 @@ _incoming/
 _to_delete/
 **/_originals/
 **/_WHAT-GOES-HERE.txt
+
+# staged for a later release
+.symmatrics-pending.json
+publish-symmatrics.sh
