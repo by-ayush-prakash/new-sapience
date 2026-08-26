@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Four Decades in Space, Defence and Intelligence | New Sapience</title>
+<title>Company | New Sapience</title>
 <meta name="description" content="Decades of experience in critical infrastructure domains, including space transportation, military, and intelligence communities.">
 <link rel="canonical" href="https://www.newsapience.com/about.html">
 <meta property="og:type" content="website">
@@ -106,7 +106,7 @@ img,canvas,video{display:block;max-width:100%}
 .chero .mono{display:block;margin-bottom:clamp(22px,2.6vw,34px)}
 /* Big and bold: 96px at 1200px, matching Cohere. No max-width box — the
    headline is allowed to run the full container the way theirs does. */
-.chero h1{font-size:clamp(30px,5.4vw,72px);font-weight:500;letter-spacing:-.015em;
+.chero h1{font-size:clamp(30px,5.4vw,72px);font-weight:600;letter-spacing:-.022em;
   line-height:1.02;max-width:none;text-wrap:balance}
 .chero__sub{max-width:52ch;margin:clamp(26px,3vw,40px) auto 0;text-wrap:balance;
   font-size:clamp(15px,1.15vw,17px)}
@@ -156,6 +156,15 @@ img,canvas,video{display:block;max-width:100%}
 @media(max-width:1000px){.sgrid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.sgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:420px){.sgrid{grid-template-columns:1fr}}
+
+/* ---- PULL QUOTE (Cohere-style testimonial) ---- */
+.pquote{border-top:1px solid var(--rule)}
+.pquote__grid{display:grid;grid-template-columns:minmax(200px,280px) 1fr;gap:clamp(32px,5vw,72px);align-items:start}
+.pquote__who b{display:block;font-family:var(--f-display);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+.pquote__who p{margin-top:8px;font-size:14px;line-height:1.55;color:var(--ink-3)}
+.pquote__text{position:relative;font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;
+  font-size:clamp(24px,2.7vw,38px);line-height:1.28;color:var(--ink);max-width:26ch}
+@media(max-width:760px){.pquote__grid{grid-template-columns:1fr;gap:20px}}
 
 /* ---- FULL-BLEED IMAGE CTA (Cohere's "Ready to put AI to work?") ---- */
 .imgcta{position:relative;min-height:clamp(340px,38vw,520px);display:grid;
@@ -242,13 +251,13 @@ img,canvas,video{display:block;max-width:100%}
 .sec--dark .demo__trace li b{color:#9DB8E4}
 
 
-h1,h2,h3,h4{margin:0;font-family:var(--f-display);font-weight:600;letter-spacing:-.016em;line-height:1.08}
+h1,h2,h3,h4{margin:0;font-family:var(--f-display);font-weight:600;letter-spacing:-.028em;line-height:1.08}
 /* Scale: 52 / 34 / 22 -> 1.53x then 1.55x. Was 1.33x then 2.09x, i.e.
    compressed at the top and blown out at the bottom. Tracking relaxed from
    -.032em to -.01em: tight tracking on large type reads startup, not institution. */
-h1{font-size:clamp(32px,3.9vw,52px);font-weight:600;letter-spacing:-.012em;line-height:1.12}
-h2{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.015em;line-height:1.15}
-h1.as-h2{font-size:clamp(26px,2.6vw,34px);font-weight:500;letter-spacing:-.015em;line-height:1.15}
+h1{font-size:clamp(32px,3.9vw,52px);font-weight:600;letter-spacing:-.01em;line-height:1.12}
+h2{font-size:clamp(30px,3.8vw,54px);letter-spacing:-.026em;line-height:1.06}
+h1.as-h2{font-size:clamp(26px,2.6vw,34px);font-weight:600;letter-spacing:-.015em;line-height:1.15}
 h3{font-size:clamp(19px,1.7vw,22px);letter-spacing:-.015em}
 p{margin:0}
 strong{font-weight:600}
@@ -355,6 +364,22 @@ strong{font-weight:600}
 .nitem[aria-current]>a{color:var(--ink)}
 .nitem[aria-current]>a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--navy);border-radius:2px}
 
+/* ---- Company nav dropdown ---- */
+.nitem__car{width:11px;height:11px;margin-left:5px;flex:none;transition:transform .3s var(--ez)}
+.nitem--drop:hover .nitem__car,
+.nitem--drop:focus-within .nitem__car{transform:rotate(180deg)}
+.ndrop{position:absolute;top:100%;left:0;min-width:168px;z-index:1200;
+  background:#fff;border:1px solid var(--rule);border-radius:0 0 6px 6px;
+  padding:0;overflow:hidden;box-shadow:0 24px 60px -28px rgba(12,20,31,.45);
+  opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .18s var(--ez),transform .18s var(--ez),visibility .18s}
+.nitem--drop:hover .ndrop,
+.nitem--drop:focus-within .ndrop{opacity:1;visibility:visible;transform:none}
+.ndrop a{display:block;padding:12px 16px;font-size:14px;font-weight:400;
+  color:var(--ink);white-space:nowrap;height:auto!important;transition:background .2s}
+.ndrop a+a{border-top:1px solid var(--rule)}
+.ndrop a:hover{background:var(--surface-2);color:var(--signal)}
+
 
 .toggle{display:flex;align-items:center;gap:10px;z-index:2}
 .navcta{display:none}
@@ -400,7 +425,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
 
 /* ================= STAT BAND ================= */
-.statband{border-block:1px solid var(--rule);background:var(--surface)}
+.statband{background:var(--surface)}
 .statband__g{display:grid;grid-template-columns:repeat(3,1fr)}
 .statitem{padding:clamp(24px,3vw,40px) clamp(16px,2vw,30px);border-right:1px solid var(--rule);transition:background .45s}
 .statitem:last-child{border-right:0}
@@ -559,6 +584,70 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
 .mem .li:hover{color:var(--signal)}
 .subhead{font-family:var(--f-display);font-size:clamp(19px,1.7vw,23px);font-weight:600;letter-spacing:-.022em;margin:clamp(32px,3.8vw,52px) 0 20px}
 .subhead > span{color:var(--ink-3);font-weight:400;font-size:.8em}
+
+/* ---- team: dark grid + modal (Cohere-style) ---- */
+.tmsec{background:#141519;color:#fff;position:relative;overflow:hidden}
+.tmsec .shead h2{color:#fff;font-size:clamp(38px,4.2vw,56px)}
+.tmsub{font-family:var(--f-display);font-size:clamp(24px,2vw,28px);font-weight:600;color:rgba(255,255,255,.72);
+  margin:clamp(64px,7vw,96px) 0 18px}
+.tmsub--first{margin-top:clamp(24px,2.6vw,32px)}
+.tmgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.4vw,32px)}
+.tmcard{position:relative;background:none;border:0;padding:0;cursor:pointer;text-align:left;
+  font-family:inherit;color:inherit;display:block;width:100%}
+@media(max-width:1000px){.tmgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.tmgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.tmgrid{grid-template-columns:1fr}}
+.tmcard__ph{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--mid-2);
+  border-radius:18px;transition:transform .5s var(--ez)}
+.tmcard__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s var(--ez)}
+.tmcard__ph img.missing{display:none}
+.tmcard__ph .ph{position:absolute;inset:0;color:rgba(255,255,255,.5)}
+.tmcard__ph:has(img:not(.missing)) .ph{display:none}
+.tmcard:hover .tmcard__ph img{transform:scale(1.035)}
+.tmcard:focus-visible .tmcard__ph{outline:2px solid #fff;outline-offset:3px}
+.tmcard__nm{display:block;margin-top:18px;font-family:var(--f-display);font-size:19px;font-weight:600;
+  letter-spacing:-.02em;color:#fff}
+.tmcard__ti{display:block;margin-top:4px;font-size:14px;color:rgba(255,255,255,.6)}
+
+.tmmodal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;
+  padding:clamp(16px,4vw,40px)}
+.tmmodal.on{display:flex}
+.tmmodal__bg{position:absolute;inset:0;background:rgba(10,14,22,.72);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.tmmodal__card{position:relative;z-index:1;width:min(880px,100%);max-height:88vh;overflow:auto;
+  background:var(--signal-wash);border-radius:20px;padding:clamp(24px,3.4vw,44px);
+  display:grid;grid-template-columns:200px 1fr;gap:clamp(24px,3vw,40px);align-items:start;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);animation:tmpop .3s var(--ez)}
+@keyframes tmpop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.tmmodal__card--noph{grid-template-columns:1fr;max-width:600px}
+@media(max-width:640px){.tmmodal__card{grid-template-columns:1fr;max-height:82vh}}
+.tmmodal__ph{width:100%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:var(--mid-2);position:relative}
+.tmmodal__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tmmodal__ph img.missing{display:none}
+.tmmodal__ph .ph{position:absolute;inset:0}
+.tmmodal__ph:has(img:not(.missing)) .ph{display:none}
+.tmmodal__nm{font-family:var(--f-display);font-size:clamp(22px,2.4vw,28px);font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.tmmodal__ti{display:block;margin-top:6px;font-size:15px;color:var(--ink-2)}
+.tmmodal__li{display:inline-flex;align-items:center;margin-top:16px;color:var(--ink);opacity:.85;transition:opacity .25s}
+.tmmodal__li:hover{opacity:1}
+.tmmodal__li svg{width:26px;height:26px;display:block}
+.tmmodal__bio{margin-top:22px;color:var(--ink-2);font-size:14.5px;line-height:1.7}
+.tmmodal__close{position:absolute;top:clamp(14px,2vw,22px);right:clamp(14px,2vw,22px);z-index:2;
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--rule);background:#fff;color:var(--ink);
+  display:grid;place-items:center;cursor:pointer;transition:background .25s,transform .25s}
+.tmmodal__close:hover{background:var(--surface-2);transform:rotate(90deg)}
+.tmmodal__close svg{width:16px;height:16px}
+body.tm-lock{overflow:hidden}
+
+.advlist{margin-top:clamp(28px,3.2vw,44px);border-top:1px solid rgba(255,255,255,.16)}
+.advrow{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;
+  background:none;border:0;border-bottom:1px solid rgba(255,255,255,.16);padding:26px 4px;
+  cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:opacity .25s}
+.advrow:hover,.advrow:focus-visible{opacity:.68}
+.advrow:focus-visible{outline:none}
+.advrow__nm{font-family:var(--f-display);font-size:20px;font-weight:400;letter-spacing:-.01em;color:#fff}
+.advrow__ti{font-size:15px;color:rgba(255,255,255,.55);text-align:right}
 
 /* ================= PRINCIPLES ================= */
 .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:0;overflow:hidden}
@@ -988,12 +1077,12 @@ body{background:#fff}
 
 /* ---- section rhythm and separation ---- */
 .hero{min-height:auto;padding-top:clamp(120px,13vw,168px);padding-bottom:clamp(80px,9vw,120px)}
-.sec{padding-top:clamp(72px,8vw,116px);padding-bottom:clamp(72px,8vw,116px)}
-.sec--t{padding-top:clamp(72px,8vw,116px);padding-bottom:clamp(72px,8vw,116px)}
+.sec{padding-top:clamp(47px,5.2vw,75px);padding-bottom:clamp(47px,5.2vw,75px)}
+.sec--t{padding-top:clamp(47px,5.2vw,75px);padding-bottom:clamp(47px,5.2vw,75px)}
 /* a hairline does the work colour used to do */
-.sec + .sec, .statband + .sec, .sec + .statband{border-top:1px solid var(--rule-soft)}
+/* dividers removed between sections per site-wide instruction */
 .chead{margin-bottom:clamp(38px,4.4vw,64px)}
-.statband{padding-block:clamp(44px,5vw,72px)}
+.statband{padding-block:clamp(29px,3.2vw,47px)}
 /* sector cards read as objects again */
 .scard{border:1px solid var(--rule);box-shadow:0 1px 2px rgba(12,20,31,.04)}
 .scard:hover{box-shadow:0 18px 40px -22px rgba(12,20,31,.30)}
@@ -1038,6 +1127,7 @@ body{background:#fff}
 .splitbtn__c{padding:0 15px;display:inline-flex;align-items:center}
 .splitbtn:has(.splitbtn__c:hover),.splitbtn:has(.splitbtn__c:focus-visible){border-radius:0}
 .sbmenu{border-radius:0;top:100%;border-top:0}
+.ndrop{border-radius:0;top:100%;border-top:0}
 .burger{border-radius:0;height:var(--navh);width:var(--navh);border:0;
   border-left:1px solid var(--rule);background:#fff}
 @media(max-width:860px){
@@ -1137,10 +1227,6 @@ main > .ahero:first-child{padding-top:var(--navh)}
   color:var(--ink-2);max-width:52ch}
 .amiss__t .btn{margin-top:clamp(22px,2.6vw,32px)}
 @media (max-width:860px){ .amiss__g{grid-template-columns:1fr;gap:26px} }
-
-/* headings at 550: between medium and semibold */
-h1,h2,h3,h4{font-weight:500}
-.ahero h1{font-weight:500}
 </style>
 </head>
 <body>
@@ -1181,7 +1267,10 @@ h1,h2,h3,h4{font-weight:500}
 <section class="ahero">
 <div class="ahero__g">
 <div class="ahero__lt" data-rv="">
+<div style="display:flex;flex-direction:column">
+<span class="mono" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" style="width:13px;height:13px;flex:none"><path d="M2 17h20"/><path d="M7 17a5 5 0 0110 0"/><path d="M12 8v2.2M7.2 10.4l1.5 1.5M16.8 10.4l-1.5 1.5"/></svg>About</span>
 <h1>Decades in the domains where being wrong is not <span class="nb">an option</span></h1>
+</div>
 </div>
 <div class="ahero__r" data-rv="">
 <p>Our mission is to bring reliable, cost-effective automation to the critical infrastructure the world depends on.</p>
@@ -1207,8 +1296,7 @@ h1,h2,h3,h4{font-weight:500}
 </div>
 <div class="amiss__t">
 <h2>40 years. Failure was never <span class="nb">an option</span></h2>
-<p class="lede">They have advised global institutions, federal agencies, and elected officials. Their space experience includes the Hubble Space Telescope, International Space Station, Space Shuttle, NASA astronaut missions, commercial launch vehicle operations, and national, military and commercial satellite operations. The team has launched and exited high-stakes technology companies. Collectively, they hold <span class="dot">100+ patents.</span></p>
-<a class="btn" href="careers.html">Join our team</a>
+<p class="lede">They have advised global institutions, federal agencies, and elected officials. Their space experience includes the Hubble Space Telescope, International Space Station, Space Shuttle, NASA astronaut missions, commercial launch vehicle operations, and national, military and commercial satellite operations. The team has launched and exited high-stakes technology companies.</p>
 </div>
 </div>
 </div>
@@ -1249,15 +1337,26 @@ h1,h2,h3,h4{font-weight:500}
 </div>
 </div>
 </section>
-<section class="sec" id="leadership">
-<div class="gridbg"></div>
+<section class="sec pquote" id="advisors">
+<div class="wrap">
+<div class="pquote__grid" data-rv="">
+<div class="pquote__who">
+<b>John Frassanito</b>
+<p>Co-Inventor of the Desktop Computer<br>Advisory Board, New Sapience</p>
+</div>
+<p class=”pquote__text”>”[Placeholder — real quote from John Frassanito to come. Do not publish until confirmed.]”</p>
+</div>
+</div>
+</section>
+<section class="sec tmsec" id="leadership">
 <div class="wrap rel">
 <div class="shead" data-rv="">
-<h2>Leadership</h2>
+<h2>Meet our team</h2>
 </div>
-<div class="tgrid stg">
-<article class="mem">
-<div class="phwrap" style="--ar:1/1">
+<h3 class="tmsub tmsub--first">Board of Directors</h3>
+<div class="tmgrid stg">
+<button class="tmcard" type="button" data-tm-name="Bryant Cruse" data-tm-title="Founder, CEO &amp; Chairman" data-tm-img="img/team/bryant-cruse.jpg" data-tm-li="https://www.linkedin.com/in/bryantcruse/" data-tm-bio="Bryant is a pioneer in spacecraft AI across a continuous arc from first concept to third-generation company. Conceived the first AI application for spacecraft telemetry analysis (Hubble Space Telescope) at Lockheed/NASA Goddard. Co-founded Talarian (first real-time expert system platform; acquired by TIBCO for $115M) and Altair Aerospace (acquired by Aeroflex). Founded Valkeir (first telemetry over the Internet, NASA&rsquo;s Aqua). Naval Aviator. Naval Space Command. MS Space Systems Engineering, Johns Hopkins University; BA, Great Books Program, St. John&rsquo;s College (Annapolis).">
+<div class="tmcard__ph">
 <img alt="Bryant Cruse" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/team/bryant-cruse.jpg"/>
 <div class="ph">
 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
@@ -1265,15 +1364,13 @@ h1,h2,h3,h4{font-weight:500}
 </svg>
 <b>Headshot</b>
 <s>Bryant Cruse</s>
-<s style="opacity:.6;margin-top:2px">img/team/bryant-cruse.jpg</s>
 </div>
 </div>
-<b class="nm">Bryant Cruse</b><s>Founder, CEO &amp; Chairman</s>
-<p>Bryant is a pioneer in spacecraft AI across a continuous arc from first concept to third-generation company. Conceived the first AI application for spacecraft telemetry analysis (Hubble Space Telescope) at Lockheed/NASA Goddard. Co-founded Talarian (first real-time expert system platform; acquired by TIBCO for $115M) and Altair Aerospace (acquired by Aeroflex). Founded Valkeir (first telemetry over the Internet, NASA’s Aqua). Naval Aviator. Naval Space Command. MS Space Systems Engineering, Johns Hopkins University; BA, Great Books Program, St. John’s College (Annapolis).</p>
-<a class="li" href="https://www.linkedin.com/in/bryantcruse/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-</article>
-<article class="mem">
-<div class="phwrap" style="--ar:1/1">
+<span class="tmcard__nm">Bryant Cruse</span>
+<span class="tmcard__ti">Founder, CEO &amp; Chairman</span>
+</button>
+<button class="tmcard" type="button" data-tm-name="Thomas Loveland" data-tm-title="Chief Administrative Officer" data-tm-img="img/team/thomas-loveland.jpg" data-tm-li="https://www.linkedin.com/in/tomloveland/" data-tm-bio="Founder and CEO of Mind Over Machines, a technology consultancy serving federal and state agencies and national brands since 1989. Inc. 5000 honoree and U.S. Chamber Small Business of the Year. Led the widely-acclaimed repeal of Maryland&rsquo;s $250M computer services tax. Co-founded Maryland&rsquo;s first statewide IT industry lobbying association and IT industry PAC. Early investor in and active advisor to New Sapience. Studied mathematics, University of Chicago; Great Books Program, St. John&rsquo;s College (Annapolis).">
+<div class="tmcard__ph">
 <img alt="Thomas Loveland" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/team/thomas-loveland.jpg"/>
 <div class="ph">
 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
@@ -1281,18 +1378,13 @@ h1,h2,h3,h4{font-weight:500}
 </svg>
 <b>Headshot</b>
 <s>Thomas Loveland</s>
-<s style="opacity:.6;margin-top:2px">img/team/thomas-loveland.jpg</s>
 </div>
 </div>
-<b class="nm">Thomas Loveland</b><s>Chief Administrative Officer</s>
-<p>Founder and CEO of Mind Over Machines, a technology consultancy serving federal and state agencies and national brands since 1989. Inc. 5000 honoree and U.S. Chamber Small Business of the Year. Led the widely-acclaimed repeal of Maryland’s $250M computer services tax. Co-founded Maryland’s first statewide IT industry lobbying association and IT industry PAC. Early investor in and active advisor to New Sapience. Studied mathematics, University of Chicago; Great Books Program, St. John’s College (Annapolis).</p>
-<a class="li" href="https://www.linkedin.com/in/tomloveland/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-</article>
-</div>
-<h3 class="subhead">Board of Directors <span>Plus Bryant Cruse and <span class="nb">Thomas Loveland</span></span></h3>
-<div class="tgrid stg">
-<article class="mem">
-<div class="phwrap" style="--ar:1/1">
+<span class="tmcard__nm">Thomas Loveland</span>
+<span class="tmcard__ti">Chief Administrative Officer</span>
+</button>
+<button class="tmcard" type="button" data-tm-name="William Bandy" data-tm-title="Independent Director" data-tm-img="img/team/william-bandy.jpg" data-tm-li="https://www.linkedin.com/in/william-bandy-6315623b/" data-tm-bio="30-year career at Defense Advanced Research Projects Agency (DARPA) and National Security Agency (NSA). Directed NSA&rsquo;s Microelectronics Research Laboratory and was the first program manager of SEMATECH. Executive director of the presidential National Advisory Committee on Semiconductors. Co-founded Matrics (passive RFID), acquired by Symbol Technologies for $230M; co-founder of Symmatrics (post-quantum cybersecurity). Holds 100+ patents. PhD, Physics, University of Maryland.">
+<div class="tmcard__ph">
 <img alt="William Bandy" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/team/william-bandy.jpg"/>
 <div class="ph">
 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
@@ -1300,15 +1392,13 @@ h1,h2,h3,h4{font-weight:500}
 </svg>
 <b>Headshot</b>
 <s>William Bandy</s>
-<s style="opacity:.6;margin-top:2px">img/team/william-bandy.jpg</s>
 </div>
 </div>
-<b class="nm">William Bandy</b><s>Independent Director</s>
-<p>30-year career at Defense Advanced Research Projects Agency (DARPA) and National Security Agency (NSA). Directed NSA’s Microelectronics Research Laboratory and was the first program manager of SEMATECH. Executive director of the presidential National Advisory Committee on Semiconductors. Co-founded Matrics (passive RFID), acquired by Symbol Technologies for $230M; co-founder of Symmatrics (post-quantum cybersecurity). Holds 100+ patents. PhD, Physics, University of Maryland.</p>
-<a class="li" href="https://www.linkedin.com/in/william-bandy-6315623b/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-</article>
-<article class="mem">
-<div class="phwrap" style="--ar:1/1">
+<span class="tmcard__nm">William Bandy</span>
+<span class="tmcard__ti">Independent Director</span>
+</button>
+<button class="tmcard" type="button" data-tm-name="William Readdy" data-tm-title="Independent Director" data-tm-img="img/team/william-readdy.jpg" data-tm-li="https://www.linkedin.com/in/william-readdy-4baaa02/" data-tm-bio="NASA astronaut with Space Shuttle missions STS-42, STS-51, STS-79. 672 hours in space. Former NASA Associate Administrator for Space Flight, leading a $7B per year enterprise of four centers and 40,000 personnel. Led the Space Shuttle&rsquo;s return to flight after Columbia. Awards include NASA Distinguished Service Medal, Legion of Merit, Distinguished Flying Cross. BS, Aerospace Engineering (Honors), US Naval Academy.">
+<div class="tmcard__ph">
 <img alt="William Readdy" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/team/william-readdy.jpg"/>
 <div class="ph">
 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
@@ -1316,47 +1406,62 @@ h1,h2,h3,h4{font-weight:500}
 </svg>
 <b>Headshot</b>
 <s>William Readdy</s>
-<s style="opacity:.6;margin-top:2px">img/team/william-readdy.jpg</s>
 </div>
 </div>
-<b class="nm">William Readdy</b><s>Independent Director</s>
-<p>NASA astronaut with Space Shuttle missions STS-42, STS-51, STS-79. 672 hours in space. Former NASA Associate Administrator for Space Flight, leading a $7B per year enterprise of four centers and 40,000 personnel. Led the Space Shuttle’s return to flight after Columbia. Awards include NASA Distinguished Service Medal, Legion of Merit, Distinguished Flying Cross. BS, Aerospace Engineering (Honors), US Naval Academy.</p>
-<a class="li" href="https://www.linkedin.com/in/william-readdy-4baaa02/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-</article>
+<span class="tmcard__nm">William Readdy</span>
+<span class="tmcard__ti">Independent Director</span>
+</button>
 </div>
-</div>
-</section>
-<section class="sec sec--dark" id="faq">
-<div class="wrap">
-<div class="shead" data-rv="">
-<h2>Frequently Asked Questions</h2>
-</div>
-<div class="faq" data-rv="">
-<details><summary><span class="qn">Q1</span>What is a world model?<span class="pl">+</span></summary>
-<div class="ans">It is a model that understands the dynamics of the real world, including physics and spatial properties. It is an understanding of the world as it really exists. It can be as big or as small as needed. For example, the world model for a satellite is everything associated with that satellite. That satellite’s world model is thorough and complete, but simple and concise. No room for error.</div></details>
-<details><summary><span class="qn">Q2</span>What is synthetic knowledge?<span class="pl">+</span></summary>
-<div class="ans">To be clear, synthetic knowledge is not a symbolic representation of knowledge but is knowledge itself. It is derived from information, patterns, and insights generated artificially by models, rather than directly from real-world observation. It is human knowledge transformed into synthetic form.</div></details>
-<details><summary><span class="qn">Q3</span>What does deterministic mean?<span class="pl">+</span></summary>
-<div class="ans">It is a system, process, or philosophy where the outcome is entirely determined by initial conditions and inputs, leaving no room for randomness or chance.</div></details>
-<details><summary><span class="qn">Q4</span>What does probabilistic mean?<span class="pl">+</span></summary>
-<div class="ans">It is a system, process, or philosophy based on or adapted to a theory of probability. It is subject to or involves chance variation.</div></details>
-<details><summary><span class="qn">Q5</span>What does hallucination mean?<span class="pl">+</span></summary>
-<div class="ans">This term has been applied to large language model AI systems that provide a false, inaccurate or nonsensical response ungrounded in truth or facts.</div></details>
-<details><summary><span class="qn">Q6</span>What is a high-stakes industry?<span class="pl">+</span></summary>
-<div class="ans">It is a sector where the consequences of a mistake, failure, or poor decision could pose significant repercussions such as banking, healthcare, and the legal profession. Included in high-stakes industries are mission-critical systems.</div></details>
-<details><summary><span class="qn">Q7</span>What does mission-critical mean?<span class="pl">+</span></summary>
-<div class="ans">Mission-critical systems are vital to the functioning of a civilized society and for the public good, such as national security, finance, and energy production &amp; distribution. Disruptions in any of these could lead to catastrophic financial, public safety or human losses.</div></details>
-<details><summary><span class="qn">Q8</span>What does zero-defect mean?<span class="pl">+</span></summary>
-<div class="ans">It is the concept of operations or quality management focused on preventing errors. Defects are unacceptable.</div></details>
-<details><summary><span class="qn">Q9</span>What does air-gapped mean?<span class="pl">+</span></summary>
-<div class="ans">A device or system that is physically isolated from outside networks: no internet, no cloud, no data centers. It is not vulnerable to external bad actors.</div></details>
-<details><summary><span class="qn">Q10</span>What is an edge device?<span class="pl">+</span></summary>
-<div class="ans">It is a hardware component located at the boundary of a network—close to data sources or users—that collects, processes, and analyzes data locally rather than sending it to a centralized cloud or data center.</div></details>
-<details><summary><span class="qn">Q11</span>How can sapiens be audited?<span class="pl">+</span></summary>
-<div class="ans">Auditing means being able to trace back how any given output or behavior was determined by the system. Both the knowledge that sapiens contain and the program that reasons about it are written and readable by humans. Knowledge that supports specific applications is certified and owned by the customer.</div></details>
+<h3 class="tmsub">Advisory Board</h3>
+<div class="advlist">
+<button class="advrow" type="button" data-tm-name="James Freis" data-tm-title="Advisory Board" data-tm-bio="Former Director (CEO) of FinCEN, U.S. Treasury, leading a $125M agency overseeing AML/CFT compliance across 200,000+ institutions. Former global-compliance Managing Director at Deutsche B&ouml;rse (Frankfurt Stock Exchange; Clearstream, &euro;13T under custody). Appointed CEO of Wirecard to stabilize the &euro;24B fintech after a &euro;1.9B fraud. Former Senior Counsel at the Bank for International Settlements; legal advisor to the Federal Reserve Bank of New York. JD, Harvard Law; BA, Georgetown; CFA.">
+<span class="advrow__nm">James Freis</span>
+<span class="advrow__ti">Advisory Board</span>
+</button>
+<button class="advrow" type="button" data-tm-name="Eric Morehouse" data-tm-title="Advisory Board" data-tm-bio="Managing Director at AiPi Solutions, a multidisciplinary team of IP attorneys, AI scientists, finance executives, and business development professionals. Responsible for the firm&rsquo;s overall operations, client relationships, and strategic growth. Deep expertise in litigation finance, intellectual property monetization, and venture strategy; guides clients through complex IP challenges and financing opportunities. Career includes high-stakes litigation support, fund management, and advisory services for technology companies. JD, Widener University School of Law; BS Mechanical Engineering, Virginia Military Institute.">
+<span class="advrow__nm">Eric Morehouse</span>
+<span class="advrow__ti">Advisory Board</span>
+</button>
+<button class="advrow" type="button" data-tm-name="Paul Richards" data-tm-title="Advisory Board" data-tm-bio="NASA astronaut (307+ hours aboard Discovery, STS-102, including 6.4 hours of extra-vehicular activity) and Naval Reserve officer; contributed to Hubble servicing, GOES-R, and the Laser Communications Relay Demonstration, and invented the NASA Pistol Grip Tool, standard EVA equipment since 1996. Senior roles since at Leidos, Genesis Engineering (CTO), and Amazon Kuiper; now CSO and Chief Engineer at Revolution Space. MS, University of Maryland; BS, Drexel.">
+<span class="advrow__nm">Paul Richards</span>
+<span class="advrow__ti">Advisory Board</span>
+</button>
+<button class="advrow" type="button" data-tm-name="William Avellone" data-tm-title="Advisory Board" data-tm-bio="Founder and President of Chartered Management Company. Thirty-plus years advising Fortune 1000 companies, private equity, and government agencies on turnarounds, M&amp;A, and restructuring. BS Engineering and MBA, University of Illinois.">
+<span class="advrow__nm">William Avellone</span>
+<span class="advrow__ti">Advisory Board</span>
+</button>
+<button class="advrow" type="button" data-tm-name="Patrick Regan" data-tm-title="Advisory Board" data-tm-bio="President of Regan Consulting and Partner at Chartered Management. Fifteen-plus years scaling privately held and sponsor-backed companies, including leading a $100M business unit. Earlier engineering at General Motors and derivative trading on Wall Street. MBA, Columbia; MS, North Dakota State; BS, Kettering.">
+<span class="advrow__nm">Patrick Regan</span>
+<span class="advrow__ti">Advisory Board</span>
+</button>
 </div>
 </div>
 </section>
+<div class="tmmodal" id="tmModal" role="dialog" aria-modal="true" aria-labelledby="tmModalName">
+<div class="tmmodal__bg" data-tm-close=""></div>
+<div class="tmmodal__card">
+<button class="tmmodal__close" type="button" aria-label="Close" data-tm-close="">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+<div class="tmmodal__ph">
+<img alt="" decoding="async" id="tmModalImg" onerror="this.classList.add('missing')" src=""/>
+<div class="ph">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24">
+<rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
+</svg>
+<b>Headshot</b>
+</div>
+</div>
+<div>
+<b class="tmmodal__nm" id="tmModalName"></b>
+<span class="tmmodal__ti" id="tmModalTitle"></span>
+<a class="tmmodal__li" id="tmModalLi" href="#" rel="noopener noreferrer" target="_blank" aria-label="LinkedIn profile">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"></path></svg>
+</a>
+<p class="tmmodal__bio" id="tmModalBio"></p>
+</div>
+</div>
+</div>
 <section class="imgcta" data-rv="">
 <div class="imgcta__in">
 <h2>Talk to the people who <span class="nb">built it</span></h2>
@@ -1376,7 +1481,6 @@ h1,h2,h3,h4{font-weight:500}
 <div><h4>Platform</h4><ul>
 <li><a href="platform.html">Overview</a></li>
 <li><a href="platform.html#characteristics">Key characteristics</a></li>
-<li><a href="sustainability.html">Sustainability</a></li>
 </ul></div>
 <div><h4>Applications</h4><ul>
 <li><a href="sectors.html">Sectors</a></li>
@@ -1387,7 +1491,6 @@ h1,h2,h3,h4{font-weight:500}
 <div><h4>Company</h4><ul>
 <li><a href="about.html">Company</a></li>
 <li><a href="about.html#leadership">Leadership</a></li>
-<li><a href="careers.html">Careers</a></li>
 <li><a href="news.html">News</a></li>
 <li><a href="contact.html">Request a demo</a></li>
 <li><a href="mailto:comm@newsapience.com">comm@newsapience.com</a></li>
@@ -1735,6 +1838,54 @@ h1,h2,h3,h4{font-weight:500}
     addEventListener('resize', height, { passive: true });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(height);
     height(); go(0);
+  });
+})();
+</script>
+<script>
+(function () {
+  var modal = document.getElementById('tmModal');
+  if (!modal) return;
+  var imgEl = document.getElementById('tmModalImg');
+  var nameEl = document.getElementById('tmModalName');
+  var titleEl = document.getElementById('tmModalTitle');
+  var liEl = document.getElementById('tmModalLi');
+  var bioEl = document.getElementById('tmModalBio');
+  var lastFocused = null;
+
+  var phEl = imgEl.closest('.tmmodal__ph');
+
+  function open(card) {
+    lastFocused = document.activeElement;
+    var img = card.getAttribute('data-tm-img') || '';
+    imgEl.src = img;
+    imgEl.alt = card.getAttribute('data-tm-name') || '';
+    imgEl.classList.remove('missing');
+    if (phEl) phEl.style.display = img ? '' : 'none';
+    modal.querySelector('.tmmodal__card').classList.toggle('tmmodal__card--noph', !img);
+    nameEl.textContent = card.getAttribute('data-tm-name') || '';
+    titleEl.textContent = card.getAttribute('data-tm-title') || '';
+    bioEl.textContent = card.getAttribute('data-tm-bio') || '';
+    var li = card.getAttribute('data-tm-li');
+    if (li) { liEl.href = li; liEl.style.display = ''; } else { liEl.style.display = 'none'; }
+    modal.classList.add('on');
+    document.body.classList.add('tm-lock');
+    modal.querySelector('.tmmodal__close').focus();
+  }
+
+  function close() {
+    modal.classList.remove('on');
+    document.body.classList.remove('tm-lock');
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.tmcard, .advrow').forEach(function (card) {
+    card.addEventListener('click', function () { open(card); });
+  });
+  modal.querySelectorAll('[data-tm-close]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('on')) close();
   });
 })();
 </script>
