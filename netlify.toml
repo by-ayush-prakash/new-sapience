@@ -1,6 +1,55 @@
 [build]
   publish = "."
 
+# These draft sections are intentionally unavailable in production.
+[[redirects]]
+  from = "/careers"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/careers.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/careers/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/sustainability"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/sustainability.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/sustainability/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/careers*"
+  [headers.values]
+    Cache-Control = "no-store, max-age=0"
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/sustainability*"
+  [headers.values]
+    Cache-Control = "no-store, max-age=0"
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
 [[headers]]
   for = "/img/*"
   [headers.values]
