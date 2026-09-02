@@ -1,6 +1,12 @@
 [build]
   publish = "."
 
+[[redirects]]
+  from = "/symmatrics-letter-of-intent.html"
+  to = "/symmatrics-letter-of-intent"
+  status = 301
+  force = true
+
 # These draft sections are intentionally unavailable in production.
 [[redirects]]
   from = "/careers"
