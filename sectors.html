@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sectors | New Sapience</title>
+<title>AI for Critical Infrastructure Sectors | New Sapience</title>
 <meta name="description" content="The 16 CISA critical infrastructure sectors, and the mission-critical domains where our team earned its wings.">
 <link rel="canonical" href="https://www.newsapience.com/sectors.html">
 <meta property="og:type" content="website">
@@ -1104,15 +1104,15 @@ body{background:#fff}
     <div class="sbmenu" role="menu">
 <a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
 </div>
-<button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
+<button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
-<div class="drawer" id="drawer">
+<div class="drawer" id="drawer" aria-hidden="true" inert>
   <a href="index.html">Home</a>
   <a href="platform.html">Technology</a>
   <a href="sectors.html">Sectors</a>
   <a href="deployment.html">Deployment</a>
-  <a href="about.html">About</a>
+  <a href="about.html">Company</a>
   <a href="contact.html">Contact</a>
   <a class="drawer__inv" href="mailto:investors@newsapience.com">Invest</a>
 </div>
@@ -1139,8 +1139,6 @@ body{background:#fff}
 <rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
 </svg>
 <b>Infrastructure photography</b>
-<s>Transmission lines, refinery, or plant exterior at scale.</s>
-<s style="opacity:.6;margin-top:2px">img/feature/infrastructure.jpg</s>
 </div>
 </div>
 <div class="drow stg">
@@ -1198,7 +1196,7 @@ body{background:#fff}
 <div class="chead" data-rv="">
 <h2>Vital to the functioning of a <span class="nb">civilized society</span></h2>
 <p class="lede">Mission-critical systems are vital to the functioning of a civilized society and for the public good, such as national security, finance, and energy production &amp; distribution. Disruptions in any of these could lead to catastrophic financial, public safety or human losses.</p>
-<p style="margin-top:20px"><a class="tlink" href="about.html#faq">Read the definitions →</a></p>
+<p style="margin-top:20px"><a class="tlink" href="platform.html#faq">Read the definitions →</a></p>
 </div>
 <div class="reg" data-rv=""><div class="regitem"><b>EU AI Act</b><p>Escalating obligations on high-risk systems: transparency, auditability, human oversight, and demonstrated accuracy, with the heaviest requirements phasing in through 2027.</p></div><div class="regitem"><b>EU Data Act</b><p>In force since September 2025. Requires providers to block unlawful third-country access to European data.</p></div><div class="regitem"><b>FAA AI Safety Assurance Roadmap</b><p>Flags the assurance challenge that non-explainable AI poses in aviation.</p></div><div class="regitem"><b>OMB M-25-21</b><p>Directs federal agencies toward AI strategies emphasising data traceability and trust. DoD procurement is moving the same way.</p></div></div>
 </div>
@@ -1276,12 +1274,20 @@ body{background:#fff}
   var bg = document.getElementById('burger'), dw = document.getElementById('drawer');
   if (bg && dw) {
     bg.addEventListener('click', function () {
-      bg.classList.toggle('on'); dw.classList.toggle('on');
-      document.body.style.overflow = dw.classList.contains('on') ? 'hidden' : '';
+      var open = dw.classList.toggle('on');
+      bg.classList.toggle('on', open);
+      bg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      dw.setAttribute('aria-hidden', open ? 'false' : 'true');
+      dw.toggleAttribute('inert', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     dw.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
-        bg.classList.remove('on'); dw.classList.remove('on'); document.body.style.overflow = '';
+        bg.classList.remove('on'); dw.classList.remove('on');
+        bg.setAttribute('aria-expanded', 'false');
+        dw.setAttribute('aria-hidden', 'true');
+        dw.setAttribute('inert', '');
+        document.body.style.overflow = '';
       });
     });
   }

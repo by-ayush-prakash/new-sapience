@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Technology | New Sapience</title>
+<title>Synthetic Intelligence: Deterministic and Explainable | New Sapience</title>
 <meta name="description" content="Not machine learning. Not symbolic AI. Synthetic intelligence: deterministic, explainable, and air-gap capable.">
 <link rel="canonical" href="https://www.newsapience.com/platform.html">
 <meta property="og:type" content="website">
@@ -16,6 +16,21 @@
 <meta name="twitter:title" content="Synthetic Intelligence: Deterministic, Explainable, Air-Gap Capable — New Sapience">
 <meta name="twitter:description" content="Not machine learning. Not symbolic AI. Synthetic intelligence: deterministic, explainable, and air-gap capable.">
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a world model?","acceptedAnswer":{"@type":"Answer","text":"A model that represents the dynamics and relevant entities of a defined real-world system."}},
+{"@type":"Question","name":"What is synthetic knowledge?","acceptedAnswer":{"@type":"Answer","text":"Human knowledge transformed into a machine-processable form derived from information, patterns, and engineered models."}},
+{"@type":"Question","name":"What does deterministic mean?","acceptedAnswer":{"@type":"Answer","text":"A system in which the outcome is determined by its initial conditions and inputs, without random variation."}},
+{"@type":"Question","name":"What does probabilistic mean?","acceptedAnswer":{"@type":"Answer","text":"A system based on probability and subject to chance variation."}},
+{"@type":"Question","name":"What does hallucination mean?","acceptedAnswer":{"@type":"Answer","text":"A false, inaccurate, or nonsensical response produced by a large language model without grounding in truth or facts."}},
+{"@type":"Question","name":"What is a high-stakes industry?","acceptedAnswer":{"@type":"Answer","text":"A sector where mistakes, failures, or poor decisions could have significant consequences, including banking, healthcare, law, and mission-critical systems."}},
+{"@type":"Question","name":"What does mission-critical mean?","acceptedAnswer":{"@type":"Answer","text":"A system vital to public functions such as national security, finance, or energy, where disruption could cause serious financial, safety, or human losses."}},
+{"@type":"Question","name":"What does zero-defect mean?","acceptedAnswer":{"@type":"Answer","text":"An approach to operations or quality management focused on preventing errors because defects are unacceptable."}},
+{"@type":"Question","name":"What does air-gapped mean?","acceptedAnswer":{"@type":"Answer","text":"A device or system physically isolated from outside networks, including the internet and cloud infrastructure."}},
+{"@type":"Question","name":"What is an edge device?","acceptedAnswer":{"@type":"Answer","text":"Hardware at a network boundary that processes data close to its source or users instead of sending it to a centralized cloud or data center."}},
+{"@type":"Question","name":"How can sapiens be audited?","acceptedAnswer":{"@type":"Answer","text":"Its outputs can be traced because both its knowledge and the program that reasons over that knowledge are written and readable by humans."}}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
@@ -1083,15 +1098,15 @@ body{background:#fff}
     <div class="sbmenu" role="menu">
 <a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
 </div>
-<button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
+<button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
-<div class="drawer" id="drawer">
+<div class="drawer" id="drawer" aria-hidden="true" inert>
   <a href="index.html">Home</a>
   <a href="platform.html">Technology</a>
   <a href="sectors.html">Sectors</a>
   <a href="deployment.html">Deployment</a>
-  <a href="about.html">About</a>
+  <a href="about.html">Company</a>
   <a href="contact.html">Contact</a>
   <a class="drawer__inv" href="mailto:investors@newsapience.com">Invest</a>
 </div>
@@ -1314,12 +1329,20 @@ body{background:#fff}
   var bg = document.getElementById('burger'), dw = document.getElementById('drawer');
   if (bg && dw) {
     bg.addEventListener('click', function () {
-      bg.classList.toggle('on'); dw.classList.toggle('on');
-      document.body.style.overflow = dw.classList.contains('on') ? 'hidden' : '';
+      var open = dw.classList.toggle('on');
+      bg.classList.toggle('on', open);
+      bg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      dw.setAttribute('aria-hidden', open ? 'false' : 'true');
+      dw.toggleAttribute('inert', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     dw.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
-        bg.classList.remove('on'); dw.classList.remove('on'); document.body.style.overflow = '';
+        bg.classList.remove('on'); dw.classList.remove('on');
+        bg.setAttribute('aria-expanded', 'false');
+        dw.setAttribute('aria-hidden', 'true');
+        dw.setAttribute('inert', '');
+        document.body.style.overflow = '';
       });
     });
   }

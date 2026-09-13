@@ -1087,15 +1087,15 @@ body{background:#fff}
     <div class="sbmenu" role="menu">
 <a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
 </div>
-<button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
+<button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
-<div class="drawer" id="drawer">
+<div class="drawer" id="drawer" aria-hidden="true" inert>
   <a href="index.html">Home</a>
   <a href="platform.html">Technology</a>
   <a href="sectors.html">Sectors</a>
   <a href="deployment.html">Deployment</a>
-  <a href="about.html">About</a>
+  <a href="about.html">Company</a>
   <a href="contact.html">Contact</a>
   <a class="drawer__inv" href="mailto:investors@newsapience.com">Invest</a>
 </div>
@@ -1233,12 +1233,20 @@ body{background:#fff}
   var bg = document.getElementById('burger'), dw = document.getElementById('drawer');
   if (bg && dw) {
     bg.addEventListener('click', function () {
-      bg.classList.toggle('on'); dw.classList.toggle('on');
-      document.body.style.overflow = dw.classList.contains('on') ? 'hidden' : '';
+      var open = dw.classList.toggle('on');
+      bg.classList.toggle('on', open);
+      bg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      dw.setAttribute('aria-hidden', open ? 'false' : 'true');
+      dw.toggleAttribute('inert', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     dw.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
-        bg.classList.remove('on'); dw.classList.remove('on'); document.body.style.overflow = '';
+        bg.classList.remove('on'); dw.classList.remove('on');
+        bg.setAttribute('aria-expanded', 'false');
+        dw.setAttribute('aria-hidden', 'true');
+        dw.setAttribute('inert', '');
+        document.body.style.overflow = '';
       });
     });
   }

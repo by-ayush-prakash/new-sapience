@@ -16,6 +16,9 @@
 <meta name="twitter:title" content="New Sapience and Symmatrics Sign Letter of Intent | New Sapience">
 <meta name="twitter:description" content="New Sapience and Symmatrics are exploring how together they could implement such “LLM pest control.”">
 <meta name="twitter:image" content="https://www.newsapience.com/img/news/symmatrics-loi.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NewsArticle","headline":"New Sapience and Symmatrics Sign Letter of Intent","description":"New Sapience and Symmatrics are exploring deterministic AI and certificate-free cybersecurity.","datePublished":"2026-09-02","author":{"@type":"Organization","name":"New Sapience, Inc."},"publisher":{"@type":"Organization","name":"New Sapience, Inc.","url":"https://www.newsapience.com/"},"mainEntityOfPage":"https://www.newsapience.com/symmatrics-letter-of-intent","image":"https://www.newsapience.com/img/news/symmatrics-loi.jpg"}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
@@ -1118,15 +1121,15 @@ body{background:#fff}
     <div class="sbmenu" role="menu">
 <a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
 </div>
-<button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
+<button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
-<div class="drawer" id="drawer">
+<div class="drawer" id="drawer" aria-hidden="true" inert>
   <a href="index.html">Home</a>
   <a href="platform.html">Technology</a>
   <a href="sectors.html">Sectors</a>
   <a href="deployment.html">Deployment</a>
-  <a href="about.html">About</a>
+  <a href="about.html">Company</a>
   <a href="contact.html">Contact</a>
   <a class="drawer__inv" href="mailto:investors@newsapience.com">Invest</a>
 </div>
@@ -1224,7 +1227,7 @@ h1,h2,h3,h4{font-weight:500}
 <div class="wrap wrap--wide phero-img" data-rv="">
 <div class="phwrap">
 <img alt="New Sapience and Symmatrics" decoding="async" onerror="this.classList.add('missing')" src="img/news/symmatrics-loi.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>New Sapience and Symmatrics</b><s style="opacity:.6;margin-top:2px">img/news/symmatrics-loi.jpg</s></div>
+<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>New Sapience and Symmatrics</b></div>
 </div>
 </div>
 </section>
@@ -1233,7 +1236,7 @@ h1,h2,h3,h4{font-weight:500}
 <div class="wrap">
 <div class="in rbody" data-rv="">
 
-<p class="rlede">From techjournal.org:</p>
+<p class="rlede">From <a href="https://techjournal.org/openai-hugging-face-ai-agent-breach" target="_blank" rel="noopener noreferrer">TechJournal.org</a>:</p>
 
 <p><em>OpenAI disclosed on July 21, 2026 that its models escaped a sealed test environment during a cyber-capability evaluation, reached the internet, and breached Hugging Face&rsquo;s systems &mdash; apparently to obtain the answers to the test they were being scored on. OpenAI called it an &ldquo;unprecedented cyber incident.&rdquo; No malicious human intent is alleged.</em></p>
 
@@ -1337,12 +1340,20 @@ New Sapience, Inc.
   var bg = document.getElementById('burger'), dw = document.getElementById('drawer');
   if (bg && dw) {
     bg.addEventListener('click', function () {
-      bg.classList.toggle('on'); dw.classList.toggle('on');
-      document.body.style.overflow = dw.classList.contains('on') ? 'hidden' : '';
+      var open = dw.classList.toggle('on');
+      bg.classList.toggle('on', open);
+      bg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      dw.setAttribute('aria-hidden', open ? 'false' : 'true');
+      dw.toggleAttribute('inert', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     dw.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
-        bg.classList.remove('on'); dw.classList.remove('on'); document.body.style.overflow = '';
+        bg.classList.remove('on'); dw.classList.remove('on');
+        bg.setAttribute('aria-expanded', 'false');
+        dw.setAttribute('aria-hidden', 'true');
+        dw.setAttribute('inert', '');
+        document.body.style.overflow = '';
       });
     });
   }

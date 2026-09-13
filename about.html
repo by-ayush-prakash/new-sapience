@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Company | New Sapience</title>
+<title>Four Decades in Space, Defense and Intelligence | New Sapience</title>
 <meta name="description" content="Decades of experience in critical infrastructure domains, including space transportation, military, and intelligence communities.">
 <link rel="canonical" href="https://www.newsapience.com/about.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="New Sapience">
-<meta property="og:title" content="Four Decades in Space, Defence and Intelligence — New Sapience">
+<meta property="og:title" content="Four Decades in Space, Defense and Intelligence | New Sapience">
 <meta property="og:description" content="Decades of experience in critical infrastructure domains, including space transportation, military, and intelligence communities.">
 <meta property="og:url" content="https://www.newsapience.com/about.html">
 <meta property="og:image" content="https://www.newsapience.com/img/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Four Decades in Space, Defence and Intelligence — New Sapience">
+<meta name="twitter:title" content="Four Decades in Space, Defense and Intelligence | New Sapience">
 <meta name="twitter:description" content="Decades of experience in critical infrastructure domains, including space transportation, military, and intelligence communities.">
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1250,15 +1250,15 @@ main > .ahero:first-child{padding-top:var(--navh)}
     <div class="sbmenu" role="menu">
 <a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
 </div>
-<button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
+<button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
-<div class="drawer" id="drawer">
+<div class="drawer" id="drawer" aria-hidden="true" inert>
   <a href="index.html">Home</a>
   <a href="platform.html">Technology</a>
   <a href="sectors.html">Sectors</a>
   <a href="deployment.html">Deployment</a>
-  <a href="about.html">About</a>
+  <a href="about.html">Company</a>
   <a href="contact.html">Contact</a>
   <a class="drawer__inv" href="mailto:investors@newsapience.com">Invest</a>
 </div>
@@ -1292,7 +1292,7 @@ main > .ahero:first-child{padding-top:var(--navh)}
 <div class="amiss__g" data-rv="">
 <div class="phwrap amiss__fig">
 <img alt="Mission control" decoding="async" loading="lazy" onerror="this.classList.add('missing')" src="img/feature/mission-control.jpg"/>
-<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Mission control</b><s style="opacity:.6;margin-top:2px">img/feature/mission-control.jpg</s></div>
+<div class="ph"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path></svg><b>Mission control</b></div>
 </div>
 <div class="amiss__t">
 <h2>40 years. Failure was never <span class="nb">an option</span></h2>
@@ -1330,8 +1330,6 @@ main > .ahero:first-child{padding-top:var(--navh)}
 <rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9.5" r="1.8"></circle><path d="m3 17 5-4 4 3 3-2 6 5"></path>
 </svg>
 <b>Hubble Space Telescope</b>
-<s>Hubble Space Telescope in orbit above Earth.</s>
-<s style="opacity:.6;margin-top:2px">img/proof/hubble-space-telescope.jpg</s>
 </div>
 </div>
 </div>
@@ -1399,6 +1397,13 @@ main > .ahero:first-child{padding-top:var(--navh)}
 </div>
 <span class="tmcard__nm">William Readdy</span>
 <span class="tmcard__ti">Independent Director</span>
+</button>
+</div>
+<h3 class="tmsub">Leadership</h3>
+<div class="advlist">
+<button class="advrow" type="button" data-tm-name="Karsten Huneycutt" data-tm-title="Chief Software Architect" data-tm-bio="Chief Software Architect and co-inventor, with Bryant Cruse, of U.S. Patent 9,275,341, Method and System for Machine Comprehension.">
+<span class="advrow__nm">Karsten Huneycutt</span>
+<span class="advrow__ti">Chief Software Architect</span>
 </button>
 </div>
 <h3 class="tmsub">Advisory Board</h3>
@@ -1528,12 +1533,20 @@ main > .ahero:first-child{padding-top:var(--navh)}
   var bg = document.getElementById('burger'), dw = document.getElementById('drawer');
   if (bg && dw) {
     bg.addEventListener('click', function () {
-      bg.classList.toggle('on'); dw.classList.toggle('on');
-      document.body.style.overflow = dw.classList.contains('on') ? 'hidden' : '';
+      var open = dw.classList.toggle('on');
+      bg.classList.toggle('on', open);
+      bg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      dw.setAttribute('aria-hidden', open ? 'false' : 'true');
+      dw.toggleAttribute('inert', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     dw.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
-        bg.classList.remove('on'); dw.classList.remove('on'); document.body.style.overflow = '';
+        bg.classList.remove('on'); dw.classList.remove('on');
+        bg.setAttribute('aria-expanded', 'false');
+        dw.setAttribute('aria-hidden', 'true');
+        dw.setAttribute('inert', '');
+        document.body.style.overflow = '';
       });
     });
   }
