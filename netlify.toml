@@ -7,6 +7,72 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/platform.html"
+  to = "/platform"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sectors.html"
+  to = "/sectors"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/deployment.html"
+  to = "/deployment"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news.html"
+  to = "/news"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/disclaimer.html"
+  to = "/disclaimer"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/under-the-hood.html"
+  to = "/under-the-hood"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/instruments-of-virtue.html"
+  to = "/instruments-of-virtue"
+  status = 301
+  force = true
+
 # These draft sections are intentionally unavailable in production.
 [[redirects]]
   from = "/careers"

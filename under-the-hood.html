@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Under the Hood: Sapiens and Large Language Models Compared | New Sapience</title>
 <meta name="description" content="Under the Hood: Sapiens and Large Language Models Compared. A paper by Bryant Cruse and Rosaire Leon on how each architecture is built, what it does at runtime, and what can be inspected.">
-<link rel="canonical" href="https://www.newsapience.com/under-the-hood.html">
+<link rel="canonical" href="https://www.newsapience.com/under-the-hood">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="New Sapience">
 <meta property="og:title" content="Under the Hood: Sapiens and Large Language Models Compared — New Sapience">
 <meta property="og:description" content="Under the Hood: Sapiens and Large Language Models Compared. A paper by Bryant Cruse and Rosaire Leon on how each architecture is built, what it does at runtime, and what can be inspected.">
-<meta property="og:url" content="https://www.newsapience.com/under-the-hood.html">
+<meta property="og:url" content="https://www.newsapience.com/under-the-hood">
 <meta property="og:image" content="https://www.newsapience.com/img/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Under the Hood: Sapiens and Large Language Models Compared — New Sapience">
 <meta name="twitter:description" content="Under the Hood: Sapiens and Large Language Models Compared. A paper by Bryant Cruse and Rosaire Leon on how each architecture is built, what it does at runtime, and what can be inspected.">
 <meta name="twitter:image" content="https://www.newsapience.com/img/og-card.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Under the Hood: Sapiens and Large Language Models Compared","description":"A technical comparison of deterministic synthetic intelligence and large language models.","author":[{"@type":"Person","name":"Bryant Cruse"},{"@type":"Person","name":"Rosaire Leon"}],"publisher":{"@type":"Organization","name":"New Sapience, Inc.","url":"https://www.newsapience.com/"},"mainEntityOfPage":"https://www.newsapience.com/under-the-hood.html","image":"https://www.newsapience.com/img/og-card.jpg"}
+{"@context":"https://schema.org","@type":"Article","headline":"Under the Hood: Sapiens and Large Language Models Compared","description":"A technical comparison of deterministic synthetic intelligence and large language models.","author":[{"@type":"Person","name":"Bryant Cruse"},{"@type":"Person","name":"Rosaire Leon"}],"publisher":{"@type":"Organization","name":"New Sapience, Inc.","url":"https://www.newsapience.com/"},"mainEntityOfPage":"https://www.newsapience.com/under-the-hood","image":"https://www.newsapience.com/img/og-card.jpg"}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,12 +30,7 @@
 <link rel="mask-icon" href="img/brand/mask.svg" color="#0D2149">
 <meta name="theme-color" content="#0D2149">
 <style>
-/* ============================================================
-   NEW SAPIENCE — shared stylesheet
-   Tokens from newsapience-redesign-final-v141.
-   Additions vs v141: mid-tone ramp (--mid-*), and brand navy split
-   from interactive blue (--signal is now interactive-only).
-   ============================================================ */
+
 
 :root{
   /* base */
@@ -56,7 +51,7 @@
   --signal:#0B4FD6;
   --signal-wash:#EEF3FE;
 
-  /* mid-tones: give large light sections weight (gap analysis #4) */
+
   --mid-1:#F1F2F4;
   --mid-2:#E4E6EA;
   --mid-3:#CBCFD6;
@@ -93,22 +88,19 @@ img,canvas,video{display:block;max-width:100%}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
 .wrap--wide{max-width:var(--wide)}
-/* One vertical rhythm sitewide. Anthropic runs 96 top / 48 bottom on every
-   section; we ran three different pairs, which read as accident not system. */
+
 .sec{padding-top:clamp(64px,7vw,96px);padding-bottom:clamp(32px,3.5vw,48px);
   position:relative;scroll-margin-top:104px}
 .sec--t{padding-top:clamp(64px,7vw,96px);padding-bottom:clamp(32px,3.5vw,48px)}
 .sec--alt{background:var(--mid-1)}
 .sec--warm{background:var(--warm-grey)}
-/* Tinted band — Cohere alternates white and a pale lilac-blue field to
-   separate major sections without a rule or a dark inversion. */
+
 .sec--tint{background:#E4EAFB}
 
-/* ---- COHERE-PATTERN PAGE HEAD: centred, generous, one CTA ---- */
+
 .chero{text-align:center;padding-top:clamp(60px,7.5vw,126px);padding-bottom:clamp(42px,5.3vw,82px)}
 .chero .mono{display:block;margin-bottom:clamp(22px,2.6vw,34px)}
-/* Big and bold: 96px at 1200px, matching Cohere. No max-width box — the
-   headline is allowed to run the full container the way theirs does. */
+
 .chero h1{font-size:clamp(30px,5.4vw,72px);font-weight:600;letter-spacing:-.022em;
   line-height:1.02;max-width:none;text-wrap:balance}
 .chero__sub{max-width:52ch;margin:clamp(26px,3vw,40px) auto 0;text-wrap:balance;
@@ -138,13 +130,12 @@ img,canvas,video{display:block;max-width:100%}
 @media(max-width:1000px){.drow{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.drow{grid-template-columns:1fr}}
 
-/* Section head, left-aligned variant (Cohere's "Empower the teams..." block) */
+
 .chead--l{max-width:none}
 .chead--l h2{max-width:22ch}
 .chead--l .lede{max-width:62ch}
 
-/* Image sits directly above its grid as one unit, the way Cohere pairs the
-   office photo with the Legal / Risk / Finance / HR row underneath it. */
+
 .chead+.phwrap--bleed{margin-bottom:clamp(40px,4.6vw,68px)}
 
 /* ---- 16 SECTORS: icon grid, four across, hairline rule ---- */
@@ -160,7 +151,7 @@ img,canvas,video{display:block;max-width:100%}
 @media(max-width:700px){.sgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:420px){.sgrid{grid-template-columns:1fr}}
 
-/* ---- FULL-BLEED IMAGE CTA (Cohere's "Ready to put AI to work?") ---- */
+
 .imgcta{position:relative;min-height:clamp(340px,38vw,520px);display:grid;
   place-items:center;overflow:hidden;isolation:isolate;text-align:center;
   background:
@@ -185,8 +176,7 @@ img,canvas,video{display:block;max-width:100%}
   line-height:1.65;max-width:52ch;margin-inline:auto}
 .imgcta .btn{margin-top:clamp(26px,3vw,38px)}
 
-/* One full-bleed inverted band per inner page. Anthropic and Cohere both use a
-   dark section to break a long light page; we only had navy in CTA strips. */
+
 .sec--dark{background:var(--navy);color:#fff}
 .sec--dark h1,.sec--dark h2,.sec--dark h3,.sec--dark h4{color:#fff}
 .sec--dark .lede,.sec--dark p{color:rgba(255,255,255,.82)}
@@ -708,9 +698,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
   [data-rv],.stg>*{opacity:1;transform:none}
 }
 
-/* ============================================================
-   v2 ADDITIONS — for 2026.8.7 Website Update copy
-   ============================================================ */
+
 
 /* ---- CISA 16 SECTORS: draggable/scroll carousel (Emerson pattern) ---- */
 .carousel{position:relative;margin-top:clamp(26px,3.4vw,44px)}
@@ -819,10 +807,7 @@ main > section:first-child{padding-top:clamp(112px,11vw,168px)}
   .qpanel__in,.depl__b{grid-template-columns:1fr}
 }
 
-/* ============================================================
-   v3 — PROVEN IN PRODUCTION / REGULATORY
-   Public-safe material sourced from Business Plan Q2 2026 v1.6.
-   ============================================================ */
+
 
 /* ---- PROOF CARDS: real deployments ---- */
 .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,24px)}
@@ -1112,13 +1097,7 @@ body{background:#fff}
     <div class="nitem"><a href="contact.html">Contact</a></div>
   </nav>
   <div class="toggle">
-    <span class="splitbtn">
-      <a class="splitbtn__m" href="mailto:investors@newsapience.com">Invest</a>
-      <button class="splitbtn__c" type="button" aria-haspopup="true" aria-expanded="false" aria-label="More ways to get in touch"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-</span>
-    <div class="sbmenu" role="menu">
-<a role="menuitem" href="mailto:comm@newsapience.com">Contact sales</a>
-</div>
+    <a class="btn btn--inv" href="contact.html">Request a demo</a>
 <button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
@@ -1129,7 +1108,6 @@ body{background:#fff}
   <a href="deployment.html">Deployment</a>
   <a href="about.html">Company</a>
   <a href="contact.html">Contact</a>
-  <a class="drawer__inv" href="mailto:investors@newsapience.com">Invest</a>
 </div>
 
 <style>
@@ -1421,7 +1399,6 @@ body{background:#fff}
 <li><a href="news.html">News</a></li>
 <li><a href="contact.html">Request a demo</a></li>
 <li><a href="mailto:comm@newsapience.com">comm@newsapience.com</a></li>
-<li><a href="mailto:investors@newsapience.com">Invest</a></li>
 </ul></div>
 </div>
 <div class="foot__b">
@@ -1432,7 +1409,7 @@ body{background:#fff}
 </footer>
 <script>
 /* ============================================================
-   NEW SAPIENCE — shared behaviour
+   NEW SAPIENCE — shared behavior
    ============================================================ */
 (function () {
   'use strict';
@@ -1621,7 +1598,7 @@ body{background:#fff}
     var VARIANTS = [
       'This could indicate a leak, though thermal contraction is also plausible. I’d recommend monitoring loop B and checking for corroborating indications. Confidence: moderate.',
       'Possibly a slow leak. That said, a 4.2 psi drop over 90 seconds is not necessarily abnormal if the loop was cooling. I would suggest verifying against temperature trends. Confidence: medium-low.',
-      'It may be a leak. Pressure decay of this magnitude sometimes reflects normal thermal behaviour, so I’d cross-check other sensors before concluding. Confidence: uncertain.',
+      'It may be a leak. Pressure decay of this magnitude sometimes reflects normal thermal behavior, so I’d cross-check other sensors before concluding. Confidence: uncertain.',
       'Likely benign, but a leak cannot be ruled out. Recommend continued observation of loop B and review of recent maintenance. Confidence: moderate.'
     ];
     var run = 1, i = 0;
@@ -1744,19 +1721,6 @@ body{background:#fff}
 })();
 </script>
 
-<script>
-(function(){
-  var t=document.querySelector('.splitbtn__c'), m=document.querySelector('.sbmenu');
-  if(!t||!m) return;
-  function close(){ m.classList.remove('on'); t.setAttribute('aria-expanded','false'); }
-  t.addEventListener('click', function(e){
-    e.preventDefault(); e.stopPropagation();
-    var open = m.classList.toggle('on');
-    t.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.addEventListener('click', function(e){ if(!m.contains(e.target)) close(); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
-</script>
+
 </body>
 </html>

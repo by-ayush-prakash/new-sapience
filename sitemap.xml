@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.newsapience.com/index.html</loc></url>
-  <url><loc>https://www.newsapience.com/platform.html</loc></url>
-  <url><loc>https://www.newsapience.com/sectors.html</loc></url>
-  <url><loc>https://www.newsapience.com/deployment.html</loc></url>
-  <url><loc>https://www.newsapience.com/about.html</loc></url>
-  <url><loc>https://www.newsapience.com/contact.html</loc></url>
-  <url><loc>https://www.newsapience.com/news.html</loc></url>
-  <url><loc>https://www.newsapience.com/privacy.html</loc></url>
-  <url><loc>https://www.newsapience.com/disclaimer.html</loc></url>
-  <url><loc>https://www.newsapience.com/under-the-hood.html</loc></url>
+  <url><loc>https://www.newsapience.com/</loc></url>
+  <url><loc>https://www.newsapience.com/platform</loc></url>
+  <url><loc>https://www.newsapience.com/sectors</loc></url>
+  <url><loc>https://www.newsapience.com/deployment</loc></url>
+  <url><loc>https://www.newsapience.com/about</loc></url>
+  <url><loc>https://www.newsapience.com/contact</loc></url>
+  <url><loc>https://www.newsapience.com/news</loc></url>
+  <url><loc>https://www.newsapience.com/privacy</loc></url>
+  <url><loc>https://www.newsapience.com/disclaimer</loc></url>
+  <url><loc>https://www.newsapience.com/under-the-hood</loc></url>
+  <url><loc>https://www.newsapience.com/instruments-of-virtue</loc></url>
   <url><loc>https://www.newsapience.com/symmatrics-letter-of-intent</loc></url>
 </urlset>
