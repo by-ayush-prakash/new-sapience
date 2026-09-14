@@ -364,6 +364,9 @@ strong{font-weight:600}
 
 
 .toggle{display:flex;align-items:center;gap:10px;z-index:2}
+.headercta{display:inline-flex;align-items:center;justify-content:center;padding:0 clamp(20px,2.1vw,32px);background:#0C141F;color:#fff;font-family:var(--f-body);font-size:14px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;transition:background .2s}
+.headercta:hover{background:#22303F}
+@media(max-width:860px){.headercta{padding:0 18px;font-size:13.5px}}
 .navcta{display:none}
 .burger{display:none;width:43px;height:43px;border-radius:6px;background:var(--surface);border:1px solid var(--rule-soft);cursor:pointer;position:relative;z-index:2}
 .burger i{position:absolute;left:12.5px;width:18px;height:1.8px;background:var(--ink);border-radius:2px;transition:transform .5s var(--ez)}
@@ -1070,7 +1073,7 @@ h1,h2,h3,h4{font-weight:500}
     <div class="nitem"><a href="contact.html">Contact</a></div>
   </nav>
   <div class="toggle">
-    <a class="btn btn--inv" href="contact.html">Request a demo</a>
+    <a class="headercta" href="contact.html">Request a demo</a>
 <button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
